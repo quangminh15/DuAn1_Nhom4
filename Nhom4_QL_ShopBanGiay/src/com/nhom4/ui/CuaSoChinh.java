@@ -117,3 +117,5 @@ public class CuaSoChinh extends javax.swing.JFrame {
     private javax.swing.JLabel lblDongHo;
     // End of variables declaration//GEN-END:variables
 }
+
+//tao la linh
