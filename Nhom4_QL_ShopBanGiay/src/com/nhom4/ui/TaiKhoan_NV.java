@@ -94,6 +94,7 @@ public class TaiKhoan_NV extends javax.swing.JDialog {
                 dialog.setVisible(true);
             }
         });
+        //asadada
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
