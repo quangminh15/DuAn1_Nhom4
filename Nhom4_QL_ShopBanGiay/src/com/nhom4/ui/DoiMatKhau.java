@@ -84,7 +84,7 @@ public class DoiMatKhau extends javax.swing.JDialog {
             }
         });
     }
-
+//abcxzy
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
 }
