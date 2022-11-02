@@ -1,28 +1,21 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
 package com.nhom4.ui;
-
-import com.nhom4.utils.XImage;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import javax.swing.Timer;
 
 /**
  *
  * @author ACER
  */
-public class CuaSoChinh extends javax.swing.JFrame {
+public class TaiKhoan_NV extends javax.swing.JDialog {
 
     /**
-     * Creates new form CuaSoChinh
+     * Creates new form TaiKhoan_NV
      */
-    public CuaSoChinh() {
+    public TaiKhoan_NV(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
         initComponents();
-        init();
     }
 
     /**
@@ -34,28 +27,27 @@ public class CuaSoChinh extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblDongHo = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        lblDongHo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblDongHo.setText("00 : 00 : 00");
+        jButton1.setText("Đổi mật khẩu");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(1054, Short.MAX_VALUE)
-                .addComponent(lblDongHo, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(364, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(279, 279, 279))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(548, Short.MAX_VALUE)
-                .addComponent(lblDongHo, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(201, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(160, 160, 160))
         );
 
         pack();
@@ -78,44 +70,32 @@ public class CuaSoChinh extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CuaSoChinh.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TaiKhoan_NV.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CuaSoChinh.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TaiKhoan_NV.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CuaSoChinh.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TaiKhoan_NV.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CuaSoChinh.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TaiKhoan_NV.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
-        /* Create and display the form */
+        /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CuaSoChinh().setVisible(true);
+                TaiKhoan_NV dialog = new TaiKhoan_NV(new javax.swing.JFrame(), true);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
             }
         });
     }
 
-    private void init() {
-        this.setLocationRelativeTo(null);
-        this.setIconImage(XImage.getAppIcon());
-        new ChaoJDialog(this, true).setVisible(true);
-        new DangNhap(this, true).setVisible(true);
-        
-        new Timer(1000, new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                Date now = new Date();
-                SimpleDateFormat formater = new SimpleDateFormat("hh:mm;ss a");
-                String text = formater.format(now);
-                lblDongHo.setText(text);
-            }
-        }).start();
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel lblDongHo;
+    private javax.swing.JButton jButton1;
     // End of variables declaration//GEN-END:variables
 }
-
-//tao la linh
