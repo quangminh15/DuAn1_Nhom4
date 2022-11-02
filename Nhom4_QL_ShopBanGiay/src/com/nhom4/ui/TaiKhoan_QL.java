@@ -16,6 +16,7 @@ public class TaiKhoan_QL extends javax.swing.JDialog {
     public TaiKhoan_QL(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        init();
     }
 
     /**
@@ -111,4 +112,8 @@ public class TaiKhoan_QL extends javax.swing.JDialog {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
+
+    private void init() {
+        this.setLocationRelativeTo(null);
+    }
 }

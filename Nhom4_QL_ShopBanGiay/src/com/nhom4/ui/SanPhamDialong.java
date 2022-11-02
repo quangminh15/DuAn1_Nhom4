@@ -16,6 +16,7 @@ public class SanPhamDialong extends javax.swing.JDialog {
     public SanPhamDialong(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        init();
     }
 
     /**
@@ -83,6 +84,10 @@ public class SanPhamDialong extends javax.swing.JDialog {
                 dialog.setVisible(true);
             }
         });
+    }
+
+    private void init() {
+        this.setLocationRelativeTo(null);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
