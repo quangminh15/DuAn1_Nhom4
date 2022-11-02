@@ -118,4 +118,3 @@ public class CuaSoChinh extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 }
 
-//tao la linh
