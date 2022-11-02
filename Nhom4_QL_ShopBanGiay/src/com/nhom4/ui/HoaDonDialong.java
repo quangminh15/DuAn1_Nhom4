@@ -16,6 +16,7 @@ public class HoaDonDialong extends javax.swing.JDialog {
     public HoaDonDialong(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        init();
     }
 
     /**
@@ -33,11 +34,11 @@ public class HoaDonDialong extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 1181, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGap(0, 590, Short.MAX_VALUE)
         );
 
         pack();
@@ -83,6 +84,10 @@ public class HoaDonDialong extends javax.swing.JDialog {
                 dialog.setVisible(true);
             }
         });
+    }
+
+    private void init() {
+        this.setLocationRelativeTo(null);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
