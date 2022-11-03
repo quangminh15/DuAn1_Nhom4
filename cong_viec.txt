@@ -1,0 +1,22 @@
+Quản lý cửa hàng bán giày
+1. Đăng nhập
+2. Đổi mật khẩu
+3. form chính
+4. form nhân viên
+5. form tài khoản
+6. form nhà cung cấp
+7. form sản phẩm
+8. form khách hàng
+9. form hóa đơn : 
+	- Hóa đơn:
+		+ Thêm, sửa, xóa hóa đơn
+	- Hóa đơn chi tiết:
+		+ In hóa đơn chi tiết
+		+ Thêm, sửa, xóa hóa đơn
+10. form thống kê : 
+	+ Thống kê sản phẩm phẩm tồn kho
+	+ Thống kê doanh thu theo tháng, năm
+
+
+Chức nắng quản lý cửa giày gồm : đăng nhập, đổi mật khẩu, quản lý thông tin nhân viên, quản lý tài khoản, quản lý thông tin nhà cung cấp,
+quản lý thông tin sản phẩm, quản lý thông tin khách hàng, thống kê, hóa đơn.
