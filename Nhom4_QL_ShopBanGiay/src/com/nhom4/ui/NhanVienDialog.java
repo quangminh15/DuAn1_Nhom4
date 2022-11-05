@@ -57,7 +57,6 @@ public class NhanVienDialog extends javax.swing.JDialog {
         jButton5 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
-        jPanel4 = new javax.swing.JPanel();
         jButton6 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
@@ -275,19 +274,13 @@ public class NhanVienDialog extends javax.swing.JDialog {
         ));
         jScrollPane2.setViewportView(jTable2);
 
-        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/left-arrow (1).png"))); // NOI18N
-        jPanel4.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
         jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/left-arrow.png"))); // NOI18N
-        jPanel4.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, -1, -1));
 
         jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/right-arrow.png"))); // NOI18N
-        jPanel4.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 10, -1, -1));
 
         jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/right-arrow (1).png"))); // NOI18N
-        jPanel4.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 10, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -308,8 +301,14 @@ public class NhanVienDialog extends javax.swing.JDialog {
                 .addComponent(jScrollPane2)
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
-                .addGap(183, 183, 183)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 428, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(231, 231, 231)
+                .addComponent(jButton6)
+                .addGap(18, 18, 18)
+                .addComponent(jButton7)
+                .addGap(18, 18, 18)
+                .addComponent(jButton8)
+                .addGap(18, 18, 18)
+                .addComponent(jButton9)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -324,8 +323,12 @@ public class NhanVienDialog extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton6)
+                    .addComponent(jButton7)
+                    .addComponent(jButton8)
+                    .addComponent(jButton9))
+                .addGap(28, 28, 28))
         );
 
         pack();
@@ -415,7 +418,6 @@ public class NhanVienDialog extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JScrollPane jScrollPane1;
