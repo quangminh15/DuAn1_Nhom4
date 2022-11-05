@@ -11,7 +11,7 @@ package com.nhom4.ui;
 public class NhaCungCapDialog extends javax.swing.JDialog {
 
     /**
-     * Creates new form NhaCungCapDialog
+     * Creastes new form NhaCungCapDialog
      */
     public NhaCungCapDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
