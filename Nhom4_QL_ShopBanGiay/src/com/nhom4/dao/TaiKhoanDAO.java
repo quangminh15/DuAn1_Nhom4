@@ -12,7 +12,7 @@ import java.util.List;
  * @author ACER
  */
 public class TaiKhoanDAO extends MainDAO<TaiKhoan, String> {
-    final String INSERT_SQL = "insert into NhanVien (MaNV,HoTen,MatKhau,VaiTro) values (?,?,?,?)";
+    final String INSERT_SQL = "INSERT INTO TaiKhoan(MaNV, Username, Pass, Role) VALUES ( ?,?,?,?  ) ";
     final String UPDATE_SQL = "UPDATE NhanVien SET HoTen = ?, MatKhau = ?  , VaiTro = ? where MaNV = ?";
     final String DELETE_SQL = "DELETE FROM NhanVien WHERE MaNV = ?";
     final String SELECT_ALL_SQL = "SELECT * FROM NhanVien";
