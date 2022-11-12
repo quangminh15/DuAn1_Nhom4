@@ -8,12 +8,12 @@ package com.nhom4.ui;
  *
  * @author Hai
  */
-public class ThongKe extends javax.swing.JPanel {
+public class TaiKhoanCaNhan extends javax.swing.JPanel {
 
     /**
-     * Creates new form ThongKe
+     * Creates new form TaiKhoanCaNhan
      */
-    public ThongKe() {
+    public TaiKhoanCaNhan() {
         initComponents();
     }
 
