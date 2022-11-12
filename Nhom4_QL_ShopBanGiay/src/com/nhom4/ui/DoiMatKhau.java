@@ -4,6 +4,15 @@
  */
 package com.nhom4.ui;
 
+import com.nhom4.dao.TaiKhoanDAO;
+import com.nhom4.utils.Auth;
+import com.nhom4.utils.MsgBox;
+import java.awt.Color;
+import java.awt.GradientPaint;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import javax.swing.JPanel;
+
 /**
  *
  * @author ACER
@@ -18,6 +27,21 @@ public class DoiMatKhau extends javax.swing.JDialog {
         initComponents();
         init();
     }
+    
+    class jPanelGradient extends JPanel {
+
+        protected void paintComponent(Graphics g) {
+            Graphics2D g2d = (Graphics2D) g;
+            int width = getWidth();
+            int height = getHeight();
+
+            Color color1 = new Color(249, 102, 102);
+            Color color2 = new Color(95, 157, 247);
+            GradientPaint gp = new GradientPaint(0, 0, color1, 180, height, color2);
+            g2d.setPaint(gp);
+            g2d.fillRect(0, 0, width, height);
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -28,21 +52,209 @@ public class DoiMatKhau extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel2 = new jPanelGradient();
+        jPanel1 = new javax.swing.JPanel();
+        txtMaNV = new javax.swing.JTextField();
+        lblMatKhau = new javax.swing.JLabel();
+        lblMatKhau1 = new javax.swing.JLabel();
+        txtMatKhau1 = new javax.swing.JPasswordField();
+        lblMatKhau2 = new javax.swing.JLabel();
+        txtMatKhau2 = new javax.swing.JPasswordField();
+        txtMatKhau = new javax.swing.JPasswordField();
+        btnDongY = new javax.swing.JButton();
+        btnHuyBo = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        txtMaNV.setBackground(new java.awt.Color(229, 229, 229));
+        txtMaNV.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txtMaNV.setForeground(new java.awt.Color(102, 102, 102));
+        txtMaNV.setText("  Ten Tai Khoan");
+        txtMaNV.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(229, 229, 229), 2));
+        txtMaNV.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtMaNVFocusLost(evt);
+            }
+        });
+        txtMaNV.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtMaNVMouseClicked(evt);
+            }
+        });
+        txtMaNV.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtMaNVActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtMaNV, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 110, 288, 45));
+
+        lblMatKhau.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblMatKhau.setForeground(new java.awt.Color(102, 102, 102));
+        lblMatKhau.setText("Mat Khau Hien Tai");
+        jPanel1.add(lblMatKhau, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 180, -1, -1));
+
+        lblMatKhau1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblMatKhau1.setForeground(new java.awt.Color(102, 102, 102));
+        lblMatKhau1.setText("Mat Khau Moi");
+        jPanel1.add(lblMatKhau1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 240, -1, -1));
+
+        txtMatKhau1.setBackground(new java.awt.Color(229, 229, 229));
+        txtMatKhau1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(229, 229, 229), 2));
+        txtMatKhau1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtMatKhau1FocusLost(evt);
+            }
+        });
+        txtMatKhau1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtMatKhau1MouseClicked(evt);
+            }
+        });
+        jPanel1.add(txtMatKhau1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 230, 288, 45));
+
+        lblMatKhau2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblMatKhau2.setForeground(new java.awt.Color(102, 102, 102));
+        lblMatKhau2.setText("Xac Nhan Mat Khau Moi");
+        jPanel1.add(lblMatKhau2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 300, -1, -1));
+
+        txtMatKhau2.setBackground(new java.awt.Color(229, 229, 229));
+        txtMatKhau2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(229, 229, 229), 2));
+        txtMatKhau2.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtMatKhau2FocusLost(evt);
+            }
+        });
+        txtMatKhau2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtMatKhau2MouseClicked(evt);
+            }
+        });
+        jPanel1.add(txtMatKhau2, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 290, 290, 45));
+
+        txtMatKhau.setBackground(new java.awt.Color(229, 229, 229));
+        txtMatKhau.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(229, 229, 229), 2));
+        txtMatKhau.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtMatKhauFocusLost(evt);
+            }
+        });
+        txtMatKhau.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtMatKhauMouseClicked(evt);
+            }
+        });
+        jPanel1.add(txtMatKhau, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 170, 288, 45));
+
+        btnDongY.setText("Đồng ý");
+        btnDongY.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDongYActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnDongY, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 360, 135, 46));
+
+        btnHuyBo.setText("Hủy bỏ");
+        btnHuyBo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHuyBoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnHuyBo, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 360, 135, 47));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 30)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(91, 205, 252));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("ĐỔI MẬT KHẨU");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 20, 268, 31));
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(60, 60, 60)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 815, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(55, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(41, 41, 41)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 473, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(43, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 728, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 439, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtMaNVFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtMaNVFocusLost
+        if (txtMaNV.getText().equals("")) {
+            txtMaNV.setText("  Ten Tai Khoan");
+        }
+    }//GEN-LAST:event_txtMaNVFocusLost
+
+    private void txtMaNVMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtMaNVMouseClicked
+        if (txtMaNV.getText().equals("  Ten Tai Khoan")) {
+            txtMaNV.setText("");
+        }
+    }//GEN-LAST:event_txtMaNVMouseClicked
+
+    private void txtMaNVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMaNVActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtMaNVActionPerformed
+
+    private void txtMatKhau1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtMatKhau1FocusLost
+        if (txtMatKhau1.getText().equals("")) {
+            lblMatKhau1.setVisible(true);
+        }
+    }//GEN-LAST:event_txtMatKhau1FocusLost
+
+    private void txtMatKhau1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtMatKhau1MouseClicked
+        lblMatKhau1.setVisible(false);
+    }//GEN-LAST:event_txtMatKhau1MouseClicked
+
+    private void txtMatKhau2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtMatKhau2FocusLost
+        if (txtMatKhau2.getText().equals("")) {
+            lblMatKhau2.setVisible(true);
+        }
+    }//GEN-LAST:event_txtMatKhau2FocusLost
+
+    private void txtMatKhau2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtMatKhau2MouseClicked
+        lblMatKhau2.setVisible(false);
+    }//GEN-LAST:event_txtMatKhau2MouseClicked
+
+    private void txtMatKhauFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtMatKhauFocusLost
+        if (txtMatKhau.getText().equals("")) {
+            lblMatKhau.setVisible(true);
+        }
+    }//GEN-LAST:event_txtMatKhauFocusLost
+
+    private void txtMatKhauMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtMatKhauMouseClicked
+        lblMatKhau.setVisible(false);
+    }//GEN-LAST:event_txtMatKhauMouseClicked
+
+    private void btnDongYActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDongYActionPerformed
+        this.doiMatKhau();
+    }//GEN-LAST:event_btnDongYActionPerformed
+
+    private void btnHuyBoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHuyBoActionPerformed
+        this.huyBo();
+    }//GEN-LAST:event_btnHuyBoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -89,8 +301,45 @@ public class DoiMatKhau extends javax.swing.JDialog {
     private void init() {
         this.setLocationRelativeTo(null);
     }
+    
+    TaiKhoanDAO tkDAO = new TaiKhoanDAO();
+    
+    private void doiMatKhau(){
+        String manv = txtMaNV.getText();
+        String matKhau = new String(txtMatKhau.getPassword());
+        String matKhau1 = new String(txtMatKhau1.getPassword());
+        String matKhau2 = new String(txtMatKhau2.getPassword());
+        
+        if(!manv.equalsIgnoreCase(Auth.user.getUsername())){
+            MsgBox.alert(this, "Tên đăng nhập chưa chính xác");
+        } else if(!matKhau.equalsIgnoreCase(Auth.user.getPass())){
+            MsgBox.alert(this, "Mật khẩu chưa chính xác");
+        } else if(!matKhau2.equalsIgnoreCase(matKhau1)){
+            MsgBox.alert(this, "Xác nhận mật khẩu sai");
+        } else {
+            Auth.user.setPass(matKhau1);
+            tkDAO.update(Auth.user);
+            MsgBox.alert(this, "Đổi mật khẩu thành công");
+        }
+    }
+    
+    private void huyBo(){
+        this.dispose();
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnDongY;
+    private javax.swing.JButton btnHuyBo;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel lblMatKhau;
+    private javax.swing.JLabel lblMatKhau1;
+    private javax.swing.JLabel lblMatKhau2;
+    private javax.swing.JTextField txtMaNV;
+    private javax.swing.JPasswordField txtMatKhau;
+    private javax.swing.JPasswordField txtMatKhau1;
+    private javax.swing.JPasswordField txtMatKhau2;
     // End of variables declaration//GEN-END:variables
 }

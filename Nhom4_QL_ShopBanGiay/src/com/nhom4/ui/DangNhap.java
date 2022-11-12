@@ -4,7 +4,9 @@
  */
 package com.nhom4.ui;
 
+import com.nhom4.dao.TaiKhoanDAO;
 import com.nhom4.entity.NhanVien;
+import com.nhom4.entity.TaiKhoan;
 import com.nhom4.utils.Auth;
 import com.nhom4.utils.MsgBox;
 import java.awt.Color;
@@ -19,7 +21,7 @@ import javax.swing.JPanel;
  * @author ACER
  */
 public class DangNhap extends javax.swing.JDialog {
-
+    TaiKhoanDAO tkDAO = new TaiKhoanDAO();
     /**
      * Creates new form DangNhap
      */
@@ -194,7 +196,7 @@ public class DangNhap extends javax.swing.JDialog {
     }//GEN-LAST:event_btnKetThucActionPerformed
 
     private void btnDangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangNhapActionPerformed
-//        this.dangNhap();
+        this.dangNhap();
     }//GEN-LAST:event_btnDangNhapActionPerformed
 
     /**
@@ -243,22 +245,22 @@ public class DangNhap extends javax.swing.JDialog {
          this.setLocationRelativeTo(null);
     }
     
-//    void dangNhap() {
-//        String manv = txtMaNV.getText();
-//        String matkhau = new String(txtMatKhau.getPassword());
-//        NhanVien nv = nvDAO.selectById(manv);
-//        if (nv == null) {
-//            MsgBox.alert(this, "Tên đăng nhập không chính xác");
-//        } else {
-//            if (!nv.getMatKhau().equals(matkhau)) {
-//                MsgBox.alert(this, "Mật khẩu không chính xác");
-//            } else {
-//                Auth.user = nv;
-//                MsgBox.alert(this, "Đăng nhập thành công!");
-//                this.dispose();
-//            }
-//        }
-//    }
+void dangNhap() {
+        String manv = txtMaNV.getText();
+        String matkhau = new String(txtMatKhau.getPassword());
+        TaiKhoan nv = tkDAO.selectById(manv);
+        if (nv == null) {
+            MsgBox.alert(this, "Tên đăng nhập không chính xác");
+        } else {
+            if (!nv.getPass().equals(matkhau)) {
+                MsgBox.alert(this, "Mật khẩu không chính xác");
+            } else {
+                Auth.user = nv;
+                MsgBox.alert(this, "Đăng nhập thành công!");
+                this.dispose();
+            }
+        }
+    }
 
     void ketThuc() {
         if (MsgBox.confirm(this, "Bạn có chắc muốn kết thúc ứng dụng?")) {

@@ -5,6 +5,7 @@
 package com.nhom4.utils;
 
 import com.nhom4.entity.NhanVien;
+import com.nhom4.entity.TaiKhoan;
 
 
 
@@ -13,7 +14,7 @@ import com.nhom4.entity.NhanVien;
  * @author ACER
  */
 public class Auth {
-    public static NhanVien user = null;
+    public static TaiKhoan user = null;
     
     public static void clear(){
         Auth.user = null;
@@ -24,6 +25,6 @@ public class Auth {
     }
     
     public static boolean isManager(){
-        return Auth.islogin() && user.isVaiTro();
+        return Auth.islogin() && user.isRole();
     }
 }

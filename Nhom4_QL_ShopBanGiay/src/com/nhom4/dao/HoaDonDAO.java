@@ -4,10 +4,70 @@
  */
 package com.nhom4.dao;
 
+import com.nhom4.entity.HoaDon;
+import com.nhom4.utils.JdbcHelper;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author ACER
  */
-public class HoaDonDAO {
-    
+public class HoaDonDAO extends MainDAO<HoaDon, String> {
+        final String INSERT_SQL = "INSERT INTO HoaDon (MaHD, MaNV, MaKM, NgayBan, MaKH,ThanhTien,TrangThai)VALUES (?,?,?,?,?,?,?)";
+        final String UPDATE_SQL = "UPDATE HoaDon SET MaNV =?, MaKM=?, NgayBan =?, MaKH =?, ThanhTien =?, TrangThai =? WHERE MaHD=?";
+        final String DELETE_SQL = "DELETE FROM HoaDon WHERE MaHD = ?";
+        final String SELECT_ALL_SQL = "SELECT * FROM HoaDon";
+        final String SELECT_By_Id_SQL = "SELECT * FROM HoaDon WHERE MaHD = ?";
+    @Override
+    public void insert(HoaDon entity) {
+        JdbcHelper.executeUpdate(INSERT_SQL, entity.getMaHD(), entity.getMaNV(), entity.getMaKM(), entity.getNgayBan(), entity.getMaKH(), entity.getThanhTien(), entity.isTrangThai());
+    }
+
+    @Override
+    public void update(HoaDon entity) {
+        JdbcHelper.executeUpdate(UPDATE_SQL, entity.getMaNV(), entity.getMaKM(), entity.getNgayBan(), entity.getMaKH(), entity.getThanhTien(), entity.isTrangThai(), entity.getMaHD());
+    }
+
+    @Override
+    public void delete(String id) {
+        JdbcHelper.executeUpdate(DELETE_SQL, id);
+    }
+
+    @Override
+    public List<HoaDon> selectAll() {
+        return selectBySql(SELECT_ALL_SQL);
+    }
+
+    @Override
+    public HoaDon selectById(String id) {
+        List<HoaDon> list = selectBySql(SELECT_By_Id_SQL, id);
+        if(list.isEmpty()){
+            return null;
+        }
+        return list.get(0);
+    }
+
+    @Override
+    public List<HoaDon> selectBySql(String sql, Object... args) {
+        List<HoaDon> list = new ArrayList<HoaDon>();
+        try {
+            ResultSet rs = JdbcHelper.executeQuery(sql, args);
+            while (rs.next()) {                
+               HoaDon entity = new HoaDon();
+               entity.setMaHD(rs.getString("MaHD"));
+               entity.setMaNV(rs.getString("MaNV"));
+               entity.setMaKM(rs.getString("MaKM"));
+               entity.setNgayBan(rs.getDate("NgayBan"));
+               entity.setMaKH(rs.getString("MaKH"));
+               entity.setThanhTien(rs.getFloat("ThanhTien"));
+               entity.setTrangThai(rs.getBoolean("TrangThai"));
+               list.add(entity);  
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return list;
+    }
 }
