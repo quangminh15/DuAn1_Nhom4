@@ -73,7 +73,6 @@ public class CuaSoChinh extends javax.swing.JFrame {
         jPanel9 = new javax.swing.JPanel();
         lblDongHo = new javax.swing.JLabel();
         jPanel4 = new jPanelGradient();
-        jButton1 = new javax.swing.JButton();
         pnlCardPane = new javax.swing.JPanel();
         pnlHome = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
@@ -288,31 +287,15 @@ public class CuaSoChinh extends javax.swing.JFrame {
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 879));
 
-        jButton1.setText("jButton1");
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jButton1MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jButton1MouseExited(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addComponent(jButton1)
-                .addContainerGap(1295, Short.MAX_VALUE))
+            .addGap(0, 1420, Short.MAX_VALUE)
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(22, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(14, 14, 14))
+            .addGap(0, 61, Short.MAX_VALUE)
         );
 
         jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(264, 0, 1420, -1));
@@ -406,14 +389,6 @@ public class CuaSoChinh extends javax.swing.JFrame {
         changePanel(hd);
     }//GEN-LAST:event_lblHDMouseClicked
 
-    private void jButton1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseEntered
-        pnlHVNhanVien.setVisible(true);
-    }//GEN-LAST:event_jButton1MouseEntered
-
-    private void jButton1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseExited
-       pnlHVNhanVien.setVisible(false);
-    }//GEN-LAST:event_jButton1MouseExited
-
     /**
      * @param args the command line arguments
      */
@@ -468,7 +443,6 @@ public class CuaSoChinh extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
