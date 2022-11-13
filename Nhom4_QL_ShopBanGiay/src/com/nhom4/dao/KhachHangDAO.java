@@ -6,7 +6,9 @@ package com.nhom4.dao;
 
 import com.nhom4.entity.KhachHang;
 import com.nhom4.utils.JdbcHelper;
+import java.util.ArrayList;
 import java.util.List;
+import java.sql.ResultSet;
 
 /**
  *
@@ -21,12 +23,12 @@ public class KhachHangDAO extends MainDAO<KhachHang, String> {
     
     @Override
     public void insert(KhachHang entity) {
-        JdbcHelper.executeUpdate(INSERT_SQL, entity.getMaKM(), entity.getTenKM(),entity.getGiamGia(), entity.getNgayBD(), entity.getNgayKT(), entity.getGhiChu());
+        JdbcHelper.executeUpdate(INSERT_SQL, entity.getMaKH(), entity.getTenKH(),entity.getSDT(), entity.getDiaChi());
     }
 
     @Override
     public void update(KhachHang entity) {
-        
+        JdbcHelper.executeUpdate(UPDATE_SQL, entity.getMaKH(), entity.getTenKH(),entity.getSDT(), entity.getDiaChi());
     }
 
     @Override
@@ -36,17 +38,35 @@ public class KhachHangDAO extends MainDAO<KhachHang, String> {
 
     @Override
     public List<KhachHang> selectAll() {
-        
+        return selectBySql(SELECT_ALL_SQL);
     }
 
     @Override
     public KhachHang selectById(String id) {
-        
+        List<KhachHang> list = selectBySql(SELECT_By_Id_SQL, id);
+        if(list.isEmpty()){
+            return null;
+        }
+        return list.get(0);
     }
 
     @Override
     public List<KhachHang> selectBySql(String sql, Object... args) {
-        
+        List<KhachHang> list = new ArrayList<KhachHang>();
+        try {
+            ResultSet rs = JdbcHelper.executeQuery(sql, args);
+            while (rs.next()) {                
+               KhachHang entity = new KhachHang();
+               entity.setMaKH(rs.getString("MaKH"));
+               entity.setTenKH(rs.getString("TenKH"));
+               entity.setSDT(rs.getString("SDT"));
+               entity.setDiaChi(rs.getString("DiaChi"));
+               list.add(entity);  
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return list;
     }
     
 }
