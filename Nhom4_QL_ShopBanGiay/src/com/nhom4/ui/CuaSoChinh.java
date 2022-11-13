@@ -382,27 +382,27 @@ public class CuaSoChinh extends javax.swing.JFrame {
     }
     
     private void lblNhanVienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNhanVienMouseClicked
-        NhanVien nv = new NhanVien();
+        NhanVien1 nv = new NhanVien1();
         changePanel(nv);
     }//GEN-LAST:event_lblNhanVienMouseClicked
 
     private void lblNCCMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNCCMouseClicked
-        NhaCungCap nc = new NhaCungCap();
+        NhaCungCap1 nc = new NhaCungCap1();
         changePanel(nc);
     }//GEN-LAST:event_lblNCCMouseClicked
 
     private void lblSPMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSPMouseClicked
-        SanPham sp = new SanPham();
+        SanPham1 sp = new SanPham1();
         changePanel(sp);
     }//GEN-LAST:event_lblSPMouseClicked
 
     private void lblKHMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblKHMouseClicked
-        KhachHang kh = new KhachHang();
+        KhachHang1 kh = new KhachHang1();
         changePanel(kh);
     }//GEN-LAST:event_lblKHMouseClicked
 
     private void lblHDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHDMouseClicked
-       HoaDon hd = new HoaDon();
+       HoaDon1 hd = new HoaDon1();
         changePanel(hd);
     }//GEN-LAST:event_lblHDMouseClicked
 

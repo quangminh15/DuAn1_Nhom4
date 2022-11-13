@@ -10,23 +10,29 @@ package com.nhom4.entity;
  */
 public class NhanVien {
     private String maNV;
-    private String hoTen;
-    private String matKhau;
-    private boolean vaiTro;
+    private String tenNV;
+    private boolean gioiTinh;
+    private String SDT;
+    private String email;
+    private String hinh;
+    private String diaChi;
     
     @Override
         public String toString() {
-            return this.hoTen;
+            return this.tenNV;
         }
 
     public NhanVien() {
     }
 
-    public NhanVien(String maNV, String hoTen, String matKhau, boolean vaiTro) {
+    public NhanVien(String maNV, String tenNV, boolean gioiTinh, String SDT, String email, String hinh, String diaChi) {
         this.maNV = maNV;
-        this.hoTen = hoTen;
-        this.matKhau = matKhau;
-        this.vaiTro = vaiTro;
+        this.tenNV = tenNV;
+        this.gioiTinh = gioiTinh;
+        this.SDT = SDT;
+        this.email = email;
+        this.hinh = hinh;
+        this.diaChi = diaChi;
     }
 
     public String getMaNV() {
@@ -37,31 +43,53 @@ public class NhanVien {
         this.maNV = maNV;
     }
 
-    public String getHoTen() {
-        return hoTen;
+    public String getTenNV() {
+        return tenNV;
     }
 
-    public void setHoTen(String hoTen) {
-        this.hoTen = hoTen;
+    public void setTenNV(String tenNV) {
+        this.tenNV = tenNV;
     }
 
-    public String getMatKhau() {
-        return matKhau;
+    public boolean isGioiTinh() {
+        return gioiTinh;
     }
 
-    public void setMatKhau(String matKhau) {
-        this.matKhau = matKhau;
+    public void setGioiTinh(boolean gioiTinh) {
+        this.gioiTinh = gioiTinh;
     }
 
-    public boolean isVaiTro() {
-        return vaiTro;
+    public String getSDT() {
+        return SDT;
     }
 
-    public void setVaiTro(boolean vaiTro) {
-        this.vaiTro = vaiTro;
+    public void setSDT(String SDT) {
+        this.SDT = SDT;
     }
 
+    public String getEmail() {
+        return email;
+    }
 
-    
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getHinh() {
+        return hinh;
+    }
+
+    public void setHinh(String hinh) {
+        this.hinh = hinh;
+    }
+
+    public String getDiaChi() {
+        return diaChi;
+    }
+
+    public void setDiaChi(String diaChi) {
+        this.diaChi = diaChi;
+    }
+
     
 }

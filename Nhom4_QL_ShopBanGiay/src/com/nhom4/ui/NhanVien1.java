@@ -8,12 +8,12 @@ package com.nhom4.ui;
  *
  * @author Hai
  */
-public class NhanVien extends javax.swing.JPanel {
+public class NhanVien1 extends javax.swing.JPanel {
 
     /**
      * Creates new form NewJPanel
      */
-    public NhanVien() {
+    public NhanVien1() {
         initComponents();
     }
 
