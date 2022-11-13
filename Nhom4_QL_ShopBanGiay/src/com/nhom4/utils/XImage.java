@@ -20,12 +20,12 @@ import javax.swing.ImageIcon;
 public class XImage {
 
     public static Image getAppIcon() {
-        URL url = XImage.class.getResource("/com/nhom4/icon_CU/logoo.png");
+        URL url = XImage.class.getResource("/com/nhom4/icon/logoo.png");
         return new ImageIcon(url).getImage();
     }
 
     public static boolean save(File src) {
-        File dst = new File("/src/com/nhom4/icon_CU/logoo.png", src.getName());
+        File dst = new File("/src/com/nhom4/icon/logoo.png", src.getName());
         if (!dst.getParentFile().exists()) {
             dst.getParentFile().mkdirs();
         }
@@ -42,7 +42,7 @@ public class XImage {
     }
     
     public static ImageIcon read(String fileName){
-        File path = new File("/src/com/nhom4/icon_CU/logoo.png",fileName);
+        File path = new File("/src/com/nhom4/icon/logoo.png",fileName);
         return new ImageIcon(path.getAbsolutePath());
     }
 }
