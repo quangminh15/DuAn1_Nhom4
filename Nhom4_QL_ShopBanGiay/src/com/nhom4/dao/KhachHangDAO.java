@@ -5,6 +5,7 @@
 package com.nhom4.dao;
 
 import com.nhom4.entity.KhachHang;
+import com.nhom4.utils.JdbcHelper;
 import java.util.List;
 
 /**
@@ -12,40 +13,40 @@ import java.util.List;
  * @author ACER
  */
 public class KhachHangDAO extends MainDAO<KhachHang, String> {
-    final String INSERT_SQL = "INSERT INTO KhuyenMai (MaKM, TenKM, GiamGia, NgayBD, NgayKT, GhiChu) VALUES (?,?,?,?,?,?)";
-    final String UPDATE_SQL = "UPDATE KhuyenMai SET TenKM =?, GiamGia=?, NgayBD =?, NgayKT =?, GhiChu =? WHERE MaKM=?";
-    final String DELETE_SQL = "DELETE FROM KhuyenMai WHERE MaKM = 'KM004'";
-    final String SELECT_ALL_SQL = "SELECT * FROM KhuyenMai";
-    final String SELECT_By_Id_SQL = "SELECT * FROM KhuyenMai WHERE MaKM = ?";
+    final String INSERT_SQL = "insert into KhachHang (MaKH,TenKH,SDT,DiaChi) Values(?,?,?,?)";
+    final String UPDATE_SQL = "update KhachHang set TenKH=?,SDT=?,DiaChi=? where MaKH = ?";
+    final String DELETE_SQL = "delete from KhachHang where MaKH = ?";
+    final String SELECT_ALL_SQL = "select * from KhachHang";
+    final String SELECT_By_Id_SQL = "select * from KhachHang where MaKH=?";
     
     @Override
     public void insert(KhachHang entity) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        JdbcHelper.executeUpdate(INSERT_SQL, entity.getMaKM(), entity.getTenKM(),entity.getGiamGia(), entity.getNgayBD(), entity.getNgayKT(), entity.getGhiChu());
     }
 
     @Override
     public void update(KhachHang entity) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        
     }
 
     @Override
     public void delete(String id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        JdbcHelper.executeUpdate(DELETE_SQL, id);
     }
 
     @Override
     public List<KhachHang> selectAll() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        
     }
 
     @Override
     public KhachHang selectById(String id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        
     }
 
     @Override
     public List<KhachHang> selectBySql(String sql, Object... args) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        
     }
     
 }
