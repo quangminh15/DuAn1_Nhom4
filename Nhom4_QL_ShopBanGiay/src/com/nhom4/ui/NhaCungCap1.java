@@ -28,6 +28,10 @@ public class NhaCungCap1 extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(255, 102, 102));
+        setMaximumSize(new java.awt.Dimension(1408, 817));
+        setPreferredSize(new java.awt.Dimension(1408, 817));
+
         jLabel1.setText("ncc");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -37,12 +41,12 @@ public class NhaCungCap1 extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(153, 153, 153)
                 .addComponent(jLabel1)
-                .addContainerGap(228, Short.MAX_VALUE))
+                .addContainerGap(1236, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(152, Short.MAX_VALUE)
+                .addContainerGap(669, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(132, 132, 132))
         );
