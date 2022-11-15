@@ -19,7 +19,7 @@ public class ChiTietSanPhamDAO extends MainDAO<ChiTietSanPham, String> {
         final String UPDATE_SQL = "UPDATE ChiTietSP SET MaSP =?, Size=?, MauSac =?, ChatLieu =?, Gia =? WHERE MaCT=?";
         final String DELETE_SQL = "DELETE FROM ChiTietSP WHERE MaCT = ?";
         final String SELECT_ALL_SQL = "SELECT * FROM ChiTietSP";
-        final String SELECT_By_Id_SQL = "SELECT * FROM ChiTietSP WHERE MaCT = ?";
+        final String SELECT_By_Id_SQL = "SELECT * FROM ChiTietSP WHERE MaSP = ?";
     @Override
     public void insert(ChiTietSanPham entity) {
         JdbcHelper.executeUpdate(INSERT_SQL, entity.getMaCT(), entity.getMaSP(), entity.getSize(), entity.getMauSac(), entity.getChatLieu(), entity.getGia());
