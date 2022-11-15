@@ -8,6 +8,7 @@ import com.nhom4.dao.NhaCungCapDAO;
 import com.nhom4.entity.NhaCungCap;
 import com.nhom4.utils.Auth;
 import com.nhom4.utils.MsgBox;
+import com.sun.source.tree.BreakTree;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
@@ -274,12 +275,13 @@ public class NhaCungCap1 extends javax.swing.JPanel {
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         them = true;
+        sua = false;
             btnSua.setEnabled(false);
             btnXoa.setEnabled(false);
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
-        
+        them = false;
         sua = true;
         
             btnThem.setEnabled(false);
@@ -294,7 +296,8 @@ public class NhaCungCap1 extends javax.swing.JPanel {
     private void btnLuuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLuuActionPerformed
         if(them = true){
             insert();
-        } else if(sua = true){
+        }
+        if(sua = true){
             update();
         }
     }//GEN-LAST:event_btnLuuActionPerformed
