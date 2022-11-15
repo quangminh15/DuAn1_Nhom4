@@ -308,7 +308,8 @@ public class NhaCungCap1 extends javax.swing.JPanel {
     }//GEN-LAST:event_btnLuuActionPerformed
 
     private void btnHuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHuyActionPerformed
-        // TODO add your handling code here:
+        updateStatus();
+        clearForm();
     }//GEN-LAST:event_btnHuyActionPerformed
 
 
@@ -335,6 +336,7 @@ public class NhaCungCap1 extends javax.swing.JPanel {
     private void init() {
         this.row = -1;
         fillTable();
+        this.updateStatus();
     }
     
     public void fillTable() {
@@ -427,9 +429,9 @@ public class NhaCungCap1 extends javax.swing.JPanel {
         boolean first = (this.row == 0);
         boolean last = (this.row == tblNCC.getRowCount() - 1);
 //        Trạng thái form
-//        btnThem.setEnabled(edit);
-//        btnSua.setEnabled(edit);
-//        btnXoa.setEnabled(edit);
+        btnThem.setEnabled(edit);
+        btnSua.setEnabled(edit);
+        btnXoa.setEnabled(edit);
 // Trạng thái điều hướng
         btnFirst.setEnabled(edit && !first);
         btnPre.setEnabled(edit && !first);
