@@ -68,7 +68,7 @@ public class HoaDon1 extends javax.swing.JPanel {
     
     private void initTable() {
         DefaultTableModel model = (DefaultTableModel)  tblHoaDon.getModel();
-        String[] cols = new String[]{"Ma HD", "Ma NV", "Ma KH", "Ngay Lap", "Thanh Tien", "Ma KM"};
+        String[] cols = new String[]{"MaHDCT","Ma HD", "Ma NV", "Ma KH", "Ngay Lap", "Thanh Tien", "Ma KM"};
         model.setColumnIdentifiers(cols);
     }
     public void fillTable(){
@@ -120,6 +120,10 @@ public class HoaDon1 extends javax.swing.JPanel {
         }else
             MsgBox.alert(this, "da cap nhap");
     }
+    
+    private void getForm(){
+        cboMaKH.setSelectedItem(tblHoaDon.getValueAt(ERROR, WIDTH));
+    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -160,7 +164,6 @@ public class HoaDon1 extends javax.swing.JPanel {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        txtMaHD.setText("jTextField1");
         txtMaHD.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtMaHDActionPerformed(evt);
@@ -233,16 +236,19 @@ public class HoaDon1 extends javax.swing.JPanel {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(192, 192, 192)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4))
-                        .addGap(54, 54, 54)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(cboMaNV, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtMaHD)
-                            .addComponent(cboMaKH, 0, 759, Short.MAX_VALUE)
-                            .addComponent(cboMaKM, 0, 759, Short.MAX_VALUE)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel4))
+                                .addGap(54, 54, 54)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(cboMaNV, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(txtMaHD)
+                                    .addComponent(cboMaKH, 0, 759, Short.MAX_VALUE)
+                                    .addComponent(cboMaKM, 0, 759, Short.MAX_VALUE)))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 998, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(331, 331, 331)
                         .addComponent(btnNew)
@@ -253,11 +259,8 @@ public class HoaDon1 extends javax.swing.JPanel {
                         .addGap(35, 35, 35)
                         .addComponent(btnSave)
                         .addGap(18, 18, 18)
-                        .addComponent(btnCancel))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(95, 95, 95)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 998, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(187, Short.MAX_VALUE))
+                        .addComponent(btnCancel)))
+                .addContainerGap(90, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
