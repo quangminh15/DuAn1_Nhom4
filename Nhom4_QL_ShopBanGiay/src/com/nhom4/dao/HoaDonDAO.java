@@ -7,6 +7,7 @@ package com.nhom4.dao;
 import com.nhom4.entity.HoaDon;
 import com.nhom4.utils.JdbcHelper;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -69,5 +70,47 @@ public class HoaDonDAO extends MainDAO<HoaDon, String> {
             throw new RuntimeException(e);
         }
         return list;
+    }
+    public List<String> selectMaNV(){
+        String sql = "Select maNV from NhanVien";
+        List<String> list = new ArrayList<>();
+        try {
+            ResultSet rs = JdbcHelper.executeQuery(sql);
+            while (rs.next()) {                
+                list.add(rs.getString(1));
+            }
+            rs.getStatement().getConnection().close();
+            return list;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public List<String> selectMaKH(){
+        String sql = "Select maKH from KhachHang";
+        List<String> list = new ArrayList<>();
+        try {
+            ResultSet rs = JdbcHelper.executeQuery(sql);
+            while (rs.next()) {                
+                list.add(rs.getString(1));
+            }
+            rs.getStatement().getConnection().close();
+            return list;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public List<String> selectMaKM(){
+        String sql = "Select maKM from KhuyenMai";
+        List<String> list = new ArrayList<>();
+        try {
+            ResultSet rs = JdbcHelper.executeQuery(sql);
+            while (rs.next()) {                
+                list.add(rs.getString(1));
+            }
+            rs.getStatement().getConnection().close();
+            return list;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
