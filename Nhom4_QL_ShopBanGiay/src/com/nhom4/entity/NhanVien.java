@@ -11,7 +11,7 @@ package com.nhom4.entity;
 public class NhanVien {
     private String maNV;
     private String tenNV;
-    private boolean gioiTinh;
+    private boolean gioiTinh = true;
     private String SDT;
     private String email;
     private String hinh;
@@ -51,7 +51,7 @@ public class NhanVien {
         this.tenNV = tenNV;
     }
 
-    public boolean isGioiTinh() {
+    public boolean getGioiTinh() {
         return gioiTinh;
     }
 

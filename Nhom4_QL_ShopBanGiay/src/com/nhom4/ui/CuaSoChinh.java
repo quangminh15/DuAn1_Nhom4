@@ -30,6 +30,7 @@ public class CuaSoChinh extends javax.swing.JFrame {
         initComponents();
         init();
         
+        
     }
 
     class jPanelGradient extends JPanel {

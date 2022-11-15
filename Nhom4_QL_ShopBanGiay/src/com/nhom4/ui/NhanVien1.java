@@ -4,6 +4,11 @@
  */
 package com.nhom4.ui;
 
+import com.nhom4.dao.NhaCungCapDAO;
+import com.nhom4.dao.NhanVienDAO;
+import com.nhom4.entity.NhaCungCap;
+import com.nhom4.entity.NhanVien;
+import com.nhom4.utils.MsgBox;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
@@ -18,7 +23,13 @@ public class NhanVien1 extends javax.swing.JPanel {
      */
     public NhanVien1() {
         initComponents();
+        init();
+        fillTable();
     }
+    NhanVienDAO dao = new NhanVienDAO();
+    int row = -1;
+    boolean them = false;
+    boolean sua = false;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -57,7 +68,7 @@ public class NhanVien1 extends javax.swing.JPanel {
         txtsoDienSo = new javax.swing.JTextField();
         txtEmail = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        tblnhanVien = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
         txttimKiem = new javax.swing.JTextField();
         btntimKiem = new javax.swing.JButton();
@@ -259,18 +270,18 @@ public class NhanVien1 extends javax.swing.JPanel {
                 .addGap(120, 120, 120))
         );
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        tblnhanVien.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6", "Title 7"
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane2.setViewportView(tblnhanVien);
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tìm kiếm", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 3, 24))); // NOI18N
         jPanel3.setPreferredSize(new java.awt.Dimension(947, 100));
@@ -399,7 +410,7 @@ public class NhanVien1 extends javax.swing.JPanel {
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable2;
+    private javax.swing.JTable tblnhanVien;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtdiaChi;
     private javax.swing.JTextField txtmaNhanVien;
@@ -407,4 +418,144 @@ public class NhanVien1 extends javax.swing.JPanel {
     private javax.swing.JTextField txttenNhanVien;
     private javax.swing.JTextField txttimKiem;
     // End of variables declaration//GEN-END:variables
+
+    private void init() {
+         this.row = -1;
+        fillTable();
+    }
+     public void fillTable() {
+        DefaultTableModel model = (DefaultTableModel) tblnhanVien.getModel();
+        model.setRowCount(0);
+        try {
+            List<NhanVien> list = dao.selectAll(); // Đọc dữ liệu từ CSDL
+            for (NhanVien nv : list) {
+                Object[] data = {
+                    nv.getMaNV(),
+                    nv.getTenNV(),
+                    nv.getGioiTinh()?"Nam":"Nữ",
+                    nv.getSDT(),
+                    nv.getEmail(),
+                    nv.getHinh(),
+                    nv.getDiaChi(),
+                };
+                model.addRow(data);
+            }
+        } catch (Exception e) {
+            MsgBox.alert(this, "Lỗi truy vấn dữ liệu!");
+        }
+    }
+    
+    public void insert() {
+        
+            NhanVien nv = getForm();
+            try {
+                dao.insert(nv);
+                this.fillTable();
+//                this.clearForm();
+                MsgBox.alert(this, "Thêm mới thành công");
+                them = false;
+                btnSua.setEnabled(true);
+                btnXoa.setEnabled(true);
+            } catch (Exception e) {
+                MsgBox.alert(this, "Thêm mới thất bại");
+                them = false;
+            }
+        
+    }
+    
+    public void update() {
+        NhanVien nv = getForm();
+        
+            try {
+                dao.update(nv);
+                this.fillTable();
+                MsgBox.alert(this, "Cập nhật thành công");
+                sua = false;
+                btnThem.setEnabled(true);
+                btnXoa.setEnabled(true);
+            } catch (Exception e) {
+                MsgBox.alert(this, "Cập nhật thất bại");
+                sua = false;
+            }
+        
+    }
+    
+    public void delete() {
+            String nv = txtmaNhanVien.getText();
+            if (MsgBox.confirm(this, "Bạn thực sự muốn xóa nhà cung cấp này")) {
+                try {
+                    dao.delete(nv);
+                    this.fillTable();
+                    this.clearForm();
+                    MsgBox.alert(this, "Xóa thành công");
+                } catch (Exception e) {
+                    MsgBox.alert(this, "Xóa thất bại");
+                }
+            }
+    }
+    
+    public void clearForm() {
+        NhanVien nv = new NhanVien();
+        this.setForm(nv);
+        this.row = -1;
+//        this.updateStatus();
+    }
+    
+    public void setForm(NhanVien nv) {
+        txtmaNhanVien.setText(nv.getMaNV());
+        txttenNhanVien.setText(nv.getTenNV());
+    }
+    
+    NhanVien getForm() {
+        NhanVien nv = new NhanVien();
+        nv.setMaNV(txtmaNhanVien.getText());
+        nv.setTenNV(txttenNhanVien.getText());
+        return nv;
+    }
+    
+//    public void updateStatus() {
+//        boolean edit = (this.row >= 0);
+//        boolean first = (this.row == 0);
+//        boolean last = (this.row == tblnhanVien.getRowCount() - 1);
+////        Trạng thái form
+////        btnThem.setEnabled(edit);
+////        btnSua.setEnabled(edit);
+////        btnXoa.setEnabled(edit);
+//// Trạng thái điều hướng
+//        btnFirst.setEnabled(edit && !first);
+//        btnPre.setEnabled(edit && !first);
+//        btnNext.setEnabled(edit && !last);
+//        btnLast.setEnabled(edit && !last);
+//    }
+    
+    public void edit() {
+        String manv = (String) tblnhanVien.getValueAt(this.row, 0);
+        NhanVien nv = dao.selectById(manv);
+        this.setForm(nv);
+//        this.updateStatus();
+    }
+    
+    public void first() {
+        this.row = 0;
+        this.edit();
+    }
+    
+    public void prev() {
+        if (this.row > 0) {
+            this.row--;
+            this.edit();
+        }
+    }
+    
+    public void next() {
+        if (this.row < tblnhanVien.getRowCount() - 1) {
+            this.row++;
+            this.edit();
+        }
+    }
+    
+    public void last() {
+        this.row = tblnhanVien.getRowCount() - 1;
+        this.edit();
+    }
 }
