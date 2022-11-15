@@ -163,6 +163,11 @@ public class CuaSoChinh extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/account.png"))); // NOI18N
         jLabel3.setText("Tai Khoan");
+        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel3MouseClicked(evt);
+            }
+        });
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 640, 260, 70));
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 2, 18)); // NOI18N
@@ -260,6 +265,11 @@ public class CuaSoChinh extends javax.swing.JFrame {
         ThongKe tK = new ThongKe();
         changePanel(tK);
     }//GEN-LAST:event_lblTKMouseClicked
+
+    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+        TaiKhoanQL tkql = new TaiKhoanQL();
+        changePanel(tkql);
+    }//GEN-LAST:event_jLabel3MouseClicked
 
     /**
      * @param args the command line arguments
