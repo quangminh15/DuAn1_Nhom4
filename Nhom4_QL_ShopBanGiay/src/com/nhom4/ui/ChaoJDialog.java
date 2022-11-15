@@ -115,12 +115,12 @@ public class ChaoJDialog extends javax.swing.JDialog {
 
     private void init() {
         this.setLocationRelativeTo(null);
-        new Timer(30, new ActionListener() {
+        new Timer(3, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int value = prbChao.getValue();
                 if(value < prbChao.getMaximum()){
-                    prbChao.setValue(value + 1);
+                    prbChao.setValue(value + 100);
                 } else {
                     ChaoJDialog.this.dispose();
                 }

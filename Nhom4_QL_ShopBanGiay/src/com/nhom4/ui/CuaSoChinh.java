@@ -269,7 +269,7 @@ public class CuaSoChinh extends javax.swing.JFrame {
     }//GEN-LAST:event_lblTKMouseClicked
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
-        opendTaiKhoanQL();
+        this.opendTaiKhoanQL();
     }//GEN-LAST:event_jLabel3MouseClicked
 
     /**
@@ -312,7 +312,7 @@ public class CuaSoChinh extends javax.swing.JFrame {
         this.setIconImage(XImage.getAppIcon());
         new ChaoJDialog(this, true).setVisible(true);
         new DangNhap(this, true).setVisible(true);
-        new DoiMatKhau(this, true).setVisible(true);
+//        new DoiMatKhau(this, true).setVisible(true);
         
         new Timer(1000, new ActionListener() {
             @Override
@@ -328,7 +328,11 @@ public class CuaSoChinh extends javax.swing.JFrame {
     public void opendTaiKhoanQL(){
         if(Auth.islogin()){
         if(!Auth.isManager()){
-            MsgBox.alert(this, "Bạn không có quyền xem quản lý tài khoản");
+            TaiKhoanCaNhan tkcn = new TaiKhoanCaNhan();
+            changePanel(tkcn);           
+        }else{
+            TaiKhoanQL tkql = new TaiKhoanQL();
+            changePanel(tkql);
         }
         }else{
             MsgBox.alert(this, "Vui lòng đăng nhập");
