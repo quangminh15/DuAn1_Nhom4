@@ -65,6 +65,7 @@ public class DangNhap extends javax.swing.JDialog {
         btnDangNhap = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("ĐĂNG NHẬP");
 
         pnlForm.setBackground(new java.awt.Color(255, 255, 255));
         pnlForm.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
