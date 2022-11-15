@@ -8,6 +8,7 @@ import com.nhom4.dao.ChiTietSanPhamDAO;
 import com.nhom4.dao.SanPhamDAO;
 import com.nhom4.entity.ChiTietSanPham;
 import com.nhom4.entity.SanPham;
+import com.nhom4.utils.MsgBox;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
@@ -58,6 +59,21 @@ public class SanPham1 extends javax.swing.JPanel {
         }
     }
 
+    public void updateStatus1() {
+        boolean edit = (this.row >= 0);
+        boolean first = (this.row == 0);
+        boolean last = (this.row == tblSanPham.getRowCount() - 1);
+//        Trạng thái form
+        btnThem.setEnabled(edit);
+        btnCapNhat.setEnabled(edit);
+        btnXoa.setEnabled(edit);
+// Trạng thái điều hướng
+        btnFirst.setEnabled(edit && !first);
+        btnPre.setEnabled(edit && !first);
+        btnNext.setEnabled(edit && !last);
+        btnLast.setEnabled(edit && !last);
+    }
+
     public void setForm(SanPham sp) {
         txtMaSP.setText(sp.getMaSP());
         txtTenSP.setText(sp.getTenSP());
@@ -86,7 +102,7 @@ public class SanPham1 extends javax.swing.JPanel {
                 this.setForm(sp);
                 //this.updateStatus();
             }
-        
+
         } catch (Exception e) {
         }
 
@@ -95,18 +111,19 @@ public class SanPham1 extends javax.swing.JPanel {
     public void edit3() {
         try {
             String masp = (String) tblSanPham.getValueAt(this.row, 0);
-            ChiTietSanPham ctsp = ctspDAO.selectById(masp);
+            ChiTietSanPham ctsp = ctspDAO.selectByIdd(masp);
             if (ctsp != null) {
                 this.setForm2(ctsp);
                 tabs.setSelectedIndex(1);
                 //this.updateStatus();
             }
-        
+
         } catch (Exception e) {
+            MsgBox.alert(this, "Loi truy van du lieu");
         }
 
     }
-    
+
     private void initTable2() {
         DefaultTableModel model = (DefaultTableModel) tblChiTietSp.getModel();
         String[] cols = new String[]{"Mã Chi Tiết", "Mã Sản Phẩm", "Size", "Màu Sắc", "Chất Liệu", "Giá"};
@@ -153,10 +170,17 @@ public class SanPham1 extends javax.swing.JPanel {
     }
 
     public void edit2() {
-        String mact = (String) tblChiTietSp.getValueAt(this.row, 0);
-        ChiTietSanPham ctsp = ctspDAO.selectById(mact);
-        this.setForm2(ctsp);
+        try {
+            String mact = (String) tblChiTietSp.getValueAt(this.row, 0);
+            ChiTietSanPham ctsp = ctspDAO.selectById(mact);
+            if (ctsp != null) {
+                this.setForm2(ctsp);
 //        this.updateStatus();
+            }
+
+        } catch (Exception e) {
+        }
+
     }
 
     /**
@@ -505,6 +529,7 @@ public class SanPham1 extends javax.swing.JPanel {
         jLabel11.setText("Giá");
 
         btnReset.setText("Thêm");
+        btnReset.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         btnCapNhat.setText("Cập Nhật");
 
