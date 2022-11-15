@@ -289,6 +289,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Th&#xea;m"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnThemActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnSua">
               <Properties>
@@ -300,6 +303,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="S&#x1eed;a"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSuaActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnXoa">
               <Properties>
@@ -311,6 +317,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="X&#xf3;a"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnXoaActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnLuu">
               <Properties>
@@ -322,6 +331,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="L&#x1b0;u"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLuuActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnHuy">
               <Properties>
@@ -333,6 +345,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="H&#x1ee7;y"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnHuyActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -345,7 +360,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTable" name="jTable2">
+        <Component class="javax.swing.JTable" name="tblkhachHang">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="18" style="3"/>
@@ -359,6 +374,9 @@
               </Table>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblkhachHangMouseClicked"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
@@ -371,6 +389,9 @@
           <Image iconType="3" name="/com/nhom4/icon/right-arrow (1).png"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLastActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnNext">
       <Properties>
@@ -381,6 +402,9 @@
           <Image iconType="3" name="/com/nhom4/icon/right-arrow.png"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnNextActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnPrev">
       <Properties>
@@ -391,6 +415,9 @@
           <Image iconType="3" name="/com/nhom4/icon/left-arrow.png"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPrevActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnFirst">
       <Properties>
@@ -401,6 +428,9 @@
           <Image iconType="3" name="/com/nhom4/icon/left-arrow (1).png"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnFirstActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
