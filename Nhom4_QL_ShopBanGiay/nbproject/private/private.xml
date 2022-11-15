@@ -3,21 +3,22 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/FPT%20Polytechnic/DuAn1_Nhom4/Nhom4_QL_ShopBanGiay/src/com/nhom4/ui/ChaoJDialog.java</file>
-            <file>file:/D:/FPT%20Polytechnic/DuAn1_Nhom4/Nhom4_QL_ShopBanGiay/src/com/nhom4/ui/ThongKe.java</file>
-            <file>file:/D:/FPT%20Polytechnic/DuAn1_Nhom4/Nhom4_QL_ShopBanGiay/src/com/nhom4/ui/HoaDonChiTietDialong.java</file>
-            <file>file:/D:/FPT%20Polytechnic/DuAn1_Nhom4/Nhom4_QL_ShopBanGiay/src/com/nhom4/ui/KhachHang1.java</file>
-            <file>file:/D:/FPT%20Polytechnic/DuAn1_Nhom4/Nhom4_QL_ShopBanGiay/src/com/nhom4/ui/NhanVienDialog.java</file>
-            <file>file:/D:/FPT%20Polytechnic/DuAn1_Nhom4/Nhom4_QL_ShopBanGiay/src/com/nhom4/ui/SanPhamChiTietDialong.java</file>
-            <file>file:/D:/FPT%20Polytechnic/DuAn1_Nhom4/Nhom4_QL_ShopBanGiay/src/com/nhom4/ui/KhachHangDialong.java</file>
-            <file>file:/D:/FPT%20Polytechnic/DuAn1_Nhom4/Nhom4_QL_ShopBanGiay/src/com/nhom4/ui/HoaDon1.java</file>
-            <file>file:/D:/FPT%20Polytechnic/DuAn1_Nhom4/Nhom4_QL_ShopBanGiay/src/com/nhom4/ui/NhaCungCapDialog.java</file>
-            <file>file:/D:/FPT%20Polytechnic/DuAn1_Nhom4/Nhom4_QL_ShopBanGiay/src/com/nhom4/ui/ThongKeDialog.java</file>
-            <file>file:/D:/FPT%20Polytechnic/DuAn1_Nhom4/Nhom4_QL_ShopBanGiay/src/com/nhom4/ui/CuaSoChinh.java</file>
-            <file>file:/D:/FPT%20Polytechnic/DuAn1_Nhom4/Nhom4_QL_ShopBanGiay/src/com/nhom4/ui/DoiMatKhau.java</file>
-            <file>file:/D:/FPT%20Polytechnic/DuAn1_Nhom4/Nhom4_QL_ShopBanGiay/src/com/nhom4/ui/TaiKhoanCaNhanDialog.java</file>
-            <file>file:/D:/FPT%20Polytechnic/DuAn1_Nhom4/Nhom4_QL_ShopBanGiay/src/com/nhom4/ui/NhanVien1.java</file>
-            <file>file:/D:/FPT%20Polytechnic/DuAn1_Nhom4/Nhom4_QL_ShopBanGiay/src/com/nhom4/ui/TaiKhoan_QL.java</file>
+            <file>file:/D:/HK_Fall_22/Du%20An%201/DuAn1_Nhom4/Nhom4_QL_ShopBanGiay/src/com/nhom4/ui/ThongKe.java</file>
+            <file>file:/D:/HK_Fall_22/Du%20An%201/DuAn1_Nhom4/Nhom4_QL_ShopBanGiay/src/com/nhom4/ui/KhachHang1.java</file>
+            <file>file:/D:/HK_Fall_22/Du%20An%201/DuAn1_Nhom4/Nhom4_QL_ShopBanGiay/src/com/nhom4/utils/XImage.java</file>
+            <file>file:/D:/HK_Fall_22/Du%20An%201/DuAn1_Nhom4/Nhom4_QL_ShopBanGiay/src/com/nhom4/ui/CuaSoChinh.java</file>
+            <file>file:/D:/HK_Fall_22/Du%20An%201/DuAn1_Nhom4/Nhom4_QL_ShopBanGiay/src/com/nhom4/ui/DoiMatKhau.java</file>
+            <file>file:/D:/HK_Fall_22/Du%20An%201/DuAn1_Nhom4/Nhom4_QL_ShopBanGiay/src/com/nhom4/entity/TaiKhoan.java</file>
+            <file>file:/D:/HK_Fall_22/Du%20An%201/DuAn1_Nhom4/Nhom4_QL_ShopBanGiay/src/com/nhom4/ui/HoaDon1.java</file>
+            <file>file:/D:/HK_Fall_22/Du%20An%201/DuAn1_Nhom4/Nhom4_QL_ShopBanGiay/src/com/nhom4/ui/KhachHangDialong.java</file>
+            <file>file:/D:/HK_Fall_22/Du%20An%201/DuAn1_Nhom4/Nhom4_QL_ShopBanGiay/src/com/nhom4/utils/Auth.java</file>
+            <file>file:/D:/HK_Fall_22/Du%20An%201/DuAn1_Nhom4/Nhom4_QL_ShopBanGiay/src/com/nhom4/ui/TaiKhoanCaNhan.java</file>
+            <file>file:/D:/HK_Fall_22/Du%20An%201/DuAn1_Nhom4/Nhom4_QL_ShopBanGiay/src/com/nhom4/ui/NhanVien1.java</file>
+            <file>file:/D:/HK_Fall_22/Du%20An%201/DuAn1_Nhom4/Nhom4_QL_ShopBanGiay/src/com/nhom4/dao/TaiKhoanDAO.java</file>
+            <file>file:/D:/HK_Fall_22/Du%20An%201/DuAn1_Nhom4/Nhom4_QL_ShopBanGiay/src/com/nhom4/ui/ThongKeDialog.java</file>
+            <file>file:/D:/HK_Fall_22/Du%20An%201/DuAn1_Nhom4/Nhom4_QL_ShopBanGiay/src/com/nhom4/ui/TaiKhoanQL.java</file>
+            <file>file:/D:/HK_Fall_22/Du%20An%201/DuAn1_Nhom4/Nhom4_QL_ShopBanGiay/src/com/nhom4/utils/JdbcHelper.java</file>
+            <file>file:/D:/HK_Fall_22/Du%20An%201/DuAn1_Nhom4/Nhom4_QL_ShopBanGiay/src/com/nhom4/ui/TaiKhoan_NV.java</file>
         </group>
     </open-files>
 </project-private>

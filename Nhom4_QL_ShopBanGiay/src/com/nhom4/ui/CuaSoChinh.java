@@ -4,6 +4,8 @@
  */
 package com.nhom4.ui;
 
+import com.nhom4.utils.Auth;
+import com.nhom4.utils.MsgBox;
 import com.nhom4.utils.XImage;
 import java.awt.Color;
 import java.awt.GradientPaint;
@@ -267,8 +269,7 @@ public class CuaSoChinh extends javax.swing.JFrame {
     }//GEN-LAST:event_lblTKMouseClicked
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
-        TaiKhoanQL tkql = new TaiKhoanQL();
-        changePanel(tkql);
+        opendTaiKhoanQL();
     }//GEN-LAST:event_jLabel3MouseClicked
 
     /**
@@ -309,9 +310,9 @@ public class CuaSoChinh extends javax.swing.JFrame {
     private void init() {
         this.setLocationRelativeTo(null);
         this.setIconImage(XImage.getAppIcon());
-//        new ChaoJDialog(this, true).setVisible(true);
-//        new DangNhap(this, true).setVisible(true);
-//        new DoiMatKhau(this, true).setVisible(true);
+        new ChaoJDialog(this, true).setVisible(true);
+        new DangNhap(this, true).setVisible(true);
+        new DoiMatKhau(this, true).setVisible(true);
         
         new Timer(1000, new ActionListener() {
             @Override
@@ -322,6 +323,16 @@ public class CuaSoChinh extends javax.swing.JFrame {
                 lblDongHo.setText(text);
             }
         }).start();
+    }
+    
+    public void opendTaiKhoanQL(){
+        if(Auth.islogin()){
+        if(!Auth.isManager()){
+            MsgBox.alert(this, "Bạn không có quyền xem quản lý tài khoản");
+        }
+        }else{
+            MsgBox.alert(this, "Vui lòng đăng nhập");
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
