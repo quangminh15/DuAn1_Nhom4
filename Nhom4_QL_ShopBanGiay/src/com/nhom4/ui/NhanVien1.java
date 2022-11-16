@@ -421,11 +421,10 @@ public class NhanVien1 extends javax.swing.JPanel {
     }//GEN-LAST:event_rdoGioiTinhNamActionPerformed
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
-//        them = true;
-//        sua = false;
-//        btnSua.setEnabled(false);
-//        btnXoa.setEnabled(false);
-       
+   them = true;
+        sua = false;
+            btnSua.setEnabled(false);
+            btnXoa.setEnabled(false);
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void txttimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txttimKiemActionPerformed
@@ -470,6 +469,7 @@ first();
     }//GEN-LAST:event_btnLuuActionPerformed
 
     private void btnHuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHuyActionPerformed
+
         updateStatus();
         clearForm();
     }//GEN-LAST:event_btnHuyActionPerformed
@@ -549,7 +549,7 @@ first();
             try {
                 dao.insert(nv);
                 this.fillTable();
-                this.clearForm();
+//                this.clearForm();
                 MsgBox.alert(this, "Thêm mới thành công");
                 them = false;
                 btnSua.setEnabled(true);
@@ -580,7 +580,7 @@ first();
     
     public void delete() {
             String nv = txtmaNhanVien.getText();
-            if (MsgBox.confirm(this, "Bạn thực sự muốn xóa nhân viên này")) {
+            if (MsgBox.confirm(this, "Bạn thực sự muốn xóa nhà cung cấp này")) {
                 try {
                     dao.delete(nv);
                     this.fillTable();
@@ -596,28 +596,21 @@ first();
         NhanVien nv = new NhanVien();
         this.setForm(nv);
         this.row = -1;
-        this.updateStatus();
+//        this.updateStatus();
     }
     
     public void setForm(NhanVien nv) {
         txtmaNhanVien.setText(nv.getMaNV());
         txttenNhanVien.setText(nv.getTenNV());
-        rdoGioiTinhNam.setSelected(nv.getGioiTinh());
-        rdoGioiTinhNu.setSelected(!nv.getGioiTinh());
-        txtsoDienSo.setText(nv.getSDT());
-        lblHinh.setText(nv.getHinh());
-        txtEmail.setText(nv.getEmail());
-        txtdiaChi.setText(nv.getDiaChi());
     }
     
     NhanVien getForm() {
         NhanVien nv = new NhanVien();
         nv.setMaNV(txtmaNhanVien.getText());
         nv.setTenNV(txttenNhanVien.getText());
-        nv.setGioiTinh(rdoGioiTinhNam.isSelected());
         nv.setSDT(txtsoDienSo.getText());
         nv.setEmail(txtEmail.getText());
-        nv.setHinh(lblHinh.getText());
+//        nv.setHinh(.getText());
         nv.setDiaChi(txtdiaChi.getText());
         
         return nv;
@@ -642,7 +635,7 @@ first();
         String manv = (String) tblnhanVien.getValueAt(this.row, 0);
         NhanVien nv = dao.selectById(manv);
         this.setForm(nv);
-        this.updateStatus();
+//        this.updateStatus();
     }
     
     public void first() {
