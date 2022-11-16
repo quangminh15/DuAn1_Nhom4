@@ -464,13 +464,13 @@ first();
        if(them = true){
             insert();
         }
-        else{
+        if(sua = true){
             update();
         }
     }//GEN-LAST:event_btnLuuActionPerformed
 
     private void btnHuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHuyActionPerformed
-   updateStatus();
+        updateStatus();
         clearForm();
     }//GEN-LAST:event_btnHuyActionPerformed
 
