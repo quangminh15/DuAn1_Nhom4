@@ -23,12 +23,12 @@ public class NhanVienDAO extends MainDAO <NhanVien, String> {
 
     @Override
     public void insert(NhanVien entity) {
-        JdbcHelper.executeUpdate(INSERT_SQL, entity.getMaNV(), entity.getTenNV(),entity.isGioiTinh(), entity.getSDT(), entity.getEmail(), entity.getHinh(), entity.getDiaChi());
+        JdbcHelper.executeUpdate(INSERT_SQL, entity.getMaNV(), entity.getTenNV(),entity.getGioiTinh(), entity.getSDT(), entity.getEmail(), entity.getHinh(), entity.getDiaChi());
     }
 
     @Override
     public void update(NhanVien entity) {
-        JdbcHelper.executeUpdate(UPDATE_SQL, entity.getTenNV(),entity.isGioiTinh(), entity.getSDT(), entity.getEmail(), entity.getHinh(), entity.getDiaChi(), entity.getMaNV());
+        JdbcHelper.executeUpdate(UPDATE_SQL, entity.getTenNV(),entity.getGioiTinh(), entity.getSDT(), entity.getEmail(), entity.getHinh(), entity.getDiaChi(), entity.getMaNV());
     }
 
     @Override

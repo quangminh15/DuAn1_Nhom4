@@ -32,6 +32,7 @@ public class CuaSoChinh extends javax.swing.JFrame {
         initComponents();
         init();
         
+        
     }
 
     class jPanelGradient extends JPanel {
@@ -70,6 +71,9 @@ public class CuaSoChinh extends javax.swing.JFrame {
         jPanel4 = new jPanelGradient();
         pnlCardPane = new javax.swing.JPanel();
         pnlHome = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -201,15 +205,36 @@ public class CuaSoChinh extends javax.swing.JFrame {
 
         pnlHome.setBackground(new java.awt.Color(255, 255, 255));
 
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/bn1.png"))); // NOI18N
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/bn2.png"))); // NOI18N
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/bn3.png"))); // NOI18N
+
         javax.swing.GroupLayout pnlHomeLayout = new javax.swing.GroupLayout(pnlHome);
         pnlHome.setLayout(pnlHomeLayout);
         pnlHomeLayout.setHorizontalGroup(
             pnlHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1280, Short.MAX_VALUE)
+            .addGroup(pnlHomeLayout.createSequentialGroup()
+                .addGap(98, 98, 98)
+                .addGroup(pnlHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel6)
+                    .addGroup(pnlHomeLayout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addGap(28, 28, 28)
+                        .addComponent(jLabel5)))
+                .addContainerGap(129, Short.MAX_VALUE))
         );
         pnlHomeLayout.setVerticalGroup(
             pnlHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 720, Short.MAX_VALUE)
+            .addGroup(pnlHomeLayout.createSequentialGroup()
+                .addGap(41, 41, 41)
+                .addGroup(pnlHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 469, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
+                .addComponent(jLabel6)
+                .addContainerGap(342, Short.MAX_VALUE))
         );
 
         pnlCardPane.add(pnlHome, "card2");
@@ -310,7 +335,8 @@ public class CuaSoChinh extends javax.swing.JFrame {
     private void init() {
         this.setLocationRelativeTo(null);
         this.setIconImage(XImage.getAppIcon());
-        new ChaoJDialog(this, true).setVisible(true);
+         new ChaoJDialog(this, true).setVisible(true);
+//        new ChaoJDialog(this, true).setVisible(true);
         new DangNhap(this, true).setVisible(true);
 //        new DoiMatKhau(this, true).setVisible(true);
         
@@ -344,6 +370,9 @@ public class CuaSoChinh extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;

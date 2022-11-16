@@ -41,7 +41,7 @@ public class ThongKe extends javax.swing.JPanel {
 
         setPreferredSize(new java.awt.Dimension(1280, 720));
 
-        jLabel1.setText("QUẢN LÝ TÀI KHOẢN");
+        jLabel1.setText("T");
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 

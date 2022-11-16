@@ -14,6 +14,7 @@ public class JdbcHelper {
     private static String dburl = "jdbc:sqlserver://localhost:1433;databaseName=QL_CuaHangGiay;encrypt=false;trustServerCertificate=false;";
     private static String user = "sa";
     private static String pass = "01042003";
+
     
     static {
         try {
