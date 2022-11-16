@@ -602,6 +602,11 @@ first();
     public void setForm(NhanVien nv) {
         txtmaNhanVien.setText(nv.getMaNV());
         txttenNhanVien.setText(nv.getTenNV());
+        txtsoDienSo.setText(nv.getSDT());
+        txtEmail.setText(nv.getEmail());
+        lblHinh.setText(nv.getHinh());
+        txttenNhanVien.setText(nv.getTenNV());
+        
     }
     
     NhanVien getForm() {
@@ -610,7 +615,7 @@ first();
         nv.setTenNV(txttenNhanVien.getText());
         nv.setSDT(txtsoDienSo.getText());
         nv.setEmail(txtEmail.getText());
-//        nv.setHinh(.getText());
+        nv.setHinh(lblHinh.getText());
         nv.setDiaChi(txtdiaChi.getText());
         
         return nv;
@@ -635,7 +640,7 @@ first();
         String manv = (String) tblnhanVien.getValueAt(this.row, 0);
         NhanVien nv = dao.selectById(manv);
         this.setForm(nv);
-//        this.updateStatus();
+        this.updateStatus();
     }
     
     public void first() {
