@@ -79,12 +79,12 @@ public class DangNhap extends javax.swing.JDialog {
         lblMatKhau.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblMatKhau.setForeground(new java.awt.Color(102, 102, 102));
         lblMatKhau.setText("Mat Khau");
-        pnlForm.add(lblMatKhau, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, -1, -1));
+        pnlForm.add(lblMatKhau, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 180, -1, -1));
 
         txtMaNV.setBackground(new java.awt.Color(231, 231, 231));
         txtMaNV.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         txtMaNV.setForeground(new java.awt.Color(102, 102, 102));
-        txtMaNV.setText("  Ten Tai khoan");
+        txtMaNV.setText("nguyenvana");
         txtMaNV.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(229, 229, 229)));
         txtMaNV.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -105,6 +105,7 @@ public class DangNhap extends javax.swing.JDialog {
 
         txtMatKhau.setBackground(new java.awt.Color(229, 229, 229));
         txtMatKhau.setForeground(new java.awt.Color(102, 102, 102));
+        txtMatKhau.setText("1234");
         txtMatKhau.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(229, 229, 229)));
         txtMatKhau.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
