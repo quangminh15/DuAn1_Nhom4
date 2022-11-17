@@ -34,6 +34,8 @@ public class SanPham1 extends javax.swing.JPanel {
         initComponents();
         initTable();
         fillTable();
+//        this.updateStatus();
+        btnLuu.setEnabled(false);
         initTable2();
         fillTable2();
     }
@@ -77,7 +79,7 @@ public class SanPham1 extends javax.swing.JPanel {
         btnPre.setEnabled(edit && !first);
         btnNext.setEnabled(edit && !last);
         btnLast.setEnabled(edit && !last);
-//        txtOFF();
+        txtOFF();
     }
 
     public void setForm(SanPham sp) {
@@ -116,7 +118,7 @@ public class SanPham1 extends javax.swing.JPanel {
         }
 
     }
-    
+
     void selectImage() {
         if (fileChooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
             File file = fileChooser.getSelectedFile();
@@ -127,64 +129,64 @@ public class SanPham1 extends javax.swing.JPanel {
             }
         }
     }
-    
-    void clearForm(){
+
+    void clearForm() {
         SanPham sp = new SanPham();
         this.setForm(sp);
         this.row = -1;
-//        this.updateStatus();
+        this.updateStatus();
     }
 
-    void insert(){
+    void insert() {
         SanPham sp = getForm();
         try {
             spDao.insert(sp);
             this.fillTable();
             MsgBox.alert(this, "Thêm mới thành công");
-                updateStatus();
-                them = 0;
-                btnLuu.setEnabled(false);
+            updateStatus();
+            them = 0;
+            btnLuu.setEnabled(false);
         } catch (Exception e) {
             MsgBox.alert(this, "Thêm mới thất bại");
-                updateStatus();
-                them = 0;
-                btnLuu.setEnabled(false);
+            updateStatus();
+            them = 0;
+            btnLuu.setEnabled(false);
         }
     }
-    
+
     public void delete() {
-            if (MsgBox.confirm(this, "Bạn thực sự muốn xóa sản phẩm này")) {
-                String msp = txtMaSP.getText();
-                try {
-                    spDao.delete(msp);
-                    this.fillTable();
-                    this.clearForm();
-                    MsgBox.alert(this, "Xóa thành công");
-                } catch (Exception e) {
-                    MsgBox.alert(this, "Xóa thất bại");
-                }
+        if (MsgBox.confirm(this, "Bạn thực sự muốn xóa sản phẩm này")) {
+            String msp = txtMaSP.getText();
+            try {
+                spDao.delete(msp);
+                this.fillTable();
+                this.clearForm();
+                MsgBox.alert(this, "Xóa thành công");
+            } catch (Exception e) {
+                MsgBox.alert(this, "Xóa thất bại");
             }
+        }
     }
-    
+
     public void update() {
         SanPham sp = getForm();
-        
-            try {
-                spDao.update(sp);
-                this.fillTable();
-                MsgBox.alert(this, "Cập nhật thành công");
-//                updateStatus();
-                them = 0;
-                btnLuu.setEnabled(false);
-            } catch (Exception e) {
-                MsgBox.alert(this, "Cập nhật thất bại");
-                updateStatus();
-                them = 0;
-                btnLuu.setEnabled(false);
-            }
-        
+
+        try {
+            spDao.update(sp);
+            this.fillTable();
+            MsgBox.alert(this, "Cập nhật thành công");
+            updateStatus();
+            them = 0;
+            btnLuu.setEnabled(false);
+        } catch (Exception e) {
+            MsgBox.alert(this, "Cập nhật thất bại");
+            updateStatus();
+            them = 0;
+            btnLuu.setEnabled(false);
+        }
+
     }
-    
+
     public void edit3() {
         try {
             String masp = (String) tblSanPham.getValueAt(this.row, 0);
@@ -252,12 +254,22 @@ public class SanPham1 extends javax.swing.JPanel {
             ChiTietSanPham ctsp = ctspDAO.selectById(mact);
             if (ctsp != null) {
                 this.setForm2(ctsp);
-//        this.updateStatus();
+        this.updateStatus();
             }
 
         } catch (Exception e) {
         }
 
+    }
+    
+    public void txtOFF(){
+        txtMaSP.setEditable(false);
+        txtTenSP.setEditable(false);
+    }
+    
+    public void txtON(){
+        txtMaSP.setEditable(true);
+        txtTenSP.setEditable(true);
     }
 
     /**
@@ -413,6 +425,11 @@ public class SanPham1 extends javax.swing.JPanel {
         btnThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/add-button (1).png"))); // NOI18N
         btnThem.setText("Thêm");
         btnThem.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnThem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThemActionPerformed(evt);
+            }
+        });
 
         btnUpdate.setBackground(new java.awt.Color(51, 51, 51));
         btnUpdate.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -456,6 +473,11 @@ public class SanPham1 extends javax.swing.JPanel {
         btnHuy.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/cancel.png"))); // NOI18N
         btnHuy.setText("Hủy");
         btnHuy.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnHuy.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHuyActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -983,6 +1005,25 @@ public class SanPham1 extends javax.swing.JPanel {
     private void lblAnhMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAnhMouseClicked
         this.selectImage();
     }//GEN-LAST:event_lblAnhMouseClicked
+
+    private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
+        them = 1;
+        btnCapNhat.setEnabled(false);
+        btnXoa.setEnabled(false);
+        btnLuu.setEnabled(true);
+        txtMaSP.setText("");
+        txtTenSP.setText("");
+        txtMaNCC.setText("");
+        txtSoLuong.setText("");
+        txtGhiChu.setText("");
+        txtON();
+    }//GEN-LAST:event_btnThemActionPerformed
+
+    private void btnHuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHuyActionPerformed
+        updateStatus();
+        clearForm();
+        btnLuu.setEnabled(false);
+    }//GEN-LAST:event_btnHuyActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
