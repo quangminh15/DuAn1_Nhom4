@@ -431,8 +431,9 @@ public class NhanVien1 extends javax.swing.JPanel {
             btnLuu.setEnabled(true);
             txtmaNhanVien.setText("");
             txttenNhanVien.setText("");
-            rdoGioiTinhNam.setText("");
+            rdoGioiTinhNam.isSelected();
             txtsoDienSo.setText("");
+            txtdiaChi.setText("");
             txtEmail.setText("");
             lblHinh.setText("");
             
@@ -622,7 +623,7 @@ first();
         NhanVien nv = new NhanVien();
         this.setForm(nv);
         this.row = -1;
-//        this.updateStatus();
+        this.updateStatus();
     }
     
     public void setForm(NhanVien nv) {
@@ -641,7 +642,7 @@ first();
         NhanVien nv = new NhanVien();
         nv.setMaNV(txtmaNhanVien.getText());
         nv.setTenNV(txttenNhanVien.getText());
-        nv.setTenNV(rdoGioiTinhNam.getText());
+        nv.setGioiTinh(rdoGioiTinhNam.isSelected());
         nv.setSDT(txtsoDienSo.getText());
         nv.setEmail(txtEmail.getText());
         nv.setHinh(lblHinh.getText());
