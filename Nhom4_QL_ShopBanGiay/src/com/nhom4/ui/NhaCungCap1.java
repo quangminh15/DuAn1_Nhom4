@@ -102,6 +102,11 @@ public class NhaCungCap1 extends javax.swing.JPanel {
 
         btnHuy.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/cancel.png"))); // NOI18N
         btnHuy.setText("Hủy");
+        btnHuy.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHuyActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -302,6 +307,11 @@ public class NhaCungCap1 extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnLuuActionPerformed
 
+    private void btnHuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHuyActionPerformed
+        updateStatus();
+        clearForm();
+    }//GEN-LAST:event_btnHuyActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnFirst;
@@ -326,6 +336,7 @@ public class NhaCungCap1 extends javax.swing.JPanel {
     private void init() {
         this.row = -1;
         fillTable();
+        this.updateStatus();
     }
     
     public void fillTable() {
@@ -418,9 +429,9 @@ public class NhaCungCap1 extends javax.swing.JPanel {
         boolean first = (this.row == 0);
         boolean last = (this.row == tblNCC.getRowCount() - 1);
 //        Trạng thái form
-//        btnThem.setEnabled(edit);
-//        btnSua.setEnabled(edit);
-//        btnXoa.setEnabled(edit);
+        btnThem.setEnabled(edit);
+        btnSua.setEnabled(edit);
+        btnXoa.setEnabled(edit);
 // Trạng thái điều hướng
         btnFirst.setEnabled(edit && !first);
         btnPre.setEnabled(edit && !first);

@@ -5,24 +5,36 @@
         <group>
             <file>file:/D:/HK_Fall_22/Du%20An%201/DuAn1_Nhom4/Nhom4_QL_ShopBanGiay/src/com/nhom4/ui/ThongKe.java</file>
             <file>file:/D:/HK_Fall_22/Du%20An%201/DuAn1_Nhom4/Nhom4_QL_ShopBanGiay/src/com/nhom4/ui/KhachHang1.java</file>
+            <file>file:/D:/HK_Fall_22/Du%20An%201/DuAn1_Nhom4/Nhom4_QL_ShopBanGiay/src/com/nhom4/entity/KhuyenMai.java</file>
             <file>file:/D:/HK_Fall_22/Du%20An%201/DuAn1_Nhom4/Nhom4_QL_ShopBanGiay/src/com/nhom4/ui/TaiKhoanCaNhanDialog.java</file>
+            <file>file:/D:/HK_Fall_22/Du%20An%201/DuAn1_Nhom4/Nhom4_QL_ShopBanGiay/src/com/nhom4/ui/SanPhamChiTietDialong.java</file>
+            <file>file:/D:/HK_Fall_22/Du%20An%201/DuAn1_Nhom4/Nhom4_QL_ShopBanGiay/src/com/nhom4/entity/SanPham.java</file>
+            <file>file:/D:/HK_Fall_22/Du%20An%201/DuAn1_Nhom4/Nhom4_QL_ShopBanGiay/src/com/nhom4/entity/HoaDon.java</file>
+            <file>file:/D:/HK_Fall_22/Du%20An%201/DuAn1_Nhom4/Nhom4_QL_ShopBanGiay/src/com/nhom4/entity/TaiKhoan.java</file>
+            <file>file:/D:/HK_Fall_22/Du%20An%201/DuAn1_Nhom4/Nhom4_QL_ShopBanGiay/src/com/nhom4/ui/HoaDon1.java</file>
+            <file>file:/D:/HK_Fall_22/Du%20An%201/DuAn1_Nhom4/Nhom4_QL_ShopBanGiay/src/com/nhom4/utils/Auth.java</file>
+            <file>file:/D:/HK_Fall_22/Du%20An%201/DuAn1_Nhom4/Nhom4_QL_ShopBanGiay/src/com/nhom4/ui/NhanVien1.java</file>
+            <file>file:/D:/HK_Fall_22/Du%20An%201/DuAn1_Nhom4/Nhom4_QL_ShopBanGiay/src/com/nhom4/dao/TaiKhoanDAO.java</file>
+            <file>file:/D:/HK_Fall_22/Du%20An%201/DuAn1_Nhom4/Nhom4_QL_ShopBanGiay/src/com/nhom4/ui/TaiKhoanQL.java</file>
+            <file>file:/D:/HK_Fall_22/Du%20An%201/DuAn1_Nhom4/Nhom4_QL_ShopBanGiay/src/com/nhom4/utils/JdbcHelper.java</file>
+            <file>file:/D:/HK_Fall_22/Du%20An%201/DuAn1_Nhom4/Nhom4_QL_ShopBanGiay/src/com/nhom4/ui/TaiKhoan_NV.java</file>
             <file>file:/D:/HK_Fall_22/Du%20An%201/DuAn1_Nhom4/Nhom4_QL_ShopBanGiay/src/com/nhom4/utils/XImage.java</file>
             <file>file:/D:/HK_Fall_22/Du%20An%201/DuAn1_Nhom4/Nhom4_QL_ShopBanGiay/src/com/nhom4/ui/ChaoJDialog.java</file>
             <file>file:/D:/HK_Fall_22/Du%20An%201/DuAn1_Nhom4/Nhom4_QL_ShopBanGiay/src/com/nhom4/ui/DangNhap.java</file>
+            <file>file:/D:/HK_Fall_22/Du%20An%201/DuAn1_Nhom4/Nhom4_QL_ShopBanGiay/src/com/nhom4/entity/KhachHang.java</file>
+            <file>file:/D:/HK_Fall_22/Du%20An%201/DuAn1_Nhom4/Nhom4_QL_ShopBanGiay/src/com/nhom4/entity/ChiTietSanPham.java</file>
+            <file>file:/D:/HK_Fall_22/Du%20An%201/DuAn1_Nhom4/Nhom4_QL_ShopBanGiay/src/com/nhom4/ui/NhaCungCap1.java</file>
+            <file>file:/D:/HK_Fall_22/Du%20An%201/DuAn1_Nhom4/Nhom4_QL_ShopBanGiay/src/com/nhom4/entity/NhaCungCap.java</file>
             <file>file:/D:/HK_Fall_22/Du%20An%201/DuAn1_Nhom4/Nhom4_QL_ShopBanGiay/src/com/nhom4/ui/CuaSoChinh.java</file>
             <file>file:/D:/HK_Fall_22/Du%20An%201/DuAn1_Nhom4/Nhom4_QL_ShopBanGiay/src/com/nhom4/ui/DoiMatKhau.java</file>
-            <file>file:/D:/HK_Fall_22/Du%20An%201/DuAn1_Nhom4/Nhom4_QL_ShopBanGiay/src/com/nhom4/entity/TaiKhoan.java</file>
-            <file>file:/D:/HK_Fall_22/Du%20An%201/DuAn1_Nhom4/Nhom4_QL_ShopBanGiay/src/com/nhom4/ui/HoaDon1.java</file>
             <file>file:/D:/HK_Fall_22/Du%20An%201/DuAn1_Nhom4/Nhom4_QL_ShopBanGiay/src/com/nhom4/ui/KhachHangDialong.java</file>
-            <file>file:/D:/HK_Fall_22/Du%20An%201/DuAn1_Nhom4/Nhom4_QL_ShopBanGiay/src/com/nhom4/utils/Auth.java</file>
             <file>file:/D:/HK_Fall_22/Du%20An%201/DuAn1_Nhom4/Nhom4_QL_ShopBanGiay/src/com/nhom4/ui/TaiKhoanCaNhan.java</file>
-            <file>file:/D:/HK_Fall_22/Du%20An%201/DuAn1_Nhom4/Nhom4_QL_ShopBanGiay/src/com/nhom4/ui/NhanVien1.java</file>
-            <file>file:/D:/HK_Fall_22/Du%20An%201/DuAn1_Nhom4/Nhom4_QL_ShopBanGiay/src/com/nhom4/dao/TaiKhoanDAO.java</file>
+            <file>file:/D:/HK_Fall_22/Du%20An%201/DuAn1_Nhom4/Nhom4_QL_ShopBanGiay/src/com/nhom4/ui/SanPham1.java</file>
+            <file>file:/D:/HK_Fall_22/Du%20An%201/DuAn1_Nhom4/Nhom4_QL_ShopBanGiay/src/com/nhom4/entity/HoaDonChiTiet.java</file>
             <file>file:/D:/HK_Fall_22/Du%20An%201/DuAn1_Nhom4/Nhom4_QL_ShopBanGiay/src/com/nhom4/ui/ThongKeDialog.java</file>
-            <file>file:/D:/HK_Fall_22/Du%20An%201/DuAn1_Nhom4/Nhom4_QL_ShopBanGiay/src/com/nhom4/ui/TaiKhoanQL.java</file>
             <file>file:/D:/HK_Fall_22/Du%20An%201/DuAn1_Nhom4/Nhom4_QL_ShopBanGiay/src/com/nhom4/dao/NhanVienDAO.java</file>
-            <file>file:/D:/HK_Fall_22/Du%20An%201/DuAn1_Nhom4/Nhom4_QL_ShopBanGiay/src/com/nhom4/utils/JdbcHelper.java</file>
-            <file>file:/D:/HK_Fall_22/Du%20An%201/DuAn1_Nhom4/Nhom4_QL_ShopBanGiay/src/com/nhom4/ui/TaiKhoan_NV.java</file>
+            <file>file:/D:/HK_Fall_22/Du%20An%201/DuAn1_Nhom4/Nhom4_QL_ShopBanGiay/src/com/nhom4/ui/KhuyenMai1.java</file>
+            <file>file:/D:/HK_Fall_22/Du%20An%201/DuAn1_Nhom4/Nhom4_QL_ShopBanGiay/src/com/nhom4/entity/NhanVien.java</file>
         </group>
     </open-files>
 </project-private>
