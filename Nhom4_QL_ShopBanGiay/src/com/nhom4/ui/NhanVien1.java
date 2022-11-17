@@ -340,6 +340,11 @@ public class NhanVien1 extends javax.swing.JPanel {
         btntimKiem.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
         btntimKiem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/search (4).png"))); // NOI18N
         btntimKiem.setText("Tìm kiếm");
+        btntimKiem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btntimKiemActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -347,7 +352,7 @@ public class NhanVien1 extends javax.swing.JPanel {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(42, 42, 42)
-                .addComponent(txttimKiem, javax.swing.GroupLayout.DEFAULT_SIZE, 691, Short.MAX_VALUE)
+                .addComponent(txttimKiem, javax.swing.GroupLayout.DEFAULT_SIZE, 689, Short.MAX_VALUE)
                 .addGap(28, 28, 28)
                 .addComponent(btntimKiem)
                 .addGap(33, 33, 33))
@@ -469,7 +474,9 @@ first();
     }//GEN-LAST:event_btnLuuActionPerformed
 
     private void btnHuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHuyActionPerformed
- 
+
+        updateStatus();
+        clearForm();
     }//GEN-LAST:event_btnHuyActionPerformed
 
     private void tblnhanVienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblnhanVienMouseClicked
@@ -478,6 +485,10 @@ first();
             this.edit();
         }
     }//GEN-LAST:event_tblnhanVienMouseClicked
+
+    private void btntimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btntimKiemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btntimKiemActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -600,6 +611,11 @@ first();
     public void setForm(NhanVien nv) {
         txtmaNhanVien.setText(nv.getMaNV());
         txttenNhanVien.setText(nv.getTenNV());
+        txtsoDienSo.setText(nv.getSDT());
+        txtEmail.setText(nv.getEmail());
+        lblHinh.setText(nv.getHinh());
+        txttenNhanVien.setText(nv.getTenNV());
+        
     }
     
     NhanVien getForm() {
@@ -608,32 +624,32 @@ first();
         nv.setTenNV(txttenNhanVien.getText());
         nv.setSDT(txtsoDienSo.getText());
         nv.setEmail(txtEmail.getText());
-//        nv.setHinh(.getText());
+        nv.setHinh(lblHinh.getText());
         nv.setDiaChi(txtdiaChi.getText());
         
         return nv;
     }
     
-//    public void updateStatus() {
-//        boolean edit = (this.row >= 0);
-//        boolean first = (this.row == 0);
-//        boolean last = (this.row == tblnhanVien.getRowCount() - 1);
-////        Trạng thái form
-////        btnThem.setEnabled(edit);
-////        btnSua.setEnabled(edit);
-////        btnXoa.setEnabled(edit);
-//// Trạng thái điều hướng
-//        btnFirst.setEnabled(edit && !first);
-//        btnPre.setEnabled(edit && !first);
-//        btnNext.setEnabled(edit && !last);
-//        btnLast.setEnabled(edit && !last);
-//    }
+    public void updateStatus() {
+        boolean edit = (this.row >= 0);
+        boolean first = (this.row == 0);
+        boolean last = (this.row == tblnhanVien.getRowCount() - 1);
+//        Trạng thái form
+//        btnThem.setEnabled(edit);
+//        btnSua.setEnabled(edit);
+//        btnXoa.setEnabled(edit);
+// Trạng thái điều hướng
+        btnFirst.setEnabled(edit && !first);
+        btnPrev.setEnabled(edit && !first);
+        btnNext.setEnabled(edit && !last);
+        btnLast.setEnabled(edit && !last);
+    }
     
     public void edit() {
         String manv = (String) tblnhanVien.getValueAt(this.row, 0);
         NhanVien nv = dao.selectById(manv);
         this.setForm(nv);
-//        this.updateStatus();
+        this.updateStatus();
     }
     
     public void first() {
@@ -659,4 +675,5 @@ first();
         this.row = tblnhanVien.getRowCount() - 1;
         this.edit();
     }
+    
 }

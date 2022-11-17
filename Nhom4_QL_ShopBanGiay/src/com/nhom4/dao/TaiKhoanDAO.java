@@ -15,7 +15,7 @@ import java.util.List;
  * @author ACER
  */
 public class TaiKhoanDAO extends MainDAO<TaiKhoan, String> {
-    final String INSERT_SQL = "INSERT INTO TaiKhoan(MaNV, Username, Pass, Role) VALUES ( ?,?,?,?  ) ";
+    final String INSERT_SQL = "INSERT INTO TaiKhoan(MaNV, Username, Pass, Role) VALUES ( ?,?,?,? ) ";
     final String UPDATE_SQL = "UPDATE TaiKhoan SET Username = ? , Pass = ? , Role =  ? WHERE MaNV = ?";
     final String DELETE_SQL = "DELETE FROM TaiKhoan WHERE MaNV = ?";
     final String SELECT_ALL_SQL = "SELECT * FROM TaiKhoan";

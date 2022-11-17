@@ -79,7 +79,7 @@ public class DangNhap extends javax.swing.JDialog {
         lblMatKhau.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblMatKhau.setForeground(new java.awt.Color(102, 102, 102));
         lblMatKhau.setText("Mat Khau");
-        pnlForm.add(lblMatKhau, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, -1, -1));
+        pnlForm.add(lblMatKhau, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 180, -1, -1));
 
         txtMaNV.setBackground(new java.awt.Color(231, 231, 231));
         txtMaNV.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N

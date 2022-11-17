@@ -22,7 +22,8 @@ public class TaiKhoanQL extends javax.swing.JPanel {
      * Creates new form TaiKhoanQL
      */
     TaiKhoanDAO tkDAO = new TaiKhoanDAO();
-    int row =- 1;
+    int row =-1;
+    int them =0;
     public TaiKhoanQL() {
         initComponents();
         this.setColumns();
@@ -415,10 +416,7 @@ public class TaiKhoanQL extends javax.swing.JPanel {
         this.last();
     }//GEN-LAST:event_btnLastActionPerformed
 
-    public void init() {
-//        this.setTitle("Edusys - Quản lí nhân viên");
-//        this.setIconImage(XImage.getAppIcon());
-        
+    public void init() {        
         this.fillTable();
         this.row = -1;
 //        this.updateStatus();
@@ -432,53 +430,31 @@ public class TaiKhoanQL extends javax.swing.JPanel {
         
     }
     
-//    private boolean check() {
-//        if (txtID.getText().length() < 3) {
-//            if (txtID.getText().length() == 0) {
-//                MsgBox.alert(this, "Mã nhân viên không được để trống");
-//                txtID.requestFocus();
-//                return false;
-//            }
-//            if (txtID.getText().length() > 0 && txtID.getText().length() < 3) {
-//                MsgBox.alert(this, "Mã nhân viên phải nhập ít nhất 3 ký tự");
-//                txtID.requestFocus();
-//                return false;
-//            }
-//        } else if (txtPass.getText().length() < 3) {
-//            if (txtPass.getText().length() == 0) {
-//                MsgBox.alert(this, "Mật khẩu không được để trống");
-//                txtPass.requestFocus();
-//                return false;
-//            }
-//            if (txtPass.getText().length() > 0 && txtPass.getText().length() < 3) {
-//                MsgBox.alert(this, "Mật khẩu phải nhập ít nhất 3 ký tự");
-//                txtPass.requestFocus();
-//                return false;
-//            }
-//        } else if (txtConf.getText().length() == 0) {
-//            MsgBox.alert(this, "Xác nhận mật khẩu không được để trống");
-//            txtConf.requestFocus();
-//            return false;
-//        } else if (!txtConf.getText().equals(txtPass.getText())) {
-//            MsgBox.alert(this, "Mật khẩu xác nhận không chính xác");
-//            txtConf.requestFocus();
-//            return false;
-//        } else if (txtName.getText().length() == 0) {
-//            MsgBox.alert(this, "Họ tên không được để trống");
-//            txtName.requestFocus();
-//            return false;
-//        } else if (!rdoNhanVien.isSelected() && !rdoTruongPhong.isSelected()) {
-//            MsgBox.alert(this, "Chưa chọn chức vụ");
-//            return false;
-//        } else if (!Auth.isManager() && rdoTruongPhong.isSelected()) {
-//            MsgBox.alert(this, "Không được chọn chức vụ là trưởng phòng");
-//            return false;
-//        }
-//        return true;
-//    }
+    private boolean check() {
+        if(txtMaNV.getText().equals("")){
+            MsgBox.alert(this, "Không được để trống mã nhân viên");
+            txtMaNV.requestFocus();
+            return false;
+        }else if (txtTenDN.getText().equals("")) {
+            MsgBox.alert(this, "Không được để trống tên đăng nhập");
+            txtTenDN.requestFocus();
+            return false;
+        }else if (txtMatKhau.getText().equals("")) {
+            MsgBox.alert(this, "Không được để trống mật khẩu");
+            txtMatKhau.requestFocus();
+            return false;
+        }else if (!rdoNhanVien.isSelected() && !rdoQuanLy.isSelected()) {
+            MsgBox.alert(this, "Bạn chưa chọn chức vụ");
+            return false;
+        } else if (!Auth.isManager() && rdoQuanLy.isSelected()) {
+            MsgBox.alert(this, "Không được chọn vai trò là quản lý");
+            return false;
+        }
+        return true;
+    }
     
     public void insert() {
-//        if (check()) {
+        if (check()) {
             TaiKhoan tk = getForm();
             try {
                 tkDAO.insert(tk);
@@ -489,7 +465,7 @@ public class TaiKhoanQL extends javax.swing.JPanel {
                 MsgBox.alert(this, "Thêm mới thất bại");
             }
         }
-//    }
+    }
     
     public void update() {
         TaiKhoan tk = getForm();       
@@ -566,12 +542,13 @@ public class TaiKhoanQL extends javax.swing.JPanel {
         }
     }
     
-    public void setForm(TaiKhoan tk) {
+    public void setForm(TaiKhoan tk){
         txtMaNV.setText(tk.getMaNV());
         txtTenDN.setText(tk.getUsername());
         txtMatKhau.setText(tk.getPass());
         rdoQuanLy.setSelected(tk.getRole());
         rdoNhanVien.setSelected(!tk.getRole());
+        
     }
     
     TaiKhoan getForm() {
@@ -612,6 +589,8 @@ public class TaiKhoanQL extends javax.swing.JPanel {
         this.setForm(tk);
 //        this.updateStatus();
     }
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnFirst;
