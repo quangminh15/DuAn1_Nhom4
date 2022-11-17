@@ -28,8 +28,7 @@ public class NhanVien1 extends javax.swing.JPanel {
     }
     NhanVienDAO dao = new NhanVienDAO();
     int row = -1;
-    boolean them = false;
-    boolean sua = false;
+    int them = 0;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -340,6 +339,11 @@ public class NhanVien1 extends javax.swing.JPanel {
         btntimKiem.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
         btntimKiem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/search (4).png"))); // NOI18N
         btntimKiem.setText("Tìm kiếm");
+        btntimKiem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btntimKiemActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -347,7 +351,7 @@ public class NhanVien1 extends javax.swing.JPanel {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(42, 42, 42)
-                .addComponent(txttimKiem, javax.swing.GroupLayout.DEFAULT_SIZE, 691, Short.MAX_VALUE)
+                .addComponent(txttimKiem, javax.swing.GroupLayout.DEFAULT_SIZE, 689, Short.MAX_VALUE)
                 .addGap(28, 28, 28)
                 .addComponent(btntimKiem)
                 .addGap(33, 33, 33))
@@ -421,10 +425,19 @@ public class NhanVien1 extends javax.swing.JPanel {
     }//GEN-LAST:event_rdoGioiTinhNamActionPerformed
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
-   them = true;
-        sua = false;
+    them = 1;
             btnSua.setEnabled(false);
             btnXoa.setEnabled(false);
+            btnLuu.setEnabled(true);
+            txtmaNhanVien.setText("");
+            txttenNhanVien.setText("");
+            rdoGioiTinhNam.isSelected();
+            txtsoDienSo.setText("");
+            txtdiaChi.setText("");
+            txtEmail.setText("");
+            lblHinh.setText("");
+            
+            txtON();
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void txttimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txttimKiemActionPerformed
@@ -448,11 +461,11 @@ first();
     }//GEN-LAST:event_btnLastActionPerformed
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
-       them = false;
-        sua = true;
-        
+       them = 2;
             btnThem.setEnabled(false);
             btnXoa.setEnabled(false);
+            btnLuu.setEnabled(true);
+            txtON();
     }//GEN-LAST:event_btnSuaActionPerformed
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
@@ -460,18 +473,22 @@ first();
     }//GEN-LAST:event_btnXoaActionPerformed
 
     private void btnLuuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLuuActionPerformed
-       if(them = true){
-            insert();
-        }
-        if(sua = true){
-            update();
+       if(check()==true){
+            if(them == 1 ){
+                insert();
+                return;
+            }
+            if(them == 2){
+                update();
+                return;
+            }
         }
     }//GEN-LAST:event_btnLuuActionPerformed
 
     private void btnHuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHuyActionPerformed
-
-        updateStatus();
+ updateStatus();
         clearForm();
+        btnLuu.setEnabled(false);
     }//GEN-LAST:event_btnHuyActionPerformed
 
     private void tblnhanVienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblnhanVienMouseClicked
@@ -480,6 +497,10 @@ first();
             this.edit();
         }
     }//GEN-LAST:event_tblnhanVienMouseClicked
+
+    private void btntimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btntimKiemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btntimKiemActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -520,6 +541,8 @@ first();
     private void init() {
          this.row = -1;
         fillTable();
+        this.updateStatus();
+        btnLuu.setEnabled(false);
     }
      public void fillTable() {
         DefaultTableModel model = (DefaultTableModel) tblnhanVien.getModel();
@@ -549,14 +572,16 @@ first();
             try {
                 dao.insert(nv);
                 this.fillTable();
-//                this.clearForm();
+                this.clearForm();
                 MsgBox.alert(this, "Thêm mới thành công");
-                them = false;
-                btnSua.setEnabled(true);
-                btnXoa.setEnabled(true);
+                updateStatus();
+                them = 0;
+                btnLuu.setEnabled(false);
             } catch (Exception e) {
                 MsgBox.alert(this, "Thêm mới thất bại");
-                them = false;
+                updateStatus();
+                them = 0;
+                  btnLuu.setEnabled(false);
             }
         
     }
@@ -568,12 +593,14 @@ first();
                 dao.update(nv);
                 this.fillTable();
                 MsgBox.alert(this, "Cập nhật thành công");
-                sua = false;
-                btnThem.setEnabled(true);
-                btnXoa.setEnabled(true);
+                updateStatus();
+                them = 0;
+                btnLuu.setEnabled(false);
             } catch (Exception e) {
                 MsgBox.alert(this, "Cập nhật thất bại");
-                sua = false;
+                updateStatus();
+                 them = 0;
+                btnLuu.setEnabled(false);
             }
         
     }
@@ -596,16 +623,18 @@ first();
         NhanVien nv = new NhanVien();
         this.setForm(nv);
         this.row = -1;
-//        this.updateStatus();
+        this.updateStatus();
     }
     
     public void setForm(NhanVien nv) {
         txtmaNhanVien.setText(nv.getMaNV());
         txttenNhanVien.setText(nv.getTenNV());
+        rdoGioiTinhNam.setSelected(nv.getGioiTinh());
+         rdoGioiTinhNu.setSelected(!nv.getGioiTinh());
         txtsoDienSo.setText(nv.getSDT());
         txtEmail.setText(nv.getEmail());
         lblHinh.setText(nv.getHinh());
-        txttenNhanVien.setText(nv.getTenNV());
+        txtdiaChi.setText(nv.getDiaChi());
         
     }
     
@@ -613,6 +642,7 @@ first();
         NhanVien nv = new NhanVien();
         nv.setMaNV(txtmaNhanVien.getText());
         nv.setTenNV(txttenNhanVien.getText());
+        nv.setGioiTinh(rdoGioiTinhNam.isSelected());
         nv.setSDT(txtsoDienSo.getText());
         nv.setEmail(txtEmail.getText());
         nv.setHinh(lblHinh.getText());
@@ -626,9 +656,9 @@ first();
         boolean first = (this.row == 0);
         boolean last = (this.row == tblnhanVien.getRowCount() - 1);
 //        Trạng thái form
-//        btnThem.setEnabled(edit);
-//        btnSua.setEnabled(edit);
-//        btnXoa.setEnabled(edit);
+        btnThem.setEnabled(edit);
+        btnSua.setEnabled(edit);
+        btnXoa.setEnabled(edit);
 // Trạng thái điều hướng
         btnFirst.setEnabled(edit && !first);
         btnPrev.setEnabled(edit && !first);
@@ -665,5 +695,44 @@ first();
     public void last() {
         this.row = tblnhanVien.getRowCount() - 1;
         this.edit();
+    }
+    
+    public void txtOFF(){
+        txtmaNhanVien.setEditable(false);
+        txttenNhanVien.setEditable(false);
+        rdoGioiTinhNam.setEnabled(false);
+         txtsoDienSo.setEditable(false);
+         txtdiaChi.setEditable(false);
+         txtEmail.setEditable(false);
+//         lblHinh.setEditable(false);
+         
+         
+    }
+    
+    public void txtON(){
+      txtmaNhanVien.setEditable(true);
+        txttenNhanVien.setEditable(true);
+        rdoGioiTinhNam.setEnabled(true);
+         txtsoDienSo.setEditable(true);
+         txtdiaChi.setEditable(true);
+         txtEmail.setEditable(true);
+//         lblHinh.setEditable(true);
+    }
+    
+    public boolean check(){
+        if(txtmaNhanVien.getText().equals("")){
+            MsgBox.alert(this, "Không được để trống mã nhà cung cấp");
+            txtmaNhanVien.requestFocus();
+            return false;
+        } else if (txtmaNhanVien.getText().length() > 0 && txtmaNhanVien.getText().length() < 3) {
+            MsgBox.alert(this, "Mã nhà cung cấp phải nhập ít nhất 3 ký tự");
+            txtmaNhanVien.requestFocus();
+            return false;
+        } else if(txttenNhanVien.getText().equals("")){
+            MsgBox.alert(this, "Không được để trống tên nhà cung cấp");
+            txttenNhanVien.requestFocus();
+            return false;
+        }
+        return true;
     }
 }

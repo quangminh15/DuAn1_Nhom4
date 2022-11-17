@@ -4,6 +4,8 @@
  */
 package com.nhom4.ui;
 
+import com.nhom4.utils.Auth;
+import com.nhom4.utils.MsgBox;
 import com.nhom4.utils.XImage;
 import java.awt.Color;
 import java.awt.GradientPaint;
@@ -29,7 +31,6 @@ public class CuaSoChinh extends javax.swing.JFrame {
     public CuaSoChinh() {
         initComponents();
         init();
-        
         
     }
 
@@ -169,6 +170,11 @@ public class CuaSoChinh extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/account.png"))); // NOI18N
         jLabel3.setText("Tai Khoan");
+        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel3MouseClicked(evt);
+            }
+        });
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 640, 260, 70));
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 2, 18)); // NOI18N
@@ -308,6 +314,10 @@ public class CuaSoChinh extends javax.swing.JFrame {
         changePanel(tK);
     }//GEN-LAST:event_lblTKMouseClicked
 
+    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+        this.opendTaiKhoanQL();
+    }//GEN-LAST:event_jLabel3MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -359,6 +369,20 @@ public class CuaSoChinh extends javax.swing.JFrame {
                 lblDongHo.setText(text);
             }
         }).start();
+    }
+    
+    public void opendTaiKhoanQL(){
+        if(Auth.islogin()){
+        if(!Auth.isManager()){
+            TaiKhoanCaNhan tkcn = new TaiKhoanCaNhan();
+            changePanel(tkcn);           
+        }else{
+            TaiKhoanQL tkql = new TaiKhoanQL();
+            changePanel(tkql);
+        }
+        }else{
+            MsgBox.alert(this, "Vui lòng đăng nhập");
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -11,9 +11,9 @@ import java.sql.*;
  */
 public class JdbcHelper {
     private static String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
-    private static String dburl = "jdbc:sqlserver://localhost:1433;databaseName=QL_CuaHangGiay;encrypt=false;";
+    private static String dburl = "jdbc:sqlserver://localhost:1433;databaseName=QL_CuaHangGiay;encrypt=false;trustServerCertificate=false;";
     private static String user = "sa";
-    private static String pass = "123";
+    private static String pass = "tien123";
     
     static {
         try {
