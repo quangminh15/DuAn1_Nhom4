@@ -24,13 +24,12 @@ public class KhachHang1 extends javax.swing.JPanel {
     public KhachHang1() {
         initComponents();
         init();
-        fillTable();
+//        fillTable();
     }
  
     KhachHangDAO dao = new KhachHangDAO();
     int row = -1;
-    boolean them = false;
-    boolean sua = false;
+    int them = 0;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -349,18 +348,24 @@ public class KhachHang1 extends javax.swing.JPanel {
     }//GEN-LAST:event_txttimKiemActionPerformed
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
-          them = true;
-        sua = false;
+          them = 1;
             btnSua.setEnabled(false);
             btnXoa.setEnabled(false);
+            btnLuu.setEnabled(true);
+            txtmaKhachHang.setText("");
+            txttenKhachHang.setText("");
+             txtsoDienThoai.setText("");
+              txtdiaChi.setText("");
+            txtON();
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
-         them = false;
-        sua = true;
-        
+        them = 2;
             btnThem.setEnabled(false);
             btnXoa.setEnabled(false);
+            btnLuu.setEnabled(true);
+            fillTable();
+            txtON();
     }//GEN-LAST:event_btnSuaActionPerformed
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
@@ -368,16 +373,22 @@ public class KhachHang1 extends javax.swing.JPanel {
     }//GEN-LAST:event_btnXoaActionPerformed
 
     private void btnLuuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLuuActionPerformed
-          if(them = true){
-            insert();
-        }
-        if(sua = true){
-            update();
+          if(check()==true){
+            if(them == 1 ){
+                insert();
+                return;
+            }
+            if(them == 2){
+                update();
+                return;
+            }
         }
     }//GEN-LAST:event_btnLuuActionPerformed
 
     private void btnHuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHuyActionPerformed
-        // TODO add your handling code here:
+         updateStatus();
+        clearForm();
+        btnLuu.setEnabled(false);
     }//GEN-LAST:event_btnHuyActionPerformed
 
     private void btnFirstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFirstActionPerformed
@@ -397,7 +408,7 @@ public class KhachHang1 extends javax.swing.JPanel {
     }//GEN-LAST:event_btnLastActionPerformed
 
     private void tblkhachHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblkhachHangMouseClicked
-        if (evt.getClickCount() == 1) {
+         if (evt.getClickCount() == 1) {
             this.row = tblkhachHang.getSelectedRow();
             this.edit();
         }
@@ -435,6 +446,8 @@ public class KhachHang1 extends javax.swing.JPanel {
     private void init() {
        this.row = -1;
         fillTable();
+        this.updateStatus();
+        btnLuu.setEnabled(false);
     }
      public void fillTable() {
         DefaultTableModel model = (DefaultTableModel) tblkhachHang.getModel();
@@ -461,14 +474,16 @@ public class KhachHang1 extends javax.swing.JPanel {
             try {
                 dao.insert(kh);
                 this.fillTable();
-//                this.clearForm();
+                this.clearForm();
                 MsgBox.alert(this, "Thêm mới thành công");
-                them = false;
-                btnSua.setEnabled(true);
-                btnXoa.setEnabled(true);
+                 updateStatus();
+                them = 0;
+                btnLuu.setEnabled(true);
             } catch (Exception e) {
                 MsgBox.alert(this, "Thêm mới thất bại");
-                them = false;
+                  updateStatus();
+                them = 0;
+                 btnLuu.setEnabled(true);
             }
         
     }
@@ -480,12 +495,13 @@ public class KhachHang1 extends javax.swing.JPanel {
                 dao.update(kh);
                 this.fillTable();
                 MsgBox.alert(this, "Cập nhật thành công");
-                sua = false;
-                btnThem.setEnabled(true);
-                btnXoa.setEnabled(true);
+                     them = 0;
+                btnLuu.setEnabled(true);
+               
             } catch (Exception e) {
                 MsgBox.alert(this, "Cập nhật thất bại");
-                sua = false;
+                updateStatus();
+                     them = 0;
             }
         
     }
@@ -508,7 +524,7 @@ public class KhachHang1 extends javax.swing.JPanel {
         KhachHang kh = new KhachHang();
         this.setForm(kh);
         this.row = -1;
-//        this.updateStatus();
+        this.updateStatus();
     }
     
     public void setForm(KhachHang kh) {
@@ -527,26 +543,27 @@ public class KhachHang1 extends javax.swing.JPanel {
         return kh;
     }
     
-//    public void updateStatus() {
-//        boolean edit = (this.row >= 0);
-//        boolean first = (this.row == 0);
-//        boolean last = (this.row == tblnhanVien.getRowCount() - 1);
-////        Trạng thái form
-////        btnThem.setEnabled(edit);
-////        btnSua.setEnabled(edit);
-////        btnXoa.setEnabled(edit);
-//// Trạng thái điều hướng
-//        btnFirst.setEnabled(edit && !first);
-//        btnPre.setEnabled(edit && !first);
-//        btnNext.setEnabled(edit && !last);
-//        btnLast.setEnabled(edit && !last);
-//    }
+    public void updateStatus() {
+        boolean edit = (this.row >= 0);
+        boolean first = (this.row == 0);
+        boolean last = (this.row == tblkhachHang.getRowCount() - 1);
+//        Trạng thái form
+        btnThem.setEnabled(edit);
+        btnSua.setEnabled(edit);
+        btnXoa.setEnabled(edit);
+// Trạng thái điều hướng
+        btnFirst.setEnabled(edit && !first);
+        btnPrev.setEnabled(edit && !first);
+        btnNext.setEnabled(edit && !last);
+        btnLast.setEnabled(edit && !last);
+       txtOFF();
+    }
     
     public void edit() {
         String makh = (String) tblkhachHang.getValueAt(this.row, 0);
         KhachHang kh = dao.selectById(makh);
         this.setForm(kh);
-//        this.updateStatus();
+        this.updateStatus();
     }
     
     public void first() {
@@ -571,5 +588,35 @@ public class KhachHang1 extends javax.swing.JPanel {
     public void last() {
         this.row = tblkhachHang.getRowCount() - 1;
         this.edit();
+    }
+    public void txtOFF(){
+        txtmaKhachHang.setEditable(false);
+        txttenKhachHang.setEditable(false);
+        txtsoDienThoai.setEditable(false);
+        txtdiaChi.setEditable(false);
+    }
+    
+    public void txtON(){
+         txtmaKhachHang.setEditable(true);
+        txttenKhachHang.setEditable(true);
+        txtsoDienThoai.setEditable(true);
+        txtdiaChi.setEditable(true);
+    }
+    
+    public boolean check(){
+        if(txtmaKhachHang.getText().equals("")){
+            MsgBox.alert(this, "Không được để trống mã khách hàng");
+            txtmaKhachHang.requestFocus();
+            return false;
+        } else if (txtmaKhachHang.getText().length() > 0 && txtmaKhachHang.getText().length() < 3) {
+            MsgBox.alert(this, "Mã nhà cung cấp phải nhập ít nhất 3 ký tự");
+            txtmaKhachHang.requestFocus();
+            return false;
+        } else if(txttenKhachHang.getText().equals("")){
+            MsgBox.alert(this, "Không được để trống tên nhà cung cấp");
+            txtmaKhachHang.requestFocus();
+            return false;
+        }
+        return true;
     }
 }
