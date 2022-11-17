@@ -26,7 +26,7 @@ public class TaiKhoanQL extends javax.swing.JPanel {
     int them =0;
     public TaiKhoanQL() {
         initComponents();
-        this.setColumns();
+//        this.setColumns();
         this.init();
         
     }
@@ -422,13 +422,13 @@ public class TaiKhoanQL extends javax.swing.JPanel {
 //        this.updateStatus();
     }
     
-    public void setColumns(){
-        String[] row = new String[]{"Mã nhân viên", "Tên đăng nhập", "Mật khẩu", "Vai trò"};
-        model = new DefaultTableModel();
-        model.setColumnIdentifiers(row);
-        tblBang.setModel(model);
-        
-    }
+//    public void setColumns(){
+//        String[] row = new String[]{"Mã nhân viên", "Tên đăng nhập", "Mật khẩu", "Vai trò"};
+//        model = new DefaultTableModel();
+//        model.setColumnIdentifiers(row);
+//        tblBang.setModel(model);
+//        
+//    }
     
     private boolean check() {
         if(txtMaNV.getText().equals("")){
