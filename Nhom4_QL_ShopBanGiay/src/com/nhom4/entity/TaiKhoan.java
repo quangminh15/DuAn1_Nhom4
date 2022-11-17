@@ -12,7 +12,7 @@ public class TaiKhoan {
     private String maNV;
     private String username;
     private String pass;
-    private boolean role;
+    private boolean role = false;
     
     @Override
         public String toString() {
@@ -53,7 +53,7 @@ public class TaiKhoan {
         this.pass = pass;
     }
 
-    public boolean isRole() {
+    public boolean getRole() {
         return role;
     }
 

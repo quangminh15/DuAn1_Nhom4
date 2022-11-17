@@ -24,8 +24,7 @@ public class NhaCungCap1 extends javax.swing.JPanel {
     
     NhaCungCapDAO dao = new NhaCungCapDAO();
     int row = -1;
-    boolean them = false;
-    boolean sua = false;
+    int them = 0;
     public NhaCungCap1() {
         initComponents();
         init();
@@ -102,6 +101,11 @@ public class NhaCungCap1 extends javax.swing.JPanel {
 
         btnHuy.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/cancel.png"))); // NOI18N
         btnHuy.setText("Hủy");
+        btnHuy.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHuyActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -130,7 +134,7 @@ public class NhaCungCap1 extends javax.swing.JPanel {
                     .addComponent(btnXoa)
                     .addComponent(btnLuu)
                     .addComponent(btnHuy))
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         tblNCC.setModel(new javax.swing.table.DefaultTableModel(
@@ -242,9 +246,9 @@ public class NhaCungCap1 extends javax.swing.JPanel {
                     .addComponent(txtTenNCC, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(54, 54, 54)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(23, 23, 23)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 88, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(60, 60, 60))
         );
@@ -274,19 +278,21 @@ public class NhaCungCap1 extends javax.swing.JPanel {
     }//GEN-LAST:event_tblNCCMouseClicked
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
-        them = true;
-        sua = false;
+            them = 1;
             btnSua.setEnabled(false);
             btnXoa.setEnabled(false);
+            btnLuu.setEnabled(true);
+            txtMaNCC.setText("");
+            txtTenNCC.setText("");
+            txtON();
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
-        them = false;
-        sua = true;
-        
+            them = 2;
             btnThem.setEnabled(false);
             btnXoa.setEnabled(false);
-        
+            btnLuu.setEnabled(true);
+            txtON();
     }//GEN-LAST:event_btnSuaActionPerformed
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
@@ -294,13 +300,24 @@ public class NhaCungCap1 extends javax.swing.JPanel {
     }//GEN-LAST:event_btnXoaActionPerformed
 
     private void btnLuuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLuuActionPerformed
-        if(them = true){
-            insert();
+        if(check()==true){
+            if(them == 1 ){
+                insert();
+                return;
+            }
+            if(them == 2){
+                update();
+                return;
+            }
         }
-        if(sua = true){
-            update();
-        }
+        
     }//GEN-LAST:event_btnLuuActionPerformed
+
+    private void btnHuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHuyActionPerformed
+        updateStatus();
+        clearForm();
+        btnLuu.setEnabled(false);
+    }//GEN-LAST:event_btnHuyActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -326,6 +343,8 @@ public class NhaCungCap1 extends javax.swing.JPanel {
     private void init() {
         this.row = -1;
         fillTable();
+        this.updateStatus();
+        btnLuu.setEnabled(false);
     }
     
     public void fillTable() {
@@ -346,19 +365,20 @@ public class NhaCungCap1 extends javax.swing.JPanel {
     }
     
     public void insert() {
-        
             NhaCungCap ncc = getForm();
             try {
                 dao.insert(ncc);
                 this.fillTable();
-//                this.clearForm();
+                this.clearForm();
                 MsgBox.alert(this, "Thêm mới thành công");
-                them = false;
-                btnSua.setEnabled(true);
-                btnXoa.setEnabled(true);
+                updateStatus();
+                them = 0;
+                btnLuu.setEnabled(false);
             } catch (Exception e) {
                 MsgBox.alert(this, "Thêm mới thất bại");
-                them = false;
+                updateStatus();
+                them = 0;
+                btnLuu.setEnabled(false);
             }
         
     }
@@ -370,15 +390,18 @@ public class NhaCungCap1 extends javax.swing.JPanel {
                 dao.update(nv);
                 this.fillTable();
                 MsgBox.alert(this, "Cập nhật thành công");
-                sua = false;
-                btnThem.setEnabled(true);
-                btnXoa.setEnabled(true);
+                updateStatus();
+                them = 0;
+                btnLuu.setEnabled(false);
             } catch (Exception e) {
                 MsgBox.alert(this, "Cập nhật thất bại");
-                sua = false;
+                updateStatus();
+                them = 0;
+                btnLuu.setEnabled(false);
             }
         
     }
+    
     
     public void delete() {
             String ncc = txtMaNCC.getText();
@@ -418,14 +441,15 @@ public class NhaCungCap1 extends javax.swing.JPanel {
         boolean first = (this.row == 0);
         boolean last = (this.row == tblNCC.getRowCount() - 1);
 //        Trạng thái form
-//        btnThem.setEnabled(edit);
-//        btnSua.setEnabled(edit);
-//        btnXoa.setEnabled(edit);
+        btnThem.setEnabled(edit);
+        btnSua.setEnabled(edit);
+        btnXoa.setEnabled(edit);
 // Trạng thái điều hướng
         btnFirst.setEnabled(edit && !first);
         btnPre.setEnabled(edit && !first);
         btnNext.setEnabled(edit && !last);
         btnLast.setEnabled(edit && !last);
+        txtOFF();
     }
     
     public void edit() {
@@ -457,5 +481,32 @@ public class NhaCungCap1 extends javax.swing.JPanel {
     public void last() {
         this.row = tblNCC.getRowCount() - 1;
         this.edit();
+    }
+    
+    public void txtOFF(){
+        txtMaNCC.setEditable(false);
+        txtTenNCC.setEditable(false);
+    }
+    
+    public void txtON(){
+        txtMaNCC.setEditable(true);
+        txtTenNCC.setEditable(true);
+    }
+    
+    public boolean check(){
+        if(txtMaNCC.getText().equals("")){
+            MsgBox.alert(this, "Không được để trống mã nhà cung cấp");
+            txtMaNCC.requestFocus();
+            return false;
+        } else if (txtMaNCC.getText().length() > 0 && txtMaNCC.getText().length() < 3) {
+            MsgBox.alert(this, "Mã nhà cung cấp phải nhập ít nhất 3 ký tự");
+            txtMaNCC.requestFocus();
+            return false;
+        } else if(txtTenNCC.getText().equals("")){
+            MsgBox.alert(this, "Không được để trống tên nhà cung cấp");
+            txtTenNCC.requestFocus();
+            return false;
+        }
+        return true;
     }
 }

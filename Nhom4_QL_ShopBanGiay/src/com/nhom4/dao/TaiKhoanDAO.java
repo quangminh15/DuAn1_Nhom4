@@ -15,7 +15,7 @@ import java.util.List;
  * @author ACER
  */
 public class TaiKhoanDAO extends MainDAO<TaiKhoan, String> {
-    final String INSERT_SQL = "INSERT INTO TaiKhoan(MaNV, Username, Pass, Role) VALUES ( ?,?,?,?  ) ";
+    final String INSERT_SQL = "INSERT INTO TaiKhoan(MaNV, Username, Pass, Role) VALUES ( ?,?,?,? ) ";
     final String UPDATE_SQL = "UPDATE TaiKhoan SET Username = ? , Pass = ? , Role =  ? WHERE MaNV = ?";
     final String DELETE_SQL = "DELETE FROM TaiKhoan WHERE MaNV = ?";
     final String SELECT_ALL_SQL = "SELECT * FROM TaiKhoan";
@@ -24,12 +24,12 @@ public class TaiKhoanDAO extends MainDAO<TaiKhoan, String> {
     
     @Override
     public void insert(TaiKhoan entity) {
-        JdbcHelper.executeUpdate(INSERT_SQL, entity.getMaNV(), entity.getUsername(),entity.getPass(), entity.isRole());
+        JdbcHelper.executeUpdate(INSERT_SQL, entity.getMaNV(), entity.getUsername(),entity.getPass(), entity.getRole());
     }
 
     @Override
     public void update(TaiKhoan entity) {
-        JdbcHelper.executeUpdate(UPDATE_SQL, entity.getUsername(),entity.getPass(), entity.isRole(), entity.getMaNV());
+        JdbcHelper.executeUpdate(UPDATE_SQL, entity.getUsername(),entity.getPass(), entity.getRole(), entity.getMaNV());
     }
 
     @Override

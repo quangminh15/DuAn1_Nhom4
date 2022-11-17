@@ -20,6 +20,7 @@ public class ChiTietSanPhamDAO extends MainDAO<ChiTietSanPham, String> {
         final String DELETE_SQL = "DELETE FROM ChiTietSP WHERE MaCT = ?";
         final String SELECT_ALL_SQL = "SELECT * FROM ChiTietSP";
         final String SELECT_By_Id_SQL = "SELECT * FROM ChiTietSP WHERE MaCT = ?";
+        final String SELECT_By_Id_SQLL = "SELECT * FROM ChiTietSP WHERE MaSP = ?";
     @Override
     public void insert(ChiTietSanPham entity) {
         JdbcHelper.executeUpdate(INSERT_SQL, entity.getMaCT(), entity.getMaSP(), entity.getSize(), entity.getMauSac(), entity.getChatLieu(), entity.getGia());
@@ -49,6 +50,14 @@ public class ChiTietSanPhamDAO extends MainDAO<ChiTietSanPham, String> {
         return list.get(0);
     }
 
+    public ChiTietSanPham selectByIdd(String id) {
+        List<ChiTietSanPham> list = selectBySql(SELECT_By_Id_SQLL, id);
+        if(list.isEmpty()){
+            return null;
+        }
+        return list.get(0);
+    }
+    
     @Override
     public List<ChiTietSanPham> selectBySql(String sql, Object... args) {
         List<ChiTietSanPham> list = new ArrayList<ChiTietSanPham>();
