@@ -8,6 +8,7 @@ import com.nhom4.entity.HoaDonChiTiet;
 import java.sql.ResultSet;
 import java.util.List;
 import com.nhom4.utils.JdbcHelper;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -72,5 +73,18 @@ public class HoaDonChiTietDAO extends MainDAO<HoaDonChiTiet, String> {
         }
         return list;
     }
-
+    public List<String> selectMaCT(){
+        String sql = "Select maCT from ChiTietSP";
+        List<String> list = new ArrayList<>();
+        try {
+            ResultSet rs = JdbcHelper.executeQuery(sql);
+            while (rs.next()) {                
+                list.add(rs.getString(1));
+            }
+            rs.getStatement().getConnection().close();
+            return list;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
