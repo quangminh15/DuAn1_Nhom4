@@ -251,6 +251,11 @@ public class TaiKhoanQL extends javax.swing.JPanel {
         btnTimKiem.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
         btnTimKiem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/search (4).png"))); // NOI18N
         btnTimKiem.setText("Tìm kiếm");
+        btnTimKiem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTimKiemActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -448,6 +453,10 @@ public class TaiKhoanQL extends javax.swing.JPanel {
         clearForm();
         btnLuu.setEnabled(false);
     }//GEN-LAST:event_btnHuyActionPerformed
+
+    private void btnTimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimKiemActionPerformed
+        
+    }//GEN-LAST:event_btnTimKiemActionPerformed
 
     public void init() {        
         this.fillTable();

@@ -303,10 +303,25 @@ public class TaiKhoanCaNhan extends javax.swing.JPanel {
  
     public void init(){
         String maNv = Auth.isMaNV();
+        txtMaNV.setText(maNv);
+    }
+    
+    public void getForm(NhanVien nv){
+        try {           
+            txtTenNV.setText(nv.getTenNV());
+            rdoNam.setSelected(nv.getGioiTinh());
+            rdoNu.setSelected(!nv.getGioiTinh());
+            txtSDT.setText(nv.getSDT());
+            txtDiaChi.setText(nv.getDiaChi());
+            txtEmail.setText(nv.getEmail());
+        } catch (Exception e) {
+        }
     }
     
     public void fill(){
-     
+        String maNV = txtMaNV.getText();
+        NhanVien nv = nvDao.selectById(maNV);
+        this.getForm(nv);
     }
    
     
