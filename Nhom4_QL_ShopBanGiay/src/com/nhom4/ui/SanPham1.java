@@ -23,7 +23,7 @@ public class SanPham1 extends javax.swing.JPanel {
 
     SanPhamDAO spDao = new SanPhamDAO();
     ChiTietSanPhamDAO ctspDAO = new ChiTietSanPhamDAO();
-    JFileChooser fileChooser = new JFileChooser();
+    JFileChooser fileChooser = new JFileChooser(".//src//com//nhom4//icon//");
     /**
      * Creates new form SanPham
      */

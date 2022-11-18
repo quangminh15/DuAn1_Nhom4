@@ -186,7 +186,7 @@
                                               <Component id="txtMaNCC" max="32767" attributes="0"/>
                                           </Group>
                                       </Group>
-                                      <Component id="jScrollPane1" max="32767" attributes="0"/>
+                                      <Component id="jScrollPane1" pref="602" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
