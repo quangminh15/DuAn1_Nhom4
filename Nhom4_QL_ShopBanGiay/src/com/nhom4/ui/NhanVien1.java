@@ -9,7 +9,10 @@ import com.nhom4.dao.NhanVienDAO;
 import com.nhom4.entity.NhaCungCap;
 import com.nhom4.entity.NhanVien;
 import com.nhom4.utils.MsgBox;
+import com.nhom4.utils.XImage;
+import java.io.File;
 import java.util.List;
+import javax.swing.JFileChooser;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -25,10 +28,12 @@ public class NhanVien1 extends javax.swing.JPanel {
         initComponents();
         init();
         fillTable();
+        
     }
     NhanVienDAO dao = new NhanVienDAO();
     int row = -1;
     int them = 0;
+    JFileChooser fileChooser = new JFileChooser();
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -130,6 +135,11 @@ public class NhanVien1 extends javax.swing.JPanel {
 
         lblHinh.setText("Ảnh");
         lblHinh.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        lblHinh.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblHinhMouseClicked(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
         jLabel2.setText("Mã nhân viên");
@@ -351,7 +361,7 @@ public class NhanVien1 extends javax.swing.JPanel {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(42, 42, 42)
-                .addComponent(txttimKiem, javax.swing.GroupLayout.DEFAULT_SIZE, 689, Short.MAX_VALUE)
+                .addComponent(txttimKiem, javax.swing.GroupLayout.DEFAULT_SIZE, 691, Short.MAX_VALUE)
                 .addGap(28, 28, 28)
                 .addComponent(btntimKiem)
                 .addGap(33, 33, 33))
@@ -431,8 +441,9 @@ public class NhanVien1 extends javax.swing.JPanel {
             btnLuu.setEnabled(true);
             txtmaNhanVien.setText("");
             txttenNhanVien.setText("");
-            rdoGioiTinhNam.setText("");
+            rdoGioiTinhNam.isSelected();
             txtsoDienSo.setText("");
+            txtdiaChi.setText("");
             txtEmail.setText("");
             lblHinh.setText("");
             
@@ -500,6 +511,10 @@ first();
     private void btntimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btntimKiemActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btntimKiemActionPerformed
+
+    private void lblHinhMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHinhMouseClicked
+         this.selectImage();
+    }//GEN-LAST:event_lblHinhMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -618,11 +633,21 @@ first();
             }
     }
     
+    void selectImage() {
+        if (fileChooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
+            File file = fileChooser.getSelectedFile();
+            if (XImage.save(file)) {
+                // Hiển thị hình lên form
+                lblHinh.setIcon(XImage.read(file.getName()));
+                lblHinh.setToolTipText(file.getName());
+            }
+        }
+    }
     public void clearForm() {
         NhanVien nv = new NhanVien();
         this.setForm(nv);
         this.row = -1;
-//        this.updateStatus();
+        this.updateStatus();
     }
     
     public void setForm(NhanVien nv) {
@@ -632,7 +657,10 @@ first();
          rdoGioiTinhNu.setSelected(!nv.getGioiTinh());
         txtsoDienSo.setText(nv.getSDT());
         txtEmail.setText(nv.getEmail());
-        lblHinh.setText(nv.getHinh());
+        lblHinh.setToolTipText(nv.getHinh());
+        if (nv.getHinh()!= null) {
+            lblHinh.setIcon(XImage.read(nv.getHinh()));
+        }
         txtdiaChi.setText(nv.getDiaChi());
         
     }
@@ -641,10 +669,10 @@ first();
         NhanVien nv = new NhanVien();
         nv.setMaNV(txtmaNhanVien.getText());
         nv.setTenNV(txttenNhanVien.getText());
-        nv.setTenNV(rdoGioiTinhNam.getText());
+        nv.setGioiTinh(rdoGioiTinhNam.isSelected());
         nv.setSDT(txtsoDienSo.getText());
         nv.setEmail(txtEmail.getText());
-        nv.setHinh(lblHinh.getText());
+        nv.setHinh(lblHinh.getToolTipText());
         nv.setDiaChi(txtdiaChi.getText());
         
         return nv;
