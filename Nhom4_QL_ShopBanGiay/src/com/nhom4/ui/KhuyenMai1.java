@@ -8,6 +8,7 @@ import com.nhom4.dao.KhuyenMaiDAO;
 import com.nhom4.entity.KhuyenMai;
 import com.nhom4.utils.MsgBox;
 import com.nhom4.utils.XDate;
+import java.awt.Color;
 import java.util.Date;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
@@ -27,7 +28,7 @@ public class KhuyenMai1 extends javax.swing.JPanel {
     }
     
     KhuyenMaiDAO dao = new KhuyenMaiDAO();
-    int row = -1;
+    int row = 0;
     int them = 0;
 
     /**
