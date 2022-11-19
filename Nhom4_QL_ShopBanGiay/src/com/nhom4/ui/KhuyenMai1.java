@@ -545,8 +545,8 @@ public class KhuyenMai1 extends javax.swing.JPanel {
             txtMaKM.setText(km.getMaKM());
             txtTenKM.setText(km.getTenKM());
             txtGiamGia.setText(String.valueOf(km.getGiamGia())); 
-            txtNgayBD.setDate(XDate.toDate(km.getNgayBD().toString(), "dd-MM-yyyy"));                        
-            txtNgayKT.setDate(XDate.toDate(km.getNgayKT().toString(), "dd-MM-yyyy"));
+            txtNgayBD.setDate(XDate.toDate(km.getNgayBD().toString(), "yyyy-MM-dd"));                        
+            txtNgayKT.setDate(XDate.toDate(km.getNgayKT().toString(), "yyyy-MM-dd"));
 //            txtNgayKT.setDateFormatString(XDate.toString(km.getNgayKT(), "dd-MM-yyyy"));
             txtGhiChu.setText(km.getGhiChu());
         } catch (Exception e) {
@@ -559,8 +559,8 @@ public class KhuyenMai1 extends javax.swing.JPanel {
         km.setMaKM(txtMaKM.getText());
         km.setTenKM(txtTenKM.getText());
         km.setGiamGia(Float.valueOf(txtGiamGia.getText()));
-        km.setNgayBD(XDate.toDate(txtNgayBD.getDate().toString(),"dd-MM-yyyy"));
-        km.setNgayKT(XDate.toDate(txtNgayKT.getDate().toString(),"dd-MM-yyyy"));
+        km.setNgayBD(XDate.toDate(txtNgayBD.getDate().toString(),"yyyy-MM-dd"));
+        km.setNgayKT(XDate.toDate(txtNgayKT.getDate().toString(),"yyyy-MM-dd"));
         km.setGhiChu(txtGhiChu.getText());
         return km;
     }
