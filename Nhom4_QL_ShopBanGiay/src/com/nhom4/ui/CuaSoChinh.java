@@ -18,6 +18,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JPanel;
 import javax.swing.Timer;
+import com.nhom4.ui.DangNhap;
 
 /**
  *
@@ -316,6 +317,7 @@ public class CuaSoChinh extends javax.swing.JFrame {
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
         this.opendTaiKhoanQL();
+        
     }//GEN-LAST:event_jLabel3MouseClicked
 
     /**
