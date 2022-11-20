@@ -29,6 +29,7 @@ public class DangNhap extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         init();
+        
     }
     
     class jPanelGradient extends JPanel {
@@ -58,8 +59,9 @@ public class DangNhap extends javax.swing.JDialog {
         jPanel1 = new jPanelGradient();
         pnlForm = new javax.swing.JPanel();
         lblTitle = new javax.swing.JLabel();
-        lblMatKhau = new javax.swing.JLabel();
+        lblUserName = new javax.swing.JLabel();
         txtMaNV = new javax.swing.JTextField();
+        lblMatKhau = new javax.swing.JLabel();
         txtMatKhau = new javax.swing.JPasswordField();
         btnKetThuc = new javax.swing.JButton();
         btnDangNhap = new javax.swing.JButton();
@@ -76,10 +78,10 @@ public class DangNhap extends javax.swing.JDialog {
         lblTitle.setText("ĐĂNG NHẬP");
         pnlForm.add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 30, 240, 39));
 
-        lblMatKhau.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        lblMatKhau.setForeground(new java.awt.Color(102, 102, 102));
-        lblMatKhau.setText("Mat Khau");
-        pnlForm.add(lblMatKhau, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 180, -1, -1));
+        lblUserName.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblUserName.setForeground(new java.awt.Color(102, 102, 102));
+        lblUserName.setText("Ten Dang Nhap");
+        pnlForm.add(lblUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 130, -1, -1));
 
         txtMaNV.setBackground(new java.awt.Color(231, 231, 231));
         txtMaNV.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -101,7 +103,17 @@ public class DangNhap extends javax.swing.JDialog {
                 txtMaNVActionPerformed(evt);
             }
         });
+        txtMaNV.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtMaNVKeyTyped(evt);
+            }
+        });
         pnlForm.add(txtMaNV, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 360, 60));
+
+        lblMatKhau.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblMatKhau.setForeground(new java.awt.Color(102, 102, 102));
+        lblMatKhau.setText("Mat Khau");
+        pnlForm.add(lblMatKhau, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 200, -1, -1));
 
         txtMatKhau.setBackground(new java.awt.Color(229, 229, 229));
         txtMatKhau.setForeground(new java.awt.Color(102, 102, 102));
@@ -115,6 +127,11 @@ public class DangNhap extends javax.swing.JDialog {
         txtMatKhau.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txtMatKhauMouseClicked(evt);
+            }
+        });
+        txtMatKhau.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtMatKhauKeyTyped(evt);
             }
         });
         pnlForm.add(txtMatKhau, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 360, 64));
@@ -184,13 +201,13 @@ public class DangNhap extends javax.swing.JDialog {
 
     private void txtMatKhauFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtMatKhauFocusLost
         if(txtMatKhau.getText().equals(""))
-        lblMatKhau.setVisible(true);
+        lblUserName.setVisible(true);
         //         else
         //             lblMatKhau.setVisible(false);
     }//GEN-LAST:event_txtMatKhauFocusLost
 
     private void txtMatKhauMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtMatKhauMouseClicked
-        lblMatKhau.setVisible(false);
+        //lblUserName.setVisible(false);
     }//GEN-LAST:event_txtMatKhauMouseClicked
 
     private void btnKetThucActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKetThucActionPerformed
@@ -201,6 +218,22 @@ public class DangNhap extends javax.swing.JDialog {
         this.dangNhap();
     }//GEN-LAST:event_btnDangNhapActionPerformed
 
+    private void txtMaNVKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMaNVKeyTyped
+       if(txtMaNV.getText().equals("")){
+           lblUserName.setVisible(true);
+       }
+       else
+           lblUserName.setVisible(false);
+    }//GEN-LAST:event_txtMaNVKeyTyped
+
+    private void txtMatKhauKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMatKhauKeyTyped
+       if(txtMatKhau.getText().equals("")){
+           lblMatKhau.setVisible(true);
+       }
+       else
+           lblMatKhau.setVisible(false);
+    }//GEN-LAST:event_txtMatKhauKeyTyped
+    
     /**
      * @param args the command line arguments
      */
@@ -245,6 +278,7 @@ public class DangNhap extends javax.swing.JDialog {
 
     private void init() {
          this.setLocationRelativeTo(null);
+         //lblUserName.setVisible(false);
     }
     
 void dangNhap() {
@@ -276,6 +310,7 @@ void dangNhap() {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblMatKhau;
     private javax.swing.JLabel lblTitle;
+    private javax.swing.JLabel lblUserName;
     private javax.swing.JPanel pnlForm;
     private javax.swing.JTextField txtMaNV;
     private javax.swing.JPasswordField txtMatKhau;
