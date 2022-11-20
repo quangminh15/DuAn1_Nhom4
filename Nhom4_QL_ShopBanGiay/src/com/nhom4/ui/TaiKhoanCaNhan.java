@@ -4,19 +4,32 @@
  */
 package com.nhom4.ui;
 
+import com.nhom4.dao.NhanVienDAO;
+import com.nhom4.entity.NhanVien;
+import com.nhom4.entity.TaiKhoan;
+import com.nhom4.utils.MsgBox;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+import com.nhom4.utils.Auth;
+import java.util.ArrayList;
+
 /**
  *
  * @author Hai
  */
 public class TaiKhoanCaNhan extends javax.swing.JPanel {
-
+      NhanVienDAO nvDao = new NhanVienDAO();
+      NhanVien nhanVien = new NhanVien();
+              
     /**
      * Creates new form TaiKhoanCaNhan
      */
     
     public TaiKhoanCaNhan() {
         initComponents();
-//        this.init();
+        this.init();
+        txtMaNV.setEditable(false);
+        fill();
     }
     
 
@@ -287,8 +300,31 @@ public class TaiKhoanCaNhan extends javax.swing.JPanel {
     private void btnThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThoatActionPerformed
         
     }//GEN-LAST:event_btnThoatActionPerformed
-
-
+ 
+    public void init(){
+        String maNv = Auth.isMaNV();
+        txtMaNV.setText(maNv);
+    }
+    
+    public void getForm(NhanVien nv){
+        try {           
+            txtTenNV.setText(nv.getTenNV());
+            rdoNam.setSelected(nv.getGioiTinh());
+            rdoNu.setSelected(!nv.getGioiTinh());
+            txtSDT.setText(nv.getSDT());
+            txtDiaChi.setText(nv.getDiaChi());
+            txtEmail.setText(nv.getEmail());
+        } catch (Exception e) {
+        }
+    }
+    
+    public void fill(){
+        String maNV = txtMaNV.getText();
+        NhanVien nv = nvDao.selectById(maNV);
+        this.getForm(nv);
+    }
+   
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDoiMK;
     private javax.swing.JButton btnLuu;

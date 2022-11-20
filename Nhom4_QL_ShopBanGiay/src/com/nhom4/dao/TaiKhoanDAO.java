@@ -4,9 +4,11 @@
  */
 package com.nhom4.dao;
 
+import com.nhom4.entity.NhanVien;
 import com.nhom4.entity.TaiKhoan;
 import com.nhom4.utils.JdbcHelper;
 import java.sql.ResultSet;
+import java.util.AbstractList;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,6 +22,7 @@ public class TaiKhoanDAO extends MainDAO<TaiKhoan, String> {
     final String DELETE_SQL = "DELETE FROM TaiKhoan WHERE MaNV = ?";
     final String SELECT_ALL_SQL = "SELECT * FROM TaiKhoan";
     final String SELECT_By_Id_SQL = "SELECT * FROM TaiKhoan WHERE Username = ?";
+    
     
     
     @Override
@@ -69,5 +72,6 @@ public class TaiKhoanDAO extends MainDAO<TaiKhoan, String> {
         }
         return list;
     }
+    
     
 }

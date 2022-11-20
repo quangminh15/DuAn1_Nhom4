@@ -13,7 +13,7 @@ import com.nhom4.entity.TaiKhoan;
  *
  * @author ACER
  */
-public class Auth {
+public class Auth{
     public static TaiKhoan user = null;
     
     public static void clear(){
@@ -26,5 +26,9 @@ public class Auth {
     
     public static boolean isManager(){
         return Auth.islogin() && user.getRole();
+    }
+    
+    public static String isMaNV(){
+        return user.getMaNV();
     }
 }
