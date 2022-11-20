@@ -935,11 +935,17 @@
                       <Color id="Default Cursor"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnResetActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="btnCapNhat">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="S&#x1eed;a"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCapNhatActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="btnDelete">
                   <Properties>
@@ -950,11 +956,17 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="L&#x1b0;u"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSaveActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="btnHuyy">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="H&#x1ee7;y"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnHuyyActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>

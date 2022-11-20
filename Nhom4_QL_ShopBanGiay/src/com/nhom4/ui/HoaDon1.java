@@ -8,6 +8,7 @@ import com.nhom4.dao.HoaDonChiTietDAO;
 import com.nhom4.dao.HoaDonDAO;
 import com.nhom4.dao.KhachHangDAO;
 import com.nhom4.dao.NhanVienDAO;
+import com.nhom4.dao.SanPhamDAO;
 import com.nhom4.entity.ChiTietSanPham;
 import com.nhom4.entity.HoaDon;
 import com.nhom4.entity.NhanVien;
@@ -36,6 +37,7 @@ public class HoaDon1 extends javax.swing.JPanel {
     HoaDonDAO hdDAO = new HoaDonDAO();
     ChiTietSanPhamDAO spctDAO = new ChiTietSanPhamDAO();
     HoaDonChiTietDAO hdctDAO = new HoaDonChiTietDAO();
+    SanPhamDAO spDAO = new SanPhamDAO();
             
     private void init() {
         fillCboNV();
@@ -46,7 +48,8 @@ public class HoaDon1 extends javax.swing.JPanel {
         fillCboMaCT();
         btnSave.setEnabled(false);
         setStatus(false);
-
+        thanhTien();
+        fill();
     }
 
     /**
@@ -163,23 +166,24 @@ public class HoaDon1 extends javax.swing.JPanel {
             if (buttonNew == b) {
                 txtMaHD.setEditable(b);
                 
-            }else
-                txtMaHD.setEditable(b);
+            }if(buttonSave==true){
+                txtMaHD.setEditable(false);
+            }
                 cboMaKH.setEditable(b);
                 cboMaKM.setEditable(b);
                 cboMaNV.setEditable(b);
-
+            
         }
     }
 
     HoaDon getForm() {
         HoaDon hd = new HoaDon();
         hd.setMaHD(txtMaHD.getText());
-        hd.setMaNV(String.valueOf(cboMaNV.getSelectedItem()));
-        hd.setMaKH(String.valueOf(cboMaKH.getSelectedItem()));
-        hd.setMaKM(String.valueOf(cboMaKM.getSelectedItem()));
+        hd.setMaNV(String.valueOf(cboMaNV.getSelectedItem().toString()));
+        hd.setMaKH(String.valueOf(cboMaKH.getSelectedItem().toString()));
+        hd.setMaKM(String.valueOf(cboMaKM.getSelectedItem().toString()));
         return hd;
-        //System.out.println(java.time.LocalDate.now());
+        
     }
 
     public void setForm(int index) {
@@ -212,9 +216,16 @@ public class HoaDon1 extends javax.swing.JPanel {
         }
 
     }
+    public void setTenSP(SanPham sp){
+        try{
+            txtTenSP.setText(sp.getTenSP());
+        }catch(Exception e){
+            
+        }
+        
+    }
     public void setFormHDCT(ChiTietSanPham ct){
         try{
-        txtTenSP.setText(ct.getMaSP());
         txtSize.setText(String.valueOf(ct.getSize()));
         txtMau.setText(ct.getMauSac());
         txtDonGia.setText(String.valueOf(ct.getGia()));
@@ -225,7 +236,24 @@ public class HoaDon1 extends javax.swing.JPanel {
     public void fill(){
         String maCT = (String)cboMaCT.getSelectedItem();
         ChiTietSanPham ct = spctDAO.selectById(maCT);
+        try {
+            String ten = ct.getMaSP();
+            SanPham sp = spDAO.selectById(ten);
+        this.setTenSP(sp);
+        } catch (Exception e) {
+        }
         this.setFormHDCT(ct);
+    }
+    public void thanhTien(){
+        double sl = Float.parseFloat(cboSL.getSelectedItem().toString());
+        double gia=0;
+        try {
+            gia = Double.parseDouble(txtDonGia.getText());
+        } catch (Exception e) {
+        }
+        
+        
+        txtThanhTien.setText(String.valueOf(sl*gia));
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -262,10 +290,10 @@ public class HoaDon1 extends javax.swing.JPanel {
         txtMau = new javax.swing.JTextField();
         txtTenSP = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        cboSL = new javax.swing.JComboBox<>();
         txtDonGia = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        txtThanhTien = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblHDCT = new javax.swing.JTable();
@@ -302,6 +330,9 @@ public class HoaDon1 extends javax.swing.JPanel {
         tblHoaDon.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblHoaDonMouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                tblHoaDonMousePressed(evt);
             }
         });
         jScrollPane1.setViewportView(tblHoaDon);
@@ -454,7 +485,12 @@ public class HoaDon1 extends javax.swing.JPanel {
 
         jLabel10.setText("TenSP");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" }));
+        cboSL.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" }));
+        cboSL.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cboSLItemStateChanged(evt);
+            }
+        });
 
         txtDonGia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -518,12 +554,12 @@ public class HoaDon1 extends javax.swing.JPanel {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtThanhTien, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtDonGia, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtTenSP, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(cboMaCT, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(cboSL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 143, Short.MAX_VALUE)
                                 .addComponent(jLabel8)
                                 .addGap(18, 18, 18)
@@ -541,10 +577,10 @@ public class HoaDon1 extends javax.swing.JPanel {
                             .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                             .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                         .addGap(97, 97, 97))))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(252, 252, 252)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 737, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(266, 266, 266))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -571,17 +607,15 @@ public class HoaDon1 extends javax.swing.JPanel {
                             .addComponent(jLabel5)
                             .addComponent(jLabel8)
                             .addComponent(jLabel9)
-                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(cboSL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtDonGia, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel11))
                         .addGap(16, 16, 16)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel12))
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtThanhTien, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel12)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton1)
@@ -591,6 +625,8 @@ public class HoaDon1 extends javax.swing.JPanel {
                         .addComponent(jButton2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton4)))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(74, Short.MAX_VALUE))
         );
 
@@ -624,7 +660,7 @@ public class HoaDon1 extends javax.swing.JPanel {
         buttonSave = true;
         buttonUpdate = true;
         statusBtn(buttonSave);
-        setStatus(true);
+        setStatus(false);
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
@@ -637,10 +673,7 @@ public class HoaDon1 extends javax.swing.JPanel {
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void tblHoaDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblHoaDonMouseClicked
-        if (evt.getClickCount() > 1) {
-            jTabbedPane1.setSelectedComponent(jPanel2);
-        }
-        int i = tblHoaDon.getSelectedRow();
+         int i = tblHoaDon.getSelectedRow();
         this.setForm(i);
         
     }//GEN-LAST:event_tblHoaDonMouseClicked
@@ -654,8 +687,19 @@ public class HoaDon1 extends javax.swing.JPanel {
     }//GEN-LAST:event_txtDonGiaActionPerformed
     
     private void cboMaCTItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboMaCTItemStateChanged
-        fill();
+        fill();thanhTien();
     }//GEN-LAST:event_cboMaCTItemStateChanged
+
+    private void cboSLItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboSLItemStateChanged
+       thanhTien();
+    }//GEN-LAST:event_cboSLItemStateChanged
+
+    private void tblHoaDonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblHoaDonMousePressed
+       if (evt.getClickCount() == 2) {
+            jTabbedPane1.setSelectedComponent(jPanel2);
+        }
+       
+    }//GEN-LAST:event_tblHoaDonMousePressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -668,11 +712,11 @@ public class HoaDon1 extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> cboMaKH;
     private javax.swing.JComboBox<String> cboMaKM;
     private javax.swing.JComboBox<String> cboMaNV;
+    private javax.swing.JComboBox<String> cboSL;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -691,7 +735,6 @@ public class HoaDon1 extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JLabel lblMaHD;
@@ -702,5 +745,6 @@ public class HoaDon1 extends javax.swing.JPanel {
     private javax.swing.JTextField txtMau;
     private javax.swing.JTextField txtSize;
     private javax.swing.JTextField txtTenSP;
+    private javax.swing.JTextField txtThanhTien;
     // End of variables declaration//GEN-END:variables
 }
