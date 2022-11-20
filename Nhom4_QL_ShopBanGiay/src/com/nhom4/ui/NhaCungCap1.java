@@ -9,6 +9,8 @@ import com.nhom4.entity.NhaCungCap;
 import com.nhom4.utils.Auth;
 import com.nhom4.utils.MsgBox;
 import com.sun.source.tree.BreakTree;
+import java.awt.Color;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
@@ -23,8 +25,9 @@ public class NhaCungCap1 extends javax.swing.JPanel {
      */
     
     NhaCungCapDAO dao = new NhaCungCapDAO();
-    int row = -1;
+    int row = 0;
     int them = 0;
+    ArrayList<NhaCungCap> listNCC = new ArrayList<>();
     public NhaCungCap1() {
         initComponents();
         init();
@@ -274,6 +277,7 @@ public class NhaCungCap1 extends javax.swing.JPanel {
         if (evt.getClickCount() == 1) {
             this.row = tblNCC.getSelectedRow();
             this.edit();
+            tblNCC.setSelectionBackground(new Color(0, 156, 222));
         }
     }//GEN-LAST:event_tblNCCMouseClicked
 
@@ -293,6 +297,7 @@ public class NhaCungCap1 extends javax.swing.JPanel {
             btnXoa.setEnabled(false);
             btnLuu.setEnabled(true);
             txtON();
+            txtMaNCC.setEditable(false);
     }//GEN-LAST:event_btnSuaActionPerformed
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
@@ -459,28 +464,68 @@ public class NhaCungCap1 extends javax.swing.JPanel {
         this.updateStatus();
     }
     
+    public void Dislay(int i) {
+        NhaCungCap v = listNCC.get(i);
+        txtMaNCC.setText(v.getMaNCC());
+        txtTenNCC.setText(v.getTenNCC());
+    }
+    
     public void first() {
-        this.row = 0;
+        try {
+            this.row = 0;
+        tblNCC.setSelectionBackground(new Color(0, 156, 222));
+        tblNCC.setRowSelectionInterval(row, row);
         this.edit();
+        Dislay(row);
+        } catch (Exception e) {
+            return;
+        }
+        
     }
     
     public void prev() {
-        if (this.row > 0) {
+        try {
+            if (this.row > 0) {
             this.row--;
             this.edit();
+        }
+        tblNCC.setSelectionBackground(new Color(0, 156, 222));
+        tblNCC.setRowSelectionInterval(row, row);
+        Dislay(row);
+        } catch (Exception e) {
+            if (row < 0) {
+            return;
+        }
         }
     }
     
     public void next() {
-        if (this.row < tblNCC.getRowCount() - 1) {
+        try {
+            if (this.row < tblNCC.getRowCount() - 1) {
             this.row++;
             this.edit();
+        }
+        tblNCC.setSelectionBackground(new Color(0, 156, 222));
+        tblNCC.setRowSelectionInterval(row, row);
+        Dislay(row);
+        } catch (Exception e) {
+            if (this.row == tblNCC.getRowCount() - 1) {
+            return;
+        }
         }
     }
     
     public void last() {
-        this.row = tblNCC.getRowCount() - 1;
+        try {
+            this.row = tblNCC.getRowCount() - 1;
         this.edit();
+        tblNCC.setSelectionBackground(new Color(0, 156, 222));
+        tblNCC.setRowSelectionInterval(row, row);
+        Dislay(row);
+        } catch (Exception e) {
+            return;
+        }
+        
     }
     
     public void txtOFF(){
