@@ -4,6 +4,7 @@
  */
 package com.nhom4.ui;
 
+
 import com.nhom4.utils.Auth;
 import com.nhom4.utils.MsgBox;
 import com.nhom4.utils.XImage;
@@ -19,6 +20,7 @@ import java.util.Date;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 import com.nhom4.ui.DangNhap;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -29,11 +31,13 @@ public class CuaSoChinh extends javax.swing.JFrame {
     /**
      * Creates new form CuaSoChinh
      */
+   
     public CuaSoChinh() {
         initComponents();
         init();
-        
+
     }
+    private int img = 0;
 
     class jPanelGradient extends JPanel {
 
@@ -49,6 +53,7 @@ public class CuaSoChinh extends javax.swing.JFrame {
             g2d.fillRect(0, 0, width, height);
         }
     }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -70,9 +75,10 @@ public class CuaSoChinh extends javax.swing.JFrame {
         lblTK = new javax.swing.JLabel();
         jPanel4 = new jPanelGradient();
         lblDongHo = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
         pnlCardPane = new javax.swing.JPanel();
         pnlHome = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
+        lblBanner1 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
 
@@ -200,59 +206,50 @@ public class CuaSoChinh extends javax.swing.JFrame {
         lblDongHo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblDongHo.setText("00 : 00 : 00");
 
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/home-icon-silhouette.png"))); // NOI18N
+        jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel7MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(36, 36, 36)
+                .addGap(45, 45, 45)
+                .addComponent(jLabel7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblDongHo, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(984, Short.MAX_VALUE))
+                .addContainerGap(937, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addGap(0, 10, Short.MAX_VALUE)
                 .addComponent(lblDongHo, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel7)
+                .addGap(17, 17, 17))
         );
 
-        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(264, 0, 1290, 60));
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(264, 0, 1290, 70));
 
         pnlCardPane.setLayout(new java.awt.CardLayout());
 
         pnlHome.setBackground(new java.awt.Color(255, 255, 255));
+        pnlHome.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/bn1.png"))); // NOI18N
+        lblBanner1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/a1.png"))); // NOI18N
+        pnlHome.add(lblBanner1, new org.netbeans.lib.awtextra.AbsoluteConstraints(98, 41, -1, -1));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/bn2.png"))); // NOI18N
+        pnlHome.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(958, 41, -1, 469));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/bn3.png"))); // NOI18N
-
-        javax.swing.GroupLayout pnlHomeLayout = new javax.swing.GroupLayout(pnlHome);
-        pnlHome.setLayout(pnlHomeLayout);
-        pnlHomeLayout.setHorizontalGroup(
-            pnlHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlHomeLayout.createSequentialGroup()
-                .addGap(98, 98, 98)
-                .addGroup(pnlHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel6)
-                    .addGroup(pnlHomeLayout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addGap(28, 28, 28)
-                        .addComponent(jLabel5)))
-                .addContainerGap(129, Short.MAX_VALUE))
-        );
-        pnlHomeLayout.setVerticalGroup(
-            pnlHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlHomeLayout.createSequentialGroup()
-                .addGap(41, 41, 41)
-                .addGroup(pnlHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 469, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
-                .addComponent(jLabel6)
-                .addContainerGap(342, Short.MAX_VALUE))
-        );
+        pnlHome.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(98, 536, -1, -1));
 
         pnlCardPane.add(pnlHome, "card2");
 
@@ -273,13 +270,13 @@ public class CuaSoChinh extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    public void changePanel(JPanel pn){
+    public void changePanel(JPanel pn) {
         pnlCardPane.removeAll();
         pnlCardPane.add(pn);
         pnlCardPane.repaint();
         pnlCardPane.revalidate();
     }
-    
+
     private void lblNhanVienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNhanVienMouseClicked
         NhanVien1 nv = new NhanVien1();
         changePanel(nv);
@@ -296,7 +293,7 @@ public class CuaSoChinh extends javax.swing.JFrame {
     }//GEN-LAST:event_lblKHMouseClicked
 
     private void lblHDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHDMouseClicked
-       HoaDon1 hd = new HoaDon1();
+        HoaDon1 hd = new HoaDon1();
         changePanel(hd);
     }//GEN-LAST:event_lblHDMouseClicked
 
@@ -311,14 +308,18 @@ public class CuaSoChinh extends javax.swing.JFrame {
     }//GEN-LAST:event_lblKMMouseClicked
 
     private void lblTKMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblTKMouseClicked
-       ThongKe tK = new ThongKe();
+        ThongKe tK = new ThongKe();
         changePanel(tK);
     }//GEN-LAST:event_lblTKMouseClicked
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
         this.opendTaiKhoanQL();
-        
+
     }//GEN-LAST:event_jLabel3MouseClicked
+
+    private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
+        changePanel(pnlHome);
+    }//GEN-LAST:event_jLabel7MouseClicked
 
     /**
      * @param args the command line arguments
@@ -361,7 +362,7 @@ public class CuaSoChinh extends javax.swing.JFrame {
 //        new ChaoJDialog(this, true).setVisible(true);
         new DangNhap(this, true).setVisible(true);
 //        new DoiMatKhau(this, true).setVisible(true);
-        
+
         new Timer(1000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -371,34 +372,56 @@ public class CuaSoChinh extends javax.swing.JFrame {
                 lblDongHo.setText(text);
             }
         }).start();
+        bner();
+        
     }
-    
-    public void opendTaiKhoanQL(){
-        if(Auth.islogin()){
-        if(!Auth.isManager()){
-            TaiKhoanCaNhan tkcn = new TaiKhoanCaNhan();
-            changePanel(tkcn);           
-        }else{
-            TaiKhoanQL tkql = new TaiKhoanQL();
-            changePanel(tkql);
-        }
-        }else{
+
+    public void bner() {
+        new Timer(3000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                img++;
+                lblBanner1.setIcon(new ImageIcon("src\\com\\nhom4\\icon\\a" + img + ".png"));
+                if (img == 3) {
+                    img = 0;
+                }
+
+            }
+        }).start();
+
+    }
+
+    public void opendTaiKhoanQL() {
+        if (Auth.islogin()) {
+            if (!Auth.isManager()) {
+                TaiKhoanCaNhan tkcn = new TaiKhoanCaNhan();
+                changePanel(tkcn);
+            } else {
+                TaiKhoanQL tkql = new TaiKhoanQL();
+                changePanel(tkql);
+            }
+        } else {
             MsgBox.alert(this, "Vui lòng đăng nhập");
         }
     }
+
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JLabel lblAdmin;
+    private javax.swing.JLabel lblBanner1;
     private javax.swing.JLabel lblDongHo;
     private javax.swing.JLabel lblHD;
     private javax.swing.JLabel lblKH;
@@ -412,4 +435,3 @@ public class CuaSoChinh extends javax.swing.JFrame {
     private javax.swing.JPanel pnlHome;
     // End of variables declaration//GEN-END:variables
 }
-
