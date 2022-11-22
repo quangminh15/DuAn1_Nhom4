@@ -562,7 +562,7 @@ public class KhuyenMai1 extends javax.swing.JPanel {
         model.setRowCount(0);
         try {
             String key = txtTimKiem.getText();
-            List<KhuyenMai> list = dao.selectByKeyword(key); // Đọc dữ liệu từ CSDL
+            List<KhuyenMai> list = dao.selectByKeyword(key);
             for (KhuyenMai nh : list) {
                 Object[] data = {
                     nh.getMaKM(),
