@@ -422,6 +422,20 @@ public void opennhanvien(){
     
 
 
+    public void opennhanvien() {
+        if (Auth.islogin()) {
+            if (!Auth.isManager()) {
+                MsgBox.alert(this, "Ban khong co quyen xem nhan vien");
+            } else {
+                NhanVien1 nv = new NhanVien1();
+                changePanel(nv);
+            }
+        } else {
+            MsgBox.alert(this, "Vui lòng đăng nhập");
+        }
+    }
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
