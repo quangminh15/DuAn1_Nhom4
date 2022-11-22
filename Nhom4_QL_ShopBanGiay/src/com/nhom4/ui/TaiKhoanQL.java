@@ -455,9 +455,16 @@ public class TaiKhoanQL extends javax.swing.JPanel {
     }//GEN-LAST:event_btnHuyActionPerformed
 
     private void btnTimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimKiemActionPerformed
-        
+        TimKiem();
     }//GEN-LAST:event_btnTimKiemActionPerformed
 
+    public void TimKiem() {
+        this.fillTable();
+        this.clearForm();
+        this.row = -1;
+        updateStatus();
+    }
+    
     public void init() {        
         this.fillTable();
         this.row = -1;
