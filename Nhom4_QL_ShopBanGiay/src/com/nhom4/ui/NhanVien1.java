@@ -702,12 +702,14 @@ first();
     
     public void first() {
         this.row = 0;
+        tblnhanVien.setRowSelectionInterval(row, row);
         this.edit();
     }
     
     public void prev() {
         if (this.row > 0) {
             this.row--;
+             tblnhanVien.setRowSelectionInterval(row, row);
             this.edit();
         }
     }
@@ -715,12 +717,14 @@ first();
     public void next() {
         if (this.row < tblnhanVien.getRowCount() - 1) {
             this.row++;
+             tblnhanVien.setRowSelectionInterval(row, row);
             this.edit();
         }
     }
     
     public void last() {
         this.row = tblnhanVien.getRowCount() - 1;
+         tblnhanVien.setRowSelectionInterval(row, row);
         this.edit();
     }
     

@@ -568,12 +568,14 @@ public class KhachHang1 extends javax.swing.JPanel {
     
     public void first() {
         this.row = 0;
+        tblkhachHang.setRowSelectionInterval(row, row);
         this.edit();
     }
     
     public void prev() {
         if (this.row > 0) {
             this.row--;
+            tblkhachHang.setRowSelectionInterval(row, row);
             this.edit();
         }
     }
@@ -581,12 +583,14 @@ public class KhachHang1 extends javax.swing.JPanel {
     public void next() {
         if (this.row < tblkhachHang.getRowCount() - 1) {
             this.row++;
+            tblkhachHang.setRowSelectionInterval(row, row);
             this.edit();
         }
     }
     
     public void last() {
         this.row = tblkhachHang.getRowCount() - 1;
+        tblkhachHang.setRowSelectionInterval(row, row);
         this.edit();
     }
     public void txtOFF(){
