@@ -15,7 +15,7 @@ import java.sql.*;
  */
 public class NhanVienDAO extends MainDAO <NhanVien, String> {
     final String INSERT_SQL = "insert into NhanVien(MaNV,TenNV,GioiTinh,SDT,Email,Hinh,DiaChi) Values(?,?,?,?,?,?,?)";
-    final String UPDATE_SQL = "UpdateNhanViensetTenNV=?,GioiTinh=?,SDT=?,Email=?,Hinh=?,DiaChi=? where MaNV = ?";
+    final String UPDATE_SQL = "Update NhanVien set TenNV=?,GioiTinh=?,SDT=?,Email=?,Hinh=?,DiaChi=? where MaNV = ?";
     final String DELETE_SQL = "delete from NhanVien where MaNV = ?";
     final String SELECT_ALL_SQL = "select * from NhanVien";
     final String SELECT_By_Id_SQL = "select * from NhanVien where MaNV=?";
