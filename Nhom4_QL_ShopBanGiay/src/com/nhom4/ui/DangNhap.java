@@ -65,8 +65,6 @@ public class DangNhap extends javax.swing.JDialog {
         txtMaNV = new javax.swing.JTextField();
         lblMatKhau = new javax.swing.JLabel();
         txtMatKhau = new javax.swing.JPasswordField();
-        btnKetThuc = new javax.swing.JButton();
-        btnDangNhap = new javax.swing.JButton();
         lblLogin = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
@@ -155,29 +153,11 @@ public class DangNhap extends javax.swing.JDialog {
         });
         pnlForm.add(txtMatKhau, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 270, 460, 50));
 
-        btnKetThuc.setText("Kết thúc");
-        btnKetThuc.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnKetThucActionPerformed(evt);
-            }
-        });
-        pnlForm.add(btnKetThuc, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 460, 170, 42));
-
-        btnDangNhap.setText("Đăng nhập");
-        btnDangNhap.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnDangNhapMouseEntered(evt);
-            }
-        });
-        btnDangNhap.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDangNhapActionPerformed(evt);
-            }
-        });
-        pnlForm.add(btnDangNhap, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 520, 170, 42));
-
         lblLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/btnLog1.png"))); // NOI18N
         lblLogin.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblLoginMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 lblLoginMouseEntered(evt);
             }
@@ -206,6 +186,9 @@ public class DangNhap extends javax.swing.JDialog {
 
         lblOut.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/out.png"))); // NOI18N
         lblOut.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblOutMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 lblOutMouseEntered(evt);
             }
@@ -213,7 +196,7 @@ public class DangNhap extends javax.swing.JDialog {
                 lblOutMouseExited(evt);
             }
         });
-        pnlForm.add(lblOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 540, -1, -1));
+        pnlForm.add(lblOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 540, -1, -1));
 
         getContentPane().add(pnlForm, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 0, 620, 600));
 
@@ -240,14 +223,6 @@ public class DangNhap extends javax.swing.JDialog {
        
     }//GEN-LAST:event_txtMatKhauMouseClicked
 
-    private void btnKetThucActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKetThucActionPerformed
-        this.ketThuc();
-    }//GEN-LAST:event_btnKetThucActionPerformed
-
-    private void btnDangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangNhapActionPerformed
-        this.dangNhap();
-    }//GEN-LAST:event_btnDangNhapActionPerformed
-
     private void txtMaNVKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMaNVKeyTyped
        if(txtMaNV.getText().equals("")){
            lblUserName.setVisible(true);
@@ -264,10 +239,6 @@ public class DangNhap extends javax.swing.JDialog {
            lblMatKhau.setVisible(false);
     }//GEN-LAST:event_txtMatKhauKeyTyped
 
-    private void btnDangNhapMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDangNhapMouseEntered
-      
-    }//GEN-LAST:event_btnDangNhapMouseEntered
-
     private void lblLoginMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLoginMouseEntered
         lblLogin.setIcon(new ImageIcon("src\\com\\nhom4\\icon\\btnLog2.png"));
     }//GEN-LAST:event_lblLoginMouseEntered
@@ -283,6 +254,14 @@ public class DangNhap extends javax.swing.JDialog {
     private void lblOutMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblOutMouseExited
        lblOut.setIcon(new ImageIcon("src\\com\\nhom4\\icon\\out.png"));
     }//GEN-LAST:event_lblOutMouseExited
+
+    private void lblLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLoginMouseClicked
+        this.dangNhap();
+    }//GEN-LAST:event_lblLoginMouseClicked
+
+    private void lblOutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblOutMouseClicked
+         this.ketThuc();
+    }//GEN-LAST:event_lblOutMouseClicked
     
     /**
      * @param args the command line arguments
@@ -356,8 +335,6 @@ void dangNhap() {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnDangNhap;
-    private javax.swing.JButton btnKetThuc;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
