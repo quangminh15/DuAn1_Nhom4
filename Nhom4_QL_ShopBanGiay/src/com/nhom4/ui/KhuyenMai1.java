@@ -23,7 +23,7 @@ public class KhuyenMai1 extends javax.swing.JPanel {
 
     Date now = new Date();
     SimpleDateFormat formats = new SimpleDateFormat("dd-MM-yyyy");
-    ArrayList<KhuyenMai> listNCC = new ArrayList<>();
+    ArrayList<KhuyenMai> listKM = new ArrayList<>();
     public KhuyenMai1() {
         initComponents();
         init();
@@ -562,6 +562,15 @@ public class KhuyenMai1 extends javax.swing.JPanel {
         model.setRowCount(0);
         try {
             String key = txtTimKiem.getText();
+            
+//            for (int i = 0; i < listKM.size(); i++) {
+//                System.out.println("5");
+//                if(!key.equals(listKM.get(i))){
+//                    System.out.println("6");
+//                    System.out.println("Không có trong danh sách");
+//                }
+//            }
+            System.out.println("7");
             List<KhuyenMai> list = dao.selectByKeyword(key);
             for (KhuyenMai nh : list) {
                 Object[] data = {
@@ -631,7 +640,7 @@ public class KhuyenMai1 extends javax.swing.JPanel {
     }
     
     public void Dislay(int i) {
-        KhuyenMai v = listNCC.get(i);
+        KhuyenMai v = listKM.get(i);
         txtMaKM.setText(v.getMaKM());
         txtTenKM.setText(v.getTenKM());
         txtGiamGia.setText(String.valueOf(v.getGiamGia()));
@@ -755,10 +764,10 @@ public class KhuyenMai1 extends javax.swing.JPanel {
             txtGiamGia.requestFocus();
             return false;
         } 
-//        else if(Integer.parseInt(dfyear.format(txtNgayBD.getDate())) < Integer.parseInt(dfyear.format(now))){
-//            MsgBox.alert(this, "Thời gian bắt đầu phải lớn hơn thời gian hiện tại!");
-//            return false;
-//        }
+        else if(Integer.parseInt(dfyear.format(txtNgayBD.getDate())) < Integer.parseInt(dfyear.format(now))){
+            MsgBox.alert(this, "Thời gian bắt đầu phải lớn hơn thời gian hiện tại!");
+            return false;
+        }
         return true;
     }
 }

@@ -4,9 +4,12 @@
  */
 package com.nhom4.utils;
 
+import com.nhom4.entity.KhuyenMai;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  *
@@ -17,5 +20,16 @@ public class NewClass {
         Date now = new Date();
         SimpleDateFormat df = new SimpleDateFormat("yyyy");
         System.out.println(df.format(now));
+        
+        List<KhuyenMai> listKM = new ArrayList<>();
+        System.out.println("1");
+        for (KhuyenMai khuyenMai : listKM) {
+            System.out.println(khuyenMai.getMaKM());
+        }
+        System.out.println("2");
+        for (int i = 0; i < listKM.size(); i++) {
+            System.out.println("3");
+            System.out.println(i);
+        }
     }
 }
