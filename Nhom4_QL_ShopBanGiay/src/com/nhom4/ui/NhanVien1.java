@@ -513,7 +513,7 @@ first();
     }//GEN-LAST:event_btntimKiemActionPerformed
 
     private void lblHinhMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHinhMouseClicked
-         this.selectImage();
+        this.selectImage();
     }//GEN-LAST:event_lblHinhMouseClicked
 
 
