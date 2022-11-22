@@ -9,6 +9,7 @@ import com.nhom4.entity.KhuyenMai;
 import com.nhom4.utils.MsgBox;
 import com.nhom4.utils.XDate;
 import java.awt.Color;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
@@ -19,9 +20,8 @@ import javax.swing.table.DefaultTableModel;
  */
 public class KhuyenMai1 extends javax.swing.JPanel {
 
-    /**
-     * Creates new form KhuyenMai1
-     */
+    Date now = new Date();
+    SimpleDateFormat formats = new SimpleDateFormat("dd-MM-yyyy");
     public KhuyenMai1() {
         initComponents();
         init();
@@ -255,6 +255,8 @@ public class KhuyenMai1 extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        txtNgayKT.setDateFormatString("dd-MM-yyyy");
+
         txtNgayBD.setDateFormatString("dd-MM-yyyy");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -458,6 +460,7 @@ public class KhuyenMai1 extends javax.swing.JPanel {
         fillTable();
         btnLuu.setEnabled(false);
         this.updateStatus();
+          
     }
     
     public void fillTable() {
@@ -466,13 +469,17 @@ public class KhuyenMai1 extends javax.swing.JPanel {
         try {
             List<KhuyenMai> list = dao.selectAll(); // Đọc dữ liệu từ CSDL
             for (KhuyenMai nv : list) {
-                Object[] data = {
+                Object[] data = {  
                     nv.getMaKM(),
                     nv.getTenKM(),
                     nv.getGiamGia(),
-                    nv.getNgayBD(),
-                    nv.getNgayKT(),
+                    formats.format(nv.getNgayBD()),
+                    formats.format(nv.getNgayKT()),
                     nv.getGhiChu()
+ 
+                
+             
+                
                 };
                 model.addRow(data);
             }
@@ -502,16 +509,18 @@ public class KhuyenMai1 extends javax.swing.JPanel {
     
     public void update() {
         KhuyenMai nv = getForm();
-        
             try {
                 dao.update(nv);
                 this.fillTable();
                 MsgBox.alert(this, "Cập nhật thành công");
+ 
                 updateStatus();
                 them = 0;
                 btnLuu.setEnabled(false);
             } catch (Exception e) {
                 MsgBox.alert(this, e.getMessage());
+                System.out.println(e);
+                e.getMessage();
                 updateStatus();
                 them = 0;
                 btnLuu.setEnabled(false);
@@ -546,8 +555,9 @@ public class KhuyenMai1 extends javax.swing.JPanel {
             txtMaKM.setText(km.getMaKM());
             txtTenKM.setText(km.getTenKM());
             txtGiamGia.setText(String.valueOf(km.getGiamGia())); 
-            txtNgayBD.setDate(XDate.toDate(km.getNgayBD().toString(), "yyyy-MM-dd"));                        
-            txtNgayKT.setDate(XDate.toDate(km.getNgayKT().toString(), "yyyy-MM-dd"));
+            
+            txtNgayBD.setDate(km.getNgayBD()); 
+            txtNgayKT.setDate(km.getNgayKT());
 //            txtNgayKT.setDateFormatString(XDate.toString(km.getNgayKT(), "dd-MM-yyyy"));
             txtGhiChu.setText(km.getGhiChu());
         } catch (Exception e) {
@@ -560,8 +570,9 @@ public class KhuyenMai1 extends javax.swing.JPanel {
         km.setMaKM(txtMaKM.getText());
         km.setTenKM(txtTenKM.getText());
         km.setGiamGia(Float.valueOf(txtGiamGia.getText()));
-        km.setNgayBD(XDate.toDate(txtNgayBD.getDate().toString(),"yyyy-MM-dd"));
-        km.setNgayKT(XDate.toDate(txtNgayKT.getDate().toString(),"yyyy-MM-dd"));
+//        km.setNgayBD(XDate.toString(txtNgayBD.getDate(), "yyyy-MM-dd"));
+        km.setNgayBD(txtNgayBD.getDate());
+        km.setNgayKT(txtNgayKT.getDate());
         km.setGhiChu(txtGhiChu.getText());
         return km;
     }
