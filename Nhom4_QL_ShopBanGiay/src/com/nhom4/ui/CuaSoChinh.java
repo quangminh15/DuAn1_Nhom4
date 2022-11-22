@@ -278,8 +278,7 @@ public class CuaSoChinh extends javax.swing.JFrame {
     }
 
     private void lblNhanVienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNhanVienMouseClicked
-        NhanVien1 nv = new NhanVien1();
-        changePanel(nv);
+        opennhanvien();
     }//GEN-LAST:event_lblNhanVienMouseClicked
 
     private void lblSPMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSPMouseClicked
@@ -405,7 +404,18 @@ public class CuaSoChinh extends javax.swing.JFrame {
             MsgBox.alert(this, "Vui lòng đăng nhập");
         }
     }
-
+public void opennhanvien(){
+    if (Auth.islogin()) {
+            if (!Auth.isManager()) {
+                MsgBox.alert(this, "Ban khong co quyen xem nhan vien");
+            }else{
+                NhanVien1 nv = new NhanVien1();
+        changePanel(nv);
+            }
+        } else {
+            MsgBox.alert(this, "Vui lòng đăng nhập");
+        }
+}
     
     
 
