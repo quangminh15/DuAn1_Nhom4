@@ -50,6 +50,11 @@ public class KhuyenMaiDAO extends MainDAO<KhuyenMai, String>{
         }
         return list.get(0);
     }
+    
+    public List<KhuyenMai> selectByKeyword(String key) {
+        String sql = "SELECT * FROM KhuyenMai WHERE TenKM like ?";
+        return this.selectBySql(sql, "%"+key+"%");
+    }
 
     @Override
     public List<KhuyenMai> selectBySql(String sql, Object... args) {
