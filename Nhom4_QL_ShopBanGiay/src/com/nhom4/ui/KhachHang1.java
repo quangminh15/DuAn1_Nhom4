@@ -608,17 +608,21 @@ public class KhachHang1 extends javax.swing.JPanel {
     }
     
     public boolean check(){
-        if(txtmaKhachHang.getText().equals("")){
-            MsgBox.alert(this, "Không được để trống mã khách hàng");
+      if (txtmaKhachHang.getText().equals("") || txtmaKhachHang.getText().length() < 5 || txtmaKhachHang.getText().length() > 6) {
+            MsgBox.alert(this, "Vui lòng nhập mã khách hàng từ 5---->6 kí tự");
             txtmaKhachHang.requestFocus();
             return false;
-        } else if (txtmaKhachHang.getText().length() > 0 && txtmaKhachHang.getText().length() < 3) {
-            MsgBox.alert(this, "Mã nhà cung cấp phải nhập ít nhất 3 ký tự");
-            txtmaKhachHang.requestFocus();
+        } else if (txttenKhachHang.getText().length() == 0) {
+            MsgBox.alert(this, "Tên khách hàng không được bỏ trống!!!");
+            txttenKhachHang.requestFocus();
             return false;
-        } else if(txttenKhachHang.getText().equals("")){
-            MsgBox.alert(this, "Không được để trống tên nhà cung cấp");
-            txtmaKhachHang.requestFocus();
+        } else if (txtsoDienThoai.getText().equals("") || txtsoDienThoai.getText().length() < 9 || txtsoDienThoai.getText().length() > 10) {
+            MsgBox.alert(this, "Vui lòng nhập số điện thoại từ 9---->10 kí tự");
+            txtsoDienThoai.requestFocus();
+            return false;
+        } else if (txtdiaChi.getText().length() == 0) {
+            MsgBox.alert(this, "Địa chỉ không được bỏ trống!!!");
+            txtdiaChi.requestFocus();
             return false;
         }
         return true;

@@ -8,6 +8,7 @@ import com.nhom4.dao.NhaCungCapDAO;
 import com.nhom4.dao.NhanVienDAO;
 import com.nhom4.entity.NhaCungCap;
 import com.nhom4.entity.NhanVien;
+import com.nhom4.entity.TaiKhoan;
 import com.nhom4.utils.MsgBox;
 import com.nhom4.utils.XImage;
 import java.io.File;
@@ -621,7 +622,7 @@ first();
     
     public void delete() {
             String nv = txtmaNhanVien.getText();
-            if (MsgBox.confirm(this, "Bạn thực sự muốn xóa nhà cung cấp này")) {
+            if (MsgBox.confirm(this, "Bạn thực sự muốn xóa nhân viên này")) {
                 try {
                     dao.delete(nv);
                     this.fillTable();
@@ -751,19 +752,56 @@ first();
     }
     
     public boolean check(){
-        if(txtmaNhanVien.getText().equals("")){
-            MsgBox.alert(this, "Không được để trống mã nhà cung cấp");
+ if (txtmaNhanVien.getText().equals("") || txtmaNhanVien.getText().length() < 5 || txtmaNhanVien.getText().length() > 6) {
+            MsgBox.alert(this, "Vui lòng nhập mã nhân viên từ 5---->6 kí tự");
             txtmaNhanVien.requestFocus();
             return false;
-        } else if (txtmaNhanVien.getText().length() > 0 && txtmaNhanVien.getText().length() < 3) {
-            MsgBox.alert(this, "Mã nhà cung cấp phải nhập ít nhất 3 ký tự");
-            txtmaNhanVien.requestFocus();
-            return false;
-        } else if(txttenNhanVien.getText().equals("")){
-            MsgBox.alert(this, "Không được để trống tên nhà cung cấp");
+        } else if (txttenNhanVien.getText().length() == 0) {
+            MsgBox.alert(this, "Tên nhân viên không được bỏ trống!!!");
             txttenNhanVien.requestFocus();
+            return false;
+        } else if (txtsoDienSo.getText().equals("") || txtsoDienSo.getText().length() < 9 || txtsoDienSo.getText().length() > 10) {
+            MsgBox.alert(this, "Vui lòng nhập số điện thoại từ 9---->10 kí tự");
+            txtsoDienSo.requestFocus();
+            return false;
+        } else if (txtdiaChi.getText().length() == 0) {
+            MsgBox.alert(this, "Địa chỉ không được bỏ trống!!!");
+            txtdiaChi.requestFocus();
+            return false;
+        }else if (txtEmail.getText().length() == 0) {
+            MsgBox.alert(this, "Email không được bỏ trống!!!");
+            txtEmail.requestFocus();
+            return false;
+        }else if (lblHinh.getIcon() == null) {
+            MsgBox.alert(this, "Bạn chưa chọn hình! click vào khu vực hình để chọn");
             return false;
         }
         return true;
     }
-}
+//     public void TimKiem() {
+// DefaultTableModel model = (DefaultTableModel) tblnhanVien.getModel();
+//        model.setRowCount(0);
+//        try {
+//            String nv = txttimKiem.getText();
+//            List<NhanVien> list = dao.selectByKeyword(nv);
+//            for (NhanVien nv : list) {
+//                Object[] data = {
+//                    nv.getMaNV(),
+//                    nv.getTenNV(),
+//                    nv.getGioiTinh(),
+//                    nv.getSDT(),
+//                    nv.getDiaChi(),
+//                    nv.getEmail(),
+//                    nv.getHinh(),
+//                };
+//                model.addRow(data);
+//            }
+//        } catch (Exception e) {
+//            MsgBox.alert(this, e.getMessage());
+//        }
+//        this.clearForm();
+//        this.row = -1;
+//        updateStatus();
+//    
+//    }
+}    
