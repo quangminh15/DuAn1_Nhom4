@@ -53,6 +53,11 @@ public class TaiKhoanDAO extends MainDAO<TaiKhoan, String> {
         }
         return list.get(0);
     }
+    
+    public List<TaiKhoan> selectByKeyword(String user) {
+        String sql = "SELECT * FROM TaiKhoan WHERE Username like ?";
+        return this.selectBySql(sql, "%"+user+"%");
+    }
 
     @Override
     public List<TaiKhoan> selectBySql(String sql, Object... args) {

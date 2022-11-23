@@ -11,7 +11,10 @@ import com.nhom4.utils.MsgBox;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import com.nhom4.utils.Auth;
+import com.nhom4.utils.XImage;
+import java.io.File;
 import java.util.ArrayList;
+import javax.swing.JFileChooser;
 
 /**
  *
@@ -19,7 +22,9 @@ import java.util.ArrayList;
  */
 public class TaiKhoanCaNhan extends javax.swing.JPanel {
       NhanVienDAO nvDao = new NhanVienDAO();
-      NhanVien nhanVien = new NhanVien();
+      int them =0;
+      int row =-1;
+      JFileChooser fileChooser = new JFileChooser(".//src//com//nhom4//icon//");
               
     /**
      * Creates new form TaiKhoanCaNhan
@@ -30,6 +35,7 @@ public class TaiKhoanCaNhan extends javax.swing.JPanel {
         this.init();
         txtMaNV.setEditable(false);
         fill();
+        btnLuu.setEnabled(false);
     }
     
 
@@ -243,6 +249,11 @@ public class TaiKhoanCaNhan extends javax.swing.JPanel {
 
         lblHinh.setText("Ảnh");
         lblHinh.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        lblHinh.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblHinhMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -276,7 +287,9 @@ public class TaiKhoanCaNhan extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
-        // TODO add your handling code here:
+        them = 2;
+            btnLuu.setEnabled(true);
+            txtON();
     }//GEN-LAST:event_btnSuaActionPerformed
 
     private void rdoNuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdoNuActionPerformed
@@ -288,7 +301,11 @@ public class TaiKhoanCaNhan extends javax.swing.JPanel {
     }//GEN-LAST:event_rdoNamActionPerformed
 
     private void btnLuuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLuuActionPerformed
-        // TODO add your handling code here:
+        
+            if(them == 2){
+                update();
+                return;
+            }
     }//GEN-LAST:event_btnLuuActionPerformed
 
     private void btnDoiMKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDoiMKActionPerformed
@@ -300,6 +317,10 @@ public class TaiKhoanCaNhan extends javax.swing.JPanel {
     private void btnThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThoatActionPerformed
         
     }//GEN-LAST:event_btnThoatActionPerformed
+
+    private void lblHinhMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHinhMouseClicked
+        this.selectImage();
+    }//GEN-LAST:event_lblHinhMouseClicked
  
     public void init(){
         String maNv = Auth.isMaNV();
@@ -307,13 +328,14 @@ public class TaiKhoanCaNhan extends javax.swing.JPanel {
     }
     
     public void getForm(NhanVien nv){
-        try {           
+        try {  
             txtTenNV.setText(nv.getTenNV());
             rdoNam.setSelected(nv.getGioiTinh());
             rdoNu.setSelected(!nv.getGioiTinh());
             txtSDT.setText(nv.getSDT());
             txtDiaChi.setText(nv.getDiaChi());
             txtEmail.setText(nv.getEmail());
+            lblHinh.setToolTipText(nv.getHinh());
         } catch (Exception e) {
         }
     }
@@ -324,6 +346,83 @@ public class TaiKhoanCaNhan extends javax.swing.JPanel {
         this.getForm(nv);
     }
    
+    public void update() {
+        NhanVien nv = getForm2();       
+            try {
+                nvDao.update(nv);
+                MsgBox.alert(this, "Cập nhật thành công");
+                them = 0;
+                btnLuu.setEnabled(false);
+            } catch (Exception e) {
+                MsgBox.alert(this, "Cập nhật thất bại");
+                 them = 0;
+                btnLuu.setEnabled(false);
+            }
+        
+    }
+    public void clearForm() {
+        NhanVien nv = new NhanVien();
+        this.setForm(nv);
+        this.row = -1;
+    }
+    
+    public void selectImage() {
+        if (fileChooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
+            File file = fileChooser.getSelectedFile();
+            if (XImage.save(file)) {
+                // Hiển thị hình lên form
+                lblHinh.setIcon(XImage.read(file.getName()));
+                lblHinh.setToolTipText(file.getName());
+            }
+        }
+    }
+    
+    public void setForm(NhanVien nv) {
+        txtMaNV.setText(nv.getMaNV());
+        txtTenNV.setText(nv.getTenNV());
+        rdoNam.setSelected(nv.getGioiTinh());
+         rdoNu.setSelected(!nv.getGioiTinh());
+        txtSDT.setText(nv.getSDT());
+        txtEmail.setText(nv.getEmail());
+        lblHinh.setToolTipText(nv.getHinh());
+        if (nv.getHinh()!= null) {
+            lblHinh.setIcon(XImage.read(nv.getHinh()));
+        }
+        txtDiaChi.setText(nv.getDiaChi());
+        
+    }
+    NhanVien getForm2() {
+        NhanVien nv = new NhanVien();
+        nv.setMaNV(txtMaNV.getText());
+        nv.setTenNV(txtTenNV.getText());
+        nv.setGioiTinh(rdoNam.isSelected());
+        nv.setSDT(txtSDT.getText());
+        nv.setEmail(txtEmail.getText());
+        nv.setHinh(lblHinh.getToolTipText());
+        nv.setDiaChi(txtDiaChi.getText());       
+        return nv;
+    }
+    public void txtOFF(){
+        txtTenNV.setEditable(false);
+        rdoNam.setEnabled(false);
+         txtSDT.setEditable(false);
+         txtDiaChi.setEditable(false);
+         txtEmail.setEditable(false);
+         
+         
+    }
+    
+    public void txtON(){
+        txtTenNV.setEditable(true);
+        rdoNam.setEnabled(true);
+         txtSDT.setEditable(true);
+         txtDiaChi.setEditable(true);
+         txtEmail.setEditable(true);
+    }
+    
+    public boolean check(){
+        return true;
+    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDoiMK;

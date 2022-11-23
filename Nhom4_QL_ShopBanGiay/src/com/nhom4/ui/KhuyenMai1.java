@@ -9,9 +9,11 @@ import com.nhom4.entity.KhuyenMai;
 import com.nhom4.utils.MsgBox;
 import com.nhom4.utils.XDate;
 import java.awt.Color;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
+import java.util.ArrayList;
 
 /**
  *
@@ -19,14 +21,16 @@ import javax.swing.table.DefaultTableModel;
  */
 public class KhuyenMai1 extends javax.swing.JPanel {
 
-    /**
-     * Creates new form KhuyenMai1
-     */
+    Date now = new Date();
+    SimpleDateFormat formats = new SimpleDateFormat("dd-MM-yyyy");
+    ArrayList<KhuyenMai> listNCC = new ArrayList<>();
+    ArrayList<KhuyenMai> listKM = new ArrayList<>();
+
     public KhuyenMai1() {
         initComponents();
         init();
     }
-    
+
     KhuyenMaiDAO dao = new KhuyenMaiDAO();
     int row = 0;
     int them = 0;
@@ -42,7 +46,7 @@ public class KhuyenMai1 extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
+        txtTimKiem = new javax.swing.JTextField();
         btnTimKiem = new javax.swing.JButton();
         txtMaKM = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -79,6 +83,11 @@ public class KhuyenMai1 extends javax.swing.JPanel {
 
         btnTimKiem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/search (4).png"))); // NOI18N
         btnTimKiem.setText("Tìm kiếm");
+        btnTimKiem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTimKiemActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -86,7 +95,7 @@ public class KhuyenMai1 extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(57, 57, 57)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 775, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 775, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(91, 91, 91)
                 .addComponent(btnTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(84, Short.MAX_VALUE))
@@ -96,7 +105,7 @@ public class KhuyenMai1 extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(31, 31, 31))
         );
@@ -255,6 +264,8 @@ public class KhuyenMai1 extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        txtNgayKT.setDateFormatString("dd-MM-yyyy");
+
         txtNgayBD.setDateFormatString("dd-MM-yyyy");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -278,10 +289,12 @@ public class KhuyenMai1 extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jScrollPane1)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
+                                        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(txtMaKM, javax.swing.GroupLayout.DEFAULT_SIZE, 343, Short.MAX_VALUE)
@@ -298,12 +311,7 @@ public class KhuyenMai1 extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(116, 116, 116)
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(541, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(57, 57, 57)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGap(1608, 1608, 1608)))
+                .addContainerGap(74, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -324,7 +332,9 @@ public class KhuyenMai1 extends javax.swing.JPanel {
                                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(66, 66, 66)
+                        .addGap(16, 16, 16)
+                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(39, 39, 39)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -343,11 +353,6 @@ public class KhuyenMai1 extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(148, 148, 148)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(540, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -387,6 +392,7 @@ public class KhuyenMai1 extends javax.swing.JPanel {
         btnXoa.setEnabled(false);
         btnLuu.setEnabled(true);
         txtON();
+        txtMaKM.setEditable(false);
     }//GEN-LAST:event_btnSuaActionPerformed
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
@@ -394,12 +400,12 @@ public class KhuyenMai1 extends javax.swing.JPanel {
     }//GEN-LAST:event_btnXoaActionPerformed
 
     private void btnLuuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLuuActionPerformed
-        if(check()==true){
-            if(them == 1 ){
+        if (check() == true) {
+            if (them == 1) {
                 insert();
                 return;
             }
-            if(them == 2){
+            if (them == 2) {
                 update();
                 return;
             }
@@ -417,8 +423,13 @@ public class KhuyenMai1 extends javax.swing.JPanel {
         if (evt.getClickCount() == 1) {
             this.row = tblKhuyenMai.getSelectedRow();
             this.edit();
+            tblKhuyenMai.setSelectionBackground(new Color(0, 156, 222));
         }
     }//GEN-LAST:event_tblKhuyenMaiMouseClicked
+
+    private void btnTimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimKiemActionPerformed
+        TimKiem();
+    }//GEN-LAST:event_btnTimKiemActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -443,7 +454,6 @@ public class KhuyenMai1 extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTable tblKhuyenMai;
     private javax.swing.JTextArea txtGhiChu;
     private javax.swing.JTextField txtGiamGia;
@@ -451,6 +461,7 @@ public class KhuyenMai1 extends javax.swing.JPanel {
     private com.toedter.calendar.JDateChooser txtNgayBD;
     private com.toedter.calendar.JDateChooser txtNgayKT;
     private javax.swing.JTextField txtTenKM;
+    private javax.swing.JTextField txtTimKiem;
     // End of variables declaration//GEN-END:variables
 
     private void init() {
@@ -458,8 +469,9 @@ public class KhuyenMai1 extends javax.swing.JPanel {
         fillTable();
         btnLuu.setEnabled(false);
         this.updateStatus();
+
     }
-    
+
     public void fillTable() {
         DefaultTableModel model = (DefaultTableModel) tblKhuyenMai.getModel();
         model.setRowCount(0);
@@ -470,9 +482,10 @@ public class KhuyenMai1 extends javax.swing.JPanel {
                     nv.getMaKM(),
                     nv.getTenKM(),
                     nv.getGiamGia(),
-                    nv.getNgayBD(),
-                    nv.getNgayKT(),
+                    formats.format(nv.getNgayBD()),
+                    formats.format(nv.getNgayKT()),
                     nv.getGhiChu()
+
                 };
                 model.addRow(data);
             }
@@ -480,92 +493,128 @@ public class KhuyenMai1 extends javax.swing.JPanel {
             MsgBox.alert(this, "Lỗi truy vấn dữ liệu!");
         }
     }
-    
+
     public void insert() {
-            KhuyenMai ncc = getForm();
-            try {
-                dao.insert(ncc);
-                this.fillTable();
-                this.clearForm();
-                MsgBox.alert(this, "Thêm mới thành công");
-                updateStatus();
-                them = 0;
-                btnLuu.setEnabled(false);
-            } catch (Exception e) {
-                MsgBox.alert(this, "Thêm mới thất bại");
-                updateStatus();
-                them = 0;
-                btnLuu.setEnabled(false);
-            }
-        
+        KhuyenMai ncc = getForm();
+        try {
+            dao.insert(ncc);
+            this.fillTable();
+            this.clearForm();
+            MsgBox.alert(this, "Thêm mới thành công");
+            updateStatus();
+            them = 0;
+            btnLuu.setEnabled(false);
+        } catch (Exception e) {
+            MsgBox.alert(this, "Thêm mới thất bại");
+            updateStatus();
+            them = 0;
+            btnLuu.setEnabled(false);
+        }
+
     }
-    
+
     public void update() {
         KhuyenMai nv = getForm();
-        
-            try {
-                dao.update(nv);
-                this.fillTable();
-                MsgBox.alert(this, "Cập nhật thành công");
-                updateStatus();
-                them = 0;
-                btnLuu.setEnabled(false);
-            } catch (Exception e) {
-                MsgBox.alert(this, e.getMessage());
-                updateStatus();
-                them = 0;
-                btnLuu.setEnabled(false);
-            }
-        
+        try {
+            dao.update(nv);
+            this.fillTable();
+            MsgBox.alert(this, "Cập nhật thành công");
+
+            updateStatus();
+            them = 0;
+            btnLuu.setEnabled(false);
+        } catch (Exception e) {
+            MsgBox.alert(this, e.getMessage());
+            System.out.println(e);
+            e.getMessage();
+            updateStatus();
+            them = 0;
+            btnLuu.setEnabled(false);
+        }
+
     }
-    
-    
+
     public void delete() {
-            String km = txtMaKM.getText();
-            if (MsgBox.confirm(this, "Bạn thực sự muốn xóa nhà cung cấp này")) {
-                try {
-                    dao.delete(km);
-                    this.fillTable();
-                    this.clearForm();
-                    MsgBox.alert(this, "Xóa thành công");
-                } catch (Exception e) {
-                    MsgBox.alert(this, "Xóa thất bại");
-                }
+        String km = txtMaKM.getText();
+        if (MsgBox.confirm(this, "Bạn thực sự muốn xóa chương trình khuyến mãi này")) {
+            try {
+                dao.delete(km);
+                this.fillTable();
+                this.clearForm();
+                MsgBox.alert(this, "Xóa thành công");
+            } catch (Exception e) {
+                MsgBox.alert(this, "Xóa thất bại");
             }
+        }
     }
-    
+
     public void clearForm() {
         KhuyenMai km = new KhuyenMai();
         this.setForm(km);
         this.row = -1;
         this.updateStatus();
     }
-    
+
+    public void TimKiem() {
+        DefaultTableModel model = (DefaultTableModel) tblKhuyenMai.getModel();
+        model.setRowCount(0);
+        try {
+            String key = txtTimKiem.getText();
+
+//            List<KhuyenMai> list = dao.selectByKeyword(key); // Đọc dữ liệu từ CSDL
+//            for (int i = 0; i < listKM.size(); i++) {
+//                System.out.println("5");
+//                if(!key.equals(listKM.get(i))){
+//                    System.out.println("6");
+//                    System.out.println("Không có trong danh sách");
+//                }
+//            }
+            System.out.println("7");
+            List<KhuyenMai> list = dao.selectByKeyword(key);
+
+            for (KhuyenMai nh : list) {
+                Object[] data = {
+                    nh.getMaKM(),
+                    nh.getTenKM(),
+                    nh.getGiamGia(),
+                    new java.sql.Date(nh.getNgayBD().getTime()),
+                    new java.sql.Date(nh.getNgayKT().getTime()),
+                    nh.getGhiChu(),};
+                model.addRow(data);
+            }
+        } catch (Exception e) {
+            MsgBox.alert(this, e.getMessage());
+        }
+        this.clearForm();
+        this.row = -1;
+        updateStatus();
+    }
+
     public void setForm(KhuyenMai km) {
         try {
             txtMaKM.setText(km.getMaKM());
             txtTenKM.setText(km.getTenKM());
-            txtGiamGia.setText(String.valueOf(km.getGiamGia())); 
-            txtNgayBD.setDate(XDate.toDate(km.getNgayBD().toString(), "yyyy-MM-dd"));                        
-            txtNgayKT.setDate(XDate.toDate(km.getNgayKT().toString(), "yyyy-MM-dd"));
-//            txtNgayKT.setDateFormatString(XDate.toString(km.getNgayKT(), "dd-MM-yyyy"));
+            txtGiamGia.setText(String.valueOf(km.getGiamGia()));
+
+            txtNgayBD.setDate(km.getNgayBD());
+            txtNgayKT.setDate(km.getNgayKT());
             txtGhiChu.setText(km.getGhiChu());
         } catch (Exception e) {
             MsgBox.alert(this, e.getMessage());
         }
     }
-    
+
     KhuyenMai getForm() {
         KhuyenMai km = new KhuyenMai();
         km.setMaKM(txtMaKM.getText());
         km.setTenKM(txtTenKM.getText());
         km.setGiamGia(Float.valueOf(txtGiamGia.getText()));
-        km.setNgayBD(XDate.toDate(txtNgayBD.getDate().toString(),"yyyy-MM-dd"));
-        km.setNgayKT(XDate.toDate(txtNgayKT.getDate().toString(),"yyyy-MM-dd"));
+        km.setNgayBD(txtNgayBD.getDate());
+        km.setNgayKT(txtNgayKT.getDate());
         km.setGhiChu(txtGhiChu.getText());
         return km;
     }
-    
+
     public void updateStatus() {
         boolean edit = (this.row >= 0);
         boolean first = (this.row == 0);
@@ -581,48 +630,94 @@ public class KhuyenMai1 extends javax.swing.JPanel {
         btnLast.setEnabled(edit && !last);
         txtOFF();
     }
-    
+
     public void edit() {
         String mancc = (String) tblKhuyenMai.getValueAt(this.row, 0);
         KhuyenMai ncc = dao.selectById(mancc);
         this.setForm(ncc);
         this.updateStatus();
     }
-    
+
+    public void Dislay(int i) {
+
+        KhuyenMai v = listNCC.get(i);
+
+        txtMaKM.setText(v.getMaKM());
+        txtTenKM.setText(v.getTenKM());
+        txtGiamGia.setText(String.valueOf(v.getGiamGia()));
+        txtNgayBD.setDate(v.getNgayBD());
+        txtNgayKT.setDate(v.getNgayKT());
+        txtGhiChu.setText(v.getGhiChu());
+    }
+
     public void first() {
-        this.row = 0;
-        this.edit();
+        try {
+            this.row = 0;
+            tblKhuyenMai.setSelectionBackground(new Color(0, 156, 222));
+            tblKhuyenMai.setRowSelectionInterval(row, row);
+            this.edit();
+            Dislay(row);
+        } catch (Exception e) {
+            return;
+        }
+
     }
-    
+
     public void prev() {
-        if (this.row > 0) {
-            this.row--;
-            this.edit();
+        try {
+            if (this.row > 0) {
+                this.row--;
+                this.edit();
+            }
+            tblKhuyenMai.setSelectionBackground(new Color(0, 156, 222));
+            tblKhuyenMai.setRowSelectionInterval(row, row);
+            Dislay(row);
+        } catch (Exception e) {
+            if (row < 0) {
+                return;
+            }
         }
     }
-    
+
     public void next() {
-        if (this.row < tblKhuyenMai.getRowCount() - 1) {
-            this.row++;
-            this.edit();
+        try {
+            if (this.row < tblKhuyenMai.getRowCount() - 1) {
+                this.row++;
+                this.edit();
+            }
+            tblKhuyenMai.setSelectionBackground(new Color(0, 156, 222));
+            tblKhuyenMai.setRowSelectionInterval(row, row);
+            Dislay(row);
+        } catch (Exception e) {
+            if (this.row == tblKhuyenMai.getRowCount() - 1) {
+                return;
+            }
         }
     }
-    
+
     public void last() {
-        this.row = tblKhuyenMai.getRowCount() - 1;
-        this.edit();
+        try {
+            this.row = tblKhuyenMai.getRowCount() - 1;
+            this.edit();
+            tblKhuyenMai.setSelectionBackground(new Color(0, 156, 222));
+            tblKhuyenMai.setRowSelectionInterval(row, row);
+            Dislay(row);
+        } catch (Exception e) {
+            return;
+        }
+
     }
-    
-    public void txtOFF(){
+
+    public void txtOFF() {
         txtMaKM.setEditable(false);
         txtTenKM.setEditable(false);
         txtGiamGia.setEditable(false);
-//        txtNgayBD.setEnabled(false);
-//        txtNgayKT.setEnabled(false);
+        txtNgayBD.setEnabled(false);
+        txtNgayKT.setEnabled(false);
         txtGhiChu.setEditable(false);
     }
-    
-    public void txtON(){
+
+    public void txtON() {
         txtMaKM.setEditable(true);
         txtTenKM.setEditable(true);
         txtGiamGia.setEditable(true);
@@ -630,19 +725,62 @@ public class KhuyenMai1 extends javax.swing.JPanel {
         txtNgayKT.setEnabled(true);
         txtGhiChu.setEditable(true);
     }
-    
-    public boolean check(){
-        if(txtMaKM.getText().equals("")){
-            MsgBox.alert(this, "Không được để trống mã nhà cung cấp");
+
+    public boolean check() {
+        boolean checkGiamGia = true;
+
+        try {
+            Float.parseFloat(txtGiamGia.getText());
+        } catch (NumberFormatException e1) {
+            checkGiamGia = false;
+        }
+
+        Date date = null;
+        Date now = new Date();
+        SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+        SimpleDateFormat dfday = new SimpleDateFormat("dd");
+        SimpleDateFormat dfmonth = new SimpleDateFormat("MM");
+        SimpleDateFormat dfyear = new SimpleDateFormat("yyyy");
+
+        if (txtMaKM.getText().equals("")) {
+            MsgBox.alert(this, "Không được để trống mã chương trình khuyến mãi");
             txtMaKM.requestFocus();
             return false;
         } else if (txtMaKM.getText().length() > 0 && txtMaKM.getText().length() < 3) {
-            MsgBox.alert(this, "Mã nhà cung cấp phải nhập ít nhất 3 ký tự");
+            MsgBox.alert(this, "Mã chương trình khuyến mãi phải nhập ít nhất 3 ký tự");
             txtMaKM.requestFocus();
             return false;
-        } else if(txtTenKM.getText().equals("")){
-            MsgBox.alert(this, "Không được để trống tên nhà cung cấp");
+        } else if (txtTenKM.getText().equals("")) {
+            MsgBox.alert(this, "Không được để trống tên chương trình khuyến mãi");
             txtTenKM.requestFocus();
+            return false;
+        } else if (txtGiamGia.getText().equals("")) {
+            MsgBox.alert(this, "Không được để trống giá trị giảm giá (%)");
+            txtGiamGia.requestFocus();
+            return false;
+        } else if (!txtGiamGia.getText().equals("")) {
+            String sl = "";
+            String tv = "";
+            try {
+                if (!txtGiamGia.getText().equals("")) {
+                    float giamgia = Float.parseFloat(txtGiamGia.getText());
+                    if (giamgia > 100 || giamgia < 0) {
+                        MsgBox.alert(this, "Phần trăm giảm giá phải từ 0% --> 100%");
+                        txtGiamGia.requestFocus();
+                        return false;
+                    } else {
+                        return true;
+                    }
+                }
+            } catch (Exception e) {
+                if (tv.equals(sl)) {
+                    MsgBox.alert(this, "Vui lòng chỉ nhập số");
+                    txtGiamGia.requestFocus();
+                    return false;
+                }
+            }
+        } else if (Integer.parseInt(dfyear.format(txtNgayBD.getDate())) < Integer.parseInt(dfyear.format(now))) {
+            MsgBox.alert(this, "Thời gian bắt đầu phải lớn hơn thời gian hiện tại!");
             return false;
         }
         return true;

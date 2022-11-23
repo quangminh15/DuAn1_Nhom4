@@ -9,6 +9,7 @@ import com.nhom4.entity.TaiKhoan;
 import com.nhom4.utils.MsgBox;
 import com.nhom4.utils.XImage;
 import com.nhom4.utils.Auth;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
@@ -22,6 +23,7 @@ public class TaiKhoanQL extends javax.swing.JPanel {
      * Creates new form TaiKhoanQL
      */
     TaiKhoanDAO tkDAO = new TaiKhoanDAO();
+    List<TaiKhoan> list =new ArrayList<TaiKhoan>();
     int row =-1;
     int them =0;
     public TaiKhoanQL() {
@@ -274,7 +276,7 @@ public class TaiKhoanQL extends javax.swing.JPanel {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnTimKiem)
                     .addComponent(txtTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         btnLast.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
@@ -360,8 +362,8 @@ public class TaiKhoanQL extends javax.swing.JPanel {
                 .addGap(25, 25, 25)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -455,9 +457,33 @@ public class TaiKhoanQL extends javax.swing.JPanel {
     }//GEN-LAST:event_btnHuyActionPerformed
 
     private void btnTimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimKiemActionPerformed
-        
+        this.TimKiem();
     }//GEN-LAST:event_btnTimKiemActionPerformed
 
+    public void TimKiem() {
+ DefaultTableModel model = (DefaultTableModel) tblBang.getModel();
+        model.setRowCount(0);
+        try {
+            String user = txtTimKiem.getText();
+            List<TaiKhoan> list = tkDAO.selectByKeyword(user);
+            for (TaiKhoan tk : list) {
+                Object[] data = {
+                    tk.getMaNV(),
+                    tk.getUsername(),
+                    tk.getPass(),
+                    tk.getRole(),
+                };
+                model.addRow(data);
+            }
+        } catch (Exception e) {
+            MsgBox.alert(this, e.getMessage());
+        }
+        this.clearForm();
+        this.row = -1;
+        updateStatus();
+    
+    }
+    
     public void init() {        
         this.fillTable();
         this.row = -1;
