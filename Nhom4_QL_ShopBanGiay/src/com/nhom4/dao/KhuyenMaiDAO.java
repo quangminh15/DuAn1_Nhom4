@@ -8,6 +8,7 @@ import com.nhom4.entity.KhuyenMai;
 import com.nhom4.utils.JdbcHelper;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -23,12 +24,12 @@ public class KhuyenMaiDAO extends MainDAO<KhuyenMai, String>{
     
     @Override
     public void insert(KhuyenMai entity) {
-        JdbcHelper.executeUpdate(INSERT_SQL, entity.getMaKM(), entity.getTenKM(),entity.getGiamGia(), entity.getNgayBD(), entity.getNgayKT(), entity.getGhiChu());
+        JdbcHelper.executeUpdate(INSERT_SQL, entity.getMaKM(), entity.getTenKM(),entity.getGiamGia(),new java.sql.Date(entity.getNgayBD().getTime()), new java.sql.Date(entity.getNgayKT().getTime()), entity.getGhiChu());
     }
 
     @Override
     public void update(KhuyenMai entity) {
-        JdbcHelper.executeUpdate(UPDATE_SQL, entity.getTenKM(),entity.getGiamGia(), entity.getNgayBD(), entity.getNgayKT(), entity.getGhiChu(), entity.getMaKM());
+        JdbcHelper.executeUpdate(UPDATE_SQL, entity.getTenKM(),entity.getGiamGia(), new java.sql.Date(entity.getNgayBD().getTime()), new java.sql.Date(entity.getNgayKT().getTime()), entity.getGhiChu(), entity.getMaKM());
     }
 
     @Override
@@ -49,6 +50,11 @@ public class KhuyenMaiDAO extends MainDAO<KhuyenMai, String>{
         }
         return list.get(0);
     }
+    
+    public List<KhuyenMai> selectByKeyword(String key) {
+        String sql = "SELECT * FROM KhuyenMai WHERE TenKM like ?";
+        return this.selectBySql(sql, "%"+key+"%");
+    }
 
     @Override
     public List<KhuyenMai> selectBySql(String sql, Object... args) {
@@ -60,8 +66,10 @@ public class KhuyenMaiDAO extends MainDAO<KhuyenMai, String>{
                entity.setMaKM(rs.getString("MaKM"));
                entity.setTenKM(rs.getString("TenKM"));
                entity.setGiamGia(rs.getFloat("GiamGia"));
-               entity.setNgayBD(rs.getDate("NgayBD"));
-               entity.setNgayKT(rs.getDate("NgayKT"));
+               java.sql.Date ngayBD = rs.getDate("NgayBD");
+               java.sql.Date ngayKT = rs.getDate("NgayKT");
+               entity.setNgayBD(new Date(ngayBD.getTime()));
+               entity.setNgayKT(new Date(ngayKT.getTime()));
                entity.setGhiChu(rs.getString("GhiChu"));
                list.add(entity);  
             }

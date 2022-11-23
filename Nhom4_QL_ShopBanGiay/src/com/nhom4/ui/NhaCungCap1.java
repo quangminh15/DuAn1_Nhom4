@@ -356,7 +356,7 @@ public class NhaCungCap1 extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) tblNCC.getModel();
         model.setRowCount(0);
         try {
-            List<NhaCungCap> list = dao.selectAll(); // Đọc dữ liệu từ CSDL
+            List<NhaCungCap> list = dao.selectAll(); 
             for (NhaCungCap nv : list) {
                 Object[] data = {
                     nv.getMaNCC(),

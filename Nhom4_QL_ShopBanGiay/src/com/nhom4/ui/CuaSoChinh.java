@@ -4,7 +4,6 @@
  */
 package com.nhom4.ui;
 
-
 import com.nhom4.utils.Auth;
 import com.nhom4.utils.MsgBox;
 import com.nhom4.utils.XImage;
@@ -31,7 +30,6 @@ public class CuaSoChinh extends javax.swing.JFrame {
     /**
      * Creates new form CuaSoChinh
      */
-   
     public CuaSoChinh() {
         initComponents();
         init();
@@ -372,7 +370,7 @@ public class CuaSoChinh extends javax.swing.JFrame {
             }
         }).start();
         bner();
-        
+
     }
 
     public void bner() {
@@ -404,20 +402,20 @@ public class CuaSoChinh extends javax.swing.JFrame {
             MsgBox.alert(this, "Vui lòng đăng nhập");
         }
     }
-public void opennhanvien(){
-    if (Auth.islogin()) {
+
+    public void opennhanvien() {
+        if (Auth.islogin()) {
             if (!Auth.isManager()) {
                 MsgBox.alert(this, "Ban khong co quyen xem nhan vien");
-            }else{
+            } else {
                 NhanVien1 nv = new NhanVien1();
-        changePanel(nv);
+                changePanel(nv);
             }
         } else {
             MsgBox.alert(this, "Vui lòng đăng nhập");
         }
-}
-    
-    
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
