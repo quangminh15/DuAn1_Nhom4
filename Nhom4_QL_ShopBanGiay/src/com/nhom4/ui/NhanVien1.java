@@ -510,7 +510,7 @@ first();
     }//GEN-LAST:event_tblnhanVienMouseClicked
 
     private void btntimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btntimKiemActionPerformed
-        // TODO add your handling code here:
+      this.TimKiem();
     }//GEN-LAST:event_btntimKiemActionPerformed
 
     private void lblHinhMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHinhMouseClicked
@@ -778,30 +778,30 @@ first();
         }
         return true;
     }
-//     public void TimKiem() {
-// DefaultTableModel model = (DefaultTableModel) tblnhanVien.getModel();
-//        model.setRowCount(0);
-//        try {
-//            String nv = txttimKiem.getText();
-//            List<NhanVien> list = dao.selectByKeyword(nv);
-//            for (NhanVien nv : list) {
-//                Object[] data = {
-//                    nv.getMaNV(),
-//                    nv.getTenNV(),
-//                    nv.getGioiTinh(),
-//                    nv.getSDT(),
-//                    nv.getDiaChi(),
-//                    nv.getEmail(),
-//                    nv.getHinh(),
-//                };
-//                model.addRow(data);
-//            }
-//        } catch (Exception e) {
-//            MsgBox.alert(this, e.getMessage());
-//        }
-//        this.clearForm();
-//        this.row = -1;
-//        updateStatus();
-//    
-//    }
+     public void TimKiem() {
+ DefaultTableModel model = (DefaultTableModel) tblnhanVien.getModel();
+        model.setRowCount(0);
+        try {
+            String nvv = txttimKiem.getText();
+            List<NhanVien> list = dao.selectByKeyword(nvv);
+            for (NhanVien nv : list) {
+                Object[] data = {
+                    nv.getMaNV(),
+                    nv.getTenNV(),
+                    nv.getGioiTinh(),
+                    nv.getSDT(),
+                    nv.getDiaChi(),
+                    nv.getEmail(),
+                    nv.getHinh(),
+                };
+                model.addRow(data);
+            }
+        } catch (Exception e) {
+            MsgBox.alert(this, e.getMessage());
+        }
+        this.clearForm();
+        this.row = -1;
+        updateStatus();
+    
+    }
 }    

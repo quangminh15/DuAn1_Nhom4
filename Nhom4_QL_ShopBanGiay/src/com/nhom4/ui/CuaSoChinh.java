@@ -358,9 +358,8 @@ public class CuaSoChinh extends javax.swing.JFrame {
     private void init() {
         this.setLocationRelativeTo(null);
         this.setIconImage(XImage.getAppIcon());
-        new ChaoJDialog(this, true).setVisible(true);
+//        new ChaoJDialog(this, true).setVisible(true);
         new DangNhap(this, true).setVisible(true);
-//        new DoiMatKhau(this, true).setVisible(true);
 
         new Timer(1000, new ActionListener() {
             @Override

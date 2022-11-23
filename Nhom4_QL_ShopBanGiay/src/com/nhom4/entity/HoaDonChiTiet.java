@@ -9,7 +9,7 @@ package com.nhom4.entity;
  * @author ACER
  */
 public class HoaDonChiTiet {
-    private String maHDCT;
+    private int maHDCT;
     private String maHD;
     private String maCT;
     private String tenSP;
@@ -25,7 +25,7 @@ public class HoaDonChiTiet {
     public HoaDonChiTiet() {
     }
 
-    public HoaDonChiTiet(String maHDCT, String maHD, String maCT, String tenSP, int soLuong, float gia, float tongTien) {
+    public HoaDonChiTiet(int maHDCT, String maHD, String maCT, String tenSP, int soLuong, float gia, float tongTien) {
         this.maHDCT = maHDCT;
         this.maHD = maHD;
         this.maCT = maCT;
@@ -35,11 +35,11 @@ public class HoaDonChiTiet {
         this.tongTien = tongTien;
     }
 
-    public String getMaHDCT() {
+    public int getMaHDCT() {
         return maHDCT;
     }
 
-    public void setMaHDCT(String maHDCT) {
+    public void setMaHDCT(int maHDCT) {
         this.maHDCT = maHDCT;
     }
 
@@ -89,9 +89,6 @@ public class HoaDonChiTiet {
 
     public void setTongTien(float tongTien) {
         this.tongTien = tongTien;
-    }
-
-    
-        
+    }   
     
 }

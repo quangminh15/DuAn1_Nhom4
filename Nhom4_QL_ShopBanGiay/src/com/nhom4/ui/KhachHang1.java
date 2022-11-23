@@ -80,6 +80,11 @@ public class KhachHang1 extends javax.swing.JPanel {
         btntimKiem.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
         btntimKiem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/search (4).png"))); // NOI18N
         btntimKiem.setText("Tìm kiếm");
+        btntimKiem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btntimKiemActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -414,6 +419,10 @@ public class KhachHang1 extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_tblkhachHangMouseClicked
 
+    private void btntimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btntimKiemActionPerformed
+        this.TimKiem();
+    }//GEN-LAST:event_btntimKiemActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnFirst;
@@ -626,5 +635,29 @@ public class KhachHang1 extends javax.swing.JPanel {
             return false;
         }
         return true;
+    }
+    public void TimKiem() {
+ DefaultTableModel model = (DefaultTableModel) tblkhachHang.getModel();
+        model.setRowCount(0);
+        try {
+            String khh = txttimKiem.getText();
+            List<KhachHang> list = dao.selectByKeyword(khh);
+            for (KhachHang kh : list) {
+                Object[] data = {
+                    kh.getMaKH(),
+                    kh.getTenKH(),
+                    kh.getSDT(),
+                    kh.getDiaChi(),
+                    
+                };
+                model.addRow(data);
+            }
+        } catch (Exception e) {
+            MsgBox.alert(this, e.getMessage());
+        }
+        this.clearForm();
+        this.row = -1;
+        updateStatus();
+    
     }
 }
