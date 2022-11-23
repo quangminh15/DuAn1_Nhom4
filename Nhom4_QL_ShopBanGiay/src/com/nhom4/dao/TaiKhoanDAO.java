@@ -21,7 +21,7 @@ public class TaiKhoanDAO extends MainDAO<TaiKhoan, String> {
     final String UPDATE_SQL = "UPDATE TaiKhoan SET Username = ? , Pass = ? , Role =  ? WHERE MaNV = ?";
     final String DELETE_SQL = "DELETE FROM TaiKhoan WHERE MaNV = ?";
     final String SELECT_ALL_SQL = "SELECT * FROM TaiKhoan";
-    final String SELECT_By_Id_SQL = "SELECT * FROM TaiKhoan WHERE Username = ?";
+    final String SELECT_By_Id_SQL = "SELECT * FROM TaiKhoan WHERE MaNV = ?";
     
     
     

@@ -22,7 +22,6 @@ import javax.swing.JFileChooser;
  */
 public class TaiKhoanCaNhan extends javax.swing.JPanel {
       NhanVienDAO nvDao = new NhanVienDAO();
-      NhanVien nhanVien = new NhanVien();
       int them =0;
       int row =-1;
       JFileChooser fileChooser = new JFileChooser(".//src//com//nhom4//icon//");
@@ -301,16 +300,11 @@ public class TaiKhoanCaNhan extends javax.swing.JPanel {
     }//GEN-LAST:event_rdoNamActionPerformed
 
     private void btnLuuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLuuActionPerformed
-        if(check()==true){
-            if(them == 1 ){
-                insert();
-                return;
-            }
+        
             if(them == 2){
                 update();
                 return;
             }
-        }
     }//GEN-LAST:event_btnLuuActionPerformed
 
     private void btnDoiMKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDoiMKActionPerformed
@@ -333,7 +327,7 @@ public class TaiKhoanCaNhan extends javax.swing.JPanel {
     }
     
     public void getForm(NhanVien nv){
-        try {           
+        try {  
             txtTenNV.setText(nv.getTenNV());
             rdoNam.setSelected(nv.getGioiTinh());
             rdoNu.setSelected(!nv.getGioiTinh());
@@ -407,7 +401,7 @@ public class TaiKhoanCaNhan extends javax.swing.JPanel {
     }
     
     public void setForm(NhanVien nv) {
-//        txtMaNV.setText(nv.getMaNV());
+        txtMaNV.setText(nv.getMaNV());
         txtTenNV.setText(nv.getTenNV());
         rdoNam.setSelected(nv.getGioiTinh());
          rdoNu.setSelected(!nv.getGioiTinh());
@@ -428,14 +422,13 @@ public class TaiKhoanCaNhan extends javax.swing.JPanel {
 //    }
     NhanVien getForm2() {
         NhanVien nv = new NhanVien();
-//        nv.setMaNV(txtMaNV.getText());
+        nv.setMaNV(txtMaNV.getText());
         nv.setTenNV(txtTenNV.getText());
         nv.setGioiTinh(rdoNam.isSelected());
         nv.setSDT(txtSDT.getText());
         nv.setEmail(txtEmail.getText());
-//        nv.setHinh(lblHinh.getToolTipText());
-        nv.setDiaChi(txtDiaChi.getText());
-        
+        nv.setHinh(lblHinh.getToolTipText());
+        nv.setDiaChi(txtDiaChi.getText());       
         return nv;
     }
     public void txtOFF(){
