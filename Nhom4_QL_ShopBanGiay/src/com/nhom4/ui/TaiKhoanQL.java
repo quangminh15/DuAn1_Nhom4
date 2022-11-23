@@ -464,7 +464,7 @@ public class TaiKhoanQL extends javax.swing.JPanel {
         String tennv = txtTimKiem.getText();
         try {
             tkDAO.selectById(tennv);
-            this.fillTable();
+            this.getForm();
             this.clearForm();
         } catch (Exception e) {
             MsgBox.alert(this, "Khong tim thay");
