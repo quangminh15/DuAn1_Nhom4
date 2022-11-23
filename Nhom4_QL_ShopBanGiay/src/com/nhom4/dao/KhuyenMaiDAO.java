@@ -17,7 +17,7 @@ import java.util.List;
 public class KhuyenMaiDAO extends MainDAO<KhuyenMai, String>{
     final String INSERT_SQL = "INSERT INTO KhuyenMai (MaKM, TenKM, GiamGia, NgayBD, NgayKT, GhiChu) VALUES (?,?,?,?,?,?)";
     final String UPDATE_SQL = "UPDATE KhuyenMai SET TenKM =?, GiamGia=?, NgayBD =?, NgayKT =?, GhiChu =? WHERE MaKM=?";
-    final String DELETE_SQL = "DELETE FROM KhuyenMai WHERE MaKM = 'KM004'";
+    final String DELETE_SQL = "DELETE FROM KhuyenMai WHERE MaKM = ?";
     final String SELECT_ALL_SQL = "SELECT * FROM KhuyenMai";
     final String SELECT_By_Id_SQL = "SELECT * FROM KhuyenMai WHERE MaKM = ?";
     
