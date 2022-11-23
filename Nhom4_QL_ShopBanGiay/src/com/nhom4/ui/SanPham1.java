@@ -295,9 +295,9 @@ public class SanPham1 extends javax.swing.JPanel {
         ChiTietSanPham ctsp = new ChiTietSanPham();
         ctsp.setMaCT(txtMaCT.getText());
         ctsp.setMaSP(txtMaSPP.getText());
-        ctsp.setSize(Integer.valueOf(txtSize.getText()));
+        ctsp.setSize(Float.valueOf(txtSize.getText()));
         ctsp.setMauSac(txtMauSac.getText());
-        ctsp.setGia(Integer.valueOf(txtGia.getText()));
+        ctsp.setGia(Float.valueOf(txtGia.getText()));
         ctsp.setChatLieu(txtChatLieu.getText());
         return ctsp;
     }
@@ -418,32 +418,17 @@ public class SanPham1 extends javax.swing.JPanel {
         } else if (!txtSize.getText().equals("")) {
             String size = "";
             String tv = "";
+            String gia = "";
             try {
-                if (!txtSize.getText().equals("")) {
+                if (!txtSize.getText().equals("") || !txtGia.getText().equals("")) {
                     float siZe = Float.parseFloat(txtSize.getText());
-                    if (siZe < 0) {
+                    float Gia = Float.parseFloat(txtGia.getText());
+                    if (siZe <= 0) {
                         MsgBox.alert(this, "Size giày phải > 0");
                         txtSize.requestFocus();
                         return false;
-                    } else {
-                        return true;
-                    }
-                }
-            } catch (Exception e) {
-                if (tv.equals(size)) {
-                    MsgBox.alert(this, "Size giày là kiểu số");
-                    txtSize.requestFocus();
-                    return false;
-                }
-            }
-        } else if (!txtGia.getText().equals("")) {
-            String gia = "";
-            String tvv = "";
-            try {
-                if (!txtGia.getText().equals("")) {
-                    float Gia = Float.parseFloat(txtGia.getText());
-                    if (Gia < 100000) {
-                        MsgBox.alert(this, "Giá giày phải > 100K");
+                    } else if (Gia < 100000) {
+                        MsgBox.alert(this, "Giá giày phải >= 100K");
                         txtGia.requestFocus();
                         return false;
                     } else {
@@ -451,9 +436,8 @@ public class SanPham1 extends javax.swing.JPanel {
                     }
                 }
             } catch (Exception e) {
-                if (tvv.equals(gia)) {
-                    MsgBox.alert(this, "Giá giày là kiểu số");
-                    txtGia.requestFocus();
+                if (tv.equals(size)) {
+                    MsgBox.alert(this, "Size giày và giá giày là kiểu số");
                     return false;
                 }
             }
