@@ -758,27 +758,10 @@ public class KhuyenMai1 extends javax.swing.JPanel {
             MsgBox.alert(this, "Không được để trống giá trị giảm giá (%)");
             txtGiamGia.requestFocus();
             return false;
-        } else if (!txtGiamGia.getText().equals("")) {
-            String sl = "";
-            String tv = "";
-            try {
-                if (!txtGiamGia.getText().equals("")) {
-                    float giamgia = Float.parseFloat(txtGiamGia.getText());
-                    if (giamgia > 100 || giamgia < 0) {
-                        MsgBox.alert(this, "Phần trăm giảm giá phải từ 0% --> 100%");
-                        txtGiamGia.requestFocus();
-                        return false;
-                    } else {
-                        return true;
-                    }
-                }
-            } catch (Exception e) {
-                if (tv.equals(sl)) {
-                    MsgBox.alert(this, "Vui lòng chỉ nhập số");
-                    txtGiamGia.requestFocus();
-                    return false;
-                }
-            }
+        } else if (Float.parseFloat(txtGiamGia.getText()) > 100 || Float.parseFloat(txtGiamGia.getText()) < 0) {
+            MsgBox.alert(this, "Điểm phải từ 0 -- 10");
+            txtGiamGia.requestFocus();
+
         } else if (Integer.parseInt(dfyear.format(txtNgayBD.getDate())) < Integer.parseInt(dfyear.format(now))) {
             MsgBox.alert(this, "Thời gian bắt đầu phải lớn hơn thời gian hiện tại!");
             return false;
