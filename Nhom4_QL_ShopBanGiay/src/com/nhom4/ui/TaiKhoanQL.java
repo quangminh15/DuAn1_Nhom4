@@ -461,14 +461,27 @@ public class TaiKhoanQL extends javax.swing.JPanel {
     }//GEN-LAST:event_btnTimKiemActionPerformed
 
     public void TimKiem() {
-        String tennv = txtTimKiem.getText();
+ DefaultTableModel model = (DefaultTableModel) tblBang.getModel();
+        model.setRowCount(0);
         try {
-            tkDAO.selectById(tennv);
-            this.getForm();
-            this.clearForm();
+            String user = txtTimKiem.getText();
+            List<TaiKhoan> list = tkDAO.selectByKeyword(user);
+            for (TaiKhoan tk : list) {
+                Object[] data = {
+                    tk.getMaNV(),
+                    tk.getUsername(),
+                    tk.getPass(),
+                    tk.getRole(),
+                };
+                model.addRow(data);
+            }
         } catch (Exception e) {
-            MsgBox.alert(this, "Khong tim thay");
+            MsgBox.alert(this, e.getMessage());
         }
+        this.clearForm();
+        this.row = -1;
+        updateStatus();
+    
     }
     
     public void init() {        

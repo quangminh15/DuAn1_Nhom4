@@ -35,6 +35,7 @@ public class TaiKhoanCaNhan extends javax.swing.JPanel {
         this.init();
         txtMaNV.setEditable(false);
         fill();
+        btnLuu.setEnabled(false);
     }
     
 
@@ -345,38 +346,15 @@ public class TaiKhoanCaNhan extends javax.swing.JPanel {
         this.getForm(nv);
     }
    
-    public void insert() {
-        
-            NhanVien nv = getForm2();
-            try {
-                nvDao.insert(nv);              
-                this.clearForm();
-                MsgBox.alert(this, "Thêm mới thành công");
-//                updateStatus();
-                them = 0;
-                btnLuu.setEnabled(false);
-            } catch (Exception e) {
-                System.out.println(e);
-                MsgBox.alert(this, "Thêm mới thất bại");
-//                updateStatus();
-                them = 0;
-                  btnLuu.setEnabled(false);
-            }
-        
-    }
-    
     public void update() {
-        NhanVien nv = getForm2();
-        
+        NhanVien nv = getForm2();       
             try {
                 nvDao.update(nv);
                 MsgBox.alert(this, "Cập nhật thành công");
-//                updateStatus();
                 them = 0;
                 btnLuu.setEnabled(false);
             } catch (Exception e) {
                 MsgBox.alert(this, "Cập nhật thất bại");
-//                updateStatus();
                  them = 0;
                 btnLuu.setEnabled(false);
             }
@@ -386,7 +364,6 @@ public class TaiKhoanCaNhan extends javax.swing.JPanel {
         NhanVien nv = new NhanVien();
         this.setForm(nv);
         this.row = -1;
-//        this.updateStatus();
     }
     
     public void selectImage() {
@@ -414,12 +391,6 @@ public class TaiKhoanCaNhan extends javax.swing.JPanel {
         txtDiaChi.setText(nv.getDiaChi());
         
     }
-//    public void edit() {
-//        String manv = (String) tblnhanVien.getValueAt(this.row, 0);
-//        NhanVien nv = dao.selectById(manv);
-//        this.setForm(nv);
-////        this.updateStatus();
-//    }
     NhanVien getForm2() {
         NhanVien nv = new NhanVien();
         nv.setMaNV(txtMaNV.getText());
@@ -437,7 +408,6 @@ public class TaiKhoanCaNhan extends javax.swing.JPanel {
          txtSDT.setEditable(false);
          txtDiaChi.setEditable(false);
          txtEmail.setEditable(false);
-//         lblHinh.setEditable(false);
          
          
     }
@@ -448,7 +418,6 @@ public class TaiKhoanCaNhan extends javax.swing.JPanel {
          txtSDT.setEditable(true);
          txtDiaChi.setEditable(true);
          txtEmail.setEditable(true);
-//         lblHinh.setEditable(true);
     }
     
     public boolean check(){
