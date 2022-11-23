@@ -181,6 +181,12 @@ public class CuaSoChinh extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel3MouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel3MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel3MouseExited(evt);
+            }
         });
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 640, 260, 70));
 
@@ -226,16 +232,18 @@ public class CuaSoChinh extends javax.swing.JFrame {
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addGap(0, 10, Short.MAX_VALUE)
-                .addComponent(lblDongHo, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel7)
-                .addGap(17, 17, 17))
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(0, 16, Short.MAX_VALUE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                        .addComponent(jLabel7)
+                        .addGap(28, 28, 28))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                        .addComponent(lblDongHo, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(14, 14, 14))))
         );
 
-        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(264, 0, 1290, 70));
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(264, 0, 1290, 90));
 
         pnlCardPane.setLayout(new java.awt.CardLayout());
 
@@ -243,17 +251,17 @@ public class CuaSoChinh extends javax.swing.JFrame {
         pnlHome.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblBanner1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/a1.png"))); // NOI18N
-        pnlHome.add(lblBanner1, new org.netbeans.lib.awtextra.AbsoluteConstraints(98, 41, -1, -1));
+        pnlHome.add(lblBanner1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, -1, -1));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/bn2.png"))); // NOI18N
-        pnlHome.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(958, 41, -1, 469));
+        pnlHome.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 10, -1, 469));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/bn3.png"))); // NOI18N
-        pnlHome.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(98, 536, -1, -1));
+        pnlHome.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 500, -1, -1));
 
         pnlCardPane.add(pnlHome, "card2");
 
-        jPanel1.add(pnlCardPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(276, 64, -1, -1));
+        jPanel1.add(pnlCardPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(276, 99, -1, 670));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -321,6 +329,14 @@ public class CuaSoChinh extends javax.swing.JFrame {
         changePanel(pnlHome);
     }//GEN-LAST:event_jLabel7MouseClicked
 
+    private void jLabel3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseEntered
+       // pnlMiniMenu.setVisible(true);
+    }//GEN-LAST:event_jLabel3MouseEntered
+
+    private void jLabel3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseExited
+      // pnlMiniMenu.setVisible(false);
+    }//GEN-LAST:event_jLabel3MouseExited
+
     /**
      * @param args the command line arguments
      */
@@ -359,9 +375,9 @@ public class CuaSoChinh extends javax.swing.JFrame {
     private void init() {
         this.setLocationRelativeTo(null);
         this.setIconImage(XImage.getAppIcon());
-//        new ChaoJDialog(this, true).setVisible(true);
+//       new ChaoJDialog(this, true).setVisible(true);
         new DangNhap(this, true).setVisible(true);
-//        new DoiMatKhau(this, true).setVisible(true);
+
 
         new Timer(1000, new ActionListener() {
             @Override
@@ -373,6 +389,7 @@ public class CuaSoChinh extends javax.swing.JFrame {
             }
         }).start();
         bner();
+        //pnlMiniMenu.setVisible(false);
         
     }
 
