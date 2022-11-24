@@ -5,6 +5,7 @@
 package com.nhom4.dao;
 
 import com.nhom4.entity.KhachHang;
+import com.nhom4.entity.NhanVien;
 import com.nhom4.utils.JdbcHelper;
 import java.util.ArrayList;
 import java.util.List;
@@ -39,6 +40,10 @@ public class KhachHangDAO extends MainDAO<KhachHang, String> {
     @Override
     public List<KhachHang> selectAll() {
         return selectBySql(SELECT_ALL_SQL);
+    }
+     public List<KhachHang> selectByKeyword(String user) {
+        String sql = "SELECT * FROM KhachHang WHERE MaKH like ?";
+        return this.selectBySql(sql, "%"+user+"%");
     }
 
     @Override
