@@ -13,6 +13,7 @@ import com.nhom4.utils.MsgBox;
 import com.nhom4.utils.XImage;
 import java.io.File;
 import java.util.List;
+import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.table.DefaultTableModel;
 
@@ -35,6 +36,7 @@ public class NhanVien1 extends javax.swing.JPanel {
     int row = -1;
     int them = 0;
     JFileChooser fileChooser = new JFileChooser();
+    String path = ".//src//com//nhom4//icon//";
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -134,7 +136,6 @@ public class NhanVien1 extends javax.swing.JPanel {
             }
         });
 
-        lblHinh.setText("Ảnh");
         lblHinh.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         lblHinh.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -279,8 +280,8 @@ public class NhanVien1 extends javax.swing.JPanel {
                                 .addGap(148, 148, 148)
                                 .addComponent(txtsoDienSo, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
-                        .addComponent(lblHinh, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(32, 32, 32))))
+                        .addComponent(lblHinh, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(43, 43, 43))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -446,7 +447,9 @@ public class NhanVien1 extends javax.swing.JPanel {
             txtsoDienSo.setText("");
             txtdiaChi.setText("");
             txtEmail.setText("");
-            lblHinh.setText("");
+//            lblHinh.setText("");
+ImageIcon icon = new ImageIcon(path+"user.png");
+lblHinh.setIcon(icon);
             
             txtON();
     }//GEN-LAST:event_btnThemActionPerformed
