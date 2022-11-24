@@ -52,7 +52,7 @@ public class NhanVien1 extends javax.swing.JPanel {
         btnPrev = new javax.swing.JButton();
         btnNext = new javax.swing.JButton();
         btnLast = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        lblQUANLYNHANVIEN = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         rdoGioiTinhNu = new javax.swing.JRadioButton();
         rdoGioiTinhNam = new javax.swing.JRadioButton();
@@ -114,9 +114,9 @@ public class NhanVien1 extends javax.swing.JPanel {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 204));
-        jLabel1.setText("QUẢN LÝ NHÂN VIÊN");
+        lblQUANLYNHANVIEN.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblQUANLYNHANVIEN.setForeground(new java.awt.Color(0, 0, 204));
+        lblQUANLYNHANVIEN.setText("QUẢN LÝ NHÂN VIÊN");
 
         buttonGroup1.add(rdoGioiTinhNu);
         rdoGioiTinhNu.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
@@ -385,7 +385,7 @@ public class NhanVien1 extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(437, 437, 437)
-                        .addComponent(jLabel1))
+                        .addComponent(lblQUANLYNHANVIEN))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(116, 116, 116)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -411,7 +411,7 @@ public class NhanVien1 extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(7, 7, 7)
-                .addComponent(jLabel1)
+                .addComponent(lblQUANLYNHANVIEN)
                 .addGap(2, 2, 2)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -533,7 +533,6 @@ first();
     private javax.swing.JButton btnXoa;
     private javax.swing.JButton btntimKiem;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -545,6 +544,7 @@ first();
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblHinh;
+    private javax.swing.JLabel lblQUANLYNHANVIEN;
     private javax.swing.JRadioButton rdoGioiTinhNam;
     private javax.swing.JRadioButton rdoGioiTinhNu;
     private javax.swing.JTable tblnhanVien;
