@@ -396,7 +396,9 @@ public class KhuyenMai1 extends javax.swing.JPanel {
     }//GEN-LAST:event_btnSuaActionPerformed
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
-        delete();
+        if (checkXoa() == true) {
+            delete();
+        }
     }//GEN-LAST:event_btnXoaActionPerformed
 
     private void btnLuuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLuuActionPerformed
@@ -406,8 +408,11 @@ public class KhuyenMai1 extends javax.swing.JPanel {
                 return;
             }
             if (them == 2) {
-                update();
-                return;
+                if (checkXoa() == true) {
+                    update();
+                    return;
+                }
+
             }
         }
 
@@ -758,14 +763,90 @@ public class KhuyenMai1 extends javax.swing.JPanel {
             MsgBox.alert(this, "Không được để trống giá trị giảm giá (%)");
             txtGiamGia.requestFocus();
             return false;
+        } else if (checkGiamGia == false) {
+            MsgBox.alert(this, "Vui lòng nhập số");
+            txtGiamGia.requestFocus();
         } else if (Float.parseFloat(txtGiamGia.getText()) > 100 || Float.parseFloat(txtGiamGia.getText()) < 0) {
             MsgBox.alert(this, "Điểm phải từ 0 -- 10");
             txtGiamGia.requestFocus();
-
-        } else if (Integer.parseInt(dfyear.format(txtNgayBD.getDate())) < Integer.parseInt(dfyear.format(now))) {
+        }
+        
+        
+        
+        else if (Integer.parseInt(dfyear.format(txtNgayBD.getDate())) < Integer.parseInt(dfyear.format(now))) {
             MsgBox.alert(this, "Thời gian bắt đầu phải lớn hơn thời gian hiện tại!");
             return false;
+        } else if (Integer.parseInt(dfyear.format(txtNgayBD.getDate())) == Integer.parseInt(dfyear.format(now))) {
+            if (Integer.parseInt(dfmonth.format(txtNgayBD.getDate())) < Integer.parseInt(dfmonth.format(now))) {
+                MsgBox.alert(this, "Thời gian bắt đầu phải lớn hơn thời gian hiện tại!");
+                return false;
+            }
+            if (Integer.parseInt(dfmonth.format(txtNgayBD.getDate())) == Integer.parseInt(dfmonth.format(now))) {
+                if (Integer.parseInt(dfday.format(txtNgayBD.getDate())) < Integer.parseInt(dfday.format(now))) {
+                    MsgBox.alert(this, "Thời gian bắt đầu phải lớn hơn thời gian hiện tại!");
+                    return false;
+                }
+            }
         }
+        
+        
+        
+        
+        
+        
+        else if (Integer.parseInt(dfyear.format(txtNgayKT.getDate())) < Integer.parseInt(dfyear.format(txtNgayBD.getDate()))) {
+            MsgBox.alert(this, "Thời gian kết thúc phải lớn hơn thời gian bắt đầu!");
+            return false;
+        } else if (Integer.parseInt(dfyear.format(txtNgayKT.getDate())) == Integer.parseInt(dfyear.format(txtNgayBD.getDate()))) {
+            if (Integer.parseInt(dfmonth.format(txtNgayKT.getDate())) < Integer.parseInt(dfmonth.format(txtNgayBD.getDate()))) {
+                MsgBox.alert(this, "Thời gian kết thúc phải lớn hơn thời gian bắt đầu!");
+                return false;
+            }
+            if (Integer.parseInt(dfmonth.format(txtNgayKT.getDate())) == Integer.parseInt(dfmonth.format(txtNgayBD.getDate()))) {
+                if (Integer.parseInt(dfday.format(txtNgayKT.getDate())) < Integer.parseInt(dfday.format(txtNgayBD.getDate()))) {
+                    MsgBox.alert(this, "Thời gian kết thúc phải lớn hơn thời gian bắt đầu!");
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    public boolean checkXoa() {
+        Date date = null;
+        Date now = new Date();
+        SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+        SimpleDateFormat dfday = new SimpleDateFormat("dd");
+        SimpleDateFormat dfmonth = new SimpleDateFormat("MM");
+        SimpleDateFormat dfyear = new SimpleDateFormat("yyyy");
+
+//        if (Integer.parseInt(dfyear.format(txtNgayKT.getDate())) < Integer.parseInt(dfyear.format(now))) {
+//            MsgBox.alert(this, "Chương trình đang diễn ra không thể sửa hoặc xóa");
+//            return false;
+//        } else if (Integer.parseInt(dfmonth.format(txtNgayKT.getDate())) < Integer.parseInt(dfmonth.format(now))) {
+//            MsgBox.alert(this, "Chương trình đang diễn ra không thể sửa hoặc xóa");
+//            return false;
+//        } else if (Integer.parseInt(dfday.format(txtNgayKT.getDate())) < Integer.parseInt(dfday.format(now))) {
+//            MsgBox.alert(this, "Chương trình đang diễn ra không thể sửa hoặc xóa");
+//            return false;
+//        }
+        
+        if (Integer.parseInt(dfyear.format(txtNgayKT.getDate())) < Integer.parseInt(dfyear.format(now))) {
+            MsgBox.alert(this, "Chương trình đang diễn ra không thể sửa hoặc xóa!");
+            return false;
+        } else if (Integer.parseInt(dfyear.format(txtNgayKT.getDate())) == Integer.parseInt(dfyear.format(now))) {
+            if (Integer.parseInt(dfmonth.format(txtNgayKT.getDate())) < Integer.parseInt(dfmonth.format(now))) {
+                MsgBox.alert(this, "Chương trình đang diễn ra không thể sửa hoặc xóa!");
+                return false;
+            }
+            if (Integer.parseInt(dfmonth.format(txtNgayKT.getDate())) == Integer.parseInt(dfmonth.format(now))) {
+                if (Integer.parseInt(dfday.format(txtNgayKT.getDate())) < Integer.parseInt(dfday.format(now))) {
+                    MsgBox.alert(this, "Chương trình đang diễn ra không thể sửa hoặc xóa!");
+                    return false;
+                }
+            }
+        }
+
         return true;
     }
 }
