@@ -517,7 +517,7 @@ public class KhachHang1 extends javax.swing.JPanel {
     
     public void delete() {
             String kh = txtmaKhachHang.getText();
-            if (MsgBox.confirm(this, "Bạn thực sự muốn xóa nhà cung cấp này")) {
+            if (MsgBox.confirm(this, "Bạn thực sự muốn xóa khách hàng này")) {
                 try {
                     dao.delete(kh);
                     this.fillTable();
