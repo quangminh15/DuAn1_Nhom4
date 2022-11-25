@@ -4,12 +4,19 @@
  */
 package com.nhom4.utils;
 
+import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.util.Date;
+
+
 import com.nhom4.entity.KhuyenMai;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
+
 
 /**
  *
@@ -20,6 +27,7 @@ public class NewClass {
         Date now = new Date();
         SimpleDateFormat df = new SimpleDateFormat("yyyy");
         System.out.println(df.format(now));
+
         
         List<KhuyenMai> listKM = new ArrayList<>();
         System.out.println("1");
@@ -31,5 +39,6 @@ public class NewClass {
             System.out.println("3");
             System.out.println(i);
         }
+
     }
 }

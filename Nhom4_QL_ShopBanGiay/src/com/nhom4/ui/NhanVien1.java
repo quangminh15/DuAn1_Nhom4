@@ -8,10 +8,12 @@ import com.nhom4.dao.NhaCungCapDAO;
 import com.nhom4.dao.NhanVienDAO;
 import com.nhom4.entity.NhaCungCap;
 import com.nhom4.entity.NhanVien;
+import com.nhom4.entity.TaiKhoan;
 import com.nhom4.utils.MsgBox;
 import com.nhom4.utils.XImage;
 import java.io.File;
 import java.util.List;
+import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.table.DefaultTableModel;
 
@@ -33,7 +35,8 @@ public class NhanVien1 extends javax.swing.JPanel {
     NhanVienDAO dao = new NhanVienDAO();
     int row = -1;
     int them = 0;
-    JFileChooser fileChooser = new JFileChooser();
+    JFileChooser fileChooser = new JFileChooser(".//src//com//nhom4//icon//");
+    String path = ".//src//com//nhom4//icon//";
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -49,7 +52,7 @@ public class NhanVien1 extends javax.swing.JPanel {
         btnPrev = new javax.swing.JButton();
         btnNext = new javax.swing.JButton();
         btnLast = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        lblQUANLYNHANVIEN = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         rdoGioiTinhNu = new javax.swing.JRadioButton();
         rdoGioiTinhNam = new javax.swing.JRadioButton();
@@ -111,9 +114,9 @@ public class NhanVien1 extends javax.swing.JPanel {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 204));
-        jLabel1.setText("QUẢN LÝ NHÂN VIÊN");
+        lblQUANLYNHANVIEN.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblQUANLYNHANVIEN.setForeground(new java.awt.Color(0, 0, 204));
+        lblQUANLYNHANVIEN.setText("QUẢN LÝ NHÂN VIÊN");
 
         buttonGroup1.add(rdoGioiTinhNu);
         rdoGioiTinhNu.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
@@ -133,7 +136,6 @@ public class NhanVien1 extends javax.swing.JPanel {
             }
         });
 
-        lblHinh.setText("Ảnh");
         lblHinh.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         lblHinh.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -278,8 +280,8 @@ public class NhanVien1 extends javax.swing.JPanel {
                                 .addGap(148, 148, 148)
                                 .addComponent(txtsoDienSo, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
-                        .addComponent(lblHinh, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(32, 32, 32))))
+                        .addComponent(lblHinh, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(43, 43, 43))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -383,7 +385,7 @@ public class NhanVien1 extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(437, 437, 437)
-                        .addComponent(jLabel1))
+                        .addComponent(lblQUANLYNHANVIEN))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(116, 116, 116)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -409,7 +411,7 @@ public class NhanVien1 extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(7, 7, 7)
-                .addComponent(jLabel1)
+                .addComponent(lblQUANLYNHANVIEN)
                 .addGap(2, 2, 2)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -445,7 +447,9 @@ public class NhanVien1 extends javax.swing.JPanel {
             txtsoDienSo.setText("");
             txtdiaChi.setText("");
             txtEmail.setText("");
-            lblHinh.setText("");
+//            lblHinh.setText("");
+ImageIcon icon = new ImageIcon(path+"user.png");
+lblHinh.setIcon(icon);
             
             txtON();
     }//GEN-LAST:event_btnThemActionPerformed
@@ -509,7 +513,7 @@ first();
     }//GEN-LAST:event_tblnhanVienMouseClicked
 
     private void btntimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btntimKiemActionPerformed
-        // TODO add your handling code here:
+      this.TimKiem();
     }//GEN-LAST:event_btntimKiemActionPerformed
 
     private void lblHinhMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHinhMouseClicked
@@ -529,7 +533,6 @@ first();
     private javax.swing.JButton btnXoa;
     private javax.swing.JButton btntimKiem;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -541,6 +544,7 @@ first();
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblHinh;
+    private javax.swing.JLabel lblQUANLYNHANVIEN;
     private javax.swing.JRadioButton rdoGioiTinhNam;
     private javax.swing.JRadioButton rdoGioiTinhNu;
     private javax.swing.JTable tblnhanVien;
@@ -621,7 +625,7 @@ first();
     
     public void delete() {
             String nv = txtmaNhanVien.getText();
-            if (MsgBox.confirm(this, "Bạn thực sự muốn xóa nhà cung cấp này")) {
+            if (MsgBox.confirm(this, "Bạn thực sự muốn xóa nhân viên này")) {
                 try {
                     dao.delete(nv);
                     this.fillTable();
@@ -751,19 +755,56 @@ first();
     }
     
     public boolean check(){
-        if(txtmaNhanVien.getText().equals("")){
-            MsgBox.alert(this, "Không được để trống mã nhà cung cấp");
+ if (txtmaNhanVien.getText().equals("") || txtmaNhanVien.getText().length() < 5 || txtmaNhanVien.getText().length() > 6) {
+            MsgBox.alert(this, "Vui lòng nhập mã nhân viên từ 5---->6 kí tự");
             txtmaNhanVien.requestFocus();
             return false;
-        } else if (txtmaNhanVien.getText().length() > 0 && txtmaNhanVien.getText().length() < 3) {
-            MsgBox.alert(this, "Mã nhà cung cấp phải nhập ít nhất 3 ký tự");
-            txtmaNhanVien.requestFocus();
-            return false;
-        } else if(txttenNhanVien.getText().equals("")){
-            MsgBox.alert(this, "Không được để trống tên nhà cung cấp");
+        } else if (txttenNhanVien.getText().length() == 0) {
+            MsgBox.alert(this, "Tên nhân viên không được bỏ trống!!!");
             txttenNhanVien.requestFocus();
+            return false;
+        } else if (txtsoDienSo.getText().equals("") || txtsoDienSo.getText().length() < 9 || txtsoDienSo.getText().length() > 10) {
+            MsgBox.alert(this, "Vui lòng nhập số điện thoại từ 9---->10 kí tự");
+            txtsoDienSo.requestFocus();
+            return false;
+        } else if (txtdiaChi.getText().length() == 0) {
+            MsgBox.alert(this, "Địa chỉ không được bỏ trống!!!");
+            txtdiaChi.requestFocus();
+            return false;
+        }else if (txtEmail.getText().length() == 0) {
+            MsgBox.alert(this, "Email không được bỏ trống!!!");
+            txtEmail.requestFocus();
+            return false;
+        }else if (lblHinh.getIcon() == null) {
+            MsgBox.alert(this, "Bạn chưa chọn hình! click vào khu vực hình để chọn");
             return false;
         }
         return true;
     }
-}
+     public void TimKiem() {
+ DefaultTableModel model = (DefaultTableModel) tblnhanVien.getModel();
+        model.setRowCount(0);
+        try {
+            String nvv = txttimKiem.getText();
+            List<NhanVien> list = dao.selectByKeyword(nvv);
+            for (NhanVien nv : list) {
+                Object[] data = {
+                    nv.getMaNV(),
+                    nv.getTenNV(),
+                    nv.getGioiTinh(),
+                    nv.getSDT(),
+                    nv.getDiaChi(),
+                    nv.getEmail(),
+                    nv.getHinh(),
+                };
+                model.addRow(data);
+            }
+        } catch (Exception e) {
+            MsgBox.alert(this, e.getMessage());
+        }
+        this.clearForm();
+        this.row = -1;
+        updateStatus();
+    
+    }
+}    

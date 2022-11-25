@@ -16,8 +16,8 @@ import java.util.ArrayList;
  * @author ACER
  */
 public class HoaDonChiTietDAO extends MainDAO<HoaDonChiTiet, String> {
-
-    final String INSERT_SQL = "INSERT INTO HoaDonCT (MaHDCT,MaHD, MaCT, TenSP, SoLuong,Gia,TongTien)VALUES(?,?,?,?,?,?,?)";
+    final String SET_IDENTITY = "SET IDENTITY_INSERT HoaDonCT ON";
+    final String INSERT_SQL = "INSERT INTO HoaDonCT (MaHD, MaCT, TenSP, SoLuong,Gia,TongTien)VALUES(?,?,?,?,?,?)";
     final String UPDATE_SQL = "UPDATE HoaDonCT SET MaHD=?, MaCT =?, TenSP=?, SoLuong=?, Gia=?, TongTien=? WHERE MaHDCT=?";
     final String DELETE_SQL = "DELETE FROM HoaDonCT WHERE MaHDCT = ?";
     final String SELECT_ALL_SQL = "SELECT * FROM HoaDonCT ";
@@ -25,7 +25,8 @@ public class HoaDonChiTietDAO extends MainDAO<HoaDonChiTiet, String> {
 
     @Override
     public void insert(HoaDonChiTiet entity) {
-        JdbcHelper.executeUpdate(INSERT_SQL, entity.getMaHDCT(), entity.getMaHD(), entity.getMaCT(), entity.getTenSP(), entity.getSoLuong(), entity.getGia(), entity.getTongTien());
+        
+        JdbcHelper.executeUpdate(INSERT_SQL, entity.getMaHD(), entity.getMaCT(), entity.getTenSP(), entity.getSoLuong(), entity.getGia(), entity.getTongTien());
     }
 
     @Override
@@ -59,7 +60,7 @@ public class HoaDonChiTietDAO extends MainDAO<HoaDonChiTiet, String> {
             ResultSet rs = JdbcHelper.executeQuery(sql, args);
             while (rs.next()) {
                 HoaDonChiTiet entity = new HoaDonChiTiet();
-                entity.setMaHDCT(rs.getString("MaHDCT"));
+                entity.setMaHDCT(rs.getInt("MaHDCT"));
                 entity.setMaHD(rs.getString("MaHD"));
                 entity.setMaCT(rs.getString("MaCT"));
                 entity.setTenSP(rs.getString("TenSP"));
@@ -72,6 +73,10 @@ public class HoaDonChiTietDAO extends MainDAO<HoaDonChiTiet, String> {
             throw new RuntimeException(e);
         }
         return list;
+    }
+     public List<HoaDonChiTiet> selectByMaHD(String key) {
+        String sql = "SELECT * FROM HoaDonCT WHERE MaHD like ?";
+        return this.selectBySql(sql, "%"+key+"%");
     }
     public List<String> selectMaCT(){
         String sql = "Select maCT from ChiTietSP";

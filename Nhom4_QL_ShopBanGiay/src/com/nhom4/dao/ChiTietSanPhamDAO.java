@@ -58,6 +58,11 @@ public class ChiTietSanPhamDAO extends MainDAO<ChiTietSanPham, String> {
         return list.get(0);
     }
     
+    public List<ChiTietSanPham> selectByKeyword(String key) {
+        String sql = "SELECT * FROM ChiTietSP WHERE MaCT like ?";
+        return this.selectBySql(sql, "%"+key+"%");
+    }
+    
     @Override
     public List<ChiTietSanPham> selectBySql(String sql, Object... args) {
         List<ChiTietSanPham> list = new ArrayList<ChiTietSanPham>();

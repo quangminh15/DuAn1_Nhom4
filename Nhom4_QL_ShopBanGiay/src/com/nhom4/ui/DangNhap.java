@@ -311,6 +311,7 @@ public class DangNhap extends javax.swing.JDialog {
          this.setLocationRelativeTo(null);
          //lblUserName.setVisible(false);
          //lblLogin.setIcon(new ImageIcon("src\\com\\nhom4\\icon\\btnLog1.png"));
+         
     }
     
 void dangNhap() {
@@ -323,8 +324,11 @@ void dangNhap() {
             if (!nv.getPass().equals(matkhau)) {
                 MsgBox.alert(this, "Mật khẩu không chính xác");
             } else {
+                //new loading().setVisible(true);
                 Auth.user = nv;
+                
                 MsgBox.alert(this, "Đăng nhập thành công!");
+                
                 this.dispose();
             }
         }

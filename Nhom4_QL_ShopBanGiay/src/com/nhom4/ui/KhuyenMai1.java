@@ -24,14 +24,16 @@ public class KhuyenMai1 extends javax.swing.JPanel {
     Date now = new Date();
     SimpleDateFormat formats = new SimpleDateFormat("dd-MM-yyyy");
     ArrayList<KhuyenMai> listKM = new ArrayList<>();
+
     public KhuyenMai1() {
         initComponents();
         init();
     }
-    
+
     KhuyenMaiDAO dao = new KhuyenMaiDAO();
     int row = 0;
     int them = 0;
+    int checklap = 0;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -394,18 +396,23 @@ public class KhuyenMai1 extends javax.swing.JPanel {
     }//GEN-LAST:event_btnSuaActionPerformed
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
-        delete();
+        if (checkXoa() == true) {
+            delete();
+        }
     }//GEN-LAST:event_btnXoaActionPerformed
 
     private void btnLuuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLuuActionPerformed
-        if(check()==true){
-            if(them == 1 ){
+        if (check() == true) {
+            if (them == 1) {
                 insert();
                 return;
             }
-            if(them == 2){
-                update();
-                return;
+            if (them == 2) {
+                if (checkXoa() == true) {
+                    update();
+                    return;
+                }
+
             }
         }
 
@@ -467,102 +474,100 @@ public class KhuyenMai1 extends javax.swing.JPanel {
         fillTable();
         btnLuu.setEnabled(false);
         this.updateStatus();
-          
+
     }
-    
+
     public void fillTable() {
         DefaultTableModel model = (DefaultTableModel) tblKhuyenMai.getModel();
         model.setRowCount(0);
         try {
             List<KhuyenMai> list = dao.selectAll(); // Đọc dữ liệu từ CSDL
             for (KhuyenMai nv : list) {
-                Object[] data = {  
+                Object[] data = {
                     nv.getMaKM(),
                     nv.getTenKM(),
                     nv.getGiamGia(),
                     formats.format(nv.getNgayBD()),
                     formats.format(nv.getNgayKT()),
                     nv.getGhiChu()
- 
-                
-             
-                
+
                 };
+                listKM.add(nv);
                 model.addRow(data);
             }
         } catch (Exception e) {
             MsgBox.alert(this, "Lỗi truy vấn dữ liệu!");
         }
     }
-    
+
     public void insert() {
-            KhuyenMai ncc = getForm();
-            try {
-                dao.insert(ncc);
-                this.fillTable();
-                this.clearForm();
-                MsgBox.alert(this, "Thêm mới thành công");
-                updateStatus();
-                them = 0;
-                btnLuu.setEnabled(false);
-            } catch (Exception e) {
-                MsgBox.alert(this, "Thêm mới thất bại");
-                updateStatus();
-                them = 0;
-                btnLuu.setEnabled(false);
-            }
-        
+        KhuyenMai ncc = getForm();
+        try {
+            dao.insert(ncc);
+            this.fillTable();
+            this.clearForm();
+            MsgBox.alert(this, "Thêm mới thành công");
+            updateStatus();
+            them = 0;
+            btnLuu.setEnabled(false);
+        } catch (Exception e) {
+            MsgBox.alert(this, "Thêm mới thất bại");
+            updateStatus();
+            them = 0;
+            btnLuu.setEnabled(false);
+        }
+
     }
-    
+
     public void update() {
         KhuyenMai nv = getForm();
-            try {
-                dao.update(nv);
-                this.fillTable();
-                MsgBox.alert(this, "Cập nhật thành công");
- 
-                updateStatus();
-                them = 0;
-                btnLuu.setEnabled(false);
-            } catch (Exception e) {
-                MsgBox.alert(this, e.getMessage());
-                System.out.println(e);
-                e.getMessage();
-                updateStatus();
-                them = 0;
-                btnLuu.setEnabled(false);
-            }
-        
+        try {
+            dao.update(nv);
+            this.fillTable();
+            MsgBox.alert(this, "Cập nhật thành công");
+
+            updateStatus();
+            them = 0;
+            btnLuu.setEnabled(false);
+        } catch (Exception e) {
+            MsgBox.alert(this, e.getMessage());
+            System.out.println(e);
+            e.getMessage();
+            updateStatus();
+            them = 0;
+            btnLuu.setEnabled(false);
+        }
+
     }
-    
-    
+
     public void delete() {
-            String km = txtMaKM.getText();
-            if (MsgBox.confirm(this, "Bạn thực sự muốn xóa chương trình khuyến mãi này")) {
-                try {
-                    dao.delete(km);
-                    this.fillTable();
-                    this.clearForm();
-                    MsgBox.alert(this, "Xóa thành công");
-                } catch (Exception e) {
-                    MsgBox.alert(this, "Xóa thất bại");
-                }
+        String km = txtMaKM.getText();
+        if (MsgBox.confirm(this, "Bạn thực sự muốn xóa chương trình khuyến mãi này")) {
+            try {
+                dao.delete(km);
+                this.fillTable();
+                this.clearForm();
+                MsgBox.alert(this, "Xóa thành công");
+            } catch (Exception e) {
+                MsgBox.alert(this, "Xóa thất bại");
             }
+        }
     }
-    
+
     public void clearForm() {
         KhuyenMai km = new KhuyenMai();
         this.setForm(km);
         this.row = -1;
         this.updateStatus();
     }
-    
+
     public void TimKiem() {
         DefaultTableModel model = (DefaultTableModel) tblKhuyenMai.getModel();
         model.setRowCount(0);
         try {
             String key = txtTimKiem.getText();
-            
+
+//            List<KhuyenMai> list = dao.selectByKeyword(key); // Đọc dữ liệu từ CSDL
 //            for (int i = 0; i < listKM.size(); i++) {
 //                System.out.println("5");
 //                if(!key.equals(listKM.get(i))){
@@ -572,6 +577,7 @@ public class KhuyenMai1 extends javax.swing.JPanel {
 //            }
             System.out.println("7");
             List<KhuyenMai> list = dao.selectByKeyword(key);
+
             for (KhuyenMai nh : list) {
                 Object[] data = {
                     nh.getMaKM(),
@@ -579,8 +585,7 @@ public class KhuyenMai1 extends javax.swing.JPanel {
                     nh.getGiamGia(),
                     new java.sql.Date(nh.getNgayBD().getTime()),
                     new java.sql.Date(nh.getNgayKT().getTime()),
-                    nh.getGhiChu(),
-                };
+                    nh.getGhiChu(),};
                 model.addRow(data);
             }
         } catch (Exception e) {
@@ -590,21 +595,21 @@ public class KhuyenMai1 extends javax.swing.JPanel {
         this.row = -1;
         updateStatus();
     }
-    
+
     public void setForm(KhuyenMai km) {
         try {
             txtMaKM.setText(km.getMaKM());
             txtTenKM.setText(km.getTenKM());
-            txtGiamGia.setText(String.valueOf(km.getGiamGia())); 
-            
-            txtNgayBD.setDate(km.getNgayBD()); 
+            txtGiamGia.setText(String.valueOf(km.getGiamGia()));
+
+            txtNgayBD.setDate(km.getNgayBD());
             txtNgayKT.setDate(km.getNgayKT());
             txtGhiChu.setText(km.getGhiChu());
         } catch (Exception e) {
             MsgBox.alert(this, e.getMessage());
         }
     }
-    
+
     KhuyenMai getForm() {
         KhuyenMai km = new KhuyenMai();
         km.setMaKM(txtMaKM.getText());
@@ -615,7 +620,7 @@ public class KhuyenMai1 extends javax.swing.JPanel {
         km.setGhiChu(txtGhiChu.getText());
         return km;
     }
-    
+
     public void updateStatus() {
         boolean edit = (this.row >= 0);
         boolean first = (this.row == 0);
@@ -631,16 +636,18 @@ public class KhuyenMai1 extends javax.swing.JPanel {
         btnLast.setEnabled(edit && !last);
         txtOFF();
     }
-    
+
     public void edit() {
         String mancc = (String) tblKhuyenMai.getValueAt(this.row, 0);
         KhuyenMai ncc = dao.selectById(mancc);
         this.setForm(ncc);
         this.updateStatus();
     }
-    
+
     public void Dislay(int i) {
+
         KhuyenMai v = listKM.get(i);
+
         txtMaKM.setText(v.getMaKM());
         txtTenKM.setText(v.getTenKM());
         txtGiamGia.setText(String.valueOf(v.getGiamGia()));
@@ -648,66 +655,66 @@ public class KhuyenMai1 extends javax.swing.JPanel {
         txtNgayKT.setDate(v.getNgayKT());
         txtGhiChu.setText(v.getGhiChu());
     }
-    
+
     public void first() {
         try {
             this.row = 0;
-        tblKhuyenMai.setSelectionBackground(new Color(0, 156, 222));
-        tblKhuyenMai.setRowSelectionInterval(row, row);
-        this.edit();
-        Dislay(row);
+            tblKhuyenMai.setSelectionBackground(new Color(0, 156, 222));
+            tblKhuyenMai.setRowSelectionInterval(row, row);
+            this.edit();
+            Dislay(row);
         } catch (Exception e) {
             return;
         }
-        
+
     }
-    
+
     public void prev() {
         try {
             if (this.row > 0) {
-            this.row--;
-            this.edit();
-        }
-        tblKhuyenMai.setSelectionBackground(new Color(0, 156, 222));
-        tblKhuyenMai.setRowSelectionInterval(row, row);
-        Dislay(row);
+                this.row--;
+                this.edit();
+            }
+            tblKhuyenMai.setSelectionBackground(new Color(0, 156, 222));
+            tblKhuyenMai.setRowSelectionInterval(row, row);
+            Dislay(row);
         } catch (Exception e) {
             if (row < 0) {
-            return;
-        }
+                return;
+            }
         }
     }
-    
+
     public void next() {
         try {
             if (this.row < tblKhuyenMai.getRowCount() - 1) {
-            this.row++;
-            this.edit();
-        }
-        tblKhuyenMai.setSelectionBackground(new Color(0, 156, 222));
-        tblKhuyenMai.setRowSelectionInterval(row, row);
-        Dislay(row);
+                this.row++;
+                this.edit();
+            }
+            tblKhuyenMai.setSelectionBackground(new Color(0, 156, 222));
+            tblKhuyenMai.setRowSelectionInterval(row, row);
+            Dislay(row);
         } catch (Exception e) {
             if (this.row == tblKhuyenMai.getRowCount() - 1) {
-            return;
-        }
+                return;
+            }
         }
     }
-    
+
     public void last() {
         try {
             this.row = tblKhuyenMai.getRowCount() - 1;
-        this.edit();
-        tblKhuyenMai.setSelectionBackground(new Color(0, 156, 222));
-        tblKhuyenMai.setRowSelectionInterval(row, row);
-        Dislay(row);
+            this.edit();
+            tblKhuyenMai.setSelectionBackground(new Color(0, 156, 222));
+            tblKhuyenMai.setRowSelectionInterval(row, row);
+            Dislay(row);
         } catch (Exception e) {
             return;
         }
-        
+
     }
-    
-    public void txtOFF(){
+
+    public void txtOFF() {
         txtMaKM.setEditable(false);
         txtTenKM.setEditable(false);
         txtGiamGia.setEditable(false);
@@ -715,8 +722,8 @@ public class KhuyenMai1 extends javax.swing.JPanel {
         txtNgayKT.setEnabled(false);
         txtGhiChu.setEditable(false);
     }
-    
-    public void txtON(){
+
+    public void txtON() {
         txtMaKM.setEditable(true);
         txtTenKM.setEditable(true);
         txtGiamGia.setEditable(true);
@@ -724,18 +731,16 @@ public class KhuyenMai1 extends javax.swing.JPanel {
         txtNgayKT.setEnabled(true);
         txtGhiChu.setEditable(true);
     }
-    
-    public boolean check(){
+
+    public boolean check() {
         boolean checkGiamGia = true;
 
-        
         try {
             Float.parseFloat(txtGiamGia.getText());
         } catch (NumberFormatException e1) {
             checkGiamGia = false;
         }
 
-        
         Date date = null;
         Date now = new Date();
         SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
@@ -743,7 +748,13 @@ public class KhuyenMai1 extends javax.swing.JPanel {
         SimpleDateFormat dfmonth = new SimpleDateFormat("MM");
         SimpleDateFormat dfyear = new SimpleDateFormat("yyyy");
         
-        if(txtMaKM.getText().equals("")){
+        for (int i = 0; i < listKM.size(); i++) {
+            if (listKM.get(i).getMaKM().equalsIgnoreCase(txtMaKM.getText())) {
+                checklap = 1;
+            }
+        }
+        
+        if (txtMaKM.getText().equals("")) {
             MsgBox.alert(this, "Không được để trống mã chương trình khuyến mãi");
             txtMaKM.requestFocus();
             return false;
@@ -751,23 +762,101 @@ public class KhuyenMai1 extends javax.swing.JPanel {
             MsgBox.alert(this, "Mã chương trình khuyến mãi phải nhập ít nhất 3 ký tự");
             txtMaKM.requestFocus();
             return false;
-        } else if(txtTenKM.getText().equals("")){
+        } else if (checklap == 1) {
+            MsgBox.alert(this, "Mã chương trình khuyến mãi đã tồn tại. Vui lòng nhập mã mới");
+            return false;
+        } else if (txtTenKM.getText().equals("")) {
             MsgBox.alert(this, "Không được để trống tên chương trình khuyến mãi");
             txtTenKM.requestFocus();
             return false;
-        } else if(txtGiamGia.getText().equals("")){
+        } else if (txtGiamGia.getText().equals("")) {
             MsgBox.alert(this, "Không được để trống giá trị giảm giá (%)");
             txtGiamGia.requestFocus();
             return false;
-        } else if (Float.parseFloat(txtGiamGia.getText()) > 100 || Float.parseFloat(txtGiamGia.getText()) <= 0) {
-            MsgBox.alert(this, "Giá trị giảm giá(%) từ 0% --> 100%");
+        } else if (checkGiamGia == false) {
+            MsgBox.alert(this, "Vui lòng nhập số");
             txtGiamGia.requestFocus();
-            return false;
-        } 
-        else if(Integer.parseInt(dfyear.format(txtNgayBD.getDate())) < Integer.parseInt(dfyear.format(now))){
+        } else if (Float.parseFloat(txtGiamGia.getText()) > 100 || Float.parseFloat(txtGiamGia.getText()) < 0) {
+            MsgBox.alert(this, "Điểm phải từ 0 -- 10");
+            txtGiamGia.requestFocus();
+        }
+        
+        
+        
+        else if (Integer.parseInt(dfyear.format(txtNgayBD.getDate())) < Integer.parseInt(dfyear.format(now))) {
             MsgBox.alert(this, "Thời gian bắt đầu phải lớn hơn thời gian hiện tại!");
             return false;
+        } else if (Integer.parseInt(dfyear.format(txtNgayBD.getDate())) == Integer.parseInt(dfyear.format(now))) {
+            if (Integer.parseInt(dfmonth.format(txtNgayBD.getDate())) < Integer.parseInt(dfmonth.format(now))) {
+                MsgBox.alert(this, "Thời gian bắt đầu phải lớn hơn thời gian hiện tại!");
+                return false;
+            }
+            if (Integer.parseInt(dfmonth.format(txtNgayBD.getDate())) == Integer.parseInt(dfmonth.format(now))) {
+                if (Integer.parseInt(dfday.format(txtNgayBD.getDate())) < Integer.parseInt(dfday.format(now))) {
+                    MsgBox.alert(this, "Thời gian bắt đầu phải lớn hơn thời gian hiện tại!");
+                    return false;
+                }
+            }
         }
+        
+        
+        
+        
+        
+        
+        else if (Integer.parseInt(dfyear.format(txtNgayKT.getDate())) < Integer.parseInt(dfyear.format(txtNgayBD.getDate()))) {
+            MsgBox.alert(this, "Thời gian kết thúc phải lớn hơn thời gian bắt đầu!");
+            return false;
+        } else if (Integer.parseInt(dfyear.format(txtNgayKT.getDate())) == Integer.parseInt(dfyear.format(txtNgayBD.getDate()))) {
+            if (Integer.parseInt(dfmonth.format(txtNgayKT.getDate())) < Integer.parseInt(dfmonth.format(txtNgayBD.getDate()))) {
+                MsgBox.alert(this, "Thời gian kết thúc phải lớn hơn thời gian bắt đầu!");
+                return false;
+            }
+            if (Integer.parseInt(dfmonth.format(txtNgayKT.getDate())) == Integer.parseInt(dfmonth.format(txtNgayBD.getDate()))) {
+                if (Integer.parseInt(dfday.format(txtNgayKT.getDate())) < Integer.parseInt(dfday.format(txtNgayBD.getDate()))) {
+                    MsgBox.alert(this, "Thời gian kết thúc phải lớn hơn thời gian bắt đầu!");
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    public boolean checkXoa() {
+        Date date = null;
+        Date now = new Date();
+        SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+        SimpleDateFormat dfday = new SimpleDateFormat("dd");
+        SimpleDateFormat dfmonth = new SimpleDateFormat("MM");
+        SimpleDateFormat dfyear = new SimpleDateFormat("yyyy");
+
+//        if (Integer.parseInt(dfyear.format(txtNgayKT.getDate())) < Integer.parseInt(dfyear.format(now))) {
+//            MsgBox.alert(this, "Chương trình đang diễn ra không thể sửa hoặc xóa");
+//            return false;
+//        } else if (Integer.parseInt(dfmonth.format(txtNgayKT.getDate())) < Integer.parseInt(dfmonth.format(now))) {
+//            MsgBox.alert(this, "Chương trình đang diễn ra không thể sửa hoặc xóa");
+//            return false;
+//        } else if (Integer.parseInt(dfday.format(txtNgayKT.getDate())) < Integer.parseInt(dfday.format(now))) {
+//            MsgBox.alert(this, "Chương trình đang diễn ra không thể sửa hoặc xóa");
+//            return false;
+//        }
+        
+        if (Integer.parseInt(dfyear.format(txtNgayKT.getDate())) < Integer.parseInt(dfyear.format(now))) {
+            MsgBox.alert(this, "Chương trình đang diễn ra không thể sửa hoặc xóa!");
+            return false;
+        } else if (Integer.parseInt(dfyear.format(txtNgayKT.getDate())) == Integer.parseInt(dfyear.format(now))) {
+            if (Integer.parseInt(dfmonth.format(txtNgayKT.getDate())) < Integer.parseInt(dfmonth.format(now))) {
+                MsgBox.alert(this, "Chương trình đang diễn ra không thể sửa hoặc xóa!");
+                return false;
+            }
+            if (Integer.parseInt(dfmonth.format(txtNgayKT.getDate())) == Integer.parseInt(dfmonth.format(now))) {
+                if (Integer.parseInt(dfday.format(txtNgayKT.getDate())) < Integer.parseInt(dfday.format(now))) {
+                    MsgBox.alert(this, "Chương trình đang diễn ra không thể sửa hoặc xóa!");
+                    return false;
+                }
+            }
+        }
+
         return true;
     }
 }

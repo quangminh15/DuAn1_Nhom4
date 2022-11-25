@@ -5,6 +5,7 @@
 package com.nhom4.dao;
 
 import com.nhom4.entity.NhanVien;
+import com.nhom4.entity.TaiKhoan;
 import com.nhom4.utils.JdbcHelper;
 import java.util.ArrayList;
 import java.util.List;
@@ -48,6 +49,10 @@ public class NhanVienDAO extends MainDAO <NhanVien, String> {
             return null;
         }
         return list.get(0);
+    }
+    public List<NhanVien> selectByKeyword(String user) {
+        String sql = "SELECT * FROM NhanVien WHERE MaNV like ?";
+        return this.selectBySql(sql, "%"+user+"%");
     }
 
     @Override
