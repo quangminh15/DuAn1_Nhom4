@@ -23,7 +23,6 @@ public class KhuyenMai1 extends javax.swing.JPanel {
 
     Date now = new Date();
     SimpleDateFormat formats = new SimpleDateFormat("dd-MM-yyyy");
-    ArrayList<KhuyenMai> listNCC = new ArrayList<>();
     ArrayList<KhuyenMai> listKM = new ArrayList<>();
 
     public KhuyenMai1() {
@@ -34,6 +33,7 @@ public class KhuyenMai1 extends javax.swing.JPanel {
     KhuyenMaiDAO dao = new KhuyenMaiDAO();
     int row = 0;
     int them = 0;
+    int checklap = 0;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -492,6 +492,7 @@ public class KhuyenMai1 extends javax.swing.JPanel {
                     nv.getGhiChu()
 
                 };
+                listKM.add(nv);
                 model.addRow(data);
             }
         } catch (Exception e) {
@@ -645,7 +646,7 @@ public class KhuyenMai1 extends javax.swing.JPanel {
 
     public void Dislay(int i) {
 
-        KhuyenMai v = listNCC.get(i);
+        KhuyenMai v = listKM.get(i);
 
         txtMaKM.setText(v.getMaKM());
         txtTenKM.setText(v.getTenKM());
@@ -746,7 +747,13 @@ public class KhuyenMai1 extends javax.swing.JPanel {
         SimpleDateFormat dfday = new SimpleDateFormat("dd");
         SimpleDateFormat dfmonth = new SimpleDateFormat("MM");
         SimpleDateFormat dfyear = new SimpleDateFormat("yyyy");
-
+        
+        for (int i = 0; i < listKM.size(); i++) {
+            if (listKM.get(i).getMaKM().equalsIgnoreCase(txtMaKM.getText())) {
+                checklap = 1;
+            }
+        }
+        
         if (txtMaKM.getText().equals("")) {
             MsgBox.alert(this, "Không được để trống mã chương trình khuyến mãi");
             txtMaKM.requestFocus();
@@ -754,6 +761,9 @@ public class KhuyenMai1 extends javax.swing.JPanel {
         } else if (txtMaKM.getText().length() > 0 && txtMaKM.getText().length() < 3) {
             MsgBox.alert(this, "Mã chương trình khuyến mãi phải nhập ít nhất 3 ký tự");
             txtMaKM.requestFocus();
+            return false;
+        } else if (checklap == 1) {
+            MsgBox.alert(this, "Mã chương trình khuyến mãi đã tồn tại. Vui lòng nhập mã mới");
             return false;
         } else if (txtTenKM.getText().equals("")) {
             MsgBox.alert(this, "Không được để trống tên chương trình khuyến mãi");

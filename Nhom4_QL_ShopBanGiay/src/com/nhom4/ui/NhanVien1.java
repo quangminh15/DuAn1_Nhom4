@@ -35,7 +35,7 @@ public class NhanVien1 extends javax.swing.JPanel {
     NhanVienDAO dao = new NhanVienDAO();
     int row = -1;
     int them = 0;
-    JFileChooser fileChooser = new JFileChooser();
+    JFileChooser fileChooser = new JFileChooser(".//src//com//nhom4//icon//");
     String path = ".//src//com//nhom4//icon//";
 
     /**

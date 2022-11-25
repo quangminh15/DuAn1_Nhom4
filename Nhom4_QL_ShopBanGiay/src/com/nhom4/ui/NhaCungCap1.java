@@ -23,11 +23,12 @@ public class NhaCungCap1 extends javax.swing.JPanel {
     /**
      * Creates new form NhaCungCap
      */
-    
     NhaCungCapDAO dao = new NhaCungCapDAO();
     int row = 0;
     int them = 0;
+    int checklap = 0;
     ArrayList<NhaCungCap> listNCC = new ArrayList<>();
+
     public NhaCungCap1() {
         initComponents();
         init();
@@ -282,22 +283,22 @@ public class NhaCungCap1 extends javax.swing.JPanel {
     }//GEN-LAST:event_tblNCCMouseClicked
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
-            them = 1;
-            btnSua.setEnabled(false);
-            btnXoa.setEnabled(false);
-            btnLuu.setEnabled(true);
-            txtMaNCC.setText("");
-            txtTenNCC.setText("");
-            txtON();
+        them = 1;
+        btnSua.setEnabled(false);
+        btnXoa.setEnabled(false);
+        btnLuu.setEnabled(true);
+        txtMaNCC.setText("");
+        txtTenNCC.setText("");
+        txtON();
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
-            them = 2;
-            btnThem.setEnabled(false);
-            btnXoa.setEnabled(false);
-            btnLuu.setEnabled(true);
-            txtON();
-            txtMaNCC.setEditable(false);
+        them = 2;
+        btnThem.setEnabled(false);
+        btnXoa.setEnabled(false);
+        btnLuu.setEnabled(true);
+        txtON();
+        txtMaNCC.setEditable(false);
     }//GEN-LAST:event_btnSuaActionPerformed
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
@@ -305,17 +306,17 @@ public class NhaCungCap1 extends javax.swing.JPanel {
     }//GEN-LAST:event_btnXoaActionPerformed
 
     private void btnLuuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLuuActionPerformed
-        if(check()==true){
-            if(them == 1 ){
+        if (check() == true) {
+            if (them == 1) {
                 insert();
                 return;
             }
-            if(them == 2){
+            if (them == 2) {
                 update();
                 return;
             }
         }
-        
+
     }//GEN-LAST:event_btnLuuActionPerformed
 
     private void btnHuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHuyActionPerformed
@@ -351,96 +352,97 @@ public class NhaCungCap1 extends javax.swing.JPanel {
         this.updateStatus();
         btnLuu.setEnabled(false);
     }
-    
+
     public void fillTable() {
         DefaultTableModel model = (DefaultTableModel) tblNCC.getModel();
         model.setRowCount(0);
+        listNCC.clear();
         try {
-            List<NhaCungCap> list = dao.selectAll(); 
+            List<NhaCungCap> list = dao.selectAll();
             for (NhaCungCap nv : list) {
                 Object[] data = {
                     nv.getMaNCC(),
                     nv.getTenNCC()
                 };
+                listNCC.add(nv);
                 model.addRow(data);
             }
         } catch (Exception e) {
             MsgBox.alert(this, "Lỗi truy vấn dữ liệu!");
         }
     }
-    
+
     public void insert() {
-            NhaCungCap ncc = getForm();
-            try {
-                dao.insert(ncc);
-                this.fillTable();
-                this.clearForm();
-                MsgBox.alert(this, "Thêm mới thành công");
-                updateStatus();
-                them = 0;
-                btnLuu.setEnabled(false);
-            } catch (Exception e) {
-                MsgBox.alert(this, "Thêm mới thất bại");
-                updateStatus();
-                them = 0;
-                btnLuu.setEnabled(false);
-            }
-        
+        NhaCungCap ncc = getForm();
+        try {
+            dao.insert(ncc);
+            this.fillTable();
+            this.clearForm();
+            MsgBox.alert(this, "Thêm mới thành công");
+            updateStatus();
+            them = 0;
+            btnLuu.setEnabled(false);
+        } catch (Exception e) {
+            MsgBox.alert(this, "Thêm mới thất bại");
+            updateStatus();
+            them = 0;
+            btnLuu.setEnabled(false);
+        }
+
     }
-    
+
     public void update() {
         NhaCungCap nv = getForm();
-        
-            try {
-                dao.update(nv);
-                this.fillTable();
-                MsgBox.alert(this, "Cập nhật thành công");
-                updateStatus();
-                them = 0;
-                btnLuu.setEnabled(false);
-            } catch (Exception e) {
-                MsgBox.alert(this, "Cập nhật thất bại");
-                updateStatus();
-                them = 0;
-                btnLuu.setEnabled(false);
-            }
-        
+
+        try {
+            dao.update(nv);
+            this.fillTable();
+            MsgBox.alert(this, "Cập nhật thành công");
+            updateStatus();
+            them = 0;
+            btnLuu.setEnabled(false);
+        } catch (Exception e) {
+            MsgBox.alert(this, "Cập nhật thất bại");
+            updateStatus();
+            them = 0;
+            btnLuu.setEnabled(false);
+        }
+
     }
-    
-    
+
     public void delete() {
-            String ncc = txtMaNCC.getText();
-            if (MsgBox.confirm(this, "Bạn thực sự muốn xóa nhà cung cấp này")) {
-                try {
-                    dao.delete(ncc);
-                    this.fillTable();
-                    this.clearForm();
-                    MsgBox.alert(this, "Xóa thành công");
-                } catch (Exception e) {
-                    MsgBox.alert(this, "Xóa thất bại");
-                }
+        String ncc = txtMaNCC.getText();
+        if (MsgBox.confirm(this, "Bạn thực sự muốn xóa nhà cung cấp này")) {
+            try {
+                dao.delete(ncc);
+                this.fillTable();
+                this.clearForm();
+                MsgBox.alert(this, "Xóa thành công");
+            } catch (Exception e) {
+                MsgBox.alert(this, "Xóa thất bại");
             }
+        }
     }
-    
+
     public void clearForm() {
         NhaCungCap ncc = new NhaCungCap();
         this.setForm(ncc);
         this.row = -1;
         this.updateStatus();
     }
-    
+
     public void setForm(NhaCungCap ncc) {
         txtMaNCC.setText(ncc.getMaNCC());
         txtTenNCC.setText(ncc.getTenNCC());
     }
-    
+
     NhaCungCap getForm() {
         NhaCungCap ncc = new NhaCungCap();
         ncc.setMaNCC(txtMaNCC.getText());
         ncc.setTenNCC(txtTenNCC.getText());
         return ncc;
     }
-    
+
     public void updateStatus() {
         boolean edit = (this.row >= 0);
         boolean first = (this.row == 0);
@@ -456,90 +458,95 @@ public class NhaCungCap1 extends javax.swing.JPanel {
         btnLast.setEnabled(edit && !last);
         txtOFF();
     }
-    
+
     public void edit() {
         String mancc = (String) tblNCC.getValueAt(this.row, 0);
         NhaCungCap ncc = dao.selectById(mancc);
         this.setForm(ncc);
         this.updateStatus();
     }
-    
+
     public void Dislay(int i) {
         NhaCungCap v = listNCC.get(i);
         txtMaNCC.setText(v.getMaNCC());
         txtTenNCC.setText(v.getTenNCC());
     }
-    
+
     public void first() {
         try {
             this.row = 0;
-        tblNCC.setSelectionBackground(new Color(0, 156, 222));
-        tblNCC.setRowSelectionInterval(row, row);
-        this.edit();
-        Dislay(row);
+            tblNCC.setSelectionBackground(new Color(0, 156, 222));
+            tblNCC.setRowSelectionInterval(row, row);
+            this.edit();
+            Dislay(row);
         } catch (Exception e) {
             return;
         }
-        
+
     }
-    
+
     public void prev() {
         try {
             if (this.row > 0) {
-            this.row--;
-            this.edit();
-        }
-        tblNCC.setSelectionBackground(new Color(0, 156, 222));
-        tblNCC.setRowSelectionInterval(row, row);
-        Dislay(row);
+                this.row--;
+                this.edit();
+            }
+            tblNCC.setSelectionBackground(new Color(0, 156, 222));
+            tblNCC.setRowSelectionInterval(row, row);
+            Dislay(row);
         } catch (Exception e) {
             if (row < 0) {
-            return;
-        }
+                return;
+            }
         }
     }
-    
+
     public void next() {
         try {
             if (this.row < tblNCC.getRowCount() - 1) {
-            this.row++;
-            this.edit();
-        }
-        tblNCC.setSelectionBackground(new Color(0, 156, 222));
-        tblNCC.setRowSelectionInterval(row, row);
-        Dislay(row);
+                this.row++;
+                this.edit();
+            }
+            tblNCC.setSelectionBackground(new Color(0, 156, 222));
+            tblNCC.setRowSelectionInterval(row, row);
+            Dislay(row);
         } catch (Exception e) {
             if (this.row == tblNCC.getRowCount() - 1) {
-            return;
-        }
+                return;
+            }
         }
     }
-    
+
     public void last() {
         try {
             this.row = tblNCC.getRowCount() - 1;
-        this.edit();
-        tblNCC.setSelectionBackground(new Color(0, 156, 222));
-        tblNCC.setRowSelectionInterval(row, row);
-        Dislay(row);
+            this.edit();
+            tblNCC.setSelectionBackground(new Color(0, 156, 222));
+            tblNCC.setRowSelectionInterval(row, row);
+            Dislay(row);
         } catch (Exception e) {
             return;
         }
-        
+
     }
-    
-    public void txtOFF(){
+
+    public void txtOFF() {
         txtMaNCC.setEditable(false);
         txtTenNCC.setEditable(false);
     }
-    
-    public void txtON(){
+
+    public void txtON() {
         txtMaNCC.setEditable(true);
         txtTenNCC.setEditable(true);
     }
-    
-    public boolean check(){
-        if(txtMaNCC.getText().equals("")){
+
+    public boolean check() {
+        for (int i = 0; i < listNCC.size(); i++) {
+            if (listNCC.get(i).getMaNCC().equalsIgnoreCase(txtMaNCC.getText())) {
+                checklap = 1;
+            }
+        }
+        if (txtMaNCC.getText().equals("")) {
             MsgBox.alert(this, "Không được để trống mã nhà cung cấp");
             txtMaNCC.requestFocus();
             return false;
@@ -547,7 +554,10 @@ public class NhaCungCap1 extends javax.swing.JPanel {
             MsgBox.alert(this, "Mã nhà cung cấp phải nhập ít nhất 3 ký tự");
             txtMaNCC.requestFocus();
             return false;
-        } else if(txtTenNCC.getText().equals("")){
+        } else if (checklap == 1) {
+            MsgBox.alert(this, "Mã nhà cung cấp đã tồn tại. Vui lòng nhập mã mới");
+            return false;
+        } else if (txtTenNCC.getText().equals("")) {
             MsgBox.alert(this, "Không được để trống tên nhà cung cấp");
             txtTenNCC.requestFocus();
             return false;
