@@ -423,8 +423,8 @@ public class SanPham1 extends javax.swing.JPanel {
                 if (!txtSize.getText().equals("") || !txtGia.getText().equals("")) {
                     float siZe = Float.parseFloat(txtSize.getText());
                     float Gia = Float.parseFloat(txtGia.getText());
-                    if (siZe <= 0) {
-                        MsgBox.alert(this, "Size giày phải > 0");
+                    if (siZe < 20) {
+                        MsgBox.alert(this, "Size giày phải >= 20");
                         txtSize.requestFocus();
                         return false;
                     } else if (Gia < 100000) {
@@ -443,6 +443,11 @@ public class SanPham1 extends javax.swing.JPanel {
             }
         }
         return true;
+    }
+    
+    void timKiem(){
+        DefaultTableModel model = (DefaultTableModel) tblChiTietSp.getModel();
+        
     }
 
     public void txtOFF() {

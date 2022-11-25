@@ -80,6 +80,11 @@ public class KhachHang1 extends javax.swing.JPanel {
         btntimKiem.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
         btntimKiem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/search (4).png"))); // NOI18N
         btntimKiem.setText("Tìm kiếm");
+        btntimKiem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btntimKiemActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -291,7 +296,7 @@ public class KhachHang1 extends javax.swing.JPanel {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 204));
-        jLabel1.setText("QUẢN LÝ NHÂN VIÊN");
+        jLabel1.setText("QUẢN LÝ KHÁCH HÀNG");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -414,6 +419,10 @@ public class KhachHang1 extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_tblkhachHangMouseClicked
 
+    private void btntimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btntimKiemActionPerformed
+        this.TimKiem();
+    }//GEN-LAST:event_btntimKiemActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnFirst;
@@ -508,7 +517,7 @@ public class KhachHang1 extends javax.swing.JPanel {
     
     public void delete() {
             String kh = txtmaKhachHang.getText();
-            if (MsgBox.confirm(this, "Bạn thực sự muốn xóa nhà cung cấp này")) {
+            if (MsgBox.confirm(this, "Bạn thực sự muốn xóa khách hàng này")) {
                 try {
                     dao.delete(kh);
                     this.fillTable();
@@ -608,19 +617,47 @@ public class KhachHang1 extends javax.swing.JPanel {
     }
     
     public boolean check(){
-        if(txtmaKhachHang.getText().equals("")){
-            MsgBox.alert(this, "Không được để trống mã khách hàng");
+      if (txtmaKhachHang.getText().equals("") || txtmaKhachHang.getText().length() < 5 || txtmaKhachHang.getText().length() > 6) {
+            MsgBox.alert(this, "Vui lòng nhập mã khách hàng từ 5---->6 kí tự");
             txtmaKhachHang.requestFocus();
             return false;
-        } else if (txtmaKhachHang.getText().length() > 0 && txtmaKhachHang.getText().length() < 3) {
-            MsgBox.alert(this, "Mã nhà cung cấp phải nhập ít nhất 3 ký tự");
-            txtmaKhachHang.requestFocus();
+        } else if (txttenKhachHang.getText().length() == 0) {
+            MsgBox.alert(this, "Tên khách hàng không được bỏ trống!!!");
+            txttenKhachHang.requestFocus();
             return false;
-        } else if(txttenKhachHang.getText().equals("")){
-            MsgBox.alert(this, "Không được để trống tên nhà cung cấp");
-            txtmaKhachHang.requestFocus();
+        } else if (txtsoDienThoai.getText().equals("") || txtsoDienThoai.getText().length() < 9 || txtsoDienThoai.getText().length() > 10) {
+            MsgBox.alert(this, "Vui lòng nhập số điện thoại từ 9---->10 kí tự");
+            txtsoDienThoai.requestFocus();
+            return false;
+        } else if (txtdiaChi.getText().length() == 0) {
+            MsgBox.alert(this, "Địa chỉ không được bỏ trống!!!");
+            txtdiaChi.requestFocus();
             return false;
         }
         return true;
+    }
+    public void TimKiem() {
+ DefaultTableModel model = (DefaultTableModel) tblkhachHang.getModel();
+        model.setRowCount(0);
+        try {
+            String khh = txttimKiem.getText();
+            List<KhachHang> list = dao.selectByKeyword(khh);
+            for (KhachHang kh : list) {
+                Object[] data = {
+                    kh.getMaKH(),
+                    kh.getTenKH(),
+                    kh.getSDT(),
+                    kh.getDiaChi(),
+                    
+                };
+                model.addRow(data);
+            }
+        } catch (Exception e) {
+            MsgBox.alert(this, e.getMessage());
+        }
+        this.clearForm();
+        this.row = -1;
+        updateStatus();
+    
     }
 }
