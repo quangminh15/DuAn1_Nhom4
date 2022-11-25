@@ -566,16 +566,12 @@ public class KhuyenMai1 extends javax.swing.JPanel {
         model.setRowCount(0);
         try {
             String key = txtTimKiem.getText();
-
-//            List<KhuyenMai> list = dao.selectByKeyword(key); // Đọc dữ liệu từ CSDL
 //            for (int i = 0; i < listKM.size(); i++) {
-//                System.out.println("5");
-//                if(!key.equals(listKM.get(i))){
-//                    System.out.println("6");
-//                    System.out.println("Không có trong danh sách");
-//                }
+//            if (!listKM.get(i).getTenKM().equalsIgnoreCase(txtTimKiem.getText())) {
+//                MsgBox.alert(this, "Không tìm thấy chương trình khuyến mãi có tên " + key);
+//                return;
 //            }
-            System.out.println("7");
+//        }
             List<KhuyenMai> list = dao.selectByKeyword(key);
 
             for (KhuyenMai nh : list) {
@@ -583,8 +579,8 @@ public class KhuyenMai1 extends javax.swing.JPanel {
                     nh.getMaKM(),
                     nh.getTenKM(),
                     nh.getGiamGia(),
-                    new java.sql.Date(nh.getNgayBD().getTime()),
-                    new java.sql.Date(nh.getNgayKT().getTime()),
+                    formats.format(new java.sql.Date(nh.getNgayBD().getTime())),
+                    formats.format(new java.sql.Date(nh.getNgayKT().getTime())),
                     nh.getGhiChu(),};
                 model.addRow(data);
             }
@@ -747,13 +743,13 @@ public class KhuyenMai1 extends javax.swing.JPanel {
         SimpleDateFormat dfday = new SimpleDateFormat("dd");
         SimpleDateFormat dfmonth = new SimpleDateFormat("MM");
         SimpleDateFormat dfyear = new SimpleDateFormat("yyyy");
-        
+
         for (int i = 0; i < listKM.size(); i++) {
             if (listKM.get(i).getMaKM().equalsIgnoreCase(txtMaKM.getText())) {
                 checklap = 1;
             }
         }
-        
+
         if (txtMaKM.getText().equals("")) {
             MsgBox.alert(this, "Không được để trống mã chương trình khuyến mãi");
             txtMaKM.requestFocus();
@@ -779,11 +775,7 @@ public class KhuyenMai1 extends javax.swing.JPanel {
         } else if (Float.parseFloat(txtGiamGia.getText()) > 100 || Float.parseFloat(txtGiamGia.getText()) < 0) {
             MsgBox.alert(this, "Điểm phải từ 0 -- 10");
             txtGiamGia.requestFocus();
-        }
-        
-        
-        
-        else if (Integer.parseInt(dfyear.format(txtNgayBD.getDate())) < Integer.parseInt(dfyear.format(now))) {
+        } else if (Integer.parseInt(dfyear.format(txtNgayBD.getDate())) < Integer.parseInt(dfyear.format(now))) {
             MsgBox.alert(this, "Thời gian bắt đầu phải lớn hơn thời gian hiện tại!");
             return false;
         } else if (Integer.parseInt(dfyear.format(txtNgayBD.getDate())) == Integer.parseInt(dfyear.format(now))) {
@@ -797,14 +789,7 @@ public class KhuyenMai1 extends javax.swing.JPanel {
                     return false;
                 }
             }
-        }
-        
-        
-        
-        
-        
-        
-        else if (Integer.parseInt(dfyear.format(txtNgayKT.getDate())) < Integer.parseInt(dfyear.format(txtNgayBD.getDate()))) {
+        } else if (Integer.parseInt(dfyear.format(txtNgayKT.getDate())) < Integer.parseInt(dfyear.format(txtNgayBD.getDate()))) {
             MsgBox.alert(this, "Thời gian kết thúc phải lớn hơn thời gian bắt đầu!");
             return false;
         } else if (Integer.parseInt(dfyear.format(txtNgayKT.getDate())) == Integer.parseInt(dfyear.format(txtNgayBD.getDate()))) {
@@ -830,17 +815,6 @@ public class KhuyenMai1 extends javax.swing.JPanel {
         SimpleDateFormat dfmonth = new SimpleDateFormat("MM");
         SimpleDateFormat dfyear = new SimpleDateFormat("yyyy");
 
-//        if (Integer.parseInt(dfyear.format(txtNgayKT.getDate())) < Integer.parseInt(dfyear.format(now))) {
-//            MsgBox.alert(this, "Chương trình đang diễn ra không thể sửa hoặc xóa");
-//            return false;
-//        } else if (Integer.parseInt(dfmonth.format(txtNgayKT.getDate())) < Integer.parseInt(dfmonth.format(now))) {
-//            MsgBox.alert(this, "Chương trình đang diễn ra không thể sửa hoặc xóa");
-//            return false;
-//        } else if (Integer.parseInt(dfday.format(txtNgayKT.getDate())) < Integer.parseInt(dfday.format(now))) {
-//            MsgBox.alert(this, "Chương trình đang diễn ra không thể sửa hoặc xóa");
-//            return false;
-//        }
-        
         if (Integer.parseInt(dfyear.format(txtNgayKT.getDate())) < Integer.parseInt(dfyear.format(now))) {
             MsgBox.alert(this, "Chương trình đang diễn ra không thể sửa hoặc xóa!");
             return false;
