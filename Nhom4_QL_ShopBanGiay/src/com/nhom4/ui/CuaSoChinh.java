@@ -70,9 +70,9 @@ public class CuaSoChinh extends javax.swing.JFrame {
         lblKH = new javax.swing.JLabel();
         lblHD = new javax.swing.JLabel();
         lblKM = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         lblTK = new javax.swing.JLabel();
+        lblTaiKhoan = new javax.swing.JLabel();
         jPanel4 = new jPanelGradient();
         lblDongHo = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -173,17 +173,6 @@ public class CuaSoChinh extends javax.swing.JFrame {
         });
         jPanel2.add(lblKM, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 570, 260, 60));
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 2, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/account.png"))); // NOI18N
-        jLabel3.setText("Tai Khoan");
-        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel3MouseClicked(evt);
-            }
-        });
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 640, 260, 70));
-
         jLabel10.setFont(new java.awt.Font("Segoe UI", 2, 18)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/power.png"))); // NOI18N
@@ -200,6 +189,12 @@ public class CuaSoChinh extends javax.swing.JFrame {
             }
         });
         jPanel2.add(lblTK, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 520, 260, 60));
+
+        lblTaiKhoan.setFont(new java.awt.Font("Segoe UI", 2, 18)); // NOI18N
+        lblTaiKhoan.setForeground(new java.awt.Color(255, 255, 255));
+        lblTaiKhoan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/account.png"))); // NOI18N
+        lblTaiKhoan.setText("Tai Khoan");
+        jPanel2.add(lblTaiKhoan, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 640, 260, 70));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 879));
 
@@ -226,16 +221,15 @@ public class CuaSoChinh extends javax.swing.JFrame {
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addGap(0, 10, Short.MAX_VALUE)
-                .addComponent(lblDongHo, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel7)
-                .addGap(17, 17, 17))
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel7)
+                    .addComponent(lblDongHo, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(264, 0, 1290, 70));
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(264, 0, 1290, 80));
 
         pnlCardPane.setLayout(new java.awt.CardLayout());
 
@@ -243,17 +237,17 @@ public class CuaSoChinh extends javax.swing.JFrame {
         pnlHome.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblBanner1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/a1.png"))); // NOI18N
-        pnlHome.add(lblBanner1, new org.netbeans.lib.awtextra.AbsoluteConstraints(98, 41, -1, -1));
+        pnlHome.add(lblBanner1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, -1, -1));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/bn2.png"))); // NOI18N
-        pnlHome.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(958, 41, -1, 469));
+        pnlHome.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 10, -1, 469));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/bn3.png"))); // NOI18N
-        pnlHome.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(98, 536, -1, -1));
+        pnlHome.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 500, -1, -1));
 
         pnlCardPane.add(pnlHome, "card2");
 
-        jPanel1.add(pnlCardPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(276, 64, -1, -1));
+        jPanel1.add(pnlCardPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(276, 99, -1, 670));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -310,11 +304,6 @@ public class CuaSoChinh extends javax.swing.JFrame {
         ThongKe tK = new ThongKe();
         changePanel(tK);
     }//GEN-LAST:event_lblTKMouseClicked
-
-    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
-        this.opendTaiKhoanQL();
-
-    }//GEN-LAST:event_jLabel3MouseClicked
 
     private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
         changePanel(pnlHome);
@@ -425,7 +414,6 @@ public void opennhanvien(){
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -442,6 +430,7 @@ public void opennhanvien(){
     private javax.swing.JLabel lblNhanVien;
     private javax.swing.JLabel lblSP;
     private javax.swing.JLabel lblTK;
+    private javax.swing.JLabel lblTaiKhoan;
     private javax.swing.JLabel lblTen;
     private javax.swing.JPanel pnlCardPane;
     private javax.swing.JPanel pnlHome;
