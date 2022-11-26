@@ -70,15 +70,9 @@ public class ThongKeDAO {
         return this.getListOfArray(sql, cols, thang, nam);
     }
     
-    public List<Object[]> getKhachHang1() {
-        String sql = "{CALL sp_KhachHang(?,?)}";
-        String [] cols = {"MaKH","TenKH","Số lượng","Thành tiền"};
-        return this.getListOfArray(sql, cols);
-    }
-
     public List<Object[]> getDoanhThu() {
         String sql = "{CALL sp_DoanhThu}";
-        String [] cols = {"Nam","SoLuong","DauTien","CuoiCung"};
+        String [] cols = {"Nam","SoLuong","CaoNhat","ThapNhat","TrungBinh"};
         return this.getListOfArray(sql, cols);
     }
 

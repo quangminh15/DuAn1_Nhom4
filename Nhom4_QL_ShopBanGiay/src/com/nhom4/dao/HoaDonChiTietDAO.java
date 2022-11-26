@@ -52,7 +52,10 @@ public class HoaDonChiTietDAO extends MainDAO<HoaDonChiTiet, String> {
         }
         return list.get(0);
     }
-
+    public void deletebByMaHD(String id){
+        String DELETE= "DELETE FROM HoaDonCT WHERE MaHD = ?";
+        JdbcHelper.executeUpdate(DELETE, id);
+    }
     @Override
     public List<HoaDonChiTiet> selectBySql(String sql, Object... args) {
         List<HoaDonChiTiet> list = new ArrayList<HoaDonChiTiet>();

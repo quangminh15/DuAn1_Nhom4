@@ -194,6 +194,11 @@ public class CuaSoChinh extends javax.swing.JFrame {
         lblTaiKhoan.setForeground(new java.awt.Color(255, 255, 255));
         lblTaiKhoan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/account.png"))); // NOI18N
         lblTaiKhoan.setText("Tai Khoan");
+        lblTaiKhoan.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblTaiKhoanMouseClicked(evt);
+            }
+        });
         jPanel2.add(lblTaiKhoan, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 640, 260, 70));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 879));
@@ -308,6 +313,10 @@ public class CuaSoChinh extends javax.swing.JFrame {
     private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
         changePanel(pnlHome);
     }//GEN-LAST:event_jLabel7MouseClicked
+
+    private void lblTaiKhoanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblTaiKhoanMouseClicked
+        opendTaiKhoanQL();
+    }//GEN-LAST:event_lblTaiKhoanMouseClicked
 
     /**
      * @param args the command line arguments
