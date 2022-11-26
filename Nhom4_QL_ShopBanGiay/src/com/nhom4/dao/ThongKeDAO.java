@@ -34,6 +34,7 @@ public class ThongKeDAO {
         }
     }
      
+     
       public List<Integer> selectYears(){
         String sql = "select distinct year(NgayBan) from HoaDon";
         List<Integer> list = new ArrayList<>();
@@ -63,16 +64,33 @@ public class ThongKeDAO {
             throw new RuntimeException(e);
         }
     }
-
+//select distinct month(NgayBan) , year(NgayBan) from HoaDon
+      
+      public List<Integer> selectMonthsYears(){
+        String sql = "select distinct month(NgayBan) , year(NgayBan) from HoaDon";
+        List<Integer> list = new ArrayList<>();
+        try {
+            ResultSet rs = JdbcHelper.executeQuery(sql);
+            while (rs.next()) {                
+                list.add(rs.getInt(1));
+//                list.add(rs.getInt(2));
+            }
+            rs.getStatement().getConnection().close();
+            return list;
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+      
     public List<Object[]> getKhachHang(int thang, int nam) {
-        String sql = "{CALL sp_KhachHang(?,?)}";
-        String [] cols = {"MaKH","TenKH","Số lượng","Thành tiền"};
+        String sql = "{CALL sp_KhachHang(? , ?)}";
+        String [] cols = {"MaKH","TenKH","SoLuong","TongTien"};
         return this.getListOfArray(sql, cols, thang, nam);
     }
     
     public List<Object[]> getDoanhThu(int nam) {
         String sql = "{CALL sp_DoanhThu(?)}";
-        String [] cols = {"Nam","SoLuong","CaoNhat","ThapNhat","TrungBinh"};
-        return this.getListOfArray(sql, cols,nam);
+        String [] cols = {"TenSP","SoLuong","CaoNhat","ThapNhat","TrungBinh"};
+        return this.getListOfArray(sql, cols, nam);
     }
 }

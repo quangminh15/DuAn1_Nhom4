@@ -32,14 +32,12 @@ public class ThongKe extends javax.swing.JPanel {
 
     
     private void init() {
-//        this.fillTableKhachHang();
-//        this.fillTableNguoiHoc();
-        this.fillTableDoanhThu();
-        this.fillComboBoxNam();
         this.fillComboBoxThang();
+        this.fillComboBoxNam();
+        this.fillTableKhachHang();
         this.fillComboBoxNamDT();
-
-//        this.selectTab(0);
+        this.fillTableDoanhThu();
+        this.selectTab(0);
         if (!Auth.isManager()) {
             tabs.remove(1);
         }
@@ -49,6 +47,14 @@ public class ThongKe extends javax.swing.JPanel {
         tabs.setSelectedIndex(index);
     }
 
+    private void fillComboBoxThang() {
+        DefaultComboBoxModel model = (DefaultComboBoxModel) cboThang.getModel();
+        model.removeAllElements();
+        List<Integer> list = tkDAO.selectMonths();
+        for (Integer month : list) {
+            model.addElement(month);
+        }
+    }
 
     private void fillComboBoxNam() {
         DefaultComboBoxModel model = (DefaultComboBoxModel) cboNam.getModel();
@@ -67,20 +73,13 @@ public class ThongKe extends javax.swing.JPanel {
         }
     }
     
-    private void fillComboBoxThang() {
-        DefaultComboBoxModel model = (DefaultComboBoxModel) cboThang.getModel();
-        model.removeAllElements();
-        List<Integer> list = tkDAO.selectMonths();
-        for (Integer year : list) {
-            model.addElement(year);
-        }
-    }
+    
 private void fillTableKhachHang() {
         DefaultTableModel model = (DefaultTableModel) tblBang.getModel();
         model.setRowCount(0);
         int thang = (Integer) cboThang.getSelectedItem();
         int nam = (Integer) cboNam.getSelectedItem();  
-        List<Object[]> list = tkDAO.getKhachHang(thang,nam);
+        List<Object[]> list = tkDAO.getKhachHang(thang, nam);
         for (Object[] row : list) {
             model.addRow(row);
         }
@@ -89,7 +88,6 @@ private void fillTableKhachHang() {
     private void fillTableDoanhThu() {
         DefaultTableModel model = (DefaultTableModel) tblDoanhThu.getModel();
         model.setRowCount(0);
-
         int nam = (Integer) cboNamDT.getSelectedItem();
         List<Object[]> list = tkDAO.getDoanhThu(nam);
         for (Object[] row : list) {
@@ -212,6 +210,11 @@ private void fillTableKhachHang() {
                 cboNamDTMouseClicked(evt);
             }
         });
+        cboNamDT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboNamDTActionPerformed(evt);
+            }
+        });
 
         jLabel4.setText("Năm");
 
@@ -273,12 +276,16 @@ private void fillTableKhachHang() {
     }//GEN-LAST:event_cboThangActionPerformed
 
     private void cboNamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboNamActionPerformed
-//      this.fillTableKhachHang();
+      this.fillTableKhachHang();
     }//GEN-LAST:event_cboNamActionPerformed
 
     private void cboNamDTMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cboNamDTMouseClicked
-        this.fillTableDoanhThu();
+       
     }//GEN-LAST:event_cboNamDTMouseClicked
+
+    private void cboNamDTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboNamDTActionPerformed
+       this.fillTableDoanhThu();
+    }//GEN-LAST:event_cboNamDTActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
