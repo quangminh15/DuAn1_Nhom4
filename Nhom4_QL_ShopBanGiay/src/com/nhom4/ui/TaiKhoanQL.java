@@ -24,6 +24,7 @@ public class TaiKhoanQL extends javax.swing.JPanel {
      */
     TaiKhoanDAO tkDAO = new TaiKhoanDAO();
     List<TaiKhoan> list =new ArrayList<TaiKhoan>();
+    TaiKhoan tk = new TaiKhoan();
     int row =-1;
     int them =0;
     public TaiKhoanQL() {
@@ -59,7 +60,7 @@ public class TaiKhoanQL extends javax.swing.JPanel {
         btnXoa = new javax.swing.JButton();
         btnLuu = new javax.swing.JButton();
         btnHuy = new javax.swing.JButton();
-        txtMatKhau = new javax.swing.JPasswordField();
+        txtMatKhau = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         txtTimKiem = new javax.swing.JTextField();
         btnTimKiem = new javax.swing.JButton();
@@ -201,15 +202,13 @@ public class TaiKhoanQL extends javax.swing.JPanel {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel5)
                             .addComponent(jLabel4))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(rdoQuanLy)
                                 .addGap(18, 18, 18)
                                 .addComponent(rdoNhanVien))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(24, 24, 24)
-                                .addComponent(txtMatKhau, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(txtMatKhau, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(23, 23, 23)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -354,7 +353,7 @@ public class TaiKhoanQL extends javax.swing.JPanel {
                         .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(52, 52, 52)
                         .addComponent(btnLast, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -504,18 +503,27 @@ public class TaiKhoanQL extends javax.swing.JPanel {
             MsgBox.alert(this, "Không được để trống mã nhân viên");
             txtMaNV.requestFocus();
             return false;
-        }else if (txtTenDN.getText().equals("")) {
+        }
+        
+        if (txtTenDN.getText().equals("")) {
             MsgBox.alert(this, "Không được để trống tên đăng nhập");
             txtTenDN.requestFocus();
             return false;
-        }else if (txtMatKhau.getText().equals("")) {
+        }
+        if (txtMatKhau.getText().equals("")) {
             MsgBox.alert(this, "Không được để trống mật khẩu");
             txtMatKhau.requestFocus();
             return false;
-        }else if (!rdoNhanVien.isSelected() && !rdoQuanLy.isSelected()) {
+        }
+        else if (!txtMatKhau.getText().equals(tk.getPass())) {
+            MsgBox.alert(this, "Mat khau khong trung khop voi nhan vien");
+            txtMatKhau.requestFocus();
+            return false;
+        }
+        if (!rdoNhanVien.isSelected() && !rdoQuanLy.isSelected()) {
             MsgBox.alert(this, "Bạn chưa chọn chức vụ");
             return false;
-        } else if (!Auth.isManager() && rdoQuanLy.isSelected()) {
+        } if (!Auth.isManager() && rdoQuanLy.isSelected()) {
             MsgBox.alert(this, "Không được chọn vai trò là quản lý");
             return false;
         }
@@ -543,6 +551,7 @@ public class TaiKhoanQL extends javax.swing.JPanel {
     }
     
     public void update() {
+        if(check()){
         TaiKhoan tk = getForm();       
             try {
                 tkDAO.update(tk);
@@ -557,6 +566,7 @@ public class TaiKhoanQL extends javax.swing.JPanel {
                 them = 0;
                 btnLuu.setEnabled(false);
             }
+        }
     }
     
     public void delete() {
@@ -647,7 +657,7 @@ public class TaiKhoanQL extends javax.swing.JPanel {
         TaiKhoan tk = new TaiKhoan();
         tk.setMaNV(txtMaNV.getText());
         tk.setUsername(txtTenDN.getText());
-        tk.setPass(String.valueOf(txtMatKhau.getPassword()));
+        tk.setPass(String.valueOf(txtMatKhau.getText()));
         tk.setRole(rdoQuanLy.isSelected());
         return tk;
     }
@@ -724,7 +734,7 @@ public class TaiKhoanQL extends javax.swing.JPanel {
     private javax.swing.JRadioButton rdoQuanLy;
     private javax.swing.JTable tblBang;
     private javax.swing.JTextField txtMaNV;
-    private javax.swing.JPasswordField txtMatKhau;
+    private javax.swing.JTextField txtMatKhau;
     private javax.swing.JTextField txtTenDN;
     private javax.swing.JTextField txtTimKiem;
     // End of variables declaration//GEN-END:variables

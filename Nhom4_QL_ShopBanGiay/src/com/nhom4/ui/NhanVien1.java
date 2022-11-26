@@ -12,6 +12,7 @@ import com.nhom4.entity.TaiKhoan;
 import com.nhom4.utils.MsgBox;
 import com.nhom4.utils.XImage;
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
@@ -32,10 +33,12 @@ public class NhanVien1 extends javax.swing.JPanel {
         fillTable();
         
     }
+    int checklap = 0;
+    ArrayList<NhanVien> listNV = new ArrayList<>();
     NhanVienDAO dao = new NhanVienDAO();
     int row = -1;
     int them = 0;
-    JFileChooser fileChooser = new JFileChooser();
+    JFileChooser fileChooser = new JFileChooser(".//src//com//nhom4//icon//");
     String path = ".//src//com//nhom4//icon//";
 
     /**
@@ -577,6 +580,7 @@ first();
                     nv.getHinh(),
                     nv.getDiaChi(),
                 };
+                listNV.add(nv);
                 model.addRow(data);
             }
         } catch (Exception e) {
@@ -755,9 +759,17 @@ first();
     }
     
     public boolean check(){
+        for (int i = 0; i < listNV.size(); i++) {
+            if (listNV.get(i).getMaNV().equalsIgnoreCase(txtmaNhanVien.getText())) {
+                checklap = 1;
+            }
+        }
  if (txtmaNhanVien.getText().equals("") || txtmaNhanVien.getText().length() < 5 || txtmaNhanVien.getText().length() > 6) {
             MsgBox.alert(this, "Vui lòng nhập mã nhân viên từ 5---->6 kí tự");
             txtmaNhanVien.requestFocus();
+            return false;
+        } else if (checklap == 1) {
+            MsgBox.alert(this, "Mã nhân viên đã tồn tại. Vui lòng nhập mã mới");
             return false;
         } else if (txttenNhanVien.getText().length() == 0) {
             MsgBox.alert(this, "Tên nhân viên không được bỏ trống!!!");

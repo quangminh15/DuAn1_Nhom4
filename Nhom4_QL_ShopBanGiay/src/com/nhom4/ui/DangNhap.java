@@ -105,6 +105,7 @@ public class DangNhap extends javax.swing.JDialog {
 
         txtMaNV.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         txtMaNV.setForeground(new java.awt.Color(51, 51, 51));
+        txtMaNV.setText("nguyenvana");
         txtMaNV.setBorder(null);
         txtMaNV.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -135,6 +136,7 @@ public class DangNhap extends javax.swing.JDialog {
 
         txtMatKhau.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         txtMatKhau.setForeground(new java.awt.Color(51, 51, 51));
+        txtMatKhau.setText("1234");
         txtMatKhau.setBorder(null);
         txtMatKhau.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
