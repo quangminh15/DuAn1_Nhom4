@@ -554,8 +554,9 @@ public class NhaCungCap1 extends javax.swing.JPanel {
             MsgBox.alert(this, "Mã nhà cung cấp phải nhập ít nhất 3 ký tự");
             txtMaNCC.requestFocus();
             return false;
-        } else if (checklap == 1) {
+        } else if (them == 1 && checklap == 1) {
             MsgBox.alert(this, "Mã nhà cung cấp đã tồn tại. Vui lòng nhập mã mới");
+            checklap = 0;
             return false;
         } else if (txtTenNCC.getText().equals("")) {
             MsgBox.alert(this, "Không được để trống tên nhà cung cấp");
