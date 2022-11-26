@@ -758,9 +758,9 @@ public class KhuyenMai1 extends javax.swing.JPanel {
             MsgBox.alert(this, "Mã chương trình khuyến mãi phải nhập ít nhất 3 ký tự");
             txtMaKM.requestFocus();
             return false;
-        } else if (checklap == 1) {
-            MsgBox.alert(this, "Mã chương trình khuyến mãi đã tồn tại. Vui lòng nhập mã mới");
-            return false;
+//        } else if (them == 2 && checklap == 1) {
+//            MsgBox.alert(this, "Mã chương trình khuyến mãi đã tồn tại. Vui lòng nhập mã mới");
+//            return false;
         } else if (txtTenKM.getText().equals("")) {
             MsgBox.alert(this, "Không được để trống tên chương trình khuyến mãi");
             txtTenKM.requestFocus();
@@ -776,30 +776,30 @@ public class KhuyenMai1 extends javax.swing.JPanel {
             MsgBox.alert(this, "Điểm phải từ 0 -- 10");
             txtGiamGia.requestFocus();
         } else if (Integer.parseInt(dfyear.format(txtNgayBD.getDate())) < Integer.parseInt(dfyear.format(now))) {
-            MsgBox.alert(this, "Thời gian bắt đầu phải lớn hơn thời gian hiện tại!");
+            MsgBox.alert(this, "Thời gian bắt đầu phải lớn hơn thời gian hiện tại!(Năm)");
             return false;
         } else if (Integer.parseInt(dfyear.format(txtNgayBD.getDate())) == Integer.parseInt(dfyear.format(now))) {
             if (Integer.parseInt(dfmonth.format(txtNgayBD.getDate())) < Integer.parseInt(dfmonth.format(now))) {
-                MsgBox.alert(this, "Thời gian bắt đầu phải lớn hơn thời gian hiện tại!");
+                MsgBox.alert(this, "Thời gian bắt đầu phải lớn hơn thời gian hiện tại!(Tháng)");
                 return false;
             }
             if (Integer.parseInt(dfmonth.format(txtNgayBD.getDate())) == Integer.parseInt(dfmonth.format(now))) {
                 if (Integer.parseInt(dfday.format(txtNgayBD.getDate())) < Integer.parseInt(dfday.format(now))) {
-                    MsgBox.alert(this, "Thời gian bắt đầu phải lớn hơn thời gian hiện tại!");
+                    MsgBox.alert(this, "Thời gian bắt đầu phải lớn hơn thời gian hiện tại!(Ngày)");
                     return false;
                 }
             }
         } else if (Integer.parseInt(dfyear.format(txtNgayKT.getDate())) < Integer.parseInt(dfyear.format(txtNgayBD.getDate()))) {
-            MsgBox.alert(this, "Thời gian kết thúc phải lớn hơn thời gian bắt đầu!");
+            MsgBox.alert(this, "Thời gian kết thúc phải lớn hơn thời gian bắt đầu!-Năm");
             return false;
         } else if (Integer.parseInt(dfyear.format(txtNgayKT.getDate())) == Integer.parseInt(dfyear.format(txtNgayBD.getDate()))) {
             if (Integer.parseInt(dfmonth.format(txtNgayKT.getDate())) < Integer.parseInt(dfmonth.format(txtNgayBD.getDate()))) {
-                MsgBox.alert(this, "Thời gian kết thúc phải lớn hơn thời gian bắt đầu!");
+                MsgBox.alert(this, "Thời gian kết thúc phải lớn hơn thời gian bắt đầu!-Tháng");
                 return false;
             }
             if (Integer.parseInt(dfmonth.format(txtNgayKT.getDate())) == Integer.parseInt(dfmonth.format(txtNgayBD.getDate()))) {
                 if (Integer.parseInt(dfday.format(txtNgayKT.getDate())) < Integer.parseInt(dfday.format(txtNgayBD.getDate()))) {
-                    MsgBox.alert(this, "Thời gian kết thúc phải lớn hơn thời gian bắt đầu!");
+                    MsgBox.alert(this, "Thời gian kết thúc phải lớn hơn thời gian bắt đầu!-Ngày");
                     return false;
                 }
             }
