@@ -26,7 +26,7 @@ public class KhachHang1 extends javax.swing.JPanel {
     public KhachHang1() {
         initComponents();
         init();
-//        fillTable();
+        fillTable();
     }
  
     KhachHangDAO dao = new KhachHangDAO();
