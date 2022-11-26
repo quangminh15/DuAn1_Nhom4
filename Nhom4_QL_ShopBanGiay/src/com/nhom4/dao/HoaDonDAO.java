@@ -100,7 +100,7 @@ public class HoaDonDAO extends MainDAO<HoaDon, String> {
         }
     }
     public List<String> selectMaKM(){
-        String sql = "Select maKM from KhuyenMai";
+        String sql = "Select maKM from KhuyenMai where GETDATE() <= NgayKT;";
         List<String> list = new ArrayList<>();
         try {
             ResultSet rs = JdbcHelper.executeQuery(sql);
