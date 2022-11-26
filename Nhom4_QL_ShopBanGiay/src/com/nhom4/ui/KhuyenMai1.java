@@ -566,12 +566,6 @@ public class KhuyenMai1 extends javax.swing.JPanel {
         model.setRowCount(0);
         try {
             String key = txtTimKiem.getText();
-//            for (int i = 0; i < listKM.size(); i++) {
-//            if (!listKM.get(i).getTenKM().equalsIgnoreCase(txtTimKiem.getText())) {
-//                MsgBox.alert(this, "Không tìm thấy chương trình khuyến mãi có tên " + key);
-//                return;
-//            }
-//        }
             List<KhuyenMai> list = dao.selectByKeyword(key);
 
             for (KhuyenMai nh : list) {
@@ -758,9 +752,10 @@ public class KhuyenMai1 extends javax.swing.JPanel {
             MsgBox.alert(this, "Mã chương trình khuyến mãi phải nhập ít nhất 3 ký tự");
             txtMaKM.requestFocus();
             return false;
-//        } else if (them == 2 && checklap == 1) {
-//            MsgBox.alert(this, "Mã chương trình khuyến mãi đã tồn tại. Vui lòng nhập mã mới");
-//            return false;
+        } else if (them == 1 && checklap == 1) {
+            MsgBox.alert(this, "Mã chương trình khuyến mãi đã tồn tại. Vui lòng nhập mã mới");
+            checklap = 0;
+            return false;
         } else if (txtTenKM.getText().equals("")) {
             MsgBox.alert(this, "Không được để trống tên chương trình khuyến mãi");
             txtTenKM.requestFocus();
