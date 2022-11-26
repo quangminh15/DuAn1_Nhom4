@@ -758,9 +758,10 @@ public class KhuyenMai1 extends javax.swing.JPanel {
             MsgBox.alert(this, "Mã chương trình khuyến mãi phải nhập ít nhất 3 ký tự");
             txtMaKM.requestFocus();
             return false;
-//        } else if (them == 2 && checklap == 1) {
-//            MsgBox.alert(this, "Mã chương trình khuyến mãi đã tồn tại. Vui lòng nhập mã mới");
-//            return false;
+        } else if (them == 1 && checklap == 1) {
+            MsgBox.alert(this, "Mã chương trình khuyến mãi đã tồn tại. Vui lòng nhập mã mới");
+            checklap = 0;
+            return false;
         } else if (txtTenKM.getText().equals("")) {
             MsgBox.alert(this, "Không được để trống tên chương trình khuyến mãi");
             txtTenKM.requestFocus();
