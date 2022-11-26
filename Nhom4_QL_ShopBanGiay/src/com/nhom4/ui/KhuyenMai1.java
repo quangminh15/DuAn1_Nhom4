@@ -566,12 +566,6 @@ public class KhuyenMai1 extends javax.swing.JPanel {
         model.setRowCount(0);
         try {
             String key = txtTimKiem.getText();
-//            for (int i = 0; i < listKM.size(); i++) {
-//            if (!listKM.get(i).getTenKM().equalsIgnoreCase(txtTimKiem.getText())) {
-//                MsgBox.alert(this, "Không tìm thấy chương trình khuyến mãi có tên " + key);
-//                return;
-//            }
-//        }
             List<KhuyenMai> list = dao.selectByKeyword(key);
 
             for (KhuyenMai nh : list) {
