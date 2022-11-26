@@ -757,8 +757,25 @@ first();
          txtEmail.setEditable(true);
 //         lblHinh.setEditable(true);
     }
+    private static final String EMAIL_PATTERN
+            = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+            + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+
+    public static boolean verifyEmail(String email) {
+        if (email == null) {
+            return false;
+        }
+        return email.matches(EMAIL_PATTERN);
+    }
     
     public boolean check(){
+        boolean checkSDT = true;
+
+        try {
+            Float.parseFloat(txtsoDienSo.getText());
+        } catch (NumberFormatException e1) {
+            checkSDT = false;
+        }
         for (int i = 0; i < listNV.size(); i++) {
             if (listNV.get(i).getMaNV().equalsIgnoreCase(txtmaNhanVien.getText())) {
                 checklap = 1;
@@ -768,12 +785,17 @@ first();
             MsgBox.alert(this, "Vui lòng nhập mã nhân viên từ 5---->6 kí tự");
             txtmaNhanVien.requestFocus();
             return false;
-        } else if (checklap == 1) {
+        } else if (them == 1 && checklap == 1) {
             MsgBox.alert(this, "Mã nhân viên đã tồn tại. Vui lòng nhập mã mới");
+            checklap = 0;
             return false;
         } else if (txttenNhanVien.getText().length() == 0) {
             MsgBox.alert(this, "Tên nhân viên không được bỏ trống!!!");
             txttenNhanVien.requestFocus();
+            return false;
+        } else if (checkSDT == false) {
+            MsgBox.alert(this, "Vui lòng nhập số");
+            txtsoDienSo.requestFocus();
             return false;
         } else if (txtsoDienSo.getText().equals("") || txtsoDienSo.getText().length() < 9 || txtsoDienSo.getText().length() > 10) {
             MsgBox.alert(this, "Vui lòng nhập số điện thoại từ 9---->10 kí tự");
@@ -785,6 +807,10 @@ first();
             return false;
         }else if (txtEmail.getText().length() == 0) {
             MsgBox.alert(this, "Email không được bỏ trống!!!");
+            txtEmail.requestFocus();
+            return false;
+        }else if (verifyEmail(txtEmail.getText()) == false) {
+            MsgBox.alert(this, "Định dạng email bạn nhập không chính xác");
             txtEmail.requestFocus();
             return false;
         }else if (lblHinh.getIcon() == null) {
