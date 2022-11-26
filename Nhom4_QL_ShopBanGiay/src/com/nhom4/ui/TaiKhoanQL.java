@@ -5,6 +5,7 @@
 package com.nhom4.ui;
 
 import com.nhom4.dao.TaiKhoanDAO;
+import com.nhom4.entity.NhanVien;
 import com.nhom4.entity.TaiKhoan;
 import com.nhom4.utils.MsgBox;
 import com.nhom4.utils.XImage;
@@ -23,10 +24,11 @@ public class TaiKhoanQL extends javax.swing.JPanel {
      * Creates new form TaiKhoanQL
      */
     TaiKhoanDAO tkDAO = new TaiKhoanDAO();
-    List<TaiKhoan> list =new ArrayList<TaiKhoan>();
+    ArrayList<TaiKhoan> list =new ArrayList<>();
     TaiKhoan tk = new TaiKhoan();
     int row =-1;
     int them =0;
+    int checklap = 0;
     public TaiKhoanQL() {
         initComponents();
         this.setColumns();
@@ -499,31 +501,35 @@ public class TaiKhoanQL extends javax.swing.JPanel {
     }
     
     private boolean check() {
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).getMaNV().equalsIgnoreCase(txtMaNV.getText())) {
+                checklap = 1;
+            }
+        }
         if(txtMaNV.getText().equals("")){
             MsgBox.alert(this, "Không được để trống mã nhân viên");
             txtMaNV.requestFocus();
             return false;
         }
-        
-        if (txtTenDN.getText().equals("")) {
+        else if (checklap == 0) {
+            MsgBox.alert(this, "Mã nhân viên "+txtMaNV.getText()+ " đã tồn tại. Vui lòng nhập mã mới");
+            txtMaNV.requestFocus();
+            return false;
+        }
+        else if (txtTenDN.getText().equals("")) {
             MsgBox.alert(this, "Không được để trống tên đăng nhập");
             txtTenDN.requestFocus();
             return false;
         }
-        if (txtMatKhau.getText().equals("")) {
+        else if (txtMatKhau.getText().equals("")) {
             MsgBox.alert(this, "Không được để trống mật khẩu");
             txtMatKhau.requestFocus();
             return false;
         }
-        else if (!txtMatKhau.getText().equals(tk.getPass())) {
-            MsgBox.alert(this, "Mat khau khong trung khop voi nhan vien");
-            txtMatKhau.requestFocus();
-            return false;
-        }
-        if (!rdoNhanVien.isSelected() && !rdoQuanLy.isSelected()) {
+        else if (!rdoNhanVien.isSelected() && !rdoQuanLy.isSelected()) {
             MsgBox.alert(this, "Bạn chưa chọn chức vụ");
             return false;
-        } if (!Auth.isManager() && rdoQuanLy.isSelected()) {
+        }else if (Auth.isManager() && rdoQuanLy.isSelected()) {
             MsgBox.alert(this, "Không được chọn vai trò là quản lý");
             return false;
         }

@@ -104,7 +104,7 @@ public class TaiKhoanCaNhan extends javax.swing.JPanel {
         });
 
         btnDoiMK.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
-        btnDoiMK.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/user.png"))); // NOI18N
+        btnDoiMK.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/profile.png"))); // NOI18N
         btnDoiMK.setText("Đổi mật khẩu");
         btnDoiMK.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -247,6 +247,7 @@ public class TaiKhoanCaNhan extends javax.swing.JPanel {
                 .addGap(55, 55, 55))
         );
 
+        lblHinh.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblHinh.setText("Ảnh");
         lblHinh.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         lblHinh.addMouseListener(new java.awt.event.MouseAdapter() {
