@@ -511,7 +511,7 @@ public class TaiKhoanQL extends javax.swing.JPanel {
             txtMaNV.requestFocus();
             return false;
         }
-        else if (checklap == 0) {
+        if (checklap == 0) {
             MsgBox.alert(this, "Mã nhân viên "+txtMaNV.getText()+ " đã tồn tại. Vui lòng nhập mã mới");
             txtMaNV.requestFocus();
             return false;

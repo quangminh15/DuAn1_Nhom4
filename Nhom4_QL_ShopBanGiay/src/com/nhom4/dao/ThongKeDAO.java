@@ -70,10 +70,9 @@ public class ThongKeDAO {
         return this.getListOfArray(sql, cols, thang, nam);
     }
     
-    public List<Object[]> getDoanhThu() {
-        String sql = "{CALL sp_DoanhThu}";
+    public List<Object[]> getDoanhThu(int nam) {
+        String sql = "{CALL sp_DoanhThu(?)}";
         String [] cols = {"Nam","SoLuong","CaoNhat","ThapNhat","TrungBinh"};
-        return this.getListOfArray(sql, cols);
+        return this.getListOfArray(sql, cols,nam);
     }
-
 }

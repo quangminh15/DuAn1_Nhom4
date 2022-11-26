@@ -32,9 +32,9 @@ public class ThongKe extends javax.swing.JPanel {
 
     
     private void init() {
-        this.fillTableKhachHang();
+//        this.fillTableKhachHang();
 //        this.fillTableNguoiHoc();
-//        this.fillTableDiemChuyenDe();
+        this.fillTableDoanhThu();
         this.fillComboBoxNam();
         this.fillComboBoxThang();
         this.fillComboBoxNamDT();
@@ -84,9 +84,20 @@ private void fillTableKhachHang() {
         for (Object[] row : list) {
             model.addRow(row);
         }
-    
-    
     }
+
+    private void fillTableDoanhThu() {
+        DefaultTableModel model = (DefaultTableModel) tblDoanhThu.getModel();
+        model.setRowCount(0);
+
+        int nam = (Integer) cboNamDT.getSelectedItem();
+        List<Object[]> list = tkDAO.getDoanhThu(nam);
+        for (Object[] row : list) {
+            model.addRow(row);
+        }
+    }
+
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -107,12 +118,14 @@ private void fillTableKhachHang() {
         jLabel3 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        tblDoanhThu = new javax.swing.JTable();
         cboNamDT = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(1280, 720));
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(51, 51, 255));
         jLabel1.setText("THỐNG KÊ");
 
         tabs.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -181,7 +194,7 @@ private void fillTableKhachHang() {
 
         tabs.addTab("Khách hàng", jPanel1);
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        tblDoanhThu.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -192,7 +205,13 @@ private void fillTableKhachHang() {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane2.setViewportView(tblDoanhThu);
+
+        cboNamDT.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cboNamDTMouseClicked(evt);
+            }
+        });
 
         jLabel4.setText("Năm");
 
@@ -234,7 +253,7 @@ private void fillTableKhachHang() {
                         .addGap(79, 79, 79)
                         .addComponent(tabs, javax.swing.GroupLayout.PREFERRED_SIZE, 1114, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(524, 524, 524)
+                        .addGap(474, 474, 474)
                         .addComponent(jLabel1)))
                 .addContainerGap(87, Short.MAX_VALUE))
         );
@@ -245,17 +264,21 @@ private void fillTableKhachHang() {
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addComponent(tabs, javax.swing.GroupLayout.PREFERRED_SIZE, 510, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(155, Short.MAX_VALUE))
+                .addContainerGap(139, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void cboThangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboThangActionPerformed
-      this.fillTableKhachHang();
+//      this.fillTableKhachHang();
     }//GEN-LAST:event_cboThangActionPerformed
 
     private void cboNamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboNamActionPerformed
-      this.fillTableKhachHang();
+//      this.fillTableKhachHang();
     }//GEN-LAST:event_cboNamActionPerformed
+
+    private void cboNamDTMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cboNamDTMouseClicked
+        this.fillTableDoanhThu();
+    }//GEN-LAST:event_cboNamDTMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -270,8 +293,8 @@ private void fillTableKhachHang() {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable2;
     private javax.swing.JTabbedPane tabs;
     private javax.swing.JTable tblBang;
+    private javax.swing.JTable tblDoanhThu;
     // End of variables declaration//GEN-END:variables
 }
