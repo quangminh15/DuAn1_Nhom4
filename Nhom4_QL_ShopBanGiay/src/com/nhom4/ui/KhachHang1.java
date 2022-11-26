@@ -7,8 +7,10 @@ package com.nhom4.ui;
 import com.nhom4.dao.KhachHangDAO;
 import com.nhom4.dao.NhanVienDAO;
 import com.nhom4.entity.KhachHang;
+import com.nhom4.entity.NhaCungCap;
 import com.nhom4.entity.NhanVien;
 import com.nhom4.utils.MsgBox;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
@@ -30,6 +32,8 @@ public class KhachHang1 extends javax.swing.JPanel {
     KhachHangDAO dao = new KhachHangDAO();
     int row = -1;
     int them = 0;
+    int checklap = 0;
+    ArrayList<KhachHang> listKH = new ArrayList<>();
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -470,6 +474,7 @@ public class KhachHang1 extends javax.swing.JPanel {
                     kh.getSDT(),
                     kh.getDiaChi(),
                 };
+                listKH.add(kh);
                 model.addRow(data);
             }
         } catch (Exception e) {
@@ -617,9 +622,17 @@ public class KhachHang1 extends javax.swing.JPanel {
     }
     
     public boolean check(){
+        for (int i = 0; i < listKH.size(); i++) {
+            if (listKH.get(i).getMaKH().equalsIgnoreCase(txtmaKhachHang.getText())) {
+                checklap = 1;
+            }
+        }
       if (txtmaKhachHang.getText().equals("") || txtmaKhachHang.getText().length() < 5 || txtmaKhachHang.getText().length() > 6) {
             MsgBox.alert(this, "Vui lòng nhập mã khách hàng từ 5---->6 kí tự");
             txtmaKhachHang.requestFocus();
+            return false;
+        } else if (checklap == 1) {
+            MsgBox.alert(this, "Mã khách hàng đã tồn tại. Vui lòng nhập mã mới");
             return false;
         } else if (txttenKhachHang.getText().length() == 0) {
             MsgBox.alert(this, "Tên khách hàng không được bỏ trống!!!");
