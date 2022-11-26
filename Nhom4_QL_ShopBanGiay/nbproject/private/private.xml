@@ -3,7 +3,6 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
             <file>file:/D:/HK_Fall_22/Du%20An%201/DuAn1_Nhom4/Nhom4_QL_ShopBanGiay/src/com/nhom4/ui/ThongKe.java</file>
             <file>file:/D:/HK_Fall_22/Du%20An%201/DuAn1_Nhom4/Nhom4_QL_ShopBanGiay/src/com/nhom4/entity/KhuyenMai.java</file>
             <file>file:/D:/HK_Fall_22/Du%20An%201/DuAn1_Nhom4/Nhom4_QL_ShopBanGiay/src/com/nhom4/ui/KhachHang1.java</file>
@@ -51,10 +50,6 @@
             <file>file:/D:/HK_Fall_22/Du%20An%201/DuAn1_Nhom4/Nhom4_QL_ShopBanGiay/src/com/nhom4/ui/KhuyenMai1.java</file>
             <file>file:/D:/HK_Fall_22/Du%20An%201/DuAn1_Nhom4/Nhom4_QL_ShopBanGiay/src/com/nhom4/entity/NhanVien.java</file>
             <file>file:/D:/HK_Fall_22/Du%20An%201/DuAn1_Nhom4/Nhom4_QL_ShopBanGiay/src/com/nhom4/dao/ThongKeDAO.java</file>
-=======
-            <file>file:/D:/FPT%20Polytechnic/Hoc_Ky_4/Block_2/github/DuAn1_Nhom4/Nhom4_QL_ShopBanGiay/src/com/nhom4/ui/KhuyenMai1.java</file>
-            <file>file:/D:/FPT%20Polytechnic/Hoc_Ky_4/Block_2/github/DuAn1_Nhom4/Nhom4_QL_ShopBanGiay/src/com/nhom4/ui/CuaSoChinh.java</file>
->>>>>>> 0ad88432e745bbc9abc095aff3a7e1d41ffdbee2
         </group>
     </open-files>
 </project-private>
