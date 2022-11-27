@@ -11,6 +11,7 @@ import com.nhom4.entity.SanPham;
 import com.nhom4.utils.MsgBox;
 import com.nhom4.utils.XImage;
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JFileChooser;
 import javax.swing.table.DefaultTableModel;
@@ -423,8 +424,8 @@ public class SanPham1 extends javax.swing.JPanel {
                 if (!txtSize.getText().equals("") || !txtGia.getText().equals("")) {
                     float siZe = Float.parseFloat(txtSize.getText());
                     float Gia = Float.parseFloat(txtGia.getText());
-                    if (siZe < 20) {
-                        MsgBox.alert(this, "Size giày phải >= 20");
+                    if (siZe <= 0) {
+                        MsgBox.alert(this, "Size giày phải > 0");
                         txtSize.requestFocus();
                         return false;
                     } else if (Gia < 100000) {
@@ -445,9 +446,54 @@ public class SanPham1 extends javax.swing.JPanel {
         return true;
     }
     
-    void timKiem(){
+    public void TimKiem() {
+        DefaultTableModel model = (DefaultTableModel) tblSanPham.getModel();
+        model.setRowCount(0);
+        try {
+            String key = txtTimKiem.getText();
+            List<SanPham> list = spDao.selectByKeyword(key);
+
+            for (SanPham nh : list) {
+                Object[] data = {
+                    nh.getMaSP(),
+                    nh.getTenSP(),
+                    nh.getSoLuong(),
+                    nh.getMaNCC(),
+                    nh.getAnh(),
+                    nh.getGhiChu(),};
+                model.addRow(data);
+            }
+        } catch (Exception e) {
+            MsgBox.alert(this, e.getMessage());
+        }
+        this.clearForm();
+        this.row = -1;
+        updateStatus();
+    }
+    
+    public void TimKiem2() {
         DefaultTableModel model = (DefaultTableModel) tblChiTietSp.getModel();
-        
+        model.setRowCount(0);
+        try {
+            String key = txtTK.getText();
+            List<ChiTietSanPham> list = ctspDAO.selectByKeyword(key);
+
+            for (ChiTietSanPham nh : list) {
+                Object[] data = {
+                    nh.getMaCT(),
+                    nh.getMaSP(),
+                    nh.getMauSac(),
+                    nh.getChatLieu(),
+                    nh.getSize(),
+                    nh.getGia(),};
+                model.addRow(data);
+            }
+        } catch (Exception e) {
+            MsgBox.alert(this, e.getMessage());
+        }
+        this.clearForm2();
+        this.row = -1;
+        updateStatus2();
     }
 
     public void txtOFF() {
@@ -541,6 +587,8 @@ public class SanPham1 extends javax.swing.JPanel {
         tabs.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
 
         jPanel3.setBackground(new java.awt.Color(204, 255, 204));
+
+        txtTimKiem.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
 
         btnTimKiem.setBackground(new java.awt.Color(102, 153, 255));
         btnTimKiem.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
@@ -869,12 +917,17 @@ public class SanPham1 extends javax.swing.JPanel {
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         tabs.addTab("Sản Phẩm", jPanel1);
 
         btnTK.setText("Tìm Kiếm");
+        btnTK.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTKActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -1153,7 +1206,7 @@ public class SanPham1 extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnTimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimKiemActionPerformed
-        // TODO add your handling code here:
+        TimKiem();
     }//GEN-LAST:event_btnTimKiemActionPerformed
 
     private void tblSanPhamMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblSanPhamMousePressed
@@ -1328,6 +1381,10 @@ public class SanPham1 extends javax.swing.JPanel {
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         delete2();
     }//GEN-LAST:event_btnDeleteActionPerformed
+
+    private void btnTKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTKActionPerformed
+        TimKiem2();
+    }//GEN-LAST:event_btnTKActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCapNhat;
