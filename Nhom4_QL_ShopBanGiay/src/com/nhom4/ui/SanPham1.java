@@ -25,11 +25,14 @@ public class SanPham1 extends javax.swing.JPanel {
     SanPhamDAO spDao = new SanPhamDAO();
     ChiTietSanPhamDAO ctspDAO = new ChiTietSanPhamDAO();
     JFileChooser fileChooser = new JFileChooser(".//src//com//nhom4//icon//");
+    ArrayList<SanPham> splist = new ArrayList<>();
+    ArrayList<ChiTietSanPham> ctlist = new ArrayList<>();
     /**
      * Creates new form SanPham
      */
     int row = -1;
     int them = 0;
+    int checklap = 0;
 
     public SanPham1() {
         initComponents();
@@ -56,6 +59,7 @@ public class SanPham1 extends javax.swing.JPanel {
     public void fillTable() {
         DefaultTableModel model = (DefaultTableModel) tblSanPham.getModel();
         model.setRowCount(0);
+        splist.clear();
         try {
             List<SanPham> list = spDao.selectAll(); // Đọc dữ liệu từ CSDL
             for (SanPham sp : list) {
@@ -67,6 +71,7 @@ public class SanPham1 extends javax.swing.JPanel {
                     sp.getAnh(),
                     sp.getGhiChu()
                 };
+                splist.add(sp);
                 model.addRow(data);
             }
         } catch (Exception e) {
@@ -151,6 +156,7 @@ public class SanPham1 extends javax.swing.JPanel {
             this.fillTable();
             MsgBox.alert(this, "Thêm mới thành công");
             updateStatus();
+            this.clearForm();
             them = 0;
             btnLuu.setEnabled(false);
         } catch (Exception e) {
@@ -193,9 +199,20 @@ public class SanPham1 extends javax.swing.JPanel {
     }
 
     boolean kiemTra() {
+        for (int i = 0; i < splist.size(); i++) {
+            if (splist.get(i).getMaSP().equalsIgnoreCase(txtMaSP.getText())) {
+                checklap = 1;
+            }
+        }
+
         if (txtMaSP.getText().equals("") || txtMaSP.getText().length() < 5 || txtMaSP.getText().length() > 6) {
             MsgBox.alert(this, "Vui lòng nhập mã sản phẩm từ 5---->6 kí tự");
             txtMaSP.requestFocus();
+            return false;
+        } else if (them == 1 && checklap == 1) {
+            MsgBox.alert(this, "Mã sản phẩm đã tồn tại. Vui lòng nhập mã mới");
+            txtMaSP.requestFocus();
+            checklap = 0;
             return false;
         } else if (txtTenSP.getText().length() == 0) {
             MsgBox.alert(this, "Tên Sản Phẩm không được bỏ trống!!!");
@@ -222,8 +239,8 @@ public class SanPham1 extends javax.swing.JPanel {
             try {
                 if (!txtSoLuong.getText().equals("")) {
                     int soluong = Integer.parseInt(txtSoLuong.getText());
-                    if (soluong < 100) {
-                        MsgBox.alert(this, "Số lượng phải >= 100");
+                    if (soluong <= 0) {
+                        MsgBox.alert(this, "Số lượng phải > 0");
                         txtSoLuong.requestFocus();
                         return false;
                     } else {
@@ -248,7 +265,7 @@ public class SanPham1 extends javax.swing.JPanel {
             if (ctsp != null) {
                 this.setForm2(ctsp);
                 tabs.setSelectedIndex(1);
-                this.updateStatus();
+                this.updateStatus2();
             }
 
         } catch (Exception e) {
@@ -266,6 +283,7 @@ public class SanPham1 extends javax.swing.JPanel {
     public void fillTable2() {
         DefaultTableModel model = (DefaultTableModel) tblChiTietSp.getModel();
         model.setRowCount(0);
+        ctlist.clear();
         try {
             List<ChiTietSanPham> list = ctspDAO.selectAll(); // Đọc dữ liệu từ CSDL
             for (ChiTietSanPham ct : list) {
@@ -277,6 +295,7 @@ public class SanPham1 extends javax.swing.JPanel {
                     ct.getChatLieu(),
                     ct.getGia()
                 };
+                ctlist.add(ct);
                 model.addRow(data);
             }
         } catch (Exception e) {
@@ -388,13 +407,20 @@ public class SanPham1 extends javax.swing.JPanel {
     }
 
     boolean kiemTra2() {
+        for (int i = 0; i < ctlist.size(); i++) {
+            if (ctlist.get(i).getMaCT().equalsIgnoreCase(txtMaCT.getText())) {
+                checklap = 1;
+            }
+        }
+
         if (txtMaCT.getText().equals("") || txtMaCT.getText().length() < 5 || txtMaCT.getText().length() > 6) {
             MsgBox.alert(this, "Vui lòng nhập mã chi tiết sản phẩm từ 5---->6 kí tự");
             txtMaCT.requestFocus();
             return false;
-        } else if (txtMaSPP.getText().length() == 0) {
-            MsgBox.alert(this, "Mã Sản Phẩm không được bỏ trống!!!");
-            txtMaSPP.requestFocus();
+        } else if (them == 1 && checklap == 1) {
+            MsgBox.alert(this, "Mã chi tiết sản phẩm đã tồn tại. Vui lòng nhập mã mới");
+            txtMaCT.requestFocus();
+            checklap = 0;
             return false;
         } else if (txtMaSPP.getText().equals("") || txtMaSPP.getText().length() < 5 || txtMaSPP.getText().length() > 6) {
             MsgBox.alert(this, "Vui lòng nhập mã sản phẩm từ 5---->6 kí tự");
@@ -419,7 +445,6 @@ public class SanPham1 extends javax.swing.JPanel {
         } else if (!txtSize.getText().equals("")) {
             String size = "";
             String tv = "";
-            String gia = "";
             try {
                 if (!txtSize.getText().equals("") || !txtGia.getText().equals("")) {
                     float siZe = Float.parseFloat(txtSize.getText());
@@ -428,8 +453,8 @@ public class SanPham1 extends javax.swing.JPanel {
                         MsgBox.alert(this, "Size giày phải > 0");
                         txtSize.requestFocus();
                         return false;
-                    } else if (Gia < 100000) {
-                        MsgBox.alert(this, "Giá giày phải >= 100K");
+                    } else if (Gia < 50000) {
+                        MsgBox.alert(this, "Giá giày phải >= 50K");
                         txtGia.requestFocus();
                         return false;
                     } else {
@@ -445,7 +470,7 @@ public class SanPham1 extends javax.swing.JPanel {
         }
         return true;
     }
-    
+
     public void TimKiem() {
         DefaultTableModel model = (DefaultTableModel) tblSanPham.getModel();
         model.setRowCount(0);
@@ -470,7 +495,7 @@ public class SanPham1 extends javax.swing.JPanel {
         this.row = -1;
         updateStatus();
     }
-    
+
     public void TimKiem2() {
         DefaultTableModel model = (DefaultTableModel) tblChiTietSp.getModel();
         model.setRowCount(0);
@@ -638,6 +663,11 @@ public class SanPham1 extends javax.swing.JPanel {
         jLabel3.setText("Mã NCC");
 
         txtMaSP.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        txtMaSP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtMaSPActionPerformed(evt);
+            }
+        });
 
         txtSoLuong.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
 
@@ -1385,6 +1415,10 @@ public class SanPham1 extends javax.swing.JPanel {
     private void btnTKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTKActionPerformed
         TimKiem2();
     }//GEN-LAST:event_btnTKActionPerformed
+
+    private void txtMaSPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMaSPActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtMaSPActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCapNhat;
