@@ -380,8 +380,6 @@ public class KhuyenMai1 extends javax.swing.JPanel {
         txtMaKM.setText("");
         txtTenKM.setText("");
         txtGiamGia.setText("");
-//        txtNgayBD.setText("");
-//        txtNgayKT.setText("");
         txtGhiChu.setText("");
         txtON();
     }//GEN-LAST:event_btnThemActionPerformed
@@ -548,6 +546,7 @@ public class KhuyenMai1 extends javax.swing.JPanel {
                 this.fillTable();
                 this.clearForm();
                 MsgBox.alert(this, "Xóa thành công");
+                clearForm();
             } catch (Exception e) {
                 MsgBox.alert(this, "Xóa thất bại");
             }
