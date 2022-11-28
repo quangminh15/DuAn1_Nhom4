@@ -307,6 +307,11 @@ public class CuaSoChinh extends javax.swing.JFrame {
         lblTaiKhoan.setForeground(new java.awt.Color(255, 255, 255));
         lblTaiKhoan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/account.png"))); // NOI18N
         lblTaiKhoan.setText("Tai Khoan");
+        lblTaiKhoan.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblTaiKhoanMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -468,6 +473,10 @@ public class CuaSoChinh extends javax.swing.JFrame {
         lblNhanVien.setForeground(Color.WHITE);
         lblNhanVien.setIcon(new ImageIcon("src\\com\\nhom4\\icon\\identity-card2.png"));
     }//GEN-LAST:event_lblNhanVienMouseReleased
+
+    private void lblTaiKhoanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblTaiKhoanMouseClicked
+        opendTaiKhoanQL();
+    }//GEN-LAST:event_lblTaiKhoanMouseClicked
 
     /**
      * @param args the command line arguments
