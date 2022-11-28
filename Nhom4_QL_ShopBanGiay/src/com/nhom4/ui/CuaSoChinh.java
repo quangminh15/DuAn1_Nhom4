@@ -33,7 +33,7 @@ public class CuaSoChinh extends javax.swing.JFrame {
     public CuaSoChinh() {
         initComponents();
         init();
-        setBackground(new Color(0,0,0,0));
+//        setBackground(new Color(0,0,0,0));
 
     }
     private int img = 0;
