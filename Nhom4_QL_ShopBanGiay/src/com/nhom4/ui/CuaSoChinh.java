@@ -383,33 +383,27 @@ public class CuaSoChinh extends javax.swing.JFrame {
     }
 
     private void lblSPMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSPMouseClicked
-        SanPham1 sp = new SanPham1();
-        changePanel(sp);
+        openSanPham();
     }//GEN-LAST:event_lblSPMouseClicked
 
     private void lblKHMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblKHMouseClicked
-        KhachHang1 kh = new KhachHang1();
-        changePanel(kh);
+        openKhachHang();
     }//GEN-LAST:event_lblKHMouseClicked
 
     private void lblHDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHDMouseClicked
-        HoaDon1 hd = new HoaDon1();
-        changePanel(hd);
+        openHoaDon();
     }//GEN-LAST:event_lblHDMouseClicked
 
     private void lblNCCMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNCCMouseClicked
-        NhaCungCap1 nc = new NhaCungCap1();
-        changePanel(nc);
+        openNCC();
     }//GEN-LAST:event_lblNCCMouseClicked
 
     private void lblKMMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblKMMouseClicked
-        KhuyenMai1 km = new KhuyenMai1();
-        changePanel(km);
+        openKhuyenMai();
     }//GEN-LAST:event_lblKMMouseClicked
 
     private void lblTKMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblTKMouseClicked
-        ThongKe tK = new ThongKe();
-        changePanel(tK);
+        openThongKe();
     }//GEN-LAST:event_lblTKMouseClicked
 
     private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
@@ -422,10 +416,10 @@ public class CuaSoChinh extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         for (double i = 0.0; i <= 1.0; i = i + 0.1) {
-            String val=i+"";
+            String val = i + "";
             Float f = Float.valueOf(val);
             this.setOpacity(f);
-            
+
             try {
                 Thread.sleep(50);
                 //i=0;
@@ -455,7 +449,7 @@ public class CuaSoChinh extends javax.swing.JFrame {
     }//GEN-LAST:event_lblSetting2MouseClicked
 
     private void lblNhanVienMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNhanVienMouseEntered
-        lblNhanVien.setForeground(new Color(235,176,30));
+        lblNhanVien.setForeground(new Color(235, 176, 30));
         lblNhanVien.setIcon(new ImageIcon("src\\com\\nhom4\\icon\\identity-card2.png"));
     }//GEN-LAST:event_lblNhanVienMouseEntered
 
@@ -572,6 +566,60 @@ public class CuaSoChinh extends javax.swing.JFrame {
                 NhanVien1 nv = new NhanVien1();
                 changePanel(nv);
             }
+        } else {
+            MsgBox.alert(this, "Vui lòng đăng nhập");
+        }
+    }
+
+    public void openNCC() {
+        if (Auth.islogin()) {
+            NhaCungCap1 nc = new NhaCungCap1();
+            changePanel(nc);
+        } else {
+            MsgBox.alert(this, "Vui lòng đăng nhập");
+        }
+    }
+
+    public void openHoaDon() {
+        if (Auth.islogin()) {
+            HoaDon1 hd = new HoaDon1();
+            changePanel(hd);
+        } else {
+            MsgBox.alert(this, "Vui lòng đăng nhập");
+        }
+    }
+
+    public void openKhuyenMai() {
+        if (Auth.islogin()) {
+            KhuyenMai1 km = new KhuyenMai1();
+            changePanel(km);
+        } else {
+            MsgBox.alert(this, "Vui lòng đăng nhập");
+        }
+    }
+
+    public void openSanPham() {
+        if (Auth.islogin()) {
+            SanPham1 sp = new SanPham1();
+            changePanel(sp);
+        } else {
+            MsgBox.alert(this, "Vui lòng đăng nhập");
+        }
+    }
+
+    public void openKhachHang() {
+        if (Auth.islogin()) {
+            KhachHang1 kh = new KhachHang1();
+            changePanel(kh);
+        } else {
+            MsgBox.alert(this, "Vui lòng đăng nhập");
+        }
+    }
+
+    public void openThongKe() {
+        if (Auth.islogin()) {
+            ThongKe tK = new ThongKe();
+            changePanel(tK);
         } else {
             MsgBox.alert(this, "Vui lòng đăng nhập");
         }

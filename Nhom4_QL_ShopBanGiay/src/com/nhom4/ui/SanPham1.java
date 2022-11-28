@@ -24,7 +24,7 @@ public class SanPham1 extends javax.swing.JPanel {
 
     SanPhamDAO spDao = new SanPhamDAO();
     ChiTietSanPhamDAO ctspDAO = new ChiTietSanPhamDAO();
-    JFileChooser fileChooser = new JFileChooser(".//src//com//nhom4//hinh//");
+    JFileChooser fileChooser = new JFileChooser(".//src//com//nhom4//hinh");
     ArrayList<SanPham> splist = new ArrayList<>();
     ArrayList<ChiTietSanPham> ctlist = new ArrayList<>();
     /**
