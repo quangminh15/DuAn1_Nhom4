@@ -49,6 +49,11 @@ public class SanPhamDAO extends MainDAO<SanPham, String>  {
         }
         return list.get(0);
     }
+    
+    public List<SanPham> selectByKeyword(String key) {
+        String sql = "SELECT * FROM SanPham WHERE TenSP like ?";
+        return this.selectBySql(sql, "%"+key+"%");
+    }
 
     @Override
     public List<SanPham> selectBySql(String sql, Object... args) {

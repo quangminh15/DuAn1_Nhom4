@@ -32,14 +32,12 @@ public class ThongKe extends javax.swing.JPanel {
 
     
     private void init() {
-        this.fillTableKhachHang();
-//        this.fillTableNguoiHoc();
-//        this.fillTableDiemChuyenDe();
-        this.fillComboBoxNam();
         this.fillComboBoxThang();
+        this.fillComboBoxNam();
+        this.fillTableKhachHang();
         this.fillComboBoxNamDT();
-
-//        this.selectTab(0);
+        this.fillTableDoanhThu();
+        this.selectTab(0);
         if (!Auth.isManager()) {
             tabs.remove(1);
         }
@@ -49,6 +47,14 @@ public class ThongKe extends javax.swing.JPanel {
         tabs.setSelectedIndex(index);
     }
 
+    private void fillComboBoxThang() {
+        DefaultComboBoxModel model = (DefaultComboBoxModel) cboThang.getModel();
+        model.removeAllElements();
+        List<Integer> list = tkDAO.selectMonths();
+        for (Integer month : list) {
+            model.addElement(month);
+        }
+    }
 
     private void fillComboBoxNam() {
         DefaultComboBoxModel model = (DefaultComboBoxModel) cboNam.getModel();
@@ -67,26 +73,29 @@ public class ThongKe extends javax.swing.JPanel {
         }
     }
     
-    private void fillComboBoxThang() {
-        DefaultComboBoxModel model = (DefaultComboBoxModel) cboThang.getModel();
-        model.removeAllElements();
-        List<Integer> list = tkDAO.selectMonths();
-        for (Integer year : list) {
-            model.addElement(year);
-        }
-    }
+    
 private void fillTableKhachHang() {
         DefaultTableModel model = (DefaultTableModel) tblBang.getModel();
         model.setRowCount(0);
         int thang = (Integer) cboThang.getSelectedItem();
         int nam = (Integer) cboNam.getSelectedItem();  
-        List<Object[]> list = tkDAO.getKhachHang(thang,nam);
+        List<Object[]> list = tkDAO.getKhachHang(thang, nam);
         for (Object[] row : list) {
             model.addRow(row);
         }
-    
-    
     }
+
+    private void fillTableDoanhThu() {
+        DefaultTableModel model = (DefaultTableModel) tblDoanhThu.getModel();
+        model.setRowCount(0);
+        int nam = (Integer) cboNamDT.getSelectedItem();
+        List<Object[]> list = tkDAO.getDoanhThu(nam);
+        for (Object[] row : list) {
+            model.addRow(row);
+        }
+    }
+
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -103,13 +112,18 @@ private void fillTableKhachHang() {
         cboNam = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblBang = new javax.swing.JTable();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        tblDoanhThu = new javax.swing.JTable();
         cboNamDT = new javax.swing.JComboBox<>();
+        jLabel4 = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(1280, 720));
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(51, 51, 255));
         jLabel1.setText("THỐNG KÊ");
 
         tabs.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -140,6 +154,10 @@ private void fillTableKhachHang() {
         ));
         jScrollPane1.setViewportView(tblBang);
 
+        jLabel2.setText("Tháng");
+
+        jLabel3.setText("Năm");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -149,8 +167,12 @@ private void fillTableKhachHang() {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 990, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(18, 18, 18)
                         .addComponent(cboThang, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(29, 29, 29)
+                        .addGap(43, 43, 43)
+                        .addComponent(jLabel3)
+                        .addGap(18, 18, 18)
                         .addComponent(cboNam, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(69, Short.MAX_VALUE))
         );
@@ -160,15 +182,17 @@ private void fillTableKhachHang() {
                 .addGap(33, 33, 33)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cboThang, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cboNam, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cboNam, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(62, 62, 62))
         );
 
         tabs.addTab("Khách hàng", jPanel1);
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        tblDoanhThu.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -179,7 +203,20 @@ private void fillTableKhachHang() {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane2.setViewportView(tblDoanhThu);
+
+        cboNamDT.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cboNamDTMouseClicked(evt);
+            }
+        });
+        cboNamDT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboNamDTActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setText("Năm");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -188,15 +225,20 @@ private void fillTableKhachHang() {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(33, 33, 33)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 1027, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cboNamDT, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addGap(23, 23, 23)
+                        .addComponent(cboNamDT, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 1027, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(45, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(24, 24, 24)
-                .addComponent(cboNamDT, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cboNamDT, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 381, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(28, Short.MAX_VALUE))
@@ -214,7 +256,7 @@ private void fillTableKhachHang() {
                         .addGap(79, 79, 79)
                         .addComponent(tabs, javax.swing.GroupLayout.PREFERRED_SIZE, 1114, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(524, 524, 524)
+                        .addGap(474, 474, 474)
                         .addComponent(jLabel1)))
                 .addContainerGap(87, Short.MAX_VALUE))
         );
@@ -225,17 +267,25 @@ private void fillTableKhachHang() {
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addComponent(tabs, javax.swing.GroupLayout.PREFERRED_SIZE, 510, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(155, Short.MAX_VALUE))
+                .addContainerGap(139, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void cboThangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboThangActionPerformed
-      this.fillTableKhachHang();
+//      this.fillTableKhachHang();
     }//GEN-LAST:event_cboThangActionPerformed
 
     private void cboNamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboNamActionPerformed
       this.fillTableKhachHang();
     }//GEN-LAST:event_cboNamActionPerformed
+
+    private void cboNamDTMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cboNamDTMouseClicked
+       
+    }//GEN-LAST:event_cboNamDTMouseClicked
+
+    private void cboNamDTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboNamDTActionPerformed
+       this.fillTableDoanhThu();
+    }//GEN-LAST:event_cboNamDTActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -243,12 +293,15 @@ private void fillTableKhachHang() {
     private javax.swing.JComboBox<String> cboNamDT;
     private javax.swing.JComboBox<String> cboThang;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable2;
     private javax.swing.JTabbedPane tabs;
     private javax.swing.JTable tblBang;
+    private javax.swing.JTable tblDoanhThu;
     // End of variables declaration//GEN-END:variables
 }

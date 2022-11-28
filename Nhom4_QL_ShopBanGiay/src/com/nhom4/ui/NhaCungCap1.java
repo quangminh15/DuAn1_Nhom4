@@ -43,9 +43,9 @@ public class NhaCungCap1 extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel2 = new javax.swing.JLabel();
+        lblMaNCC = new javax.swing.JLabel();
         txtMaNCC = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
+        lblTenNCC = new javax.swing.JLabel();
         txtTenNCC = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         btnThem = new javax.swing.JButton();
@@ -65,11 +65,11 @@ public class NhaCungCap1 extends javax.swing.JPanel {
         setMaximumSize(new java.awt.Dimension(1408, 817));
         setPreferredSize(new java.awt.Dimension(1280, 720));
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel2.setText("Mã nhà cung cấp:");
+        lblMaNCC.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblMaNCC.setText("Mã nhà cung cấp:");
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel3.setText("Tên nhà cung cấp:");
+        lblTenNCC.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblTenNCC.setText("Tên nhà cung cấp:");
 
         btnThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/add-group.png"))); // NOI18N
         btnThem.setText("Thêm");
@@ -221,11 +221,11 @@ public class NhaCungCap1 extends javax.swing.JPanel {
                         .addGap(219, 219, 219)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
+                                .addComponent(lblMaNCC)
                                 .addGap(104, 104, 104)
                                 .addComponent(txtMaNCC, javax.swing.GroupLayout.PREFERRED_SIZE, 515, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3)
+                                .addComponent(lblTenNCC)
                                 .addGap(104, 104, 104)
                                 .addComponent(txtTenNCC, javax.swing.GroupLayout.PREFERRED_SIZE, 515, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -242,11 +242,11 @@ public class NhaCungCap1 extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(74, 74, 74)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
+                    .addComponent(lblMaNCC)
                     .addComponent(txtMaNCC, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(74, 74, 74)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
+                    .addComponent(lblTenNCC)
                     .addComponent(txtTenNCC, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(54, 54, 54)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -336,11 +336,11 @@ public class NhaCungCap1 extends javax.swing.JPanel {
     private javax.swing.JButton btnSua;
     private javax.swing.JButton btnThem;
     private javax.swing.JButton btnXoa;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblMaNCC;
+    private javax.swing.JLabel lblTenNCC;
     private javax.swing.JTable tblNCC;
     private javax.swing.JTextField txtMaNCC;
     private javax.swing.JTextField txtTenNCC;
@@ -554,8 +554,9 @@ public class NhaCungCap1 extends javax.swing.JPanel {
             MsgBox.alert(this, "Mã nhà cung cấp phải nhập ít nhất 3 ký tự");
             txtMaNCC.requestFocus();
             return false;
-        } else if (checklap == 1) {
+        } else if (them == 1 && checklap == 1) {
             MsgBox.alert(this, "Mã nhà cung cấp đã tồn tại. Vui lòng nhập mã mới");
+            checklap = 0;
             return false;
         } else if (txtTenNCC.getText().equals("")) {
             MsgBox.alert(this, "Không được để trống tên nhà cung cấp");

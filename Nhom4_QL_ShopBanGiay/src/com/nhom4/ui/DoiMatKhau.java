@@ -63,7 +63,7 @@ public class DoiMatKhau extends javax.swing.JDialog {
         txtMatKhau = new javax.swing.JPasswordField();
         btnDongY = new javax.swing.JButton();
         btnHuyBo = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        lblTitle = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -165,11 +165,11 @@ public class DoiMatKhau extends javax.swing.JDialog {
         });
         jPanel1.add(btnHuyBo, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 360, 135, 47));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 30)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(91, 205, 252));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("ĐỔI MẬT KHẨU");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 20, 268, 31));
+        lblTitle.setFont(new java.awt.Font("Segoe UI", 1, 30)); // NOI18N
+        lblTitle.setForeground(new java.awt.Color(91, 205, 252));
+        lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTitle.setText("ĐỔI MẬT KHẨU");
+        jPanel1.add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 20, 268, 31));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -331,12 +331,12 @@ public class DoiMatKhau extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDongY;
     private javax.swing.JButton btnHuyBo;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel lblMatKhau;
     private javax.swing.JLabel lblMatKhau1;
     private javax.swing.JLabel lblMatKhau2;
+    private javax.swing.JLabel lblTitle;
     private javax.swing.JTextField txtMaNV;
     private javax.swing.JPasswordField txtMatKhau;
     private javax.swing.JPasswordField txtMatKhau1;

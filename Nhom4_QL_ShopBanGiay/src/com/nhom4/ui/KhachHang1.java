@@ -26,7 +26,7 @@ public class KhachHang1 extends javax.swing.JPanel {
     public KhachHang1() {
         initComponents();
         init();
-//        fillTable();
+        fillTable();
     }
  
     KhachHangDAO dao = new KhachHangDAO();
@@ -621,7 +621,16 @@ public class KhachHang1 extends javax.swing.JPanel {
         txtdiaChi.setEditable(true);
     }
     
+ 
+    
     public boolean check(){
+        boolean checkSDT = true;
+
+        try {
+            Float.parseFloat(txtsoDienThoai.getText());
+        } catch (NumberFormatException e1) {
+            checkSDT = false;
+        }
         for (int i = 0; i < listKH.size(); i++) {
             if (listKH.get(i).getMaKH().equalsIgnoreCase(txtmaKhachHang.getText())) {
                 checklap = 1;
@@ -631,12 +640,17 @@ public class KhachHang1 extends javax.swing.JPanel {
             MsgBox.alert(this, "Vui lòng nhập mã khách hàng từ 5---->6 kí tự");
             txtmaKhachHang.requestFocus();
             return false;
-        } else if (checklap == 1) {
+        } else if (them == 1 && checklap == 1) {
             MsgBox.alert(this, "Mã khách hàng đã tồn tại. Vui lòng nhập mã mới");
+            checklap = 0;
             return false;
         } else if (txttenKhachHang.getText().length() == 0) {
             MsgBox.alert(this, "Tên khách hàng không được bỏ trống!!!");
             txttenKhachHang.requestFocus();
+            return false;
+        } else if (checkSDT == false) {
+            MsgBox.alert(this, "Vui lòng nhập số");
+            txtsoDienThoai.requestFocus();
             return false;
         } else if (txtsoDienThoai.getText().equals("") || txtsoDienThoai.getText().length() < 9 || txtsoDienThoai.getText().length() > 10) {
             MsgBox.alert(this, "Vui lòng nhập số điện thoại từ 9---->10 kí tự");
@@ -646,7 +660,7 @@ public class KhachHang1 extends javax.swing.JPanel {
             MsgBox.alert(this, "Địa chỉ không được bỏ trống!!!");
             txtdiaChi.requestFocus();
             return false;
-        }
+        } 
         return true;
     }
     public void TimKiem() {
