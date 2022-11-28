@@ -503,7 +503,8 @@ public class TaiKhoanQL extends javax.swing.JPanel {
     }
     
     private boolean check() {
-        String pattern = "^[a-zA-Z0-9_-]{10,15}$";
+        String patternUser = "^[a-zA-Z0-9_-]{10,15}$";
+        String patternPass = "^[a-zA-Z0-9]{6,15}$";
         for (int i = 0; i < list.size(); i++) {
             if (list.get(i).getMaNV().equalsIgnoreCase(txtMaNV.getText())) {
                 checklap = 1;
@@ -526,7 +527,7 @@ public class TaiKhoanQL extends javax.swing.JPanel {
             txtTenDN.requestFocus();
             return false;
         }
-         else if(!txtTenDN.getText().matches(pattern)|| txtTenDN.getText().length()<10 || txtTenDN.getText().length() > 15 ){
+         else if(!txtTenDN.getText().matches(patternUser)|| txtTenDN.getText().length()<10 || txtTenDN.getText().length() > 15 ){
             MsgBox.alert(this, "Tên đăng nhập không chứa kí tự đặc biệt (@, #, %,..) và phải từ 10 đến 15 kí tự");
             txtTenDN.requestFocus();
             return false;
@@ -534,6 +535,10 @@ public class TaiKhoanQL extends javax.swing.JPanel {
        
         else if (txtMatKhau.getText().equals("")) {
             MsgBox.alert(this, "Không được để trống mật khẩu");
+            txtMatKhau.requestFocus();
+            return false;
+        }else if(!txtMatKhau.getText().matches(patternPass)|| txtMatKhau.getText().length()<6 || txtMatKhau.getText().length() > 15 ){
+            MsgBox.alert(this, "Mật khảu không chứa kí tự đặc biệt (@, #, %,..) và phải từ 6 đến 15 kí tự");
             txtMatKhau.requestFocus();
             return false;
         }
