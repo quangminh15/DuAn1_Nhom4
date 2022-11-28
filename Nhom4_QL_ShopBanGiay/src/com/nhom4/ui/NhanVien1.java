@@ -27,6 +27,7 @@ public class NhanVien1 extends javax.swing.JPanel {
     /**
      * Creates new form NewJPanel
      */
+     JFileChooser fileChooser = new JFileChooser(".//src//com//nhom4//icon//hinh");
     public NhanVien1() {
         initComponents();
         init();
@@ -38,7 +39,7 @@ public class NhanVien1 extends javax.swing.JPanel {
     NhanVienDAO dao = new NhanVienDAO();
     int row = -1;
     int them = 0;
-    JFileChooser fileChooser = new JFileChooser(".//src//com//nhom4//icon//hinh");
+   
 
     /**
      * This method is called from within the constructor to initialize the form.
