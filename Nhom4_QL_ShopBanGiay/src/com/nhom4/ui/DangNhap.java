@@ -70,8 +70,8 @@ public class DangNhap extends javax.swing.JDialog {
         jSeparator2 = new javax.swing.JSeparator();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         lblOut = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("ĐĂNG NHẬP");
@@ -183,9 +183,6 @@ public class DangNhap extends javax.swing.JDialog {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/padlock.png"))); // NOI18N
         pnlForm.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 280, -1, -1));
 
-        jLabel3.setText("Không Được Đấm Khách");
-        pnlForm.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 90, -1, -1));
-
         lblOut.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/out.png"))); // NOI18N
         lblOut.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -199,6 +196,9 @@ public class DangNhap extends javax.swing.JDialog {
             }
         });
         pnlForm.add(lblOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 540, -1, -1));
+
+        jLabel4.setText("Shop ABC xin kính chào quý khách");
+        pnlForm.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 90, -1, -1));
 
         getContentPane().add(pnlForm, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 0, 620, 600));
 
@@ -343,7 +343,7 @@ void dangNhap() {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
