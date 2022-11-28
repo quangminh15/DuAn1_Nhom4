@@ -527,7 +527,7 @@ public class TaiKhoanQL extends javax.swing.JPanel {
             return false;
         }
          else if(!txtTenDN.getText().matches(pattern)|| txtTenDN.getText().length()<10 || txtTenDN.getText().length() > 15 ){
-            MsgBox.alert(this, "Tên đăng nhập không được chứa kí tự đặc biệt và phải từ 10 đến 15 kí tự");
+            MsgBox.alert(this, "Tên đăng nhập không chứa kí tự đặc biệt (@, #, %,..) và phải từ 10 đến 15 kí tự");
             txtTenDN.requestFocus();
             return false;
         }
@@ -708,6 +708,7 @@ public class TaiKhoanQL extends javax.swing.JPanel {
         btnPre.setEnabled(edit && !first);
         btnNext.setEnabled(edit && !last);
         btnLast.setEnabled(edit && !last);
+        txtOFF();
     }
     
     public void edit() {
