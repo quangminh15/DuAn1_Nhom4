@@ -400,19 +400,18 @@ public class KhuyenMai1 extends javax.swing.JPanel {
     }//GEN-LAST:event_btnXoaActionPerformed
 
     private void btnLuuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLuuActionPerformed
-        if (check() == true) {
-            if (them == 1) {
-                insert();
-                return;
-            }
-            if (them == 2) {
-                if (checkXoa() == true) {
-                    update();
-                    return;
-                }
-
-            }
+        if (them == 1) {
+            insert();
+            return;
         }
+        if (them == 2) {
+            if(checkXoa()){
+                update();
+            return;
+            }
+            
+        }
+
 
     }//GEN-LAST:event_btnLuuActionPerformed
 
@@ -499,41 +498,45 @@ public class KhuyenMai1 extends javax.swing.JPanel {
     }
 
     public void insert() {
-        KhuyenMai ncc = getForm();
-        try {
-            dao.insert(ncc);
-            this.fillTable();
-            this.clearForm();
-            MsgBox.alert(this, "Thêm mới thành công");
-            updateStatus();
-            them = 0;
-            btnLuu.setEnabled(false);
-        } catch (Exception e) {
-            MsgBox.alert(this, "Thêm mới thất bại");
-            updateStatus();
-            them = 0;
-            btnLuu.setEnabled(false);
+        if (check() == true) {
+            KhuyenMai ncc = getForm();
+            try {
+                dao.insert(ncc);
+                this.fillTable();
+                this.clearForm();
+                MsgBox.alert(this, "Thêm mới thành công");
+                updateStatus();
+                them = 0;
+                btnLuu.setEnabled(false);
+            } catch (Exception e) {
+                MsgBox.alert(this, "Thêm mới thất bại");
+                updateStatus();
+                them = 0;
+                btnLuu.setEnabled(false);
+            }
         }
 
     }
 
     public void update() {
-        KhuyenMai nv = getForm();
-        try {
-            dao.update(nv);
-            this.fillTable();
-            MsgBox.alert(this, "Cập nhật thành công");
+        if (checkXoa() == true) {
+            KhuyenMai nv = getForm();
+            try {
+                dao.update(nv);
+                this.fillTable();
+                MsgBox.alert(this, "Cập nhật thành công");
 
-            updateStatus();
-            them = 0;
-            btnLuu.setEnabled(false);
-        } catch (Exception e) {
-            MsgBox.alert(this, e.getMessage());
-            System.out.println(e);
-            e.getMessage();
-            updateStatus();
-            them = 0;
-            btnLuu.setEnabled(false);
+                updateStatus();
+                them = 0;
+                btnLuu.setEnabled(false);
+            } catch (Exception e) {
+                MsgBox.alert(this, e.getMessage());
+                System.out.println(e);
+                e.getMessage();
+                updateStatus();
+                them = 0;
+                btnLuu.setEnabled(false);
+            }
         }
 
     }
@@ -809,12 +812,31 @@ public class KhuyenMai1 extends javax.swing.JPanel {
         SimpleDateFormat dfmonth = new SimpleDateFormat("MM");
         SimpleDateFormat dfyear = new SimpleDateFormat("yyyy");
 
+        boolean checkGiamGia = true;
 
+        try {
+            Float.parseFloat(txtGiamGia.getText());
+        } catch (NumberFormatException e1) {
+            checkGiamGia = false;
+        }
 
-
-
-
-        if (Integer.parseInt(dfyear.format(txtNgayBD.getDate())) < Integer.parseInt(dfyear.format(now)) && Integer.parseInt(dfyear.format(now)) < Integer.parseInt(dfyear.format(txtNgayKT.getDate()))) {
+        if (txtTenKM.getText().equals("")) {
+            MsgBox.alert(this, "Không được để trống tên chương trình khuyến mãi");
+            txtTenKM.requestFocus();
+            return false;
+        } else if (txtGiamGia.getText().equals("")) {
+            MsgBox.alert(this, "Không được để trống giá trị giảm giá (%)");
+            txtGiamGia.requestFocus();
+            return false;
+        } else if (checkGiamGia == false) {
+            MsgBox.alert(this, "Vui lòng nhập số");
+            txtGiamGia.requestFocus();
+            return false;
+        } else if (Float.parseFloat(txtGiamGia.getText()) > 100 || Float.parseFloat(txtGiamGia.getText()) < 0) {
+            MsgBox.alert(this, "Giảm giá có giá trị từ 0 --> 100 (%)");
+            txtGiamGia.requestFocus();
+            return false;
+        } else if (Integer.parseInt(dfyear.format(txtNgayBD.getDate())) < Integer.parseInt(dfyear.format(now)) && Integer.parseInt(dfyear.format(now)) < Integer.parseInt(dfyear.format(txtNgayKT.getDate()))) {
             MsgBox.alert(this, "Chương trình đang diễn ra không thể sửa hoặc xóa!");
             return false;
         } else if (Integer.parseInt(dfyear.format(txtNgayBD.getDate())) == Integer.parseInt(dfyear.format(now)) && Integer.parseInt(dfyear.format(now)) == Integer.parseInt(dfyear.format(txtNgayKT.getDate()))) {
@@ -829,9 +851,6 @@ public class KhuyenMai1 extends javax.swing.JPanel {
                 }
             }
         }
-            
-            
-
 
         return true;
     }
