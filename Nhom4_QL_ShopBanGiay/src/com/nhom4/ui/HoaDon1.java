@@ -12,6 +12,7 @@ import com.nhom4.entity.HoaDon;
 import com.nhom4.entity.HoaDonChiTiet;
 import com.nhom4.entity.SanPham;
 import com.nhom4.utils.MsgBox;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;
@@ -28,7 +29,7 @@ public class HoaDon1 extends javax.swing.JPanel {
         cboMaNV.setVisible(false);
         int i = 0;
         setForm(i);
-
+        tbledark1.fixTable(jScrollPane1);
     }
 
     HoaDonDAO hdDAO = new HoaDonDAO();
@@ -97,7 +98,7 @@ public class HoaDon1 extends javax.swing.JPanel {
     }
 
     private void initTable() {
-        DefaultTableModel model = (DefaultTableModel) tblHoaDon.getModel();
+        DefaultTableModel model = (DefaultTableModel) tbledark1.getModel();
         String[] cols = new String[]{"MaHD", "Ma NV", "Ma KH", "Ngay Lap", "Ma KM", "Thanh Tien", "Trang Thai"};
         model.setColumnIdentifiers(cols);
     }
@@ -130,18 +131,24 @@ public class HoaDon1 extends javax.swing.JPanel {
     }
 
     public void fillTable() {
-        DefaultTableModel model = (DefaultTableModel) tblHoaDon.getModel();
+        DefaultTableModel model = (DefaultTableModel) tbledark1.getModel();
         model.setRowCount(0);
         try {
             List<HoaDon> list = hdDAO.selectAll(); // Đọc dữ liệu từ CSDL
             for (HoaDon hd : list) {
+                String trangThai;
+                if(hd.isTrangThai()){
+                     trangThai = "Da Hoan Thanh";   
+                }else
+                     trangThai = "Chua Hoan Thanh";   
                 Object[] data = {
                     hd.getMaHD(),
                     hd.getMaNV(),
                     hd.getMaKH(),
                     hd.getNgayBan(),
                     hd.getMaKM(),
-                    hd.getThanhTien()
+                    hd.getThanhTien(),
+                    trangThai
                 };
                 model.addRow(data);
             }
@@ -206,14 +213,14 @@ public class HoaDon1 extends javax.swing.JPanel {
     }
 
     private void resetFormHD() {
-        int i = tblHoaDon.getSelectedRow();
+        int i = tbledark1.getSelectedRow();
         txtMaHD.setText("");
         lblThanhTien.setText("");
         cboMaKH.setSelectedIndex(0);
         cboMaKM.setSelectedIndex(0);
         cboMaNV.setSelectedIndex(0);
         if (i >= 0) {
-            tblHoaDon.removeRowSelectionInterval(i, i);
+            tbledark1.removeRowSelectionInterval(i, i);
         }
     }
 
@@ -242,7 +249,7 @@ public class HoaDon1 extends javax.swing.JPanel {
     }
 
     public void setStatusHDCT(boolean b) {
-        int i = tblHoaDon.getSelectedRow();
+        int i = tbledark1.getSelectedRow();
         if (b == false) {
             if (i < 0) {
                 lblThongBao.setText("CHUA CHON HOA DON");
@@ -273,12 +280,14 @@ public class HoaDon1 extends javax.swing.JPanel {
 
     HoaDon getForm() {
         HoaDon hd = new HoaDon();
+
         hd.setMaHD(txtMaHD.getText());
         hd.setMaNV(String.valueOf(cboMaNV.getSelectedItem().toString()));
         hd.setMaKH(String.valueOf(cboMaKH.getSelectedItem().toString()));
         hd.setMaKM(String.valueOf(cboMaKM.getSelectedItem().toString()));
         hd.setThanhTien(0);
         hd.setTrangThai(false);
+
         return hd;
     }
 
@@ -297,12 +306,12 @@ public class HoaDon1 extends javax.swing.JPanel {
     }
 
     public void setForm(int index) {
-        txtMaHD.setText(tblHoaDon.getValueAt(index, 0).toString());
-        lblMaHD.setText(tblHoaDon.getValueAt(index, 0).toString());
-        lblMaNV.setText(tblHoaDon.getValueAt(index, 1).toString());
-        lblMaKH.setText(tblHoaDon.getValueAt(index, 2).toString());
-        lblMaKM.setText(tblHoaDon.getValueAt(index, 4).toString());
-        lblThanhTien.setText(tblHoaDon.getValueAt(index, 5).toString());
+        txtMaHD.setText(tbledark1.getValueAt(index, 0).toString());
+        lblMaHD.setText(tbledark1.getValueAt(index, 0).toString());
+        lblMaNV.setText(tbledark1.getValueAt(index, 1).toString());
+        lblMaKH.setText(tbledark1.getValueAt(index, 2).toString());
+        lblMaKM.setText(tbledark1.getValueAt(index, 4).toString());
+        lblThanhTien.setText(tbledark1.getValueAt(index, 5).toString());
     }
 
     public void setFormHDCT_Click(int index) {
@@ -312,19 +321,36 @@ public class HoaDon1 extends javax.swing.JPanel {
         txtDonGia.setText(tblHDCT.getValueAt(index, 4).toString());
         txtThanhTien.setText(tblHDCT.getValueAt(index, 5).toString());
     }
-    
-//    public boolean check(){
-//        if(txtMaHD.equals("")){
-//            MsgBox.alert(this, "Khong Bo Trong MA HOA DON");
-//            return false;
-//        }
-//    }
-    
+
+    ArrayList<HoaDon> list = new ArrayList<>();
+    boolean check = true;
+    public boolean check() {
+        
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).getMaHD().equalsIgnoreCase(txtMaHD.getText())) {
+                check = false;
+            }
+        }
+
+        if (txtMaHD.getText().equals("")) {
+            MsgBox.alert(this, "Khong Bo Trong MA HOA DON");
+            return false;
+        }
+        if (check == false) {
+            MsgBox.alert(this, "MA HOA DON");
+            return false;
+        }
+        return true;
+    }
+
     private void insert() {
+
         HoaDon hd = getForm();
+
         hdDAO.insert(hd);
         hdDAO.updateNgayBan(txtMaHD.getText());
         this.fillTable();
+
     }
 
     private void insertHDCT() {
@@ -402,17 +428,21 @@ public class HoaDon1 extends javax.swing.JPanel {
     }
 
     private void save() {
-        if (buttonNew == true) {
-            insert();
-            MsgBox.alert(this, "them thanh cong");
-            cancel();
+        if (check()) {
 
-        } else if (buttonUpdate == true) {
-            int index = tblHoaDon.getSelectedRow();
-            update();
-            setForm(index);
-            tblHoaDon.setRowSelectionInterval(index, index);
+            if (buttonNew == true) {
 
+                insert();
+                MsgBox.alert(this, "them thanh cong");
+                cancel();
+            }
+            }  if (buttonUpdate == true) {
+                int index = tbledark1.getSelectedRow();
+                update();
+                setForm(index);
+                tbledark1.setRowSelectionInterval(index, index);
+
+            
         }
     }
 
@@ -480,8 +510,6 @@ public class HoaDon1 extends javax.swing.JPanel {
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         txtMaHD = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tblHoaDon = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         cboMaNV = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
@@ -499,6 +527,8 @@ public class HoaDon1 extends javax.swing.JPanel {
         btnSave = new javax.swing.JButton();
         btnUpdate = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tbledark1 = new com.nhom4.ui.tbledark();
         jPanel2 = new javax.swing.JPanel();
         cboMaCT = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
@@ -525,14 +555,12 @@ public class HoaDon1 extends javax.swing.JPanel {
         lblMau = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         lblThongBao = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setPreferredSize(new java.awt.Dimension(1280, 720));
 
         jTabbedPane1.setBackground(new java.awt.Color(255, 255, 255));
         jTabbedPane1.setTabLayoutPolicy(javax.swing.JTabbedPane.SCROLL_TAB_LAYOUT);
-        jTabbedPane1.setTabPlacement(javax.swing.JTabbedPane.LEFT);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -543,9 +571,85 @@ public class HoaDon1 extends javax.swing.JPanel {
                 txtMaHDActionPerformed(evt);
             }
         });
-        jPanel1.add(txtMaHD, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 110, 140, 42));
+        jPanel1.add(txtMaHD, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 140, 290, 42));
 
-        tblHoaDon.setModel(new javax.swing.table.DefaultTableModel(
+        jLabel1.setText("MaHD:");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 150, -1, -1));
+
+        cboMaNV.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel1.add(cboMaNV, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 200, 290, 48));
+
+        jLabel2.setText("MaNV:");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 210, -1, -1));
+
+        jLabel3.setText("MaKH:");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 280, -1, -1));
+
+        cboMaKH.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel1.add(cboMaKH, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 260, 290, 48));
+
+        cboMaKM.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel1.add(cboMaKM, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 320, 290, 48));
+
+        jLabel4.setText("MaKM:");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 330, -1, -1));
+
+        jLabel13.setText("Thanh Tien");
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 390, -1, -1));
+
+        lblMaNV.setText("manv");
+        jPanel1.add(lblMaNV, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 220, -1, -1));
+
+        lblMaKH.setText("makh");
+        jPanel1.add(lblMaKH, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 280, -1, -1));
+
+        lblMaKM.setText("makm");
+        jPanel1.add(lblMaKM, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 340, -1, -1));
+
+        lblThanhTien.setText("jLabel14");
+        jPanel1.add(lblThanhTien, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 390, -1, -1));
+
+        btnNew.setText("Them");
+        btnNew.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNewActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnNew, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 460, -1, -1));
+
+        btnCancel.setText("Huy");
+        btnCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 460, -1, -1));
+
+        btnSave.setText("Luu");
+        btnSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 460, -1, -1));
+
+        btnUpdate.setText("Sua");
+        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 500, -1, -1));
+
+        btnDelete.setText("Xoa");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 500, -1, -1));
+
+        tbledark1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -556,93 +660,9 @@ public class HoaDon1 extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        tblHoaDon.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblHoaDonMouseClicked(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                tblHoaDonMousePressed(evt);
-            }
-        });
-        jScrollPane1.setViewportView(tblHoaDon);
+        jScrollPane1.setViewportView(tbledark1);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 630, 360));
-
-        jLabel1.setText("MaHD:");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 130, -1, -1));
-
-        cboMaNV.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel1.add(cboMaNV, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 170, 140, 48));
-
-        jLabel2.setText("MaNV:");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 180, -1, -1));
-
-        jLabel3.setText("MaKH:");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 240, -1, -1));
-
-        cboMaKH.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel1.add(cboMaKH, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 230, 140, 48));
-
-        cboMaKM.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel1.add(cboMaKM, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 290, 140, 48));
-
-        jLabel4.setText("MaKM:");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 310, -1, -1));
-
-        jLabel13.setText("Thanh Tien");
-        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 360, -1, -1));
-
-        lblMaNV.setText("manv");
-        jPanel1.add(lblMaNV, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 180, -1, -1));
-
-        lblMaKH.setText("makh");
-        jPanel1.add(lblMaKH, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 240, -1, -1));
-
-        lblMaKM.setText("makm");
-        jPanel1.add(lblMaKM, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 310, -1, -1));
-
-        lblThanhTien.setText("jLabel14");
-        jPanel1.add(lblThanhTien, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 360, -1, -1));
-
-        btnNew.setText("Them");
-        btnNew.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNewActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnNew, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 110, -1, -1));
-
-        btnCancel.setText("Huy");
-        btnCancel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 160, -1, -1));
-
-        btnSave.setText("Luu");
-        btnSave.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSaveActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 200, -1, -1));
-
-        btnUpdate.setText("Sua");
-        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUpdateActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 240, -1, -1));
-
-        btnDelete.setText("Xoa");
-        btnDelete.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDeleteActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 310, -1, -1));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 740, 490));
 
         jTabbedPane1.addTab("HoaDon", jPanel1);
 
@@ -811,14 +831,11 @@ public class HoaDon1 extends javax.swing.JPanel {
                 .addComponent(jLabel10)
                 .addGap(920, 920, 920))
             .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(192, 192, 192)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(192, 192, 192)
-                        .addComponent(lblThongBao))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(217, 217, 217)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 737, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 737, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblThongBao))
+                .addContainerGap(273, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -869,37 +886,27 @@ public class HoaDon1 extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel10)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(149, 149, 149))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(55, 55, 55))
         );
 
         jTabbedPane1.addTab("HoaDonChiTiet", jPanel2);
-
-        jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel14.setText("QUAN LY HOA DON");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1196, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(109, 109, 109)
-                        .addComponent(jLabel14)))
-                .addContainerGap(90, Short.MAX_VALUE))
+                .addGap(19, 19, 19)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1204, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(34, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(26, Short.MAX_VALUE)
-                .addComponent(jLabel14)
-                .addGap(18, 18, 18)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 525, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 644, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(59, 59, 59))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -919,18 +926,18 @@ public class HoaDon1 extends javax.swing.JPanel {
     }//GEN-LAST:event_btnNewActionPerformed
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
-        int index = tblHoaDon.getSelectedRow();
-        if(index<0){
+        int index = tbledark1.getSelectedRow();
+        if (index < 0) {
             MsgBox.alert(this, "Chua Chon Hoa Don");
-        }else{
-        buttonSave = true;
-        buttonUpdate = true;
-        statusBtn(buttonSave);
-        cboMaNV.setSelectedItem(tblHoaDon.getValueAt(index, 1).toString());
-        cboMaKH.setSelectedItem(tblHoaDon.getValueAt(index, 2).toString());
-        cboMaKM.setSelectedItem(tblHoaDon.getValueAt(index, 4).toString());
+        } else {
+            buttonSave = true;
+            buttonUpdate = true;
+            statusBtn(buttonSave);
+            cboMaNV.setSelectedItem(tbledark1.getValueAt(index, 1).toString());
+            cboMaKH.setSelectedItem(tbledark1.getValueAt(index, 2).toString());
+            cboMaKM.setSelectedItem(tbledark1.getValueAt(index, 4).toString());
 
-        setStatus(true);
+            setStatus(true);
         }
     }//GEN-LAST:event_btnUpdateActionPerformed
 
@@ -941,14 +948,6 @@ public class HoaDon1 extends javax.swing.JPanel {
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         save();
     }//GEN-LAST:event_btnSaveActionPerformed
-
-    private void tblHoaDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblHoaDonMouseClicked
-        int i = tblHoaDon.getSelectedRow();
-        fillTableHDCT();
-
-        setStatusHDCT(true);
-        this.setForm(i);
-    }//GEN-LAST:event_tblHoaDonMouseClicked
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         delete();
@@ -967,18 +966,6 @@ public class HoaDon1 extends javax.swing.JPanel {
     private void cboSLItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboSLItemStateChanged
         thanhTien();
     }//GEN-LAST:event_cboSLItemStateChanged
-
-    private void tblHoaDonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblHoaDonMousePressed
-        int i = tblHoaDon.getSelectedRow();
-
-        if (evt.getClickCount() > 1) {
-            fillTableHDCT();
-            this.setForm(i);
-            jTabbedPane1.setSelectedComponent(jPanel2);
-            //setStatusHDCT(true);
-        }
-
-    }//GEN-LAST:event_tblHoaDonMousePressed
 
     private void btnNewHDCTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewHDCTActionPerformed
         buttonSaveHDCT = true;
@@ -1034,7 +1021,6 @@ public class HoaDon1 extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -1059,7 +1045,7 @@ public class HoaDon1 extends javax.swing.JPanel {
     private javax.swing.JLabel lblThanhTien;
     private javax.swing.JLabel lblThongBao;
     private javax.swing.JTable tblHDCT;
-    private javax.swing.JTable tblHoaDon;
+    private com.nhom4.ui.tbledark tbledark1;
     private javax.swing.JTextField txtDonGia;
     private javax.swing.JTextField txtMaHD;
     private javax.swing.JTextField txtThanhTien;
