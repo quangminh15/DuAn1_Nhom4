@@ -22,6 +22,8 @@ import javax.swing.JFileChooser;
  */
 public class TaiKhoanCaNhan extends javax.swing.JPanel {
       NhanVienDAO nvDao = new NhanVienDAO();
+      ArrayList<NhanVien> list = new ArrayList<>();
+      int checkLap = 0;
       int them =0;
       int row =-1;
       JFileChooser fileChooser = new JFileChooser(".//src//com//nhom4//icon//");
@@ -336,7 +338,9 @@ public class TaiKhoanCaNhan extends javax.swing.JPanel {
             txtSDT.setText(nv.getSDT());
             txtDiaChi.setText(nv.getDiaChi());
             txtEmail.setText(nv.getEmail());
-            lblHinh.setToolTipText(nv.getHinh());
+            if (nv.getHinh()!= null) {
+            lblHinh.setIcon(XImage.read(nv.getHinh()));
+        }
         } catch (Exception e) {
         }
     }
@@ -348,6 +352,7 @@ public class TaiKhoanCaNhan extends javax.swing.JPanel {
     }
    
     public void update() {
+        if(check()){
         NhanVien nv = getForm2();       
             try {
                 nvDao.update(nv);
@@ -359,7 +364,7 @@ public class TaiKhoanCaNhan extends javax.swing.JPanel {
                  them = 0;
                 btnLuu.setEnabled(false);
             }
-        
+        }
     }
     public void clearForm() {
         NhanVien nv = new NhanVien();
@@ -399,7 +404,9 @@ public class TaiKhoanCaNhan extends javax.swing.JPanel {
         nv.setGioiTinh(rdoNam.isSelected());
         nv.setSDT(txtSDT.getText());
         nv.setEmail(txtEmail.getText());
-        nv.setHinh(lblHinh.getToolTipText());
+        if (nv.getHinh()!= null) {
+            lblHinh.setIcon(XImage.read(nv.getHinh()));
+        }
         nv.setDiaChi(txtDiaChi.getText());       
         return nv;
     }
@@ -413,6 +420,7 @@ public class TaiKhoanCaNhan extends javax.swing.JPanel {
          
     }
     
+    
     public void txtON(){
         txtTenNV.setEditable(true);
         rdoNam.setEnabled(true);
@@ -421,9 +429,67 @@ public class TaiKhoanCaNhan extends javax.swing.JPanel {
          txtEmail.setEditable(true);
     }
     
+    private static final String EMAIL_PATTERN
+            = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+            + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+
+    public static boolean verifyEmail(String email) {
+        if (email == null) {
+            return false;
+        }
+        return email.matches(EMAIL_PATTERN);
+    }
+    
     public boolean check(){
+        boolean checkSDT = true;
+
+        try {
+            Float.parseFloat(txtSDT.getText());
+        } catch (NumberFormatException e1) {
+            checkSDT = false;
+        }
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).getMaNV().equalsIgnoreCase(txtMaNV.getText())) {
+                checkLap = 1;
+            }
+        }
+ if (txtMaNV.getText().equals("") || txtMaNV.getText().length() < 5 || txtMaNV.getText().length() > 6) {
+            MsgBox.alert(this, "Vui lòng nhập mã nhân viên từ 5---->6 kí tự");
+            txtMaNV.requestFocus();
+            return false;
+        } else if (them == 1 && checkLap == 1) {
+            MsgBox.alert(this, "Mã nhân viên đã tồn tại. Vui lòng nhập mã mới");
+            checkLap = 0;
+            return false;
+        } else if (txtTenNV.getText().length() == 0) {
+            MsgBox.alert(this, "Tên nhân viên không được bỏ trống!!!");
+            txtTenNV.requestFocus();
+            return false;
+        } else if (checkSDT == false) {
+            MsgBox.alert(this, "Vui lòng nhập số");
+            txtSDT.requestFocus();
+            return false;
+        } else if (txtSDT.getText().equals("") || txtSDT.getText().length() < 9 || txtSDT.getText().length() > 10) {
+            MsgBox.alert(this, "Vui lòng nhập số điện thoại từ 9---->10 kí tự");
+            txtSDT.requestFocus();
+            return false;
+        } else if (txtDiaChi.getText().length() == 0) {
+            MsgBox.alert(this, "Địa chỉ không được bỏ trống!!!");
+            txtDiaChi.requestFocus();
+            return false;
+        }else if (txtEmail.getText().length() == 0) {
+            MsgBox.alert(this, "Email không được bỏ trống!!!");
+            txtEmail.requestFocus();
+            return false;
+        }else if (verifyEmail(txtEmail.getText()) == false) {
+            MsgBox.alert(this, "Định dạng email bạn nhập không chính xác");
+            txtEmail.requestFocus();
+            return false;
+        }
         return true;
     }
+    
+    
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDoiMK;
