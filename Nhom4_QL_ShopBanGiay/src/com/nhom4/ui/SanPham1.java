@@ -430,7 +430,7 @@ public class SanPham1 extends javax.swing.JPanel {
             MsgBox.alert(this, "Vui lòng nhập màu sắc");
             txtMauSac.requestFocus();
             return false;
-        }else if (!txtMauSac.getText().matches("[a-zA-Z][a-zA-Z ]+")) {
+        } else if (!txtMauSac.getText().matches("[a-zA-Z][a-zA-Z ]+")) {
             MsgBox.alert(this, "Màu sắc không chứa số và kí tự đặc biệt");
             txtMauSac.requestFocus();
             return false;
@@ -438,7 +438,7 @@ public class SanPham1 extends javax.swing.JPanel {
             MsgBox.alert(this, "Vui lòng nhập chất liệu");
             txtChatLieu.requestFocus();
             return false;
-        }else if (!txtChatLieu.getText().matches("[a-zA-Z][a-zA-Z ]+")) {
+        } else if (!txtChatLieu.getText().matches("[a-zA-Z][a-zA-Z ]+")) {
             MsgBox.alert(this, "Chất liệu không chứa số và kí tự đặc biệt");
             txtChatLieu.requestFocus();
             return false;
@@ -561,6 +561,7 @@ public class SanPham1 extends javax.swing.JPanel {
         tabs = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
+        lblTimKiem = new javax.swing.JLabel();
         txtTimKiem = new javax.swing.JTextField();
         btnTimKiem = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
@@ -619,7 +620,19 @@ public class SanPham1 extends javax.swing.JPanel {
 
         tabs.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
 
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblTimKiem.setForeground(new java.awt.Color(102, 102, 102));
+        lblTimKiem.setText("Tìm kiếm theo tên");
+        jPanel3.add(lblTimKiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 40, -1, -1));
+
         txtTimKiem.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        txtTimKiem.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtTimKiemKeyTyped(evt);
+            }
+        });
+        jPanel3.add(txtTimKiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(81, 17, 639, 60));
 
         btnTimKiem.setBackground(new java.awt.Color(102, 153, 255));
         btnTimKiem.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
@@ -632,27 +645,7 @@ public class SanPham1 extends javax.swing.JPanel {
                 btnTimKiemActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(81, 81, 81)
-                .addComponent(txtTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 639, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(103, 103, 103)
-                .addComponent(btnTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(44, Short.MAX_VALUE))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(29, Short.MAX_VALUE))
-        );
+        jPanel3.add(btnTimKiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 18, 159, 60));
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
         jLabel1.setText("Mã Sản Phẩm");
@@ -941,12 +934,12 @@ public class SanPham1 extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addContainerGap(60, Short.MAX_VALUE))
         );
 
         tabs.addTab("Sản Phẩm", jPanel1);
@@ -1419,6 +1412,13 @@ public class SanPham1 extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtMaSPActionPerformed
 
+    private void txtTimKiemKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimKiemKeyTyped
+        if (txtTimKiem.getText().equals("")) {
+            lblTimKiem.setVisible(true);
+        } else
+            lblTimKiem.setVisible(false);
+    }//GEN-LAST:event_txtTimKiemKeyTyped
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCapNhat;
     private javax.swing.JButton btnCuoi;
@@ -1462,6 +1462,7 @@ public class SanPham1 extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel lblAnh;
+    private javax.swing.JLabel lblTimKiem;
     private javax.swing.JTabbedPane tabs;
     private javax.swing.JTable tblChiTietSp;
     private javax.swing.JTable tblSanPham;
