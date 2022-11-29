@@ -27,7 +27,7 @@ public class NhanVien1 extends javax.swing.JPanel {
     /**
      * Creates new form NewJPanel
      */
-     JFileChooser fileChooser = new JFileChooser(".//src//com//nhom4//icon//hinh");
+     JFileChooser fileChooser = new JFileChooser(".//src//com//nhom4//hinh");
     public NhanVien1() {
         initComponents();
         init();
