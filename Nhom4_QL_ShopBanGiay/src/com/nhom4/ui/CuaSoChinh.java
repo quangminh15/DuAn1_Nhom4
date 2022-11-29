@@ -4,6 +4,7 @@
  */
 package com.nhom4.ui;
 
+import com.nhom4.dao.NhanVienDAO;
 import com.nhom4.utils.Auth;
 import com.nhom4.utils.MsgBox;
 import com.nhom4.utils.XImage;
@@ -30,6 +31,7 @@ public class CuaSoChinh extends javax.swing.JFrame {
     /**
      * Creates new form CuaSoChinh
      */
+    NhanVienDAO nvDAO = new NhanVienDAO();
     public CuaSoChinh() {
         initComponents();
         init();
@@ -59,7 +61,7 @@ public class CuaSoChinh extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new jPanelGradient();
-        jLabel1 = new javax.swing.JLabel();
+        lblHinh = new javax.swing.JLabel();
         lblTen = new javax.swing.JLabel();
         lblAdmin = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -103,8 +105,8 @@ public class CuaSoChinh extends javax.swing.JFrame {
 
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/profile (1).png"))); // NOI18N
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, -1, -1));
+        lblHinh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/profile (1).png"))); // NOI18N
+        jPanel2.add(lblHinh, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, -1, -1));
 
         lblTen.setFont(new java.awt.Font("Segoe UI", 3, 20)); // NOI18N
         lblTen.setForeground(new java.awt.Color(255, 255, 255));
@@ -527,6 +529,9 @@ public class CuaSoChinh extends javax.swing.JFrame {
             }
         }).start();
         bner();
+        Auth.isMaNV();
+        lblTen.setText(Auth.isMaNV());
+        
 
     }
 
@@ -638,7 +643,6 @@ public class CuaSoChinh extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
@@ -654,6 +658,7 @@ public class CuaSoChinh extends javax.swing.JFrame {
     private javax.swing.JLabel lblBanner1;
     private javax.swing.JLabel lblDongHo;
     private javax.swing.JLabel lblHD;
+    private javax.swing.JLabel lblHinh;
     private javax.swing.JLabel lblKH;
     private javax.swing.JLabel lblKM;
     private javax.swing.JLabel lblNCC;
