@@ -24,7 +24,7 @@ public class SanPham1 extends javax.swing.JPanel {
 
     SanPhamDAO spDao = new SanPhamDAO();
     ChiTietSanPhamDAO ctspDAO = new ChiTietSanPhamDAO();
-    JFileChooser fileChooser = new JFileChooser(".//src//com//nhom4//icon//");
+    JFileChooser fileChooser = new JFileChooser(".//src//com//nhom4//hinh");
     ArrayList<SanPham> splist = new ArrayList<>();
     ArrayList<ChiTietSanPham> ctlist = new ArrayList<>();
     /**
@@ -227,7 +227,7 @@ public class SanPham1 extends javax.swing.JPanel {
             txtMaNCC.requestFocus();
             return false;
         } else if (lblAnh.getIcon() == null) {
-            MsgBox.alert(this, "Bạn chưa chọn hình! click vào khu vực hình để chọn");
+            MsgBox.alert(this, "Bạn chưa chọn hình! Click vào khu vực hình để chọn");
             return false;
         } else if (txtSoLuong.getText().equals("")) {
             MsgBox.alert(this, "Vui lòng nhập số lượng");
@@ -430,8 +430,16 @@ public class SanPham1 extends javax.swing.JPanel {
             MsgBox.alert(this, "Vui lòng nhập màu sắc");
             txtMauSac.requestFocus();
             return false;
+        }else if (!txtMauSac.getText().matches("[a-zA-Z][a-zA-Z ]+")) {
+            MsgBox.alert(this, "Màu sắc không chứa số và kí tự đặc biệt");
+            txtMauSac.requestFocus();
+            return false;
         } else if (txtChatLieu.getText().equals("")) {
             MsgBox.alert(this, "Vui lòng nhập chất liệu");
+            txtChatLieu.requestFocus();
+            return false;
+        }else if (!txtChatLieu.getText().matches("[a-zA-Z][a-zA-Z ]+")) {
+            MsgBox.alert(this, "Chất liệu không chứa số và kí tự đặc biệt");
             txtChatLieu.requestFocus();
             return false;
         } else if (txtSize.getText().equals("")) {
@@ -611,8 +619,6 @@ public class SanPham1 extends javax.swing.JPanel {
 
         tabs.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
 
-        jPanel3.setBackground(new java.awt.Color(204, 255, 204));
-
         txtTimKiem.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
 
         btnTimKiem.setBackground(new java.awt.Color(102, 153, 255));
@@ -648,18 +654,13 @@ public class SanPham1 extends javax.swing.JPanel {
                 .addContainerGap(29, Short.MAX_VALUE))
         );
 
-        jPanel4.setBackground(new java.awt.Color(0, 204, 204));
-
         jLabel1.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Mã Sản Phẩm");
 
         jLabel2.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Số Lượng");
 
         jLabel3.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Mã NCC");
 
         txtMaSP.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
@@ -672,13 +673,11 @@ public class SanPham1 extends javax.swing.JPanel {
         txtSoLuong.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
 
         jLabel4.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Tên Sản Phẩm");
 
         txtTenSP.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
 
         jLabel7.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Ghi Chú");
 
         txtGhiChu.setColumns(20);
