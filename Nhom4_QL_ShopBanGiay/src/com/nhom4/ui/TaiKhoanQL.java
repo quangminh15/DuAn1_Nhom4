@@ -423,6 +423,7 @@ public class TaiKhoanQL extends javax.swing.JPanel {
                 return;
             }
             if(them == 2){
+                hide();
                 update();
                 return;
             }
@@ -503,7 +504,7 @@ public class TaiKhoanQL extends javax.swing.JPanel {
     }
     
     private boolean check() {
-        String patternUser = "^[a-zA-Z0-9_-]{10,15}$";
+        String patternUser = "^[a-zA-Z0-9_-]{6,15}$";
         String patternPass = "^[a-zA-Z0-9]{6,15}$";
         for (int i = 0; i < list.size(); i++) {
             if (list.get(i).getMaNV().equalsIgnoreCase(txtMaNV.getText())) {
@@ -527,8 +528,8 @@ public class TaiKhoanQL extends javax.swing.JPanel {
             txtTenDN.requestFocus();
             return false;
         }
-         else if(!txtTenDN.getText().matches(patternUser)|| txtTenDN.getText().length()<10 || txtTenDN.getText().length() > 15 ){
-            MsgBox.alert(this, "Tên đăng nhập không chứa kí tự đặc biệt (@, #, %,..) và phải từ 10 đến 15 kí tự");
+         else if(!txtTenDN.getText().matches(patternUser)|| txtTenDN.getText().length()<6 || txtTenDN.getText().length() > 15 ){
+            MsgBox.alert(this, "Tên đăng nhập không chứa kí tự đặc biệt (@, #, %,..) và phải từ 6 đến 15 kí tự");
             txtTenDN.requestFocus();
             return false;
         }
@@ -545,7 +546,8 @@ public class TaiKhoanQL extends javax.swing.JPanel {
         else if (!rdoNhanVien.isSelected() && !rdoQuanLy.isSelected()) {
             MsgBox.alert(this, "Bạn chưa chọn chức vụ");
             return false;
-        }else if (Auth.isManager() && rdoQuanLy.isSelected()) {
+        }
+        else if (them == 1 && Auth.isManager() && rdoQuanLy.isSelected()) {
             MsgBox.alert(this, "Không được chọn vai trò là quản lý");
             return false;
         }
@@ -574,7 +576,8 @@ public class TaiKhoanQL extends javax.swing.JPanel {
     
     public void update() {
         if(check()){
-        TaiKhoan tk = getForm();       
+        TaiKhoan tk = getForm(); 
+        hide();
             try {
                 tkDAO.update(tk);
                 this.fillTable();
@@ -738,6 +741,10 @@ public class TaiKhoanQL extends javax.swing.JPanel {
         rdoQuanLy.isSelected();
     }
     
+    public void hide(){
+        rdoQuanLy.setEnabled(false);
+        rdoNhanVien.setEnabled(false);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnFirst;
