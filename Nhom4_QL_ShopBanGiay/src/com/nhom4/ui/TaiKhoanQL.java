@@ -24,12 +24,12 @@ public class TaiKhoanQL extends javax.swing.JPanel {
     /**
      * Creates new form TaiKhoanQL
      */
-    TaiKhoanDAO tkDAO = new TaiKhoanDAO();
-    ArrayList<TaiKhoan> list =new ArrayList<>();
-    TaiKhoan tk = new TaiKhoan();
-    int row =0;
+        int checklap = 0;
+       ArrayList<TaiKhoan> list =new ArrayList<>(); 
+    TaiKhoanDAO tkDAO = new TaiKhoanDAO();    
+    int row =-1;
     int them =0;
-    int checklap = 0;
+ 
     public TaiKhoanQL() {
         initComponents();
         this.setColumns();
@@ -396,6 +396,7 @@ public class TaiKhoanQL extends javax.swing.JPanel {
             btnThem.setEnabled(false);
             btnXoa.setEnabled(false);
             btnLuu.setEnabled(true);
+            hide();
             txtON();
             txtMaNV.setEditable(false);
     }//GEN-LAST:event_btnSuaActionPerformed
@@ -409,6 +410,7 @@ public class TaiKhoanQL extends javax.swing.JPanel {
             txtTenDN.setText("");
             txtMatKhau.setText("");
             rdoQuanLy.setSelected(true);
+            show();
             txtON();
     }//GEN-LAST:event_btnThemActionPerformed
 
@@ -417,17 +419,14 @@ public class TaiKhoanQL extends javax.swing.JPanel {
     }//GEN-LAST:event_btnXoaActionPerformed
 
     private void btnLuuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLuuActionPerformed
-        if(check()==true){
             if(them == 1 ){
                 insert();
                 return;
             }
             if(them == 2){
-                hide();
                 update();
                 return;
             }
-        }
     }//GEN-LAST:event_btnLuuActionPerformed
 
     private void tblBangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblBangMouseClicked
@@ -503,9 +502,10 @@ public class TaiKhoanQL extends javax.swing.JPanel {
         
     }
     
-    private boolean check() {
+    public boolean check() {
         String patternUser = "^[a-zA-Z0-9_-]{6,15}$";
         String patternPass = "^[a-zA-Z0-9]{6,15}$";
+        
         for (int i = 0; i < list.size(); i++) {
             if (list.get(i).getMaNV().equalsIgnoreCase(txtMaNV.getText())) {
                 checklap = 1;
@@ -516,13 +516,11 @@ public class TaiKhoanQL extends javax.swing.JPanel {
             txtMaNV.requestFocus();
             return false;
         }
-//        else if ( them == 1 && checklap == 1 ) {
-//            MsgBox.alert(this, "Mã nhân viên "+txtMaNV.getText()+ " đã tồn tại. Vui lòng nhập mã mới");
-////            checklap=0;
-//            txtMaNV.requestFocus();
-//            return false;
-//        }
-       
+        else if (them == 1 && checklap == 1) {
+            MsgBox.alert(this, "Mã nhân viên đã tồn tại. Vui lòng nhập mã mới");
+            checklap = 0;
+            return false;
+        }      
         else if (txtTenDN.getText().equals("")) {
             MsgBox.alert(this, "Không được để trống tên đăng nhập");
             txtTenDN.requestFocus();
@@ -577,7 +575,6 @@ public class TaiKhoanQL extends javax.swing.JPanel {
     public void update() {
         if(check()){
         TaiKhoan tk = getForm(); 
-        hide();
             try {
                 tkDAO.update(tk);
                 this.fillTable();
@@ -697,7 +694,7 @@ public class TaiKhoanQL extends javax.swing.JPanel {
     
     public void clearForm() {
         TaiKhoan tk = new TaiKhoan();
-        this.setForm(0);
+        this.setForm(-1);
         this.row = -1;
         this.updateStatus();
         
@@ -720,7 +717,7 @@ public class TaiKhoanQL extends javax.swing.JPanel {
     }
     
     public void edit() {
-        String manv = (String) tblBang.getValueAt(row, 0);
+        String manv = (String) tblBang.getValueAt(row,0);
         TaiKhoan tk = tkDAO.selectById(manv);
         int i = tblBang.getSelectedRow();
         this.setForm(i);
@@ -744,6 +741,11 @@ public class TaiKhoanQL extends javax.swing.JPanel {
     public void hide(){
         rdoQuanLy.setEnabled(false);
         rdoNhanVien.setEnabled(false);
+    }
+    
+    public void show(){
+        rdoQuanLy.setEnabled(true);
+        rdoNhanVien.setEnabled(true);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
