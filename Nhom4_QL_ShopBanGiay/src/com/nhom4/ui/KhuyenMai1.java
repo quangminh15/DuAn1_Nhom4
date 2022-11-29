@@ -329,11 +329,11 @@ public class KhuyenMai1 extends javax.swing.JPanel {
 
     private void btnLuuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLuuActionPerformed
         if (them == 1) {
-//            if (check() == true) {
+            if (check() == true) {
                 insert();
                 return;
             }
-        // }
+         }
 
         if (them == 2) {
             if (checkXoa()) {
