@@ -31,4 +31,5 @@ public class Auth{
     public static String isMaNV(){
         return user.getMaNV();
     }
+    
 }

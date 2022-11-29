@@ -5,6 +5,9 @@
 package com.nhom4.ui;
 
 import com.nhom4.dao.NhanVienDAO;
+import com.nhom4.dao.TaiKhoanDAO;
+import com.nhom4.entity.NhanVien;
+import com.nhom4.entity.TaiKhoan;
 import com.nhom4.utils.Auth;
 import com.nhom4.utils.MsgBox;
 import com.nhom4.utils.XImage;
@@ -20,6 +23,8 @@ import java.util.Date;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 import com.nhom4.ui.DangNhap;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.ImageIcon;
 
 /**
@@ -32,6 +37,8 @@ public class CuaSoChinh extends javax.swing.JFrame {
      * Creates new form CuaSoChinh
      */
     NhanVienDAO nvDAO = new NhanVienDAO();
+    TaiKhoanDAO tkDAO = new TaiKhoanDAO();
+
     public CuaSoChinh() {
         initComponents();
         init();
@@ -110,13 +117,15 @@ public class CuaSoChinh extends javax.swing.JFrame {
 
         lblTen.setFont(new java.awt.Font("Segoe UI", 3, 20)); // NOI18N
         lblTen.setForeground(new java.awt.Color(255, 255, 255));
+        lblTen.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTen.setText("Name");
-        jPanel2.add(lblTen, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 150, -1, -1));
+        jPanel2.add(lblTen, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 150, 210, -1));
 
         lblAdmin.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblAdmin.setForeground(new java.awt.Color(255, 255, 255));
+        lblAdmin.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblAdmin.setText("Admin");
-        jPanel2.add(lblAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 170, -1, 30));
+        jPanel2.add(lblAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(43, 170, 160, 30));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/bg2.jpg"))); // NOI18N
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 240, 200));
@@ -463,7 +472,7 @@ public class CuaSoChinh extends javax.swing.JFrame {
     }//GEN-LAST:event_lblNhanVienMouseExited
 
     private void lblNhanVienMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNhanVienMousePressed
-        lblNhanVien.setForeground(new Color(73,231,195));
+        lblNhanVien.setForeground(new Color(73, 231, 195));
         lblNhanVien.setIcon(new ImageIcon("src\\com\\nhom4\\icon\\identity-card3.png"));
     }//GEN-LAST:event_lblNhanVienMousePressed
 
@@ -529,9 +538,7 @@ public class CuaSoChinh extends javax.swing.JFrame {
             }
         }).start();
         bner();
-        Auth.isMaNV();
-        lblTen.setText(Auth.isMaNV());
-        
+        fill();
 
     }
 
@@ -631,13 +638,64 @@ public class CuaSoChinh extends javax.swing.JFrame {
             MsgBox.alert(this, "Vui lòng đăng nhập");
         }
     }
-    
-    public void Thoat(){
+
+    public void Thoat() {
         boolean thoat = MsgBox.confirm(this, "Bạn có thực sự muốn thoát không?");
-        if(thoat == true){
+        if (thoat == true) {
             System.exit(0);
-        } else if(thoat == false){
+        } else if (thoat == false) {
             return;
+        }
+    }
+
+    public void getFormNV(NhanVien nv) {
+        try {
+            lblTen.setText(nv.getTenNV());
+            if (nv.getHinh() != null) {
+                lblHinh.setIcon(XImage.read(nv.getHinh()));
+            }
+        } catch (Exception e) {
+            MsgBox.alert(this, "Không tìm thấy");
+        }
+    }
+
+    public void getFormTK(TaiKhoan tk) {
+        System.out.println("5");
+//        try {
+//            if (tk.getRole() == true) {
+//                System.out.println("7");
+//                lblAdmin.setText("Nhân viên");
+//            } else {
+//                System.out.println("6");
+//                lblAdmin.setText("Quản lý");
+//            }
+//        } catch (Exception e) {
+//            MsgBox.alert(this, "Không tìm thấy2");
+//        }
+          if(Auth.islogin()){
+              if(Auth.isManager()){
+                  lblAdmin.setText("Quản lý");
+              }else{
+                  lblAdmin.setText("Nhân viên");
+              }
+          }
+
+    }
+
+    public void fill() {
+        try {
+            String maNv = Auth.isMaNV();
+            
+            NhanVien nv = nvDAO.selectById(maNv);
+            System.out.println("1");
+            this.getFormNV(nv);
+            System.out.println("2");
+            TaiKhoan tkk = tkDAO.selectById(maNv);
+            System.out.println("3");
+            this.getFormTK(tkk);
+            System.out.println("4");
+        } catch (Exception e) {
+            MsgBox.alert(this, "Vui lòng đăng nhập để sử dụng chương trình");
         }
     }
 
