@@ -25,7 +25,7 @@ public class TaiKhoanQL extends javax.swing.JPanel {
      * Creates new form TaiKhoanQL
      */
     TaiKhoanDAO tkDAO = new TaiKhoanDAO();
-    ArrayList<TaiKhoan> list =new ArrayList<>();
+    ArrayList<TaiKhoan> listTK =new ArrayList<>();
     TaiKhoan tk = new TaiKhoan();
     int row =0;
     int them =0;
@@ -506,8 +506,8 @@ public class TaiKhoanQL extends javax.swing.JPanel {
     private boolean check() {
         String patternUser = "^[a-zA-Z0-9_-]{6,15}$";
         String patternPass = "^[a-zA-Z0-9]{6,15}$";
-        for (int i = 0; i < list.size(); i++) {
-            if (list.get(i).getMaNV().equalsIgnoreCase(txtMaNV.getText())) {
+        for (int i = 0; i < listTK.size(); i++) {
+            if (listTK.get(i).getMaNV().equalsIgnoreCase(txtMaNV.getText())) {
                 checklap = 1;
             }
         }
@@ -516,12 +516,11 @@ public class TaiKhoanQL extends javax.swing.JPanel {
             txtMaNV.requestFocus();
             return false;
         }
-//        else if ( them == 1 && checklap == 1 ) {
-//            MsgBox.alert(this, "Mã nhân viên "+txtMaNV.getText()+ " đã tồn tại. Vui lòng nhập mã mới");
-////            checklap=0;
-//            txtMaNV.requestFocus();
-//            return false;
-//        }
+        else if (them == 1 && checklap == 1) {
+            MsgBox.alert(this, "Mã nhân viên đã tồn tại. Vui lòng nhập mã mới");
+            checklap = 0;
+            return false;
+        }
        
         else if (txtTenDN.getText().equals("")) {
             MsgBox.alert(this, "Không được để trống tên đăng nhập");
@@ -659,6 +658,7 @@ public class TaiKhoanQL extends javax.swing.JPanel {
                     tk.getPass(),                   
                     tk.getRole()? "Quản lý" : "Nhân viên",
                 };
+                listTK.add(tk);
                 model.addRow(data);
             }
         } catch (Exception e) {
