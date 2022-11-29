@@ -69,8 +69,9 @@ public class tbledark extends JTable {
                 }
             }
             setBorder(new EmptyBorder(0, 5, 0, 5));
-           com.setForeground(new Color(219, 216, 227));
-           com.setFont(com.getFont().deriveFont(Font.BOLD, 12));
+            com.setForeground(new Color(219, 216, 227));
+            com.setFont(com.getFont().deriveFont(Font.BOLD, 12));
+            
             return com;
         }
 
