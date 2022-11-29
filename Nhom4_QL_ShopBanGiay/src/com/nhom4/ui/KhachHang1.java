@@ -45,6 +45,7 @@ public class KhachHang1 extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel3 = new javax.swing.JPanel();
+        lblTimKiem = new javax.swing.JLabel();
         txttimKiem = new javax.swing.JTextField();
         btntimKiem = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
@@ -74,12 +75,23 @@ public class KhachHang1 extends javax.swing.JPanel {
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tìm kiếm", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 3, 24))); // NOI18N
         jPanel3.setPreferredSize(new java.awt.Dimension(947, 100));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblTimKiem.setForeground(new java.awt.Color(102, 102, 102));
+        lblTimKiem.setText("Tìm kiếm theo tên");
+        jPanel3.add(lblTimKiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 40, 210, 30));
 
         txttimKiem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txttimKiemActionPerformed(evt);
             }
         });
+        txttimKiem.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txttimKiemKeyTyped(evt);
+            }
+        });
+        jPanel3.add(txttimKiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(48, 34, 691, 41));
 
         btntimKiem.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
         btntimKiem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/search (4).png"))); // NOI18N
@@ -89,26 +101,7 @@ public class KhachHang1 extends javax.swing.JPanel {
                 btntimKiemActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(42, 42, 42)
-                .addComponent(txttimKiem, javax.swing.GroupLayout.DEFAULT_SIZE, 691, Short.MAX_VALUE)
-                .addGap(28, 28, 28)
-                .addComponent(btntimKiem)
-                .addGap(33, 33, 33))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txttimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btntimKiem))
-                .addGap(0, 26, Short.MAX_VALUE))
-        );
+        jPanel3.add(btntimKiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(767, 34, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
         jLabel2.setText("Mã khách hàng:");
@@ -427,6 +420,14 @@ public class KhachHang1 extends javax.swing.JPanel {
         this.TimKiem();
     }//GEN-LAST:event_btntimKiemActionPerformed
 
+    private void txttimKiemKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txttimKiemKeyTyped
+        if(txttimKiem.getText().equals("")){
+           lblTimKiem.setVisible(true);
+       }
+       else
+           lblTimKiem.setVisible(false);
+    }//GEN-LAST:event_txttimKiemKeyTyped
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnFirst;
@@ -448,6 +449,7 @@ public class KhachHang1 extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel lblTimKiem;
     private javax.swing.JTable tblkhachHang;
     private javax.swing.JTextField txtdiaChi;
     private javax.swing.JTextField txtmaKhachHang;

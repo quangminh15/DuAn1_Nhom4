@@ -429,7 +429,7 @@ public class CuaSoChinh extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     private void jLabel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseClicked
-        System.exit(0);
+        Thoat();
     }//GEN-LAST:event_jLabel10MouseClicked
 
     private void lblSetting1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSetting1MouseClicked
@@ -622,6 +622,15 @@ public class CuaSoChinh extends javax.swing.JFrame {
             changePanel(tK);
         } else {
             MsgBox.alert(this, "Vui lòng đăng nhập");
+        }
+    }
+    
+    public void Thoat(){
+        boolean thoat = MsgBox.confirm(this, "Bạn có thực sự muốn thoát không?");
+        if(thoat == true){
+            System.exit(0);
+        } else if(thoat == false){
+            return;
         }
     }
 
