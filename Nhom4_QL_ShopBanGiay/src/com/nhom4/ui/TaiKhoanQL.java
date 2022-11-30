@@ -25,7 +25,7 @@ public class TaiKhoanQL extends javax.swing.JPanel {
      * Creates new form TaiKhoanQL
      */
         int checklap = 0;
-       ArrayList<TaiKhoan> list =new ArrayList<>(); 
+       ArrayList<TaiKhoan> listTK =new ArrayList<>(); 
     TaiKhoanDAO tkDAO = new TaiKhoanDAO();    
     int row =-1;
     int them =0;
@@ -409,7 +409,6 @@ public class TaiKhoanQL extends javax.swing.JPanel {
             txtMaNV.setText("");
             txtTenDN.setText("");
             txtMatKhau.setText("");
-            rdoQuanLy.setSelected(true);
             show();
             txtON();
     }//GEN-LAST:event_btnThemActionPerformed
@@ -432,7 +431,8 @@ public class TaiKhoanQL extends javax.swing.JPanel {
     private void tblBangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblBangMouseClicked
         if (evt.getClickCount() == 1) {
             this.row = tblBang.getSelectedRow();
-            this.edit();          
+            this.edit();  
+            setForm(row);
         }
     }//GEN-LAST:event_tblBangMouseClicked
 
@@ -506,8 +506,8 @@ public class TaiKhoanQL extends javax.swing.JPanel {
         String patternUser = "^[a-zA-Z0-9_-]{6,15}$";
         String patternPass = "^[a-zA-Z0-9]{6,15}$";
         
-        for (int i = 0; i < list.size(); i++) {
-            if (list.get(i).getMaNV().equalsIgnoreCase(txtMaNV.getText())) {
+        for (int i = 0; i < listTK.size(); i++) {
+            if (listTK.get(i).getMaNV().equalsIgnoreCase(txtMaNV.getText())) {
                 checklap = 1;
             }
         }
@@ -537,7 +537,7 @@ public class TaiKhoanQL extends javax.swing.JPanel {
             txtMatKhau.requestFocus();
             return false;
         }else if(!txtMatKhau.getText().matches(patternPass)|| txtMatKhau.getText().length()<6 || txtMatKhau.getText().length() > 15 ){
-            MsgBox.alert(this, "Mật khảu không chứa kí tự đặc biệt (@, #, %,..) và phải từ 6 đến 15 kí tự");
+            MsgBox.alert(this, "Mật khẩu không chứa kí tự đặc biệt (@, #, %,..) và phải từ 6 đến 15 kí tự");
             txtMatKhau.requestFocus();
             return false;
         }
@@ -558,7 +558,7 @@ public class TaiKhoanQL extends javax.swing.JPanel {
             try {
                 tkDAO.insert(tk);
                 this.fillTable();
-                this.clearForm();               
+//                this.clearForm();               
                 MsgBox.alert(this, "Thêm mới thành công");                
                 updateStatus();                 
                 them = 0;
@@ -657,6 +657,7 @@ public class TaiKhoanQL extends javax.swing.JPanel {
                     tk.getRole()? "Quản lý" : "Nhân viên",
                 };
                 model.addRow(data);
+                listTK.add(tk);
             }
         } catch (Exception e) {
             MsgBox.alert(this, "Lỗi truy vấn dữ liệu!");
@@ -667,11 +668,11 @@ public class TaiKhoanQL extends javax.swing.JPanel {
                  txtMaNV.setText(tblBang.getValueAt(index, 0).toString());
                  txtTenDN.setText(tblBang.getValueAt(index, 1).toString());
                  txtMatKhau.setText(tblBang.getValueAt(index, 2).toString());
-                 if(tblBang.getValueAt(index, 3).toString().equals("Quản lý")){
-                 rdoQuanLy.setSelected(true);
-                 }else
+                 if(tblBang.getValueAt(index, 3).toString().equals("Nhân viên")){
                  rdoNhanVien.setSelected(true);
-                 
+                 }else{
+                 rdoQuanLy.setSelected(true);
+                 }
     }
     
     public void setForm1(TaiKhoan tk) {
@@ -694,7 +695,7 @@ public class TaiKhoanQL extends javax.swing.JPanel {
     
     public void clearForm() {
         TaiKhoan tk = new TaiKhoan();
-        this.setForm(-1);
+        this.setForm(0);
         this.row = -1;
         this.updateStatus();
         

@@ -660,18 +660,6 @@ public class CuaSoChinh extends javax.swing.JFrame {
     }
 
     public void getFormTK(TaiKhoan tk) {
-        System.out.println("5");
-//        try {
-//            if (tk.getRole() == true) {
-//                System.out.println("7");
-//                lblAdmin.setText("Nhân viên");
-//            } else {
-//                System.out.println("6");
-//                lblAdmin.setText("Quản lý");
-//            }
-//        } catch (Exception e) {
-//            MsgBox.alert(this, "Không tìm thấy2");
-//        }
           if(Auth.islogin()){
               if(Auth.isManager()){
                   lblAdmin.setText("Quản lý");
