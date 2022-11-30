@@ -368,6 +368,7 @@ public class KhachHang1 extends javax.swing.JPanel {
             btnLuu.setEnabled(true);
             fillTable();
             txtON();
+            txtmaKhachHang.setEditable(false);
     }//GEN-LAST:event_btnSuaActionPerformed
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed

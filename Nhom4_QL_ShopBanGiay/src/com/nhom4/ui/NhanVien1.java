@@ -11,6 +11,7 @@ import com.nhom4.entity.NhanVien;
 import com.nhom4.entity.TaiKhoan;
 import com.nhom4.utils.MsgBox;
 import com.nhom4.utils.XImage;
+import java.awt.Color;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
@@ -475,6 +476,7 @@ public class NhanVien1 extends javax.swing.JPanel {
         btnXoa.setEnabled(false);
         btnLuu.setEnabled(true);
         txtON();
+        txtmaNhanVien.setEditable(false);
     }//GEN-LAST:event_btnSuaActionPerformed
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
@@ -715,6 +717,7 @@ public class NhanVien1 extends javax.swing.JPanel {
         this.row = 0;
         tblnhanVien.setRowSelectionInterval(row, row);
         this.edit();
+      
     }
 
     public void prev() {
