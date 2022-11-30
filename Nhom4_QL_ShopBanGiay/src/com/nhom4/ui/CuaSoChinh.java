@@ -131,6 +131,7 @@ public class CuaSoChinh extends javax.swing.JFrame {
         lblNCC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/factory.png"))); // NOI18N
         lblNCC.setText("Nhà Cung Cấp");
         lblNCC.setToolTipText("");
+        lblNCC.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblNCC.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblNCCMouseClicked(evt);
@@ -144,6 +145,7 @@ public class CuaSoChinh extends javax.swing.JFrame {
         lblSP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/sport-shoe.png"))); // NOI18N
         lblSP.setText("   SẢN PHẨM");
         lblSP.setToolTipText("");
+        lblSP.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblSP.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblSPMouseClicked(evt);
@@ -157,6 +159,7 @@ public class CuaSoChinh extends javax.swing.JFrame {
         lblKH.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/customer.png"))); // NOI18N
         lblKH.setText("   KHÁCH HÀNG");
         lblKH.setToolTipText("");
+        lblKH.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblKH.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblKHMouseClicked(evt);
@@ -170,6 +173,7 @@ public class CuaSoChinh extends javax.swing.JFrame {
         lblHD.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/invoice.png"))); // NOI18N
         lblHD.setText("   HÓA ĐƠN");
         lblHD.setToolTipText("");
+        lblHD.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblHD.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblHDMouseClicked(evt);
@@ -183,6 +187,7 @@ public class CuaSoChinh extends javax.swing.JFrame {
         lblKM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/tag.png"))); // NOI18N
         lblKM.setText("KHUYẾN MÃI");
         lblKM.setToolTipText("");
+        lblKM.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblKM.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblKMMouseClicked(evt);
@@ -212,6 +217,7 @@ public class CuaSoChinh extends javax.swing.JFrame {
         lblTK.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/bar-chart.png"))); // NOI18N
         lblTK.setText("   THỐNG KÊ");
         lblTK.setToolTipText("");
+        lblTK.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblTK.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblTKMouseClicked(evt);
@@ -224,7 +230,7 @@ public class CuaSoChinh extends javax.swing.JFrame {
         lblNhanVien.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblNhanVien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/identity-card.png"))); // NOI18N
         lblNhanVien.setText("Nhân Viên");
-        lblNhanVien.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        lblNhanVien.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblNhanVien.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblNhanVienMouseClicked(evt);
@@ -318,6 +324,7 @@ public class CuaSoChinh extends javax.swing.JFrame {
         lblTaiKhoan.setForeground(new java.awt.Color(255, 255, 255));
         lblTaiKhoan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/account.png"))); // NOI18N
         lblTaiKhoan.setText("Tai Khoan");
+        lblTaiKhoan.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblTaiKhoan.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblTaiKhoanMouseClicked(evt);
