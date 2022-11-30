@@ -9,6 +9,7 @@ import com.nhom4.dao.KhachHangDAO;
 import com.nhom4.dao.ThongKeDAO;
 import com.nhom4.entity.HoaDon;
 import com.nhom4.utils.Auth;
+import com.nhom4.utils.MsgBox;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;
@@ -77,8 +78,15 @@ public class ThongKe extends javax.swing.JPanel {
 private void fillTableKhachHang() {
         DefaultTableModel model = (DefaultTableModel) tblBang.getModel();
         model.setRowCount(0);
-        int thang = (Integer) cboThang.getSelectedItem();
-        int nam = (Integer) cboNam.getSelectedItem();  
+        int thang=0 ;
+        int nam=0;
+        try {
+        thang = Integer.parseInt( cboThang.getSelectedItem().toString());
+        nam = Integer.parseInt( cboNam.getSelectedItem().toString());  
+    } catch (Exception e) {
+            
+    }
+        
         List<Object[]> list = tkDAO.getKhachHang(thang, nam);
         for (Object[] row : list) {
             model.addRow(row);
@@ -129,6 +137,11 @@ private void fillTableKhachHang() {
         tabs.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         tabs.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
 
+        cboThang.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cboThangItemStateChanged(evt);
+            }
+        });
         cboThang.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cboThangActionPerformed(evt);
@@ -272,7 +285,7 @@ private void fillTableKhachHang() {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cboThangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboThangActionPerformed
-//      this.fillTableKhachHang();
+      this.fillTableKhachHang();
     }//GEN-LAST:event_cboThangActionPerformed
 
     private void cboNamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboNamActionPerformed
@@ -286,6 +299,10 @@ private void fillTableKhachHang() {
     private void cboNamDTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboNamDTActionPerformed
        this.fillTableDoanhThu();
     }//GEN-LAST:event_cboNamDTActionPerformed
+
+    private void cboThangItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboThangItemStateChanged
+        //this.fillTableKhachHang();
+    }//GEN-LAST:event_cboThangItemStateChanged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
