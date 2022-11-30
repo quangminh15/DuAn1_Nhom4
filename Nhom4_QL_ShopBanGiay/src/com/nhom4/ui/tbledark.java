@@ -23,9 +23,9 @@ public class tbledark extends JTable {
     
     public tbledark() {
         getTableHeader().setDefaultRenderer(new TableDarkHeader());
-        getTableHeader().setPreferredSize(new Dimension(0, 30));
+        getTableHeader().setPreferredSize(new Dimension(0, 40));
         setDefaultRenderer(Object.class, new TableDarkCelll());
-        setRowHeight(30);
+        setRowHeight(60);
     }
     
     

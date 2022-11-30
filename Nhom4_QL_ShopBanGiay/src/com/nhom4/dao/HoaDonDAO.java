@@ -121,4 +121,12 @@ public class HoaDonDAO extends MainDAO<HoaDon, String> {
         String Update_ThanhTien ="{CALL sp_TongTien(?)}";
         JdbcHelper.executeUpdate(Update_ThanhTien, id);
     }
+    public List<HoaDon> selectByKeyword(String key) {
+        String sql = "SELECT * FROM HoaDon WHERE MaHD like ?";
+        return this.selectBySql(sql, "%"+key+"%");
+    }
+    public List<HoaDon> selectByKeyword2(String key) {
+        String sql = "SELECT * FROM HoaDon WHERE MaNV like ?";
+        return this.selectBySql(sql, "%"+key+"%");
+    }
 }
