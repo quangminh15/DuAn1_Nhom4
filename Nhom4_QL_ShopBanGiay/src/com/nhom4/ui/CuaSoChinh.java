@@ -660,40 +660,29 @@ public class CuaSoChinh extends javax.swing.JFrame {
     }
 
     public void getFormTK(TaiKhoan tk) {
-        System.out.println("5");
-//        try {
-//            if (tk.getRole() == true) {
-//                System.out.println("7");
-//                lblAdmin.setText("Nhân viên");
-//            } else {
-//                System.out.println("6");
-//                lblAdmin.setText("Quản lý");
-//            }
-//        } catch (Exception e) {
-//            MsgBox.alert(this, "Không tìm thấy2");
-//        }
-          if(Auth.islogin()){
-              if(Auth.isManager()){
-                  lblAdmin.setText("Quản lý");
-              }else{
-                  lblAdmin.setText("Nhân viên");
-              }
-          }
+        try {
+            if (Auth.islogin()) {
+                if (Auth.isManager()) {
+                    lblAdmin.setText("Quản lý");
+                } else {
+                    lblAdmin.setText("Nhân viên");
+                }
+            }
+        } catch (Exception e) {
+            MsgBox.alert(this, "Không tìm thấy2");
+        }
 
     }
 
     public void fill() {
         try {
             String maNv = Auth.isMaNV();
-            
+
             NhanVien nv = nvDAO.selectById(maNv);
-            System.out.println("1");
             this.getFormNV(nv);
-            System.out.println("2");
+            
             TaiKhoan tkk = tkDAO.selectById(maNv);
-            System.out.println("3");
             this.getFormTK(tkk);
-            System.out.println("4");
         } catch (Exception e) {
             MsgBox.alert(this, "Vui lòng đăng nhập để sử dụng chương trình");
         }
