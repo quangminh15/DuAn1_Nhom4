@@ -27,7 +27,7 @@ public class NhanVien1 extends javax.swing.JPanel {
     /**
      * Creates new form NewJPanel
      */
-     JFileChooser fileChooser = new JFileChooser(".//src//com//nhom4//icon//hinh");
+     JFileChooser fileChooser = new JFileChooser(".//src//com//nhom4//hinh");
     public NhanVien1() {
         initComponents();
         init();
@@ -80,6 +80,7 @@ public class NhanVien1 extends javax.swing.JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         tblnhanVien = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
+        lblTimKiem = new javax.swing.JLabel();
         txttimKiem = new javax.swing.JTextField();
         btntimKiem = new javax.swing.JButton();
 
@@ -344,12 +345,23 @@ public class NhanVien1 extends javax.swing.JPanel {
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tìm kiếm", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 3, 24))); // NOI18N
         jPanel3.setPreferredSize(new java.awt.Dimension(947, 100));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblTimKiem.setForeground(new java.awt.Color(102, 102, 102));
+        lblTimKiem.setText("Tìm kiếm theo tên");
+        jPanel3.add(lblTimKiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, 180, 30));
 
         txttimKiem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txttimKiemActionPerformed(evt);
             }
         });
+        txttimKiem.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txttimKiemKeyTyped(evt);
+            }
+        });
+        jPanel3.add(txttimKiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(48, 34, 691, 41));
 
         btntimKiem.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
         btntimKiem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/search (4).png"))); // NOI18N
@@ -359,26 +371,7 @@ public class NhanVien1 extends javax.swing.JPanel {
                 btntimKiemActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(42, 42, 42)
-                .addComponent(txttimKiem, javax.swing.GroupLayout.DEFAULT_SIZE, 691, Short.MAX_VALUE)
-                .addGap(28, 28, 28)
-                .addComponent(btntimKiem)
-                .addGap(33, 33, 33))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txttimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btntimKiem))
-                .addGap(0, 26, Short.MAX_VALUE))
-        );
+        jPanel3.add(btntimKiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(767, 34, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -522,6 +515,14 @@ public class NhanVien1 extends javax.swing.JPanel {
         this.selectImage();
     }//GEN-LAST:event_lblHinhMouseClicked
 
+    private void txttimKiemKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txttimKiemKeyTyped
+        if(txttimKiem.getText().equals("")){
+           lblTimKiem.setVisible(true);
+       }
+       else
+           lblTimKiem.setVisible(false);
+    }//GEN-LAST:event_txttimKiemKeyTyped
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnFirst;
@@ -547,6 +548,7 @@ public class NhanVien1 extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblHinh;
     private javax.swing.JLabel lblQUANLYNHANVIEN;
+    private javax.swing.JLabel lblTimKiem;
     private javax.swing.JRadioButton rdoGioiTinhNam;
     private javax.swing.JRadioButton rdoGioiTinhNu;
     private javax.swing.JTable tblnhanVien;

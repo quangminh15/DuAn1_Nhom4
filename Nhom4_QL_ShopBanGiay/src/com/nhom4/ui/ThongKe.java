@@ -194,13 +194,13 @@ private void fillTableKhachHang() {
 
         tblDoanhThu.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Tên sản phẩm", "Số lượng", "DT cao nhất", "DT thấp nhất", "DT trung bình"
             }
         ));
         jScrollPane2.setViewportView(tblDoanhThu);

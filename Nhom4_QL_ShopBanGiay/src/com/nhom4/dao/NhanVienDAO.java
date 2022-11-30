@@ -77,4 +77,9 @@ public class NhanVienDAO extends MainDAO <NhanVien, String> {
         return list;
     }
     
+    public List<NhanVien> selectByMaHD(String key) {
+        String sql = "SELECT * FROM HoaDonCT WHERE MaHD like ?";
+        return this.selectBySql(sql, "%"+key+"%");
+    }
+    
 }

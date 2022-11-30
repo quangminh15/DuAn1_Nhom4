@@ -24,12 +24,12 @@ public class TaiKhoanQL extends javax.swing.JPanel {
     /**
      * Creates new form TaiKhoanQL
      */
-    TaiKhoanDAO tkDAO = new TaiKhoanDAO();
-    ArrayList<TaiKhoan> list =new ArrayList<>();
-    TaiKhoan tk = new TaiKhoan();
-    int row =0;
+        int checklap = 0;
+       ArrayList<TaiKhoan> listTK =new ArrayList<>(); 
+    TaiKhoanDAO tkDAO = new TaiKhoanDAO();    
+    int row =-1;
     int them =0;
-    int checklap = 0;
+ 
     public TaiKhoanQL() {
         initComponents();
         this.setColumns();
@@ -396,6 +396,7 @@ public class TaiKhoanQL extends javax.swing.JPanel {
             btnThem.setEnabled(false);
             btnXoa.setEnabled(false);
             btnLuu.setEnabled(true);
+            hide();
             txtON();
             txtMaNV.setEditable(false);
     }//GEN-LAST:event_btnSuaActionPerformed
@@ -408,7 +409,7 @@ public class TaiKhoanQL extends javax.swing.JPanel {
             txtMaNV.setText("");
             txtTenDN.setText("");
             txtMatKhau.setText("");
-            rdoQuanLy.setSelected(true);
+            show();
             txtON();
     }//GEN-LAST:event_btnThemActionPerformed
 
@@ -417,7 +418,6 @@ public class TaiKhoanQL extends javax.swing.JPanel {
     }//GEN-LAST:event_btnXoaActionPerformed
 
     private void btnLuuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLuuActionPerformed
-        if(check()==true){
             if(them == 1 ){
                 insert();
                 return;
@@ -426,13 +426,13 @@ public class TaiKhoanQL extends javax.swing.JPanel {
                 update();
                 return;
             }
-        }
     }//GEN-LAST:event_btnLuuActionPerformed
 
     private void tblBangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblBangMouseClicked
         if (evt.getClickCount() == 1) {
             this.row = tblBang.getSelectedRow();
-            this.edit();          
+            this.edit();  
+            setForm(row);
         }
     }//GEN-LAST:event_tblBangMouseClicked
 
@@ -502,11 +502,12 @@ public class TaiKhoanQL extends javax.swing.JPanel {
         
     }
     
-    private boolean check() {
-        String patternUser = "^[a-zA-Z0-9_-]{10,15}$";
+    public boolean check() {
+        String patternUser = "^[a-zA-Z0-9_-]{6,15}$";
         String patternPass = "^[a-zA-Z0-9]{6,15}$";
-        for (int i = 0; i < list.size(); i++) {
-            if (list.get(i).getMaNV().equalsIgnoreCase(txtMaNV.getText())) {
+        
+        for (int i = 0; i < listTK.size(); i++) {
+            if (listTK.get(i).getMaNV().equalsIgnoreCase(txtMaNV.getText())) {
                 checklap = 1;
             }
         }
@@ -515,20 +516,18 @@ public class TaiKhoanQL extends javax.swing.JPanel {
             txtMaNV.requestFocus();
             return false;
         }
-//        else if ( them == 1 && checklap == 1 ) {
-//            MsgBox.alert(this, "Mã nhân viên "+txtMaNV.getText()+ " đã tồn tại. Vui lòng nhập mã mới");
-////            checklap=0;
-//            txtMaNV.requestFocus();
-//            return false;
-//        }
-       
+        else if (them == 1 && checklap == 1) {
+            MsgBox.alert(this, "Mã nhân viên đã tồn tại. Vui lòng nhập mã mới");
+            checklap = 0;
+            return false;
+        }      
         else if (txtTenDN.getText().equals("")) {
             MsgBox.alert(this, "Không được để trống tên đăng nhập");
             txtTenDN.requestFocus();
             return false;
         }
-         else if(!txtTenDN.getText().matches(patternUser)|| txtTenDN.getText().length()<10 || txtTenDN.getText().length() > 15 ){
-            MsgBox.alert(this, "Tên đăng nhập không chứa kí tự đặc biệt (@, #, %,..) và phải từ 10 đến 15 kí tự");
+         else if(!txtTenDN.getText().matches(patternUser)|| txtTenDN.getText().length()<6 || txtTenDN.getText().length() > 15 ){
+            MsgBox.alert(this, "Tên đăng nhập không chứa kí tự đặc biệt (@, #, %,..) và phải từ 6 đến 15 kí tự");
             txtTenDN.requestFocus();
             return false;
         }
@@ -538,14 +537,15 @@ public class TaiKhoanQL extends javax.swing.JPanel {
             txtMatKhau.requestFocus();
             return false;
         }else if(!txtMatKhau.getText().matches(patternPass)|| txtMatKhau.getText().length()<6 || txtMatKhau.getText().length() > 15 ){
-            MsgBox.alert(this, "Mật khảu không chứa kí tự đặc biệt (@, #, %,..) và phải từ 6 đến 15 kí tự");
+            MsgBox.alert(this, "Mật khẩu không chứa kí tự đặc biệt (@, #, %,..) và phải từ 6 đến 15 kí tự");
             txtMatKhau.requestFocus();
             return false;
         }
         else if (!rdoNhanVien.isSelected() && !rdoQuanLy.isSelected()) {
             MsgBox.alert(this, "Bạn chưa chọn chức vụ");
             return false;
-        }else if (Auth.isManager() && rdoQuanLy.isSelected()) {
+        }
+        else if (them == 1 && Auth.isManager() && rdoQuanLy.isSelected()) {
             MsgBox.alert(this, "Không được chọn vai trò là quản lý");
             return false;
         }
@@ -558,7 +558,7 @@ public class TaiKhoanQL extends javax.swing.JPanel {
             try {
                 tkDAO.insert(tk);
                 this.fillTable();
-                this.clearForm();               
+//                this.clearForm();               
                 MsgBox.alert(this, "Thêm mới thành công");                
                 updateStatus();                 
                 them = 0;
@@ -574,7 +574,7 @@ public class TaiKhoanQL extends javax.swing.JPanel {
     
     public void update() {
         if(check()){
-        TaiKhoan tk = getForm();       
+        TaiKhoan tk = getForm(); 
             try {
                 tkDAO.update(tk);
                 this.fillTable();
@@ -657,6 +657,7 @@ public class TaiKhoanQL extends javax.swing.JPanel {
                     tk.getRole()? "Quản lý" : "Nhân viên",
                 };
                 model.addRow(data);
+                listTK.add(tk);
             }
         } catch (Exception e) {
             MsgBox.alert(this, "Lỗi truy vấn dữ liệu!");
@@ -667,11 +668,11 @@ public class TaiKhoanQL extends javax.swing.JPanel {
                  txtMaNV.setText(tblBang.getValueAt(index, 0).toString());
                  txtTenDN.setText(tblBang.getValueAt(index, 1).toString());
                  txtMatKhau.setText(tblBang.getValueAt(index, 2).toString());
-                 if(tblBang.getValueAt(index, 3).toString().equals("Quản lý")){
-                 rdoQuanLy.setSelected(true);
-                 }else
+                 if(tblBang.getValueAt(index, 3).toString().equals("Nhân viên")){
                  rdoNhanVien.setSelected(true);
-                 
+                 }else{
+                 rdoQuanLy.setSelected(true);
+                 }
     }
     
     public void setForm1(TaiKhoan tk) {
@@ -717,7 +718,7 @@ public class TaiKhoanQL extends javax.swing.JPanel {
     }
     
     public void edit() {
-        String manv = (String) tblBang.getValueAt(row, 0);
+        String manv = (String) tblBang.getValueAt(row,0);
         TaiKhoan tk = tkDAO.selectById(manv);
         int i = tblBang.getSelectedRow();
         this.setForm(i);
@@ -738,6 +739,15 @@ public class TaiKhoanQL extends javax.swing.JPanel {
         rdoQuanLy.isSelected();
     }
     
+    public void hide(){
+        rdoQuanLy.setEnabled(false);
+        rdoNhanVien.setEnabled(false);
+    }
+    
+    public void show(){
+        rdoQuanLy.setEnabled(true);
+        rdoNhanVien.setEnabled(true);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnFirst;
