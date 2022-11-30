@@ -4,6 +4,10 @@
  */
 package com.nhom4.ui;
 
+import com.nhom4.dao.NhanVienDAO;
+import com.nhom4.dao.TaiKhoanDAO;
+import com.nhom4.entity.NhanVien;
+import com.nhom4.entity.TaiKhoan;
 import com.nhom4.utils.Auth;
 import com.nhom4.utils.MsgBox;
 import com.nhom4.utils.XImage;
@@ -59,7 +63,7 @@ public class CuaSoChinh extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new jPanelGradient();
-        jLabel1 = new javax.swing.JLabel();
+        lblAnh = new javax.swing.JLabel();
         lblTen = new javax.swing.JLabel();
         lblAdmin = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -103,18 +107,20 @@ public class CuaSoChinh extends javax.swing.JFrame {
 
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/profile (1).png"))); // NOI18N
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, -1, -1));
+        lblAnh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/profile (1).png"))); // NOI18N
+        jPanel2.add(lblAnh, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, -1, -1));
 
         lblTen.setFont(new java.awt.Font("Segoe UI", 3, 20)); // NOI18N
         lblTen.setForeground(new java.awt.Color(255, 255, 255));
+        lblTen.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTen.setText("Name");
-        jPanel2.add(lblTen, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 150, -1, -1));
+        jPanel2.add(lblTen, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 150, 210, -1));
 
         lblAdmin.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblAdmin.setForeground(new java.awt.Color(255, 255, 255));
+        lblAdmin.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblAdmin.setText("Admin");
-        jPanel2.add(lblAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 170, -1, 30));
+        jPanel2.add(lblAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(43, 170, 160, 30));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/bg2.jpg"))); // NOI18N
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 240, 200));
@@ -443,7 +449,8 @@ public class CuaSoChinh extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     private void lblExitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblExitMouseClicked
-        System.exit(0);
+        
+    Thoat();
     }//GEN-LAST:event_lblExitMouseClicked
 
     private void lblSetting1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSetting1MouseClicked
@@ -546,7 +553,8 @@ public class CuaSoChinh extends javax.swing.JFrame {
             }
         });
     }
-
+    NhanVienDAO nvDAO = new NhanVienDAO();
+    TaiKhoanDAO tkDAO = new TaiKhoanDAO();
     private void init() {
         pnlSetting.setVisible(false);
         pnlSetting.setEnabled(false);
@@ -565,7 +573,7 @@ public class CuaSoChinh extends javax.swing.JFrame {
             }
         }).start();
         bner();
-
+        fill();
     }
 
     public void bner() {
@@ -664,10 +672,56 @@ public class CuaSoChinh extends javax.swing.JFrame {
             MsgBox.alert(this, "Vui lòng đăng nhập");
         }
     }
+    
+    public void getFormNV(NhanVien nv) {
+        try {
+            lblTen.setText(nv.getTenNV());
+            if (nv.getHinh() != null) {
+                lblAnh.setIcon(XImage.read(nv.getHinh()));
+            }
+        } catch (Exception e) {
+            MsgBox.alert(this, "Không tìm thấy");
+        }
+    }
+    
+     public void getFormTK(TaiKhoan tk) {
+        try {
+            if (Auth.islogin()) {
+                if (Auth.isManager()) {
+                    lblAdmin.setText("Quản lý");
+                } else {
+                    lblAdmin.setText("Nhân viên");
+                }
+            }
+        } catch (Exception e) {
+            MsgBox.alert(this, "Không tìm thấy2");
+        }
 
+    }
+     
+      public void fill() {
+        try {
+            String maNv = Auth.isMaNV();
+
+            NhanVien nv = nvDAO.selectById(maNv);
+            this.getFormNV(nv);
+            
+            TaiKhoan tkk = tkDAO.selectById(maNv);
+            this.getFormTK(tkk);
+        } catch (Exception e) {
+            MsgBox.alert(this, "Vui lòng đăng nhập để sử dụng chương trình");
+        }
+      }
+    public void Thoat() {
+        boolean thoat = MsgBox.confirm(this, "Bạn có thực sự muốn thoát không?");
+        if (thoat == true) {
+            System.exit(0);
+        } else if (thoat == false) {
+            return;
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -676,6 +730,7 @@ public class CuaSoChinh extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JLabel lblAdmin;
+    private javax.swing.JLabel lblAnh;
     private javax.swing.JLabel lblBanner1;
     private javax.swing.JLabel lblDangNhap;
     private javax.swing.JLabel lblDangXuat;
