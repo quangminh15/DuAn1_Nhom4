@@ -704,7 +704,6 @@ public class NhanVien1 extends javax.swing.JPanel {
         btnPrev.setEnabled(edit && !first);
         btnNext.setEnabled(edit && !last);
         btnLast.setEnabled(edit && !last);
-        txtOFF();
     }
 
     public void edit() {
