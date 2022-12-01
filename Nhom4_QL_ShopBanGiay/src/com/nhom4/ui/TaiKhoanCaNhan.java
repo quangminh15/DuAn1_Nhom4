@@ -387,15 +387,21 @@ public class TaiKhoanCaNhan extends javax.swing.JPanel {
         
     }
     NhanVien getForm2() {
+        String maNV = txtMaNV.getText();
+        NhanVien nhanVien = nvDao.selectById(maNV);
         NhanVien nv = new NhanVien();
         nv.setMaNV(txtMaNV.getText());
         nv.setTenNV(txtTenNV.getText());
         nv.setGioiTinh(rdoNam.isSelected());
         nv.setSDT(txtSDT.getText());
         nv.setEmail(txtEmail.getText());
-        if (nv.getHinh()!= null) {
-            lblHinh.setIcon(XImage.read(nv.getHinh()));
+        if (lblHinh.getToolTipText()!=null) {
+            nv.setHinh(lblHinh.getToolTipText());
+        }else{
+            nv.setHinh(nhanVien.getHinh());
         }
+            
+        System.out.println(lblHinh.getToolTipText());
         nv.setDiaChi(txtDiaChi.getText());       
         return nv;
     }

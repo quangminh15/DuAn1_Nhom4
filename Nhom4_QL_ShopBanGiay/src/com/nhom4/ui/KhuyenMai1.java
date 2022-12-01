@@ -14,6 +14,7 @@ import java.util.Date;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import java.util.ArrayList;
+import java.util.Locale;
 
 /**
  *
@@ -411,7 +412,7 @@ public class KhuyenMai1 extends javax.swing.JPanel {
         fillTable();
         btnLuu.setEnabled(false);
         this.updateStatus();
-
+        txtNgayBD.setLocale(Locale.forLanguageTag("vi"));
     }
 
     public void fillTable() {

@@ -520,7 +520,9 @@ public class CuaSoChinh extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel7MouseClicked
 
     private void lblNhanVienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNhanVienMouseClicked
-        opennhanvien();
+        //opennhanvien();
+        NhanVien1 nv = new NhanVien1();
+        changePanel(nv);
     }//GEN-LAST:event_lblNhanVienMouseClicked
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
@@ -580,6 +582,7 @@ public class CuaSoChinh extends javax.swing.JFrame {
 
     private void lblTaiKhoanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblTaiKhoanMouseClicked
         opendTaiKhoanQL();
+        
     }//GEN-LAST:event_lblTaiKhoanMouseClicked
 
     private void lblExitMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblExitMouseEntered
