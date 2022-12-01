@@ -16,7 +16,9 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
@@ -46,6 +48,12 @@ public class HoaDon1 extends javax.swing.JPanel {
     ChiTietSanPhamDAO spctDAO = new ChiTietSanPhamDAO();
     HoaDonChiTietDAO hdctDAO = new HoaDonChiTietDAO();
     SanPhamDAO spDAO = new SanPhamDAO();
+
+    Date now = new Date();
+    SimpleDateFormat ngay = new SimpleDateFormat("dd-MM-yyyy -- hh:mm:ss a");
+    String a = ngay.format(now);
+    String chuoi = "";
+    String patternPass = "^[a-zA-Z0-9]{6,15}$";
 
     private void init() {
         fillCboNV();
@@ -1200,7 +1208,7 @@ public class HoaDon1 extends javax.swing.JPanel {
 
     private void tblHDCTaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblHDCTaMouseClicked
         int i = tblHDCTa.getSelectedRow();
-        
+
         setFormHDCT_Click(i);
     }//GEN-LAST:event_tblHDCTaMouseClicked
 
@@ -1245,22 +1253,31 @@ public class HoaDon1 extends javax.swing.JPanel {
     private void btnINActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnINActionPerformed
         try {
             XSSFWorkbook wordkbook = new XSSFWorkbook();
-            XSSFSheet sheet = wordkbook.createSheet("danhsach");
+            XSSFSheet sheet = wordkbook.createSheet("HoaDon");
             XSSFRow row = null;
             Cell cell = null;
+
             row = sheet.createRow(0);
-            cell = row.createCell(1, CellType.STRING);
-            cell.setCellValue("Ma Hoa Don: " + lblMaHD.getText());
+            cell = row.createCell(3, CellType.STRING);
+            cell.setCellValue("PHIẾU HÓA ĐƠN");
 
             row = sheet.createRow(1);
-            cell = row.createCell(1, CellType.STRING);
-            cell.setCellValue("Ma Nhan Vien: " + lblMaNV.getText());
+            cell = row.createCell(5, CellType.STRING);
+            cell.setCellValue("Thời gian lập phiếu:   " + a);
 
             row = sheet.createRow(2);
             cell = row.createCell(1, CellType.STRING);
-            cell.setCellValue("Ma Khach Hang: " + lblMaKH.getText());
+            cell.setCellValue("Ma Hoa Don: " + lblMaHD.getText());
 
             row = sheet.createRow(3);
+            cell = row.createCell(1, CellType.STRING);
+            cell.setCellValue("Ma Nhan Vien: " + lblMaNV.getText());
+
+            row = sheet.createRow(4);
+            cell = row.createCell(1, CellType.STRING);
+            cell.setCellValue("Ma Khach Hang: " + lblMaKH.getText());
+
+            row = sheet.createRow(6);
             cell = row.createCell(0, CellType.STRING);
             cell.setCellValue("STT");
 
@@ -1290,7 +1307,7 @@ public class HoaDon1 extends javax.swing.JPanel {
             cell.setCellValue("Thanh Tien" + lblThanhTien.getText());
             for (int i = 0; i < listHDCT.size(); i++) {
                 //Modelbook book =arr.get(i);
-                row = sheet.createRow(4 + i);
+                row = sheet.createRow(7 + i);
 
                 cell = row.createCell(0, CellType.NUMERIC);
                 cell.setCellValue(i + 1);
@@ -1318,8 +1335,17 @@ public class HoaDon1 extends javax.swing.JPanel {
 
             }
 
-            File f = new File("D://danhsach.doc");
+            chuoi = JOptionPane.showInputDialog("Nhập tên File: ");
+            if (chuoi == null || chuoi.equals("")) {
+                MsgBox.alert(this, "Vui lòng nhập tên File");
+                return;
+            } else if (!chuoi.matches(patternPass) || chuoi.length() < 6 || chuoi.length() > 15) {
+                MsgBox.alert(this, "Tên File không được chứa ký tự đặt biệt và tên File từ 6-->15 ký tự");
+                return;
+            }
             try {
+
+                File f = new File("src//com//nhom4//File//" + chuoi + ".xlsx");
                 FileOutputStream fis = new FileOutputStream(f);
                 wordkbook.write(fis);
                 fis.close();
@@ -1330,11 +1356,11 @@ public class HoaDon1 extends javax.swing.JPanel {
                 ex.printStackTrace();
             }
 
-            MsgBox.alert(this, "in thanh cong D:\\danhsach");
+            MsgBox.alert(this, "In thành công \n File của bạn đang ở: ..\\DuAn1_Nhom4\\src\\com\\nhom4\\File\\" + chuoi);
 
         } catch (Exception ex) {
             ex.printStackTrace();
-            JOptionPane.showMessageDialog(this, "Loi mo file");
+            MsgBox.alert(this, "Lỗi mở File");
         }
     }//GEN-LAST:event_btnINActionPerformed
 
