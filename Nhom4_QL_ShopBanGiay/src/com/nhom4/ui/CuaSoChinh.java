@@ -129,14 +129,31 @@ public class CuaSoChinh extends javax.swing.JFrame {
         lblNCC.setForeground(new java.awt.Color(255, 255, 255));
         lblNCC.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblNCC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/factory.png"))); // NOI18N
-        lblNCC.setText("Nhà Cung Cấp");
+        lblNCC.setText("   NHÀ CUNG CẤP");
         lblNCC.setToolTipText("");
+<<<<<<< HEAD
+        lblNCC.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+=======
+        lblNCC.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+>>>>>>> 78e0cb070f3d93b51dbedd14a5b5cdff301c2176
         lblNCC.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblNCCMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lblNCCMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblNCCMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                lblNCCMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                lblNCCMouseReleased(evt);
+            }
         });
-        jPanel2.add(lblNCC, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, 140, 40));
+        jPanel2.add(lblNCC, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, 160, 40));
 
         lblSP.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblSP.setForeground(new java.awt.Color(255, 255, 255));
@@ -144,12 +161,29 @@ public class CuaSoChinh extends javax.swing.JFrame {
         lblSP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/sport-shoe.png"))); // NOI18N
         lblSP.setText("   SẢN PHẨM");
         lblSP.setToolTipText("");
+<<<<<<< HEAD
+        lblSP.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+=======
+        lblSP.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+>>>>>>> 78e0cb070f3d93b51dbedd14a5b5cdff301c2176
         lblSP.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblSPMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lblSPMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblSPMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                lblSPMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                lblSPMouseReleased(evt);
+            }
         });
-        jPanel2.add(lblSP, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, 140, 40));
+        jPanel2.add(lblSP, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, 150, 40));
 
         lblKH.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblKH.setForeground(new java.awt.Color(255, 255, 255));
@@ -157,12 +191,29 @@ public class CuaSoChinh extends javax.swing.JFrame {
         lblKH.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/customer.png"))); // NOI18N
         lblKH.setText("   KHÁCH HÀNG");
         lblKH.setToolTipText("");
+<<<<<<< HEAD
+        lblKH.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+=======
+        lblKH.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+>>>>>>> 78e0cb070f3d93b51dbedd14a5b5cdff301c2176
         lblKH.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblKHMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lblKHMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblKHMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                lblKHMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                lblKHMouseReleased(evt);
+            }
         });
-        jPanel2.add(lblKH, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, 140, 40));
+        jPanel2.add(lblKH, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 330, 150, 40));
 
         lblHD.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblHD.setForeground(new java.awt.Color(255, 255, 255));
@@ -170,9 +221,26 @@ public class CuaSoChinh extends javax.swing.JFrame {
         lblHD.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/invoice.png"))); // NOI18N
         lblHD.setText("   HÓA ĐƠN");
         lblHD.setToolTipText("");
+<<<<<<< HEAD
+        lblHD.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+=======
+        lblHD.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+>>>>>>> 78e0cb070f3d93b51dbedd14a5b5cdff301c2176
         lblHD.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblHDMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lblHDMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblHDMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                lblHDMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                lblHDMouseReleased(evt);
             }
         });
         jPanel2.add(lblHD, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 370, 140, 40));
@@ -183,12 +251,29 @@ public class CuaSoChinh extends javax.swing.JFrame {
         lblKM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/tag.png"))); // NOI18N
         lblKM.setText("KHUYẾN MÃI");
         lblKM.setToolTipText("");
+<<<<<<< HEAD
+        lblKM.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+=======
+        lblKM.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+>>>>>>> 78e0cb070f3d93b51dbedd14a5b5cdff301c2176
         lblKM.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblKMMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lblKMMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblKMMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                lblKMMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                lblKMMouseReleased(evt);
+            }
         });
-        jPanel2.add(lblKM, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 460, 140, 40));
+        jPanel2.add(lblKM, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 450, 140, 40));
 
         lblExit.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblExit.setForeground(new java.awt.Color(255, 255, 255));
@@ -212,19 +297,42 @@ public class CuaSoChinh extends javax.swing.JFrame {
         lblTK.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/bar-chart.png"))); // NOI18N
         lblTK.setText("   THỐNG KÊ");
         lblTK.setToolTipText("");
+<<<<<<< HEAD
+        lblTK.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+=======
+        lblTK.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+>>>>>>> 78e0cb070f3d93b51dbedd14a5b5cdff301c2176
         lblTK.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblTKMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lblTKMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblTKMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                lblTKMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                lblTKMouseReleased(evt);
+            }
         });
-        jPanel2.add(lblTK, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 420, 140, 30));
+        jPanel2.add(lblTK, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 410, 140, 40));
 
         lblNhanVien.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         lblNhanVien.setForeground(new java.awt.Color(255, 255, 255));
         lblNhanVien.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblNhanVien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/identity-card.png"))); // NOI18N
+<<<<<<< HEAD
+        lblNhanVien.setText("   NHÂN VIÊN");
+        lblNhanVien.setToolTipText("");
+        lblNhanVien.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+=======
         lblNhanVien.setText("Nhân Viên");
-        lblNhanVien.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        lblNhanVien.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+>>>>>>> 78e0cb070f3d93b51dbedd14a5b5cdff301c2176
         lblNhanVien.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblNhanVienMouseClicked(evt);
@@ -266,7 +374,7 @@ public class CuaSoChinh extends javax.swing.JFrame {
 
         lblDangNhap.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblDangNhap.setForeground(new java.awt.Color(107, 107, 107));
-        lblDangNhap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/logout3.png"))); // NOI18N
+        lblDangNhap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/login.png"))); // NOI18N
         lblDangNhap.setText("DANG NHAP");
         lblDangNhap.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -278,10 +386,15 @@ public class CuaSoChinh extends javax.swing.JFrame {
         lblDangXuat.setForeground(new java.awt.Color(107, 107, 107));
         lblDangXuat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/logout3.png"))); // NOI18N
         lblDangXuat.setText("DANG XUAT ");
+        lblDangXuat.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblDangXuatMouseClicked(evt);
+            }
+        });
 
         lblDoiMatKhau.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblDoiMatKhau.setForeground(new java.awt.Color(107, 107, 107));
-        lblDoiMatKhau.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/logout3.png"))); // NOI18N
+        lblDoiMatKhau.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/rotation-lock3.png"))); // NOI18N
         lblDoiMatKhau.setText("DOI MAT KHAU");
         lblDoiMatKhau.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -317,13 +430,31 @@ public class CuaSoChinh extends javax.swing.JFrame {
         lblTaiKhoan.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblTaiKhoan.setForeground(new java.awt.Color(255, 255, 255));
         lblTaiKhoan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/account.png"))); // NOI18N
+<<<<<<< HEAD
+        lblTaiKhoan.setText("TÀI KHOẢN");
+        lblTaiKhoan.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+=======
         lblTaiKhoan.setText("Tai Khoan");
+        lblTaiKhoan.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+>>>>>>> 78e0cb070f3d93b51dbedd14a5b5cdff301c2176
         lblTaiKhoan.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblTaiKhoanMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lblTaiKhoanMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblTaiKhoanMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                lblTaiKhoanMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                lblTaiKhoanMouseReleased(evt);
+            }
         });
-        jPanel2.add(lblTaiKhoan, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 500, 120, 50));
+        jPanel2.add(lblTaiKhoan, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 490, 120, 40));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 240, 879));
 
@@ -485,7 +616,7 @@ public class CuaSoChinh extends javax.swing.JFrame {
     }//GEN-LAST:event_lblNhanVienMousePressed
 
     private void lblNhanVienMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNhanVienMouseReleased
-        //lblNhanVien.setForeground(Color.WHITE);
+        lblNhanVien.setForeground(new Color(235, 176, 30));
         lblNhanVien.setIcon(new ImageIcon("src\\com\\nhom4\\icon\\identity-card2.png"));
     }//GEN-LAST:event_lblNhanVienMouseReleased
 
@@ -518,6 +649,157 @@ public class CuaSoChinh extends javax.swing.JFrame {
             
             
     }//GEN-LAST:event_lblDangNhapMouseClicked
+// evt nha cung cap
+    private void lblNCCMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNCCMouseEntered
+        lblNCC.setForeground(new Color(235, 176, 30));
+        lblNCC.setIcon(new ImageIcon("src\\com\\nhom4\\icon\\factory (1).png"));
+    }//GEN-LAST:event_lblNCCMouseEntered
+
+    private void lblNCCMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNCCMouseExited
+        lblNCC.setForeground(Color.WHITE);
+        lblNCC.setIcon(new ImageIcon("src\\com\\nhom4\\icon\\factory.png"));
+    }//GEN-LAST:event_lblNCCMouseExited
+
+    private void lblNCCMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNCCMousePressed
+        lblNCC.setForeground(new Color(73,231,195));
+        lblNCC.setIcon(new ImageIcon("src\\com\\nhom4\\icon\\factory3.png"));
+    }//GEN-LAST:event_lblNCCMousePressed
+
+    private void lblNCCMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNCCMouseReleased
+        lblNCC.setForeground(new Color(235, 176, 30));
+        lblNCC.setIcon(new ImageIcon("src\\com\\nhom4\\icon\\factory (1).png"));
+    }//GEN-LAST:event_lblNCCMouseReleased
+// evt san pham
+    private void lblSPMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSPMouseEntered
+        lblSP.setForeground(new Color(235, 176, 30));
+        lblSP.setIcon(new ImageIcon("src\\com\\nhom4\\icon\\sport-shoe (1).png"));
+    }//GEN-LAST:event_lblSPMouseEntered
+
+    private void lblSPMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSPMouseExited
+        lblSP.setForeground(Color.WHITE);
+        lblSP.setIcon(new ImageIcon("src\\com\\nhom4\\icon\\sport-shoe.png"));
+    }//GEN-LAST:event_lblSPMouseExited
+
+    private void lblSPMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSPMousePressed
+        lblSP.setForeground(new Color(73,231,195));
+        lblSP.setIcon(new ImageIcon("src\\com\\nhom4\\icon\\sport-shoe3.png"));
+    }//GEN-LAST:event_lblSPMousePressed
+
+    private void lblSPMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSPMouseReleased
+        lblSP.setForeground(new Color(235, 176, 30));
+        lblSP.setIcon(new ImageIcon("src\\com\\nhom4\\icon\\sport-shoe (1).png"));
+    }//GEN-LAST:event_lblSPMouseReleased
+// evt Khach hang
+    private void lblKHMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblKHMouseEntered
+        lblKH.setForeground(new Color(235, 176, 30));
+        lblKH.setIcon(new ImageIcon("src\\com\\nhom4\\icon\\customer (1).png"));
+    }//GEN-LAST:event_lblKHMouseEntered
+
+    private void lblKHMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblKHMouseExited
+        lblKH.setForeground(Color.WHITE);
+        lblKH.setIcon(new ImageIcon("src\\com\\nhom4\\icon\\customer.png"));
+    }//GEN-LAST:event_lblKHMouseExited
+
+    private void lblKHMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblKHMousePressed
+        lblKH.setForeground(new Color(73,231,195));
+        lblKH.setIcon(new ImageIcon("src\\com\\nhom4\\icon\\customer3.png"));
+    }//GEN-LAST:event_lblKHMousePressed
+
+    private void lblKHMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblKHMouseReleased
+        lblKH.setForeground(new Color(235, 176, 30));
+        lblKH.setIcon(new ImageIcon("src\\com\\nhom4\\icon\\customer (1).png"));
+    }//GEN-LAST:event_lblKHMouseReleased
+//evt hoa don
+    private void lblHDMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHDMouseEntered
+        lblHD.setForeground(new Color(235, 176, 30));
+        lblHD.setIcon(new ImageIcon("src\\com\\nhom4\\icon\\invoice (1).png"));
+    }//GEN-LAST:event_lblHDMouseEntered
+
+    private void lblHDMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHDMouseExited
+        lblHD.setForeground(Color.WHITE);
+        lblHD.setIcon(new ImageIcon("src\\com\\nhom4\\icon\\invoice.png"));
+    }//GEN-LAST:event_lblHDMouseExited
+
+    private void lblHDMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHDMousePressed
+        lblHD.setForeground(new Color(73,231,195));
+        lblHD.setIcon(new ImageIcon("src\\com\\nhom4\\icon\\invoice3.png"));
+    }//GEN-LAST:event_lblHDMousePressed
+
+    private void lblHDMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHDMouseReleased
+        lblHD.setForeground(new Color(235, 176, 30));
+        lblHD.setIcon(new ImageIcon("src\\com\\nhom4\\icon\\invoice (1).png"));
+    }//GEN-LAST:event_lblHDMouseReleased
+//evt Thong Ke
+    private void lblTKMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblTKMouseEntered
+        lblTK.setForeground(new Color(235, 176, 30));
+        lblTK.setIcon(new ImageIcon("src\\com\\nhom4\\icon\\bar-chart (1).png"));
+    }//GEN-LAST:event_lblTKMouseEntered
+
+    private void lblTKMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblTKMouseExited
+        lblTK.setForeground(Color.WHITE);
+        lblTK.setIcon(new ImageIcon("src\\com\\nhom4\\icon\\bar-chart.png"));
+    }//GEN-LAST:event_lblTKMouseExited
+
+    private void lblTKMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblTKMousePressed
+        lblTK.setForeground(new Color(73,231,195));
+        lblTK.setIcon(new ImageIcon("src\\com\\nhom4\\icon\\bar-chart3.png"));
+    }//GEN-LAST:event_lblTKMousePressed
+
+    private void lblTKMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblTKMouseReleased
+        lblTK.setForeground(new Color(235, 176, 30));
+        lblTK.setIcon(new ImageIcon("src\\com\\nhom4\\icon\\bar-chart (1).png"));
+    }//GEN-LAST:event_lblTKMouseReleased
+//evt khuyen mai
+    private void lblKMMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblKMMouseEntered
+        lblKM.setForeground(new Color(235, 176, 30));
+        lblKM.setIcon(new ImageIcon("src\\com\\nhom4\\icon\\tag (1).png"));
+    }//GEN-LAST:event_lblKMMouseEntered
+
+    private void lblKMMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblKMMouseExited
+        lblKM.setForeground(Color.WHITE);
+        lblKM.setIcon(new ImageIcon("src\\com\\nhom4\\icon\\tag.png"));
+    }//GEN-LAST:event_lblKMMouseExited
+
+    private void lblKMMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblKMMousePressed
+        lblKM.setForeground(new Color(73,231,195));
+        lblKM.setIcon(new ImageIcon("src\\com\\nhom4\\icon\\tag3.png"));
+    }//GEN-LAST:event_lblKMMousePressed
+
+    private void lblKMMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblKMMouseReleased
+        lblKM.setForeground(new Color(235, 176, 30));
+        lblKM.setIcon(new ImageIcon("src\\com\\nhom4\\icon\\tag (1).png"));
+    }//GEN-LAST:event_lblKMMouseReleased
+//evt tai khoan
+    private void lblTaiKhoanMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblTaiKhoanMouseEntered
+        lblTaiKhoan.setForeground(new Color(235, 176, 30));
+        lblTaiKhoan.setIcon(new ImageIcon("src\\com\\nhom4\\icon\\account2.png"));
+    }//GEN-LAST:event_lblTaiKhoanMouseEntered
+
+    private void lblTaiKhoanMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblTaiKhoanMouseExited
+        lblTaiKhoan.setForeground(Color.WHITE);
+        lblTaiKhoan.setIcon(new ImageIcon("src\\com\\nhom4\\icon\\account.png"));
+    }//GEN-LAST:event_lblTaiKhoanMouseExited
+
+    private void lblTaiKhoanMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblTaiKhoanMousePressed
+        lblTaiKhoan.setForeground(new Color(73,231,195));
+        lblTaiKhoan.setIcon(new ImageIcon("src\\com\\nhom4\\icon\\account3.png"));
+    }//GEN-LAST:event_lblTaiKhoanMousePressed
+
+    private void lblTaiKhoanMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblTaiKhoanMouseReleased
+        lblTaiKhoan.setForeground(new Color(235, 176, 30));
+        lblTaiKhoan.setIcon(new ImageIcon("src\\com\\nhom4\\icon\\account2.png"));
+    }//GEN-LAST:event_lblTaiKhoanMouseReleased
+
+    private void lblDangXuatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDangXuatMouseClicked
+        boolean logout = MsgBox.confirm(this, "Bạn có thực sự muốn thoát không?");
+        if (logout == true) {
+            this.dispose();
+            DangNhap dialog = new DangNhap(new javax.swing.JFrame(), true);
+            dialog.setVisible(true);
+        } else if (logout == false) {
+            return;
+        }
+    }//GEN-LAST:event_lblDangXuatMouseClicked
 
     /**
      * @param args the command line arguments

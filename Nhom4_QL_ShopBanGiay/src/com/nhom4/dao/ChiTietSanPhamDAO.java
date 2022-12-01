@@ -9,6 +9,7 @@ import com.nhom4.utils.JdbcHelper;
 import java.util.List;
 import java.util.ArrayList;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
  *
@@ -82,5 +83,20 @@ public class ChiTietSanPhamDAO extends MainDAO<ChiTietSanPham, String> {
             throw new RuntimeException(e);
         }
         return list;
+    }
+    
+    public List<String> selectMaSP(){
+        String sql = "Select MaSP from SanPham";
+        List<String> list = new ArrayList<>();
+        try {
+            ResultSet rs = JdbcHelper.executeQuery(sql);
+            while (rs.next()) {                
+                list.add(rs.getString(1));
+            }
+            rs.getStatement().getConnection().close();
+            return list;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

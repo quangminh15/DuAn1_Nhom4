@@ -77,6 +77,7 @@ public class HoaDonChiTietDAO extends MainDAO<HoaDonChiTiet, String> {
         }
         return list;
     }
+   
      public List<HoaDonChiTiet> selectByMaHD(String key) {
         String sql = "SELECT * FROM HoaDonCT WHERE MaHD like ?";
         return this.selectBySql(sql, "%"+key+"%");

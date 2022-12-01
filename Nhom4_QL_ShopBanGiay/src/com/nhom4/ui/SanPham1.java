@@ -13,6 +13,7 @@ import com.nhom4.utils.XImage;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.table.DefaultTableModel;
@@ -42,10 +43,8 @@ public class SanPham1 extends javax.swing.JPanel {
         this.row = -1;
         this.updateStatus();
         btnLuu.setEnabled(false);
-        btnThem.setEnabled(true);
         this.updateStatus2();
         btnSave.setEnabled(false);
-        btnReset.setEnabled(true);
         initTable2();
         fillTable2();
 
@@ -95,25 +94,43 @@ public class SanPham1 extends javax.swing.JPanel {
         txtOFF();
     }
 
+    private void fillCboMaNCC() {
+        DefaultComboBoxModel model = (DefaultComboBoxModel) cboMaNCC.getModel();
+        model.removeAllElements();
+        List<String> list = spDao.selectMaNCC();
+        for (String nv : list) {
+            model.addElement(nv);
+        }
+    }
+    
+    private void fillCboMaSP() {
+        DefaultComboBoxModel model = (DefaultComboBoxModel) cboMaSP.getModel();
+        model.removeAllElements();
+        List<String> list = ctspDAO.selectMaSP();
+        for (String nv : list) {
+            model.addElement(nv);
+        }
+    }
+
     public void setForm(SanPham sp) {
         txtMaSP.setText(sp.getMaSP());
         txtTenSP.setText(sp.getTenSP());
         txtSoLuong.setText(String.valueOf(sp.getSoLuong()));
-        txtMaNCC.setText(sp.getMaNCC());
+        cboMaNCC.setSelectedItem(sp.getMaNCC());
         txtGhiChu.setText(sp.getGhiChu());
         lblAnh.setToolTipText(sp.getAnh());
         if (sp.getAnh() != null) {
             lblAnh.setIcon(XImage.read(sp.getAnh()));
             lblAnh.setToolTipText(sp.getAnh());
-        }       
+        }
     }
-    
+
     SanPham getForm() {
         SanPham sp = new SanPham();
         sp.setMaSP(txtMaSP.getText());
         sp.setTenSP(txtTenSP.getText());
         sp.setSoLuong(Integer.valueOf(txtSoLuong.getText()));
-        sp.setMaNCC(txtMaNCC.getText());
+        sp.setMaNCC(cboMaNCC.getSelectedItem().toString());
         sp.setGhiChu(txtGhiChu.getText());
         sp.setAnh(lblAnh.getToolTipText());
         return sp;
@@ -220,20 +237,12 @@ public class SanPham1 extends javax.swing.JPanel {
             MsgBox.alert(this, "Tên Sản Phẩm không được bỏ trống!!!");
             txtTenSP.requestFocus();
             return false;
-        } else if (txtMaNCC.getText().equals("")) {
-            MsgBox.alert(this, "Vui lòng nhập Mã Nhà Cung Cấp");
-            txtMaNCC.requestFocus();
-            return false;
-        } else if (txtMaNCC.getText().length() < 3 || txtMaNCC.getText().length() > 8) {
-            MsgBox.alert(this, "Mã nhà cung cấp từ 3---->8 kí tự");
-            txtMaNCC.requestFocus();
-            return false;
-        } else if (lblAnh.getIcon() == null) {
-            MsgBox.alert(this, "Bạn chưa chọn hình! Click vào khu vực hình để chọn");
-            return false;
         } else if (txtSoLuong.getText().equals("")) {
             MsgBox.alert(this, "Vui lòng nhập số lượng");
             txtSoLuong.requestFocus();
+            return false;
+        } else if (lblAnh.getIcon() == null) {
+            MsgBox.alert(this, "Bạn chưa chọn hình! Click vào khu vực hình để chọn");
             return false;
         } else if (!txtSoLuong.getText().equals("")) {
             String sl = "";
@@ -287,7 +296,8 @@ public class SanPham1 extends javax.swing.JPanel {
         model.setRowCount(0);
         ctlist.clear();
         try {
-            List<ChiTietSanPham> list = ctspDAO.selectAll(); // Đọc dữ liệu từ CSDL
+            String id = txtMaSP.getText();
+            List<ChiTietSanPham> list = ctspDAO.selectByKeyword(id); // Đọc dữ liệu từ CSDL
             for (ChiTietSanPham ct : list) {
                 Object[] data = {
                     ct.getMaCT(),
@@ -306,7 +316,7 @@ public class SanPham1 extends javax.swing.JPanel {
 
     public void setForm2(ChiTietSanPham ctsp) {
         txtMaCT.setText(ctsp.getMaCT());
-        txtMaSPP.setText(ctsp.getMaSP());
+        cboMaSP.setSelectedItem(ctsp.getMaSP());
         txtSize.setText(String.valueOf(ctsp.getSize()));
         txtMauSac.setText(ctsp.getMauSac());
         txtChatLieu.setText(ctsp.getChatLieu());
@@ -316,7 +326,7 @@ public class SanPham1 extends javax.swing.JPanel {
     ChiTietSanPham getForm2() {
         ChiTietSanPham ctsp = new ChiTietSanPham();
         ctsp.setMaCT(txtMaCT.getText());
-        ctsp.setMaSP(txtMaSPP.getText());
+        ctsp.setMaSP(cboMaSP.getSelectedItem().toString());
         ctsp.setSize(Float.valueOf(txtSize.getText()));
         ctsp.setMauSac(txtMauSac.getText());
         ctsp.setGia(Float.valueOf(txtGia.getText()));
@@ -424,24 +434,12 @@ public class SanPham1 extends javax.swing.JPanel {
             txtMaCT.requestFocus();
             checklap = 0;
             return false;
-        } else if (txtMaSPP.getText().equals("") || txtMaSPP.getText().length() < 5 || txtMaSPP.getText().length() > 6) {
-            MsgBox.alert(this, "Vui lòng nhập mã sản phẩm từ 5---->6 kí tự");
-            txtMaSPP.requestFocus();
-            return false;
         } else if (txtMauSac.getText().equals("")) {
             MsgBox.alert(this, "Vui lòng nhập màu sắc");
             txtMauSac.requestFocus();
             return false;
-        } else if (!txtMauSac.getText().matches("[a-zA-Z][a-zA-Z ]+")) {
-            MsgBox.alert(this, "Màu sắc không chứa số và kí tự đặc biệt");
-            txtMauSac.requestFocus();
-            return false;
         } else if (txtChatLieu.getText().equals("")) {
             MsgBox.alert(this, "Vui lòng nhập chất liệu");
-            txtChatLieu.requestFocus();
-            return false;
-        } else if (!txtChatLieu.getText().matches("[a-zA-Z][a-zA-Z ]+")) {
-            MsgBox.alert(this, "Chất liệu không chứa số và kí tự đặc biệt");
             txtChatLieu.requestFocus();
             return false;
         } else if (txtSize.getText().equals("")) {
@@ -486,7 +484,7 @@ public class SanPham1 extends javax.swing.JPanel {
         model.setRowCount(0);
         try {
             String key = txtTimKiem.getText();
-            List<SanPham> list = spDao.selectByKeyword(key);
+            List<SanPham> list = spDao.selectByKeyword2(key);
             for (SanPham nh : list) {
                 Object[] data = {
                     nh.getMaSP(),
@@ -542,12 +540,12 @@ public class SanPham1 extends javax.swing.JPanel {
 
     public void txtOFF2() {
         txtMaCT.setEditable(false);
-        txtMaSPP.setEditable(false);
+        cboMaSP.setEditable(false);
     }
 
     public void txtON2() {
         txtMaCT.setEditable(true);
-        txtMaSPP.setEditable(true);
+        cboMaSP.setEditable(true);
     }
 
     /**
@@ -582,7 +580,7 @@ public class SanPham1 extends javax.swing.JPanel {
         btnXoa = new javax.swing.JButton();
         btnLuu = new javax.swing.JButton();
         btnHuy = new javax.swing.JButton();
-        txtMaNCC = new javax.swing.JTextField();
+        cboMaNCC = new javax.swing.JComboBox<>();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblSanPham = new javax.swing.JTable();
@@ -603,7 +601,6 @@ public class SanPham1 extends javax.swing.JPanel {
         txtMauSac = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        txtMaSPP = new javax.swing.JTextField();
         txtChatLieu = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         txtGia = new javax.swing.JTextField();
@@ -613,6 +610,7 @@ public class SanPham1 extends javax.swing.JPanel {
         btnDelete = new javax.swing.JButton();
         btnSave = new javax.swing.JButton();
         btnHuyy = new javax.swing.JButton();
+        cboMaSP = new javax.swing.JComboBox<>();
         jScrollPane3 = new javax.swing.JScrollPane();
         tblChiTietSp = new javax.swing.JTable();
         btnDau = new javax.swing.JButton();
@@ -747,8 +745,6 @@ public class SanPham1 extends javax.swing.JPanel {
             }
         });
 
-        txtMaNCC.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -774,7 +770,7 @@ public class SanPham1 extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(txtTenSP, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
-                                    .addComponent(txtMaNCC)))
+                                    .addComponent(cboMaNCC, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 602, Short.MAX_VALUE)))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(63, 63, 63)
@@ -809,7 +805,7 @@ public class SanPham1 extends javax.swing.JPanel {
                                 .addComponent(jLabel2))
                             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jLabel3)
-                                .addComponent(txtMaNCC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(cboMaNCC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel7)
@@ -1066,20 +1062,21 @@ public class SanPham1 extends javax.swing.JPanel {
                             .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel10))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtChatLieu, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtMaSPP, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtChatLieu, javax.swing.GroupLayout.DEFAULT_SIZE, 291, Short.MAX_VALUE)
+                            .addComponent(cboMaSP, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(76, 174, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(txtMaCT, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9)
-                    .addComponent(txtMaSPP, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cboMaSP, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel5)
+                        .addComponent(txtMaCT, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel9)))
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addGap(20, 20, 20)
@@ -1230,14 +1227,12 @@ public class SanPham1 extends javax.swing.JPanel {
     private void tblSanPhamMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblSanPhamMousePressed
         if (evt.getClickCount() == 1) {
             this.row = tblSanPham.getSelectedRow();
+            fillCboMaNCC();
             this.edit();
         }
         if (evt.getClickCount() == 2) {
-            this.row = tblSanPham.rowAtPoint(evt.getPoint());
-            if (this.row >= 0) {
-                this.edit3();
-                //tabs.setSelectedIndex(0);
-            }
+            tabs.setSelectedComponent(jPanel2);
+            fillTable2();
         }
     }//GEN-LAST:event_tblSanPhamMousePressed
 
@@ -1272,6 +1267,7 @@ public class SanPham1 extends javax.swing.JPanel {
     private void tblChiTietSpMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblChiTietSpMousePressed
         if (evt.getClickCount() == 1) {
             this.row = tblChiTietSp.getSelectedRow();
+            fillCboMaSP();
             this.edit2();
         }
     }//GEN-LAST:event_tblChiTietSpMousePressed
@@ -1341,7 +1337,7 @@ public class SanPham1 extends javax.swing.JPanel {
         btnLuu.setEnabled(true);
         txtMaSP.setText("");
         txtTenSP.setText("");
-        txtMaNCC.setText("");
+        cboMaNCC.setSelectedIndex(0);
         txtSoLuong.setText("");
         txtGhiChu.setText("");
         ImageIcon icon = new ImageIcon(".//src//com//nhom4//icon//user.png");
@@ -1364,7 +1360,7 @@ public class SanPham1 extends javax.swing.JPanel {
         btnDelete.setEnabled(false);
         btnSave.setEnabled(true);
         txtMaCT.setText("");
-        txtMaSPP.setText("");
+        cboMaSP.setSelectedIndex(0);
         txtChatLieu.setText("");
         txtSize.setText("");
         txtGia.setText("");
@@ -1399,7 +1395,7 @@ public class SanPham1 extends javax.swing.JPanel {
         btnSave.setEnabled(true);
         txtON2();
         txtMaCT.setEditable(false);
-        txtMaSPP.setEditable(false);
+        cboMaSP.setEditable(false);
     }//GEN-LAST:event_btnCapNhatActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
@@ -1417,7 +1413,7 @@ public class SanPham1 extends javax.swing.JPanel {
     private void txtTimKiemKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimKiemKeyTyped
         if (txtTimKiem.getText().equals("")) {
             lblTimKiem.setVisible(true);
-        } else{
+        } else {
             lblTimKiem.setVisible(false);
         }
     }//GEN-LAST:event_txtTimKiemKeyTyped
@@ -1425,7 +1421,7 @@ public class SanPham1 extends javax.swing.JPanel {
     private void txtTKKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTKKeyTyped
         if (txtTK.getText().equals("")) {
             lblTK.setVisible(true);
-        } else{
+        } else {
             lblTK.setVisible(false);
         }
     }//GEN-LAST:event_txtTKKeyTyped
@@ -1451,6 +1447,8 @@ public class SanPham1 extends javax.swing.JPanel {
     private javax.swing.JButton btnToi;
     private javax.swing.JButton btnUpdate;
     private javax.swing.JButton btnXoa;
+    private javax.swing.JComboBox<String> cboMaNCC;
+    private javax.swing.JComboBox<String> cboMaSP;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1482,9 +1480,7 @@ public class SanPham1 extends javax.swing.JPanel {
     private javax.swing.JTextArea txtGhiChu;
     private javax.swing.JTextField txtGia;
     private javax.swing.JTextField txtMaCT;
-    private javax.swing.JTextField txtMaNCC;
     private javax.swing.JTextField txtMaSP;
-    private javax.swing.JTextField txtMaSPP;
     private javax.swing.JTextField txtMauSac;
     private javax.swing.JTextField txtSize;
     private javax.swing.JTextField txtSoLuong;
