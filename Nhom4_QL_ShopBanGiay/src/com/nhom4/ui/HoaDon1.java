@@ -38,7 +38,7 @@ public class HoaDon1 extends javax.swing.JPanel {
         this.init();
         cboMaNV.setVisible(false);
         int i = 0;
-        setForm(i);
+        //setForm(i);
         tbledark1.fixTable(jScrollPane1);
     }
 
@@ -61,7 +61,7 @@ public class HoaDon1 extends javax.swing.JPanel {
         txtDonGia.setEditable(false);
         txtThanhTien.setEditable(false);
         setStatus(false);
-        //setStatusHDCT(false);
+        setStatusHDCT(false);
         thanhTien();
         fill();
     }
@@ -114,13 +114,13 @@ public class HoaDon1 extends javax.swing.JPanel {
     }
 
     private void initTableHDCT() {
-        DefaultTableModel model = (DefaultTableModel) tblHDCT.getModel();
+        DefaultTableModel model = (DefaultTableModel) tblHDCTa.getModel();
         String[] cols = new String[]{"#", "Ma CT", "Ten SP", "So Luong", "Don Gia", "Thanh Tien"};
         model.setColumnIdentifiers(cols);
     }
 
     public void fillTableHDCT() {
-        DefaultTableModel model = (DefaultTableModel) tblHDCT.getModel();
+        DefaultTableModel model = (DefaultTableModel) tblHDCTa.getModel();
         model.setRowCount(0);
         try {
             String id = lblMaHD.getText();
@@ -148,10 +148,11 @@ public class HoaDon1 extends javax.swing.JPanel {
             List<HoaDon> list = hdDAO.selectAll(); // Đọc dữ liệu từ CSDL
             for (HoaDon hd : list) {
                 String trangThai;
-                if(hd.isTrangThai()){
-                     trangThai = "Da Hoan Thanh";   
-                }else
-                     trangThai = "Chua Hoan Thanh";   
+                if (hd.isTrangThai()) {
+                    trangThai = "Da Hoan Thanh";
+                } else {
+                    trangThai = "Chua Hoan Thanh";
+                }
                 Object[] data = {
                     hd.getMaHD(),
                     hd.getMaNV(),
@@ -195,10 +196,14 @@ public class HoaDon1 extends javax.swing.JPanel {
             btnEditHDCT.setEnabled(false);
             btnDeleteHDCT.setEnabled(false);
             btnSaveHDCT.setEnabled(b);
+            cboMaCT.setEnabled(true);
+            cboSL.setEnabled(true);
         } else if (buttonUpdateHDCT == true && b == true) {
             btnNewHDCT.setEnabled(false);
             btnDeleteHDCT.setEnabled(false);
             btnSaveHDCT.setEnabled(b);
+            cboMaCT.setEnabled(true);
+            cboSL.setEnabled(true);
         }
     }
 
@@ -222,6 +227,8 @@ public class HoaDon1 extends javax.swing.JPanel {
         btnEditHDCT.setEnabled(true);
         btnSaveHDCT.setEnabled(false);
         btnDeleteHDCT.setEnabled(true);
+        cboMaCT.setEnabled(false);
+        cboSL.setEnabled(false);
     }
 
     private void resetFormHD() {
@@ -256,33 +263,38 @@ public class HoaDon1 extends javax.swing.JPanel {
         }
     }
 
-    public void statuHDCT(boolean b) {
-
-    }
-
     public void setStatusHDCT(boolean b) {
         int i = tbledark1.getSelectedRow();
-       
-            if (i < 0||b == false) {
-                lblThongBao.setText("CHUA CHON HOA DON");
-                lblThongBao.setVisible(!b);
-                lblMaHD.setText("");
-                lblSize.setText("");
-                lblMau.setText("");
-                txtDonGia.setText("");
-                txtThanhTien.setText("");
-                tblHDCT.setEnabled(false);
-                cboMaCT.setEnabled(false);
-                cboSL.setEnabled(false);
 
-                return;
-            
+        if (i < 0 || b == false) {
+            lblThongBao.setText("CHUA CHON HOA DON");
+            lblThongBao.setVisible(!b);
+            lblMaHD.setText("");
+            lblSize.setText("");
+            lblMau.setText("");
+            txtDonGia.setText("");
+            txtThanhTien.setText("");
+            //tblHDCTa.setEnabled(b);
+            cboMaCT.setEnabled(b);
+            cboSL.setEnabled(b);
+            btnEditHDCT.setEnabled(b);
+            btnDeleteHDCT.setEnabled(b);
+            btnSaveHDCT.setEnabled(b);
+            btnNewHDCT.setEnabled(b);
+            btnCancelHDCT.setEnabled(b);
+            return;
+
         } else {
             lblThongBao.setVisible(!b);
-            tblHDCT.setEnabled(true);
-            cboMaCT.setEnabled(true);
-            cboSL.setEnabled(true);
+            //tblHDCTa.setEnabled(!b);
+            cboMaCT.setEnabled(!b);
+            cboSL.setEnabled(!b);
             //setFormHDCT_Click(i);
+            btnEditHDCT.setEnabled(b);
+            btnDeleteHDCT.setEnabled(b);
+            btnSaveHDCT.setEnabled(b);
+            btnNewHDCT.setEnabled(b);
+            btnCancelHDCT.setEnabled(b);
             fillTableHDCT();
         }
 
@@ -304,7 +316,7 @@ public class HoaDon1 extends javax.swing.JPanel {
     HoaDonChiTiet getFormHDCT(int i) {
         HoaDonChiTiet hdct = new HoaDonChiTiet();
         if (buttonUpdateHDCT == true) {
-            hdct.setMaHDCT(Integer.parseInt(tblHDCT.getValueAt(i, 0).toString()));
+            hdct.setMaHDCT(Integer.parseInt(tblHDCTa.getValueAt(i, 0).toString()));
         }
         hdct.setMaHD(lblMaHD.getText());
         hdct.setMaCT(String.valueOf(cboMaCT.getSelectedItem().toString()));
@@ -325,18 +337,18 @@ public class HoaDon1 extends javax.swing.JPanel {
     }
 
     public void setFormHDCT_Click(int index) {
-        cboMaCT.setSelectedItem(tblHDCT.getValueAt(index, 1).toString());
-        lblTenSP.setText(tblHDCT.getValueAt(index, 2).toString());
-        cboSL.setSelectedItem(tblHDCT.getValueAt(index, 3).toString());
-        txtDonGia.setText(tblHDCT.getValueAt(index, 4).toString());
-        txtThanhTien.setText(tblHDCT.getValueAt(index, 5).toString());
+        cboMaCT.setSelectedItem(tblHDCTa.getValueAt(index, 1).toString());
+        lblTenSP.setText(tblHDCTa.getValueAt(index, 2).toString());
+        cboSL.setSelectedItem(tblHDCTa.getValueAt(index, 3).toString());
+        txtDonGia.setText(tblHDCTa.getValueAt(index, 4).toString());
+        txtThanhTien.setText(tblHDCTa.getValueAt(index, 5).toString());
     }
 
     ArrayList<HoaDon> listHD = new ArrayList<>();
     ArrayList<HoaDonChiTiet> listHDCT = new ArrayList<>();
-    
+
     public boolean check() {
-         boolean check = true;
+        boolean check = true;
         for (int i = 0; i < listHD.size(); i++) {
             if (listHD.get(i).getMaHD().equalsIgnoreCase(txtMaHD.getText())) {
                 check = false;
@@ -368,8 +380,8 @@ public class HoaDon1 extends javax.swing.JPanel {
 
         HoaDonChiTiet hdct = getFormHDCT(0);
         hdctDAO.insert(hdct);
-        hdDAO.updateNgayBan(txtMaHD.getText());
         hdDAO.updateThanhTien(lblMaHD.getText());
+        hdDAO.updateTrangThai1(lblMaHD.getText());
         fillTable();
         this.fillTableHDCT();
     }
@@ -381,8 +393,11 @@ public class HoaDon1 extends javax.swing.JPanel {
             try {
                 hdctDAO.deletebByMaHD(mahd);
                 hdDAO.delete(mahd);
-                this.fillTable();
                 MsgBox.alert(this, "Xóa thành công");
+                if (listHDCT.isEmpty()) {
+                    hdDAO.updateTrangThai2(mahd);
+                }
+                this.fillTable();
             } catch (Exception e) {
                 MsgBox.alert(this, "Xóa thất bại");
             }
@@ -391,14 +406,14 @@ public class HoaDon1 extends javax.swing.JPanel {
     }
 
     public void deleteHDCT() {
-        int i = tblHDCT.getSelectedRow();
-        
-        String mahdct = tblHDCT.getValueAt(i, 0).toString();
+        int i = tblHDCTa.getSelectedRow();
+
+        String mahdct = tblHDCTa.getValueAt(i, 0).toString();
         if (MsgBox.confirm(this, "Bạn thực sự muốn sp này")) {
             try {
                 hdctDAO.delete(mahdct);
-                this.fillTable();
                 hdDAO.updateThanhTien(lblMaHD.getText());
+                this.fillTable();
                 MsgBox.alert(this, "Xóa thành công");
                 fillTableHDCT();
 
@@ -414,7 +429,7 @@ public class HoaDon1 extends javax.swing.JPanel {
 
         try {
             hdDAO.update(hd);
-            hdDAO.updateNgayBan(txtMaHD.getText());
+            //hdDAO.updateNgayBan(txtMaHD.getText());
             hdDAO.updateThanhTien(txtMaHD.getText());
             this.fillTable();
             MsgBox.alert(this, "Cập nhật thành công");
@@ -427,7 +442,7 @@ public class HoaDon1 extends javax.swing.JPanel {
     }
 
     public void updateHDCT() {
-        int i = tblHDCT.getSelectedRow();
+        int i = tblHDCTa.getSelectedRow();
         HoaDonChiTiet hdct = getFormHDCT(i);
         try {
             hdctDAO.update(hdct);
@@ -440,22 +455,20 @@ public class HoaDon1 extends javax.swing.JPanel {
     }
 
     private void save() {
-        
 
-            if (buttonNew == true) {
-                
-                     insert();
-                MsgBox.alert(this, "them thanh cong");
-                cancel();
-                
+        if (buttonNew == true && check()) {
 
-            }  if (buttonUpdate == true) {
-                int index = tbledark1.getSelectedRow();
-                update();
-                setForm(index);
-                tbledark1.setRowSelectionInterval(index, index);
+            insert();
+            MsgBox.alert(this, "them thanh cong");
+            cancel();
 
-            
+        }
+        if (buttonUpdate == true) {
+            int index = tbledark1.getSelectedRow();
+            update();
+            setForm(index);
+            tbledark1.setRowSelectionInterval(index, index);
+
         }
     }
 
@@ -467,10 +480,10 @@ public class HoaDon1 extends javax.swing.JPanel {
             MsgBox.alert(this, "them thanh cong");
 
         } else if (buttonUpdateHDCT == true) {
-            int index = tblHDCT.getSelectedRow();
+            int index = tblHDCTa.getSelectedRow();
             updateHDCT();
-            setForm(index);
-            tblHDCT.setRowSelectionInterval(index, index);
+            //setFormHDCT_Click(index);
+            tblHDCTa.setRowSelectionInterval(index, index);
         }
     }
 
@@ -506,7 +519,7 @@ public class HoaDon1 extends javax.swing.JPanel {
     }
 
     public void thanhTien() {
-        double sl = Float.parseFloat(cboSL.getSelectedItem().toString());
+        double sl = Double.parseDouble(cboSL.getSelectedItem().toString());
         double gia = 0;
         try {
             gia = Double.parseDouble(txtDonGia.getText());
@@ -515,35 +528,35 @@ public class HoaDon1 extends javax.swing.JPanel {
 
         txtThanhTien.setText(String.valueOf(sl * gia));
     }
-    
+
     boolean checkFind = true;
 
     public void checkFind() {
-        
+
         for (int i = 0; i < listHD.size(); i++) {
             if (listHD.get(i).getMaHD().equalsIgnoreCase(txtTimKiem.getText())) {
                 checkFind = true;
-                return ;
+                return;
             }
         }
         for (int i = 0; i < listHD.size(); i++) {
             if (listHD.get(i).getMaNV().equalsIgnoreCase(txtTimKiem.getText())) {
                 checkFind = false;
-                return ;
+                return;
             }
         }
-        
+
     }
 
     public void timKiem() {
-       checkFind();
+        checkFind();
         if (checkFind) {
             find();
-            checkFind=true;
+            checkFind = true;
 
         } else if (!checkFind) {
             find2();
-            checkFind=true;
+            checkFind = true;
         }
 
     }
@@ -616,7 +629,7 @@ public class HoaDon1 extends javax.swing.JPanel {
 //        this.row = -1;
 //        updateStatus();
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -662,7 +675,7 @@ public class HoaDon1 extends javax.swing.JPanel {
         txtThanhTien = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        tblHDCT = new javax.swing.JTable();
+        tblHDCTa = new javax.swing.JTable();
         btnNewHDCT = new javax.swing.JToggleButton();
         btnEditHDCT = new javax.swing.JButton();
         btnDeleteHDCT = new javax.swing.JButton();
@@ -724,7 +737,7 @@ public class HoaDon1 extends javax.swing.JPanel {
         jLabel13.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(102, 102, 102));
         jLabel13.setText("Thanh Tien");
-        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 390, -1, -1));
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 360, -1, -1));
 
         lblMaNV.setBackground(new java.awt.Color(255, 255, 255));
         lblMaNV.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -898,7 +911,7 @@ public class HoaDon1 extends javax.swing.JPanel {
 
         jLabel12.setText("Thanh Tien");
 
-        tblHDCT.setModel(new javax.swing.table.DefaultTableModel(
+        tblHDCTa.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -909,12 +922,12 @@ public class HoaDon1 extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        tblHDCT.addMouseListener(new java.awt.event.MouseAdapter() {
+        tblHDCTa.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblHDCTMouseClicked(evt);
+                tblHDCTaMouseClicked(evt);
             }
         });
-        jScrollPane2.setViewportView(tblHDCT);
+        jScrollPane2.setViewportView(tblHDCTa);
 
         btnNewHDCT.setText("Them");
         btnNewHDCT.addActionListener(new java.awt.event.ActionListener() {
@@ -1185,10 +1198,11 @@ public class HoaDon1 extends javax.swing.JPanel {
         saveHDCT();
     }//GEN-LAST:event_btnSaveHDCTActionPerformed
 
-    private void tblHDCTMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblHDCTMouseClicked
-        int i = tblHDCT.getSelectedRow();
+    private void tblHDCTaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblHDCTaMouseClicked
+        int i = tblHDCTa.getSelectedRow();
+        
         setFormHDCT_Click(i);
-    }//GEN-LAST:event_tblHDCTMouseClicked
+    }//GEN-LAST:event_tblHDCTaMouseClicked
 
     private void btnEditHDCTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditHDCTActionPerformed
         //int index = tblHoaDon.getSelectedRow();
@@ -1202,21 +1216,23 @@ public class HoaDon1 extends javax.swing.JPanel {
     }//GEN-LAST:event_btnCancelHDCTActionPerformed
 
     private void btnDeleteHDCTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteHDCTActionPerformed
-        int i = tblHDCT.getSelectedRow();
-        if (i<0) {
+        int i = tblHDCTa.getSelectedRow();
+        if (i < 0) {
             MsgBox.alert(this, "Chua chon san pham de xoa");
-        }else
-        deleteHDCT();
+        } else
+            deleteHDCT();
     }//GEN-LAST:event_btnDeleteHDCTActionPerformed
 
     private void tbledark1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbledark1MouseClicked
         int i = tbledark1.getSelectedRow();
         setForm(i);
         fillCboMaCT();
+        setStatusHDCT(true);
+        fillTableHDCT();
     }//GEN-LAST:event_tbledark1MouseClicked
 
     private void tbledark1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbledark1MousePressed
-        if(evt.getClickCount()>1){
+        if (evt.getClickCount() > 1) {
             jTabbedPane1.setSelectedComponent(jPanel2);
             fillTableHDCT();
         }
@@ -1227,115 +1243,106 @@ public class HoaDon1 extends javax.swing.JPanel {
     }//GEN-LAST:event_txtTimKiemActionPerformed
 
     private void btnINActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnINActionPerformed
-        try
-        {
+        try {
             XSSFWorkbook wordkbook = new XSSFWorkbook();
-            XSSFSheet sheet=wordkbook.createSheet("danhsach");
-            XSSFRow row =null;
-            Cell cell=null;
-            row=sheet.createRow(0);
-            cell=row.createCell(1,CellType.STRING);
-            cell.setCellValue("Ma Hoa Don"+lblMaHD.getText());
+            XSSFSheet sheet = wordkbook.createSheet("danhsach");
+            XSSFRow row = null;
+            Cell cell = null;
+            row = sheet.createRow(0);
+            cell = row.createCell(1, CellType.STRING);
+            cell.setCellValue("Ma Hoa Don: " + lblMaHD.getText());
 
-            row=sheet.createRow(1);
-            cell=row.createCell(1,CellType.STRING);
-            cell.setCellValue("Ma Nhan Vien"+lblMaNV.getText());
+            row = sheet.createRow(1);
+            cell = row.createCell(1, CellType.STRING);
+            cell.setCellValue("Ma Nhan Vien: " + lblMaNV.getText());
 
-            row=sheet.createRow(2);
-            cell=row.createCell(1,CellType.STRING);
-            cell.setCellValue("Ma Khach Hang"+lblMaKH.getText());
+            row = sheet.createRow(2);
+            cell = row.createCell(1, CellType.STRING);
+            cell.setCellValue("Ma Khach Hang: " + lblMaKH.getText());
 
-            row=sheet.createRow(3);
-            cell=row.createCell(0,CellType.STRING);
+            row = sheet.createRow(3);
+            cell = row.createCell(0, CellType.STRING);
             cell.setCellValue("STT");
 
-            cell=row.createCell(1,CellType.STRING);
+            cell = row.createCell(1, CellType.STRING);
             cell.setCellValue("Mã hóa đơn chi tiết");
 
-            cell=row.createCell(2,CellType.STRING);
+            cell = row.createCell(2, CellType.STRING);
             cell.setCellValue("Mã hóa đơn");
 
-            cell=row.createCell(3,CellType.STRING);
+            cell = row.createCell(3, CellType.STRING);
             cell.setCellValue("Mã chi tiết");
 
-            cell=row.createCell(4,CellType.STRING);
+            cell = row.createCell(4, CellType.STRING);
             cell.setCellValue("Tên sản phẩm");
 
-            cell=row.createCell(5,CellType.STRING);
+            cell = row.createCell(5, CellType.STRING);
             cell.setCellValue("Số lượng");
 
-            cell=row.createCell(6,CellType.STRING);
+            cell = row.createCell(6, CellType.STRING);
             cell.setCellValue("Giá");
 
-            cell=row.createCell(7,CellType.STRING);
+            cell = row.createCell(7, CellType.STRING);
             cell.setCellValue("Tổng tiền");
 
-            row=sheet.createRow(listHDCT.size()+5);
-            cell=row.createCell(7,CellType.STRING);
-            cell.setCellValue("Thanh Tien"+lblThanhTien.getText());
-            for(int i=0; i<listHDCT.size(); i++)
-            {
+            row = sheet.createRow(listHDCT.size() + 5);
+            cell = row.createCell(7, CellType.STRING);
+            cell.setCellValue("Thanh Tien" + lblThanhTien.getText());
+            for (int i = 0; i < listHDCT.size(); i++) {
                 //Modelbook book =arr.get(i);
-                row=sheet.createRow(4+i);
+                row = sheet.createRow(4 + i);
 
-                cell=row.createCell(0,CellType.NUMERIC);
-                cell.setCellValue(i+1);
+                cell = row.createCell(0, CellType.NUMERIC);
+                cell.setCellValue(i + 1);
 
-                cell=row.createCell(1,CellType.STRING);
+                cell = row.createCell(1, CellType.STRING);
                 cell.setCellValue(listHDCT.get(i).getMaHDCT());
 
-                cell=row.createCell(2,CellType.STRING);
+                cell = row.createCell(2, CellType.STRING);
                 cell.setCellValue(listHDCT.get(i).getMaHD());
 
-                cell=row.createCell(3,CellType.STRING);
+                cell = row.createCell(3, CellType.STRING);
                 cell.setCellValue(listHDCT.get(i).getMaCT());
 
-                cell=row.createCell(4,CellType.STRING);
+                cell = row.createCell(4, CellType.STRING);
                 cell.setCellValue(listHDCT.get(i).getTenSP());
 
-                cell=row.createCell(5,CellType.STRING);
+                cell = row.createCell(5, CellType.STRING);
                 cell.setCellValue(listHDCT.get(i).getSoLuong());
 
-                cell=row.createCell(6,CellType.STRING);
+                cell = row.createCell(6, CellType.STRING);
                 cell.setCellValue(listHDCT.get(i).getGia());
 
-                cell=row.createCell(7,CellType.STRING);
+                cell = row.createCell(7, CellType.STRING);
                 cell.setCellValue(listHDCT.get(i).getTongTien());
 
             }
 
             File f = new File("D://danhsach.doc");
-            try
-            {
+            try {
                 FileOutputStream fis = new FileOutputStream(f);
                 wordkbook.write(fis);
                 fis.close();
-            }
-            catch (FileNotFoundException ex) {
+            } catch (FileNotFoundException ex) {
                 ex.printStackTrace();
 
-            }
-            catch (IOException ex)
-            {
+            } catch (IOException ex) {
                 ex.printStackTrace();
             }
 
             MsgBox.alert(this, "in thanh cong D:\\danhsach");
 
-        }
-
-        catch(Exception ex)
-        {
+        } catch (Exception ex) {
             ex.printStackTrace();
             JOptionPane.showMessageDialog(this, "Loi mo file");
         }
     }//GEN-LAST:event_btnINActionPerformed
 
     private void txtTimKiemKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimKiemKeyTyped
-        if(txtTimKiem.getText().equals("")){
+        if (txtTimKiem.getText().equals("")) {
             lblTimKiem.setVisible(true);
             fillTable();
-        }else
+        } else
             lblTimKiem.setVisible(false);
     }//GEN-LAST:event_txtTimKiemKeyTyped
 
@@ -1392,7 +1399,7 @@ public class HoaDon1 extends javax.swing.JPanel {
     private javax.swing.JLabel lblThanhTien;
     private javax.swing.JLabel lblThongBao;
     private javax.swing.JLabel lblTimKiem;
-    private javax.swing.JTable tblHDCT;
+    private javax.swing.JTable tblHDCTa;
     private com.nhom4.ui.tbledark tbledark1;
     private javax.swing.JTextField txtDonGia;
     private javax.swing.JTextField txtMaHD;
