@@ -12,10 +12,20 @@ import com.nhom4.entity.HoaDon;
 import com.nhom4.entity.HoaDonChiTiet;
 import com.nhom4.entity.SanPham;
 import com.nhom4.utils.MsgBox;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellType;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 /**
  *
@@ -124,6 +134,7 @@ public class HoaDon1 extends javax.swing.JPanel {
                     hdct.getGia(),
                     hdct.getTongTien()
                 };
+                listHDCT.add(hdct);
                 model.addRow(data);
             }
         } catch (Exception e) {
@@ -323,7 +334,7 @@ public class HoaDon1 extends javax.swing.JPanel {
     }
 
     ArrayList<HoaDon> list = new ArrayList<>();
-   
+    ArrayList<HoaDonChiTiet> listHDCT = new ArrayList<>();
     
     public boolean check() {
          boolean check = true;
@@ -562,6 +573,7 @@ public class HoaDon1 extends javax.swing.JPanel {
         lblMau = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         lblThongBao = new javax.swing.JLabel();
+        btnIN = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(102, 102, 102));
         setPreferredSize(new java.awt.Dimension(1280, 720));
@@ -840,6 +852,13 @@ public class HoaDon1 extends javax.swing.JPanel {
 
         lblThongBao.setText("jLabel14");
 
+        btnIN.setText("jButton1");
+        btnIN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnINActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -876,7 +895,7 @@ public class HoaDon1 extends javax.swing.JPanel {
                                     .addComponent(cboMaCT, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addComponent(cboSL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 98, Short.MAX_VALUE)
                                         .addComponent(jLabel8)
                                         .addGap(18, 18, 18)
                                         .addComponent(lblSize)
@@ -889,13 +908,15 @@ public class HoaDon1 extends javax.swing.JPanel {
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(lblTenSP)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnNewHDCT, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnEditHDCT, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                            .addComponent(btnDeleteHDCT, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                            .addComponent(btnSaveHDCT, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                            .addComponent(btnCancelHDCT, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                        .addGap(129, 129, 129))))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(btnNewHDCT, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnEditHDCT, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                .addComponent(btnDeleteHDCT, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                .addComponent(btnSaveHDCT, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                .addComponent(btnCancelHDCT, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                            .addComponent(btnIN))
+                        .addGap(115, 115, 115))))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(192, 192, 192)
                 .addComponent(lblThongBao)
@@ -947,7 +968,12 @@ public class HoaDon1 extends javax.swing.JPanel {
                         .addGap(16, 16, 16)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtThanhTien, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel12)))
+                            .addComponent(jLabel12))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel10)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(55, 55, 55))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(btnEditHDCT)
                         .addGap(5, 5, 5)
@@ -955,12 +981,10 @@ public class HoaDon1 extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnDeleteHDCT)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnCancelHDCT)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel10)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(55, 55, 55))
+                        .addComponent(btnCancelHDCT)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnIN)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
 
         jTabbedPane1.addTab("HoaDonChiTiet", jPanel2);
@@ -1093,6 +1117,111 @@ public class HoaDon1 extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
+    private void btnINActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnINActionPerformed
+        try
+        {
+            XSSFWorkbook wordkbook = new XSSFWorkbook();
+            XSSFSheet sheet=wordkbook.createSheet("danhsach");
+            XSSFRow row =null;
+            Cell cell=null;
+            row=sheet.createRow(0);
+            cell=row.createCell(1,CellType.STRING);
+            cell.setCellValue("Ma Hoa Don"+lblMaHD.getText());
+
+            row=sheet.createRow(1);
+            cell=row.createCell(1,CellType.STRING);
+            cell.setCellValue("Ma Nhan Vien"+lblMaNV.getText());
+
+            row=sheet.createRow(2);
+            cell=row.createCell(1,CellType.STRING);
+            cell.setCellValue("Ma Khach Hang"+lblMaKH.getText());
+
+            row=sheet.createRow(3);
+            cell=row.createCell(0,CellType.STRING);
+            cell.setCellValue("STT");
+
+            cell=row.createCell(1,CellType.STRING);
+            cell.setCellValue("Mã hóa đơn chi tiết");
+
+            cell=row.createCell(2,CellType.STRING);
+            cell.setCellValue("Mã hóa đơn");
+
+            cell=row.createCell(3,CellType.STRING);
+            cell.setCellValue("Mã chi tiết");
+
+            cell=row.createCell(4,CellType.STRING);
+            cell.setCellValue("Tên sản phẩm");
+
+            cell=row.createCell(5,CellType.STRING);
+            cell.setCellValue("Số lượng");
+
+            cell=row.createCell(6,CellType.STRING);
+            cell.setCellValue("Giá");
+
+            cell=row.createCell(7,CellType.STRING);
+            cell.setCellValue("Tổng tiền");
+
+            row=sheet.createRow(listHDCT.size()+5);
+            cell=row.createCell(7,CellType.STRING);
+            cell.setCellValue("Thanh Tien"+lblThanhTien.getText());
+            for(int i=0; i<listHDCT.size(); i++)
+            {
+                //Modelbook book =arr.get(i);
+                row=sheet.createRow(4+i);
+
+                cell=row.createCell(0,CellType.NUMERIC);
+                cell.setCellValue(i+1);
+
+                cell=row.createCell(1,CellType.STRING);
+                cell.setCellValue(listHDCT.get(i).getMaHDCT());
+
+                cell=row.createCell(2,CellType.STRING);
+                cell.setCellValue(listHDCT.get(i).getMaHD());
+
+                cell=row.createCell(3,CellType.STRING);
+                cell.setCellValue(listHDCT.get(i).getMaCT());
+
+                cell=row.createCell(4,CellType.STRING);
+                cell.setCellValue(listHDCT.get(i).getTenSP());
+
+                cell=row.createCell(5,CellType.STRING);
+                cell.setCellValue(listHDCT.get(i).getSoLuong());
+
+                cell=row.createCell(6,CellType.STRING);
+                cell.setCellValue(listHDCT.get(i).getGia());
+
+                cell=row.createCell(7,CellType.STRING);
+                cell.setCellValue(listHDCT.get(i).getTongTien());
+
+            }
+
+            File f = new File("D://danhsach.doc");
+            try
+            {
+                FileOutputStream fis = new FileOutputStream(f);
+                wordkbook.write(fis);
+                fis.close();
+            }
+            catch (FileNotFoundException ex) {
+                ex.printStackTrace();
+
+            }
+            catch (IOException ex)
+            {
+                ex.printStackTrace();
+            }
+
+            MsgBox.alert(this, "in thanh cong D:\\danhsach");
+
+        }
+
+        catch(Exception ex)
+        {
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Loi mo file");
+        }
+    }//GEN-LAST:event_btnINActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancel;
@@ -1100,6 +1229,7 @@ public class HoaDon1 extends javax.swing.JPanel {
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnDeleteHDCT;
     private javax.swing.JButton btnEditHDCT;
+    private javax.swing.JButton btnIN;
     private javax.swing.JButton btnNew;
     private javax.swing.JToggleButton btnNewHDCT;
     private javax.swing.JButton btnSave;
