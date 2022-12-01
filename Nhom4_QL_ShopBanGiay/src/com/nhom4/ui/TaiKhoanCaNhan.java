@@ -26,7 +26,7 @@ public class TaiKhoanCaNhan extends javax.swing.JPanel {
       int checkLap = 0;
       int them =0;
       int row =-1;
-      JFileChooser fileChooser = new JFileChooser(".//src//com//nhom4//icon//");
+      JFileChooser fileChooser = new JFileChooser(".//src//com//nhom4//hinh");
               
     /**
      * Creates new form TaiKhoanCaNhan
@@ -38,6 +38,7 @@ public class TaiKhoanCaNhan extends javax.swing.JPanel {
         txtMaNV.setEditable(false);
         fill();
         btnLuu.setEnabled(false);
+        txtOFF();
     }
     
 
@@ -295,9 +296,10 @@ public class TaiKhoanCaNhan extends javax.swing.JPanel {
     }//GEN-LAST:event_rdoNamActionPerformed
 
     private void btnLuuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLuuActionPerformed
-        
+
             if(them == 2){
                 update();
+                txtOFF();
                 return;
             }
     }//GEN-LAST:event_btnLuuActionPerformed
@@ -403,7 +405,7 @@ public class TaiKhoanCaNhan extends javax.swing.JPanel {
          txtSDT.setEditable(false);
          txtDiaChi.setEditable(false);
          txtEmail.setEditable(false);
-         
+         rdoNu.setEnabled(false);
          
     }
     
@@ -414,6 +416,7 @@ public class TaiKhoanCaNhan extends javax.swing.JPanel {
          txtSDT.setEditable(true);
          txtDiaChi.setEditable(true);
          txtEmail.setEditable(true);
+         rdoNu.setEnabled(true);
     }
     
     private static final String EMAIL_PATTERN
