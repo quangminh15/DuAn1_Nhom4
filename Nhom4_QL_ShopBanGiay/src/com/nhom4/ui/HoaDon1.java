@@ -6,10 +6,16 @@ package com.nhom4.ui;
 import com.nhom4.dao.ChiTietSanPhamDAO;
 import com.nhom4.dao.HoaDonChiTietDAO;
 import com.nhom4.dao.HoaDonDAO;
+import com.nhom4.dao.KhachHangDAO;
+import com.nhom4.dao.KhuyenMaiDAO;
+import com.nhom4.dao.NhanVienDAO;
 import com.nhom4.dao.SanPhamDAO;
 import com.nhom4.entity.ChiTietSanPham;
 import com.nhom4.entity.HoaDon;
 import com.nhom4.entity.HoaDonChiTiet;
+import com.nhom4.entity.KhachHang;
+import com.nhom4.entity.KhuyenMai;
+import com.nhom4.entity.NhanVien;
 import com.nhom4.entity.SanPham;
 import com.nhom4.utils.MsgBox;
 import java.io.File;
@@ -48,12 +54,19 @@ public class HoaDon1 extends javax.swing.JPanel {
     ChiTietSanPhamDAO spctDAO = new ChiTietSanPhamDAO();
     HoaDonChiTietDAO hdctDAO = new HoaDonChiTietDAO();
     SanPhamDAO spDAO = new SanPhamDAO();
+    NhanVienDAO nvDAO = new NhanVienDAO();
+    KhachHangDAO khDAO = new KhachHangDAO();
+    KhuyenMaiDAO kmDAO = new KhuyenMaiDAO();
 
     Date now = new Date();
     SimpleDateFormat ngay = new SimpleDateFormat("dd-MM-yyyy -- hh:mm:ss a");
     String a = ngay.format(now);
     String chuoi = "";
     String patternPass = "^[a-zA-Z0-9]{6,15}$";
+    
+    String tenNV;
+    String tenKH;
+    float khuyenMai;
 
     private void init() {
         fillCboNV();
@@ -130,6 +143,7 @@ public class HoaDon1 extends javax.swing.JPanel {
     public void fillTableHDCT() {
         DefaultTableModel model = (DefaultTableModel) tblHDCTa.getModel();
         model.setRowCount(0);
+        listHDCT.removeAll(listHDCT);
         try {
             String id = lblMaHD.getText();
             List<HoaDonChiTiet> list = hdctDAO.selectByMaHD(id);
@@ -142,6 +156,7 @@ public class HoaDon1 extends javax.swing.JPanel {
                     hdct.getGia(),
                     hdct.getTongTien()
                 };
+                
                 listHDCT.add(hdct);
                 model.addRow(data);
             }
@@ -494,16 +509,38 @@ public class HoaDon1 extends javax.swing.JPanel {
             tblHDCTa.setRowSelectionInterval(index, index);
         }
     }
-
+    
     public void setTenSP(SanPham sp) {
         try {
+            
             lblTenSP.setText(sp.getTenSP());
         } catch (Exception e) {
 
         }
 
     }
-
+    
+    public void setTen(NhanVien nv,KhachHang kh, KhuyenMai km) {
+        try {
+            tenNV = nv.getTenNV();
+            tenKH = kh.getTenKH();
+            khuyenMai=km.getGiamGia();
+        } catch (Exception e) {
+        }
+    }
+    public void getTen(){
+        String maNV = lblMaNV.getText();
+        String maKH = lblMaKH.getText();
+        String maKM = lblMaKM.getText();
+        try {
+            NhanVien nv = nvDAO.selectById(maNV);
+            KhachHang kh = khDAO.selectById(maKH);
+            KhuyenMai km = kmDAO.selectById(maKM);
+            this.setTen(nv, kh,km);
+        } catch (Exception e) {
+        }
+    }
+    
     public void setFormHDCT(ChiTietSanPham ct) {
         try {
             lblSize.setText(String.valueOf(ct.getSize()));
@@ -637,7 +674,9 @@ public class HoaDon1 extends javax.swing.JPanel {
 //        this.row = -1;
 //        updateStatus();
     }
-
+     
+        
+        
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -1252,6 +1291,7 @@ public class HoaDon1 extends javax.swing.JPanel {
 
     private void btnINActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnINActionPerformed
         try {
+            getTen();
             XSSFWorkbook wordkbook = new XSSFWorkbook();
             XSSFSheet sheet = wordkbook.createSheet("HoaDon");
             XSSFRow row = null;
@@ -1271,11 +1311,11 @@ public class HoaDon1 extends javax.swing.JPanel {
 
             row = sheet.createRow(3);
             cell = row.createCell(1, CellType.STRING);
-            cell.setCellValue("Ma Nhan Vien: " + lblMaNV.getText());
+            cell.setCellValue("Ten Nhan Vien: " + tenNV);
 
             row = sheet.createRow(4);
             cell = row.createCell(1, CellType.STRING);
-            cell.setCellValue("Ma Khach Hang: " + lblMaKH.getText());
+            cell.setCellValue("Ten Khach Hang: " + tenKH);
 
             row = sheet.createRow(6);
             cell = row.createCell(0, CellType.STRING);
@@ -1302,9 +1342,14 @@ public class HoaDon1 extends javax.swing.JPanel {
             cell = row.createCell(7, CellType.STRING);
             cell.setCellValue("Tổng tiền");
 
-            row = sheet.createRow(listHDCT.size() + 5);
+            row = sheet.createRow(listHDCT.size() + 7);
+            cell = row.createCell(7, CellType.STRING);
+            cell.setCellValue("Khuyen Mai: " + khuyenMai + " (%)");
+            
+            row = sheet.createRow(listHDCT.size() + 8);
             cell = row.createCell(7, CellType.STRING);
             cell.setCellValue("Thanh Tien" + lblThanhTien.getText());
+            
             for (int i = 0; i < listHDCT.size(); i++) {
                 //Modelbook book =arr.get(i);
                 row = sheet.createRow(7 + i);
@@ -1376,7 +1421,8 @@ public class HoaDon1 extends javax.swing.JPanel {
         timKiem();
     }//GEN-LAST:event_jLabel14MouseClicked
 
-
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnCancelHDCT;
