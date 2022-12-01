@@ -161,6 +161,7 @@ public class HoaDon1 extends javax.swing.JPanel {
                     hd.getThanhTien(),
                     trangThai
                 };
+                listHD.add(hd);
                 model.addRow(data);
             }
         } catch (Exception e) {
@@ -331,13 +332,13 @@ public class HoaDon1 extends javax.swing.JPanel {
         txtThanhTien.setText(tblHDCT.getValueAt(index, 5).toString());
     }
 
-    ArrayList<HoaDon> list = new ArrayList<>();
+    ArrayList<HoaDon> listHD = new ArrayList<>();
     ArrayList<HoaDonChiTiet> listHDCT = new ArrayList<>();
     
     public boolean check() {
          boolean check = true;
-        for (int i = 0; i < list.size(); i++) {
-            if (list.get(i).getMaHD().equalsIgnoreCase(txtMaHD.getText())) {
+        for (int i = 0; i < listHD.size(); i++) {
+            if (listHD.get(i).getMaHD().equalsIgnoreCase(txtMaHD.getText())) {
                 check = false;
             }
         }
@@ -514,7 +515,108 @@ public class HoaDon1 extends javax.swing.JPanel {
 
         txtThanhTien.setText(String.valueOf(sl * gia));
     }
+    
+    boolean checkFind = true;
 
+    public void checkFind() {
+        
+        for (int i = 0; i < listHD.size(); i++) {
+            if (listHD.get(i).getMaHD().equalsIgnoreCase(txtTimKiem.getText())) {
+                checkFind = true;
+                return ;
+            }
+        }
+        for (int i = 0; i < listHD.size(); i++) {
+            if (listHD.get(i).getMaNV().equalsIgnoreCase(txtTimKiem.getText())) {
+                checkFind = false;
+                return ;
+            }
+        }
+        
+    }
+
+    public void timKiem() {
+       checkFind();
+        if (checkFind) {
+            find();
+            checkFind=true;
+
+        } else if (!checkFind) {
+            find2();
+            checkFind=true;
+        }
+
+    }
+
+    public void find() {
+        DefaultTableModel model = (DefaultTableModel) tbledark1.getModel();
+        model.setRowCount(0);
+        try {
+            String key = txtTimKiem.getText();
+            List<HoaDon> list = hdDAO.selectByKeyword(key);
+
+            for (HoaDon hd : list) {
+                String trangThai;
+                if (hd.isTrangThai()) {
+                    trangThai = "Da Hoan Thanh";
+                } else {
+                    trangThai = "Chua Hoan Thanh";
+                }
+                Object[] data = {
+                    hd.getMaHD(),
+                    hd.getMaNV(),
+                    hd.getMaKH(),
+                    hd.getNgayBan(),
+                    hd.getMaKM(),
+                    hd.getThanhTien(),
+                    trangThai
+                };
+
+                model.addRow(data);
+
+            }
+        } catch (Exception e) {
+            MsgBox.alert(this, e.getMessage());
+        }
+
+//        this.row = -1;
+//        updateStatus();
+    }
+
+    public void find2() {
+        DefaultTableModel model = (DefaultTableModel) tbledark1.getModel();
+        model.setRowCount(0);
+        try {
+            String key = txtTimKiem.getText();
+            List<HoaDon> list = hdDAO.selectByKeyword2(key);
+
+            for (HoaDon hd : list) {
+
+                String trangThai;
+                if (hd.isTrangThai()) {
+                    trangThai = "Da Hoan Thanh";
+                } else {
+                    trangThai = "Chua Hoan Thanh";
+                }
+                Object[] data = {
+                    hd.getMaHD(),
+                    hd.getMaNV(),
+                    hd.getMaKH(),
+                    hd.getNgayBan(),
+                    hd.getMaKM(),
+                    hd.getThanhTien(),
+                    trangThai
+                };
+                model.addRow(data);
+            }
+        } catch (Exception e) {
+            MsgBox.alert(this, e.getMessage());
+        }
+
+//        this.row = -1;
+//        updateStatus();
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -541,8 +643,8 @@ public class HoaDon1 extends javax.swing.JPanel {
         btnDelete = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbledark1 = new com.nhom4.ui.tbledark();
-        jLabel16 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        lblTimKiem = new javax.swing.JLabel();
+        txtTimKiem = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
@@ -711,20 +813,24 @@ public class HoaDon1 extends javax.swing.JPanel {
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 740, 430));
 
-        jLabel16.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel16.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel16.setText("Tìm Kiếm");
-        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 40, -1, -1));
+        lblTimKiem.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblTimKiem.setForeground(new java.awt.Color(102, 102, 102));
+        lblTimKiem.setText("MaHD/MaKH");
+        jPanel1.add(lblTimKiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 40, 120, -1));
 
-        jTextField1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField1.setBorder(null);
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        txtTimKiem.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txtTimKiem.setBorder(null);
+        txtTimKiem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                txtTimKiemActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 30, 780, 40));
+        txtTimKiem.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtTimKiemKeyTyped(evt);
+            }
+        });
+        jPanel1.add(txtTimKiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 30, 780, 40));
 
         jPanel3.setBackground(new java.awt.Color(102, 102, 102));
 
@@ -742,6 +848,11 @@ public class HoaDon1 extends javax.swing.JPanel {
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 70, 780, 2));
 
         jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/magnifying-glass.png"))); // NOI18N
+        jLabel14.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel14MouseClicked(evt);
+            }
+        });
         jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 30, -1, -1));
 
         jTabbedPane1.addTab("HoaDon", jPanel1);
@@ -1111,9 +1222,9 @@ public class HoaDon1 extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_tbledark1MousePressed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void txtTimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTimKiemActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_txtTimKiemActionPerformed
 
     private void btnINActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnINActionPerformed
         try
@@ -1220,6 +1331,18 @@ public class HoaDon1 extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnINActionPerformed
 
+    private void txtTimKiemKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimKiemKeyTyped
+        if(txtTimKiem.getText().equals("")){
+            lblTimKiem.setVisible(true);
+            fillTable();
+        }else
+            lblTimKiem.setVisible(false);
+    }//GEN-LAST:event_txtTimKiemKeyTyped
+
+    private void jLabel14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseClicked
+        timKiem();
+    }//GEN-LAST:event_jLabel14MouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancel;
@@ -1245,7 +1368,6 @@ public class HoaDon1 extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -1260,7 +1382,6 @@ public class HoaDon1 extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel lblMaHD;
     private javax.swing.JLabel lblMaKH;
     private javax.swing.JLabel lblMaKM;
@@ -1270,10 +1391,12 @@ public class HoaDon1 extends javax.swing.JPanel {
     private javax.swing.JLabel lblTenSP;
     private javax.swing.JLabel lblThanhTien;
     private javax.swing.JLabel lblThongBao;
+    private javax.swing.JLabel lblTimKiem;
     private javax.swing.JTable tblHDCT;
     private com.nhom4.ui.tbledark tbledark1;
     private javax.swing.JTextField txtDonGia;
     private javax.swing.JTextField txtMaHD;
     private javax.swing.JTextField txtThanhTien;
+    private javax.swing.JTextField txtTimKiem;
     // End of variables declaration//GEN-END:variables
 }
