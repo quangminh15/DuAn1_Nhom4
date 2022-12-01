@@ -57,9 +57,9 @@ public class HoaDon1 extends javax.swing.JPanel {
         fillTableHDCT();
         fillCboMaCT();
         btnSave.setEnabled(false);
-        //btnSaveHDCT.setEnabled(false);
-        //txtDonGia.setEditable(false);
-        //txtThanhTien.setEditable(false);
+        btnSaveHDCT.setEnabled(false);
+        txtDonGia.setEditable(false);
+        txtThanhTien.setEditable(false);
         setStatus(false);
         //setStatusHDCT(false);
         thanhTien();
@@ -261,11 +261,10 @@ public class HoaDon1 extends javax.swing.JPanel {
 
     public void setStatusHDCT(boolean b) {
         int i = tbledark1.getSelectedRow();
-        if (b == false) {
-            if (i < 0) {
+       
+            if (i < 0||b == false) {
                 lblThongBao.setText("CHUA CHON HOA DON");
                 lblThongBao.setVisible(!b);
-
                 lblMaHD.setText("");
                 lblSize.setText("");
                 lblMau.setText("");
@@ -276,8 +275,7 @@ public class HoaDon1 extends javax.swing.JPanel {
                 cboSL.setEnabled(false);
 
                 return;
-            }
-
+            
         } else {
             lblThongBao.setVisible(!b);
             tblHDCT.setEnabled(true);
