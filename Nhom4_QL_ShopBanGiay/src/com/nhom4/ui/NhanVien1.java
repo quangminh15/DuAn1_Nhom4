@@ -750,6 +750,7 @@ public class NhanVien1 extends javax.swing.JPanel {
         txtsoDienSo.setEditable(false);
         txtdiaChi.setEditable(false);
         txtEmail.setEditable(false);
+        rdoGioiTinhNu.setEnabled(false);
 //         lblHinh.setEditable(false);
 
     }
@@ -758,9 +759,11 @@ public class NhanVien1 extends javax.swing.JPanel {
         txtmaNhanVien.setEditable(true);
         txttenNhanVien.setEditable(true);
         rdoGioiTinhNam.setEnabled(true);
+       
         txtsoDienSo.setEditable(true);
         txtdiaChi.setEditable(true);
         txtEmail.setEditable(true);
+         rdoGioiTinhNu.setEnabled(true);
 //         lblHinh.setEditable(true);
     }
     private static final String EMAIL_PATTERN
