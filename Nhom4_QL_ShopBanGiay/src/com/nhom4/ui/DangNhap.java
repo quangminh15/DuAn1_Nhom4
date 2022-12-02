@@ -9,6 +9,7 @@ import com.nhom4.entity.NhanVien;
 import com.nhom4.entity.TaiKhoan;
 import com.nhom4.utils.Auth;
 import com.nhom4.utils.MsgBox;
+import com.nhom4.utils.XImage;
 import java.awt.Color;
 import java.awt.GradientPaint;
 import java.awt.Graphics;
@@ -355,6 +356,8 @@ public class DangNhap extends javax.swing.JDialog {
 
     private void init() {
          this.setLocationRelativeTo(null);
+         this.setIconImage(XImage.getAppIcon());
+         new ChaoJDialog(null, true).setVisible(true);
          //lblUserName.setVisible(false);
          //lblLogin.setIcon(new ImageIcon("src\\com\\nhom4\\icon\\btnLog1.png"));
          
@@ -376,6 +379,8 @@ void dangNhap() {
                 MsgBox.alert(this, "Đăng nhập thành công!");
                 
                 this.dispose();
+                
+         new CuaSoChinh().setVisible(true);
             }
         }
     }
