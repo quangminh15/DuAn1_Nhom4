@@ -602,7 +602,8 @@ public class TaiKhoanQL extends javax.swing.JPanel {
             } else if (MsgBox.confirm(this, "Bạn thực sự muốn xóa nhân viên này")) {
                 try {
                     tkDAO.delete(manv);
-                    this.fillTable();
+                    this.clearForm();
+                    this.fillTable();     
                     this.clearForm();
                     MsgBox.alert(this, "Xóa thành công");
                 } catch (Exception e) {
