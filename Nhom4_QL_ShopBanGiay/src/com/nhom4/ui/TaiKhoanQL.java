@@ -34,7 +34,7 @@ public class TaiKhoanQL extends javax.swing.JPanel {
         initComponents();
         this.setColumns();
         this.init();
-        
+        txtOFF();
     }
 
     /**
@@ -389,7 +389,7 @@ public class TaiKhoanQL extends javax.swing.JPanel {
             btnThem.setEnabled(false);
             btnXoa.setEnabled(false);
             btnLuu.setEnabled(true);
-            hide();
+//            hide();
             txtON();
             txtMaNV.setEditable(false);
     }//GEN-LAST:event_btnSuaActionPerformed
@@ -730,24 +730,24 @@ public class TaiKhoanQL extends javax.swing.JPanel {
         txtMaNV.setEditable(false);
         txtTenDN.setEditable(false);
         txtMatKhau.setEditable(false);
-        rdoQuanLy.setSelected(true);
+//        rdoQuanLy.setSelected(true);
+        rdoQuanLy.setEnabled(false);
+        rdoNhanVien.setEnabled(false);
     }
     
     public void txtON(){
         txtMaNV.setEditable(true);
         txtTenDN.setEditable(true);
         txtMatKhau.setEditable(true);
-        rdoQuanLy.isSelected();
     }
     
     public void hide(){
-        rdoQuanLy.setEnabled(false);
-        rdoNhanVien.setEnabled(false);
+        
     }
     
     public void show(){
-        rdoQuanLy.setEnabled(true);
-        rdoNhanVien.setEnabled(true);
+              rdoQuanLy.setEnabled(true);
+        rdoNhanVien.setEnabled(true);  
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
