@@ -113,6 +113,8 @@ public class HoaDonDAO extends MainDAO<HoaDon, String> {
             throw new RuntimeException(e);
         }
     }
+    
+    
     public void updateNgayBan(String id){
         String UPDATE_Date = "UPDATE HOADON SET NGAYBAN=GETDATE() WHERE MaHD=?";
         JdbcHelper.executeUpdate(UPDATE_Date, id);
@@ -138,5 +140,7 @@ public class HoaDonDAO extends MainDAO<HoaDon, String> {
         String sql = "SELECT * FROM HoaDon WHERE MaNV like ?";
         return this.selectBySql(sql, "%"+key+"%");
     }
+    
+    
     
 }

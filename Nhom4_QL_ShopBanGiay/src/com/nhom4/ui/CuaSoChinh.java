@@ -1,5 +1,3 @@
-
-
 package com.nhom4.ui;
 
 import com.nhom4.dao.NhanVienDAO;
@@ -35,7 +33,15 @@ public class CuaSoChinh extends javax.swing.JFrame {
     public CuaSoChinh() {
         initComponents();
         init();
-       setBackground(new Color(0,0,0,0));
+        setBackground(new Color(0, 0, 0, 0));
+        pnlTK.setVisible(false);
+        pnlHD.setVisible(false);
+        pnlSP.setVisible(false);
+        pnlNCC.setVisible(false);
+        pnlKH.setVisible(false);
+        pnlNV.setVisible(false);
+        pnlKM.setVisible(false);
+        pnlTaiKhoan.setVisible(false);
 
     }
     private int img = 0;
@@ -66,28 +72,36 @@ public class CuaSoChinh extends javax.swing.JFrame {
         lblAdmin = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         lblNCC = new javax.swing.JLabel();
+        pnlNCC = new javax.swing.JPanel();
         lblSP = new javax.swing.JLabel();
+        pnlSP = new javax.swing.JPanel();
         lblKH = new javax.swing.JLabel();
+        pnlKH = new javax.swing.JPanel();
         lblHD = new javax.swing.JLabel();
+        pnlHD = new javax.swing.JPanel();
         lblKM = new javax.swing.JLabel();
+        pnlKM = new javax.swing.JPanel();
         lblExit = new javax.swing.JLabel();
         lblTK = new javax.swing.JLabel();
+        pnlTK = new javax.swing.JPanel();
+        lblTaiKhoan = new javax.swing.JLabel();
+        pnlTaiKhoan = new javax.swing.JPanel();
         lblNhanVien = new javax.swing.JLabel();
+        pnlNV = new javax.swing.JPanel();
         lblSetting1 = new javax.swing.JLabel();
         lblSetting2 = new javax.swing.JLabel();
         pnlSetting = new javax.swing.JPanel();
         lblDangNhap = new javax.swing.JLabel();
         lblDangXuat = new javax.swing.JLabel();
         lblDoiMatKhau = new javax.swing.JLabel();
-        lblTaiKhoan = new javax.swing.JLabel();
-        jPanel4 = new jPanelGradient();
-        lblDongHo = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
         pnlCardPane = new javax.swing.JPanel();
         pnlHome = new javax.swing.JPanel();
         lblBanner1 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        jPanel4 = new jPanelGradient();
+        lblDongHo = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("NHÓM 4");
@@ -127,7 +141,7 @@ public class CuaSoChinh extends javax.swing.JFrame {
         lblNCC.setForeground(new java.awt.Color(255, 255, 255));
         lblNCC.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblNCC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/factory.png"))); // NOI18N
-        lblNCC.setText("Nhà Cung Cấp");
+        lblNCC.setText("   NHÀ CUNG CẤP");
         lblNCC.setToolTipText("");
         lblNCC.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblNCC.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -147,7 +161,22 @@ public class CuaSoChinh extends javax.swing.JFrame {
                 lblNCCMouseReleased(evt);
             }
         });
-        jPanel2.add(lblNCC, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, 140, 40));
+        jPanel2.add(lblNCC, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, 150, 40));
+
+        pnlNCC.setBackground(new java.awt.Color(0, 0, 0));
+
+        javax.swing.GroupLayout pnlNCCLayout = new javax.swing.GroupLayout(pnlNCC);
+        pnlNCC.setLayout(pnlNCCLayout);
+        pnlNCCLayout.setHorizontalGroup(
+            pnlNCCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 236, Short.MAX_VALUE)
+        );
+        pnlNCCLayout.setVerticalGroup(
+            pnlNCCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 40, Short.MAX_VALUE)
+        );
+
+        jPanel2.add(pnlNCC, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 236, 40));
 
         lblSP.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblSP.setForeground(new java.awt.Color(255, 255, 255));
@@ -173,7 +202,22 @@ public class CuaSoChinh extends javax.swing.JFrame {
                 lblSPMouseReleased(evt);
             }
         });
-        jPanel2.add(lblSP, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, 140, 40));
+        jPanel2.add(lblSP, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, 140, 40));
+
+        pnlSP.setBackground(new java.awt.Color(0, 0, 0));
+
+        javax.swing.GroupLayout pnlSPLayout = new javax.swing.GroupLayout(pnlSP);
+        pnlSP.setLayout(pnlSPLayout);
+        pnlSPLayout.setHorizontalGroup(
+            pnlSPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 236, Short.MAX_VALUE)
+        );
+        pnlSPLayout.setVerticalGroup(
+            pnlSPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 40, Short.MAX_VALUE)
+        );
+
+        jPanel2.add(pnlSP, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 236, 40));
 
         lblKH.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblKH.setForeground(new java.awt.Color(255, 255, 255));
@@ -199,7 +243,22 @@ public class CuaSoChinh extends javax.swing.JFrame {
                 lblKHMouseReleased(evt);
             }
         });
-        jPanel2.add(lblKH, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, 140, 40));
+        jPanel2.add(lblKH, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 330, 140, 40));
+
+        pnlKH.setBackground(new java.awt.Color(0, 0, 0));
+
+        javax.swing.GroupLayout pnlKHLayout = new javax.swing.GroupLayout(pnlKH);
+        pnlKH.setLayout(pnlKHLayout);
+        pnlKHLayout.setHorizontalGroup(
+            pnlKHLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 236, Short.MAX_VALUE)
+        );
+        pnlKHLayout.setVerticalGroup(
+            pnlKHLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 40, Short.MAX_VALUE)
+        );
+
+        jPanel2.add(pnlKH, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 330, 236, 40));
 
         lblHD.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblHD.setForeground(new java.awt.Color(255, 255, 255));
@@ -227,11 +286,26 @@ public class CuaSoChinh extends javax.swing.JFrame {
         });
         jPanel2.add(lblHD, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 370, 140, 40));
 
+        pnlHD.setBackground(new java.awt.Color(0, 0, 0));
+
+        javax.swing.GroupLayout pnlHDLayout = new javax.swing.GroupLayout(pnlHD);
+        pnlHD.setLayout(pnlHDLayout);
+        pnlHDLayout.setHorizontalGroup(
+            pnlHDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 236, Short.MAX_VALUE)
+        );
+        pnlHDLayout.setVerticalGroup(
+            pnlHDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 40, Short.MAX_VALUE)
+        );
+
+        jPanel2.add(pnlHD, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 370, 236, 40));
+
         lblKM.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblKM.setForeground(new java.awt.Color(255, 255, 255));
         lblKM.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblKM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/tag.png"))); // NOI18N
-        lblKM.setText("KHUYẾN MÃI");
+        lblKM.setText("   KHUYẾN MÃI");
         lblKM.setToolTipText("");
         lblKM.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblKM.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -251,7 +325,22 @@ public class CuaSoChinh extends javax.swing.JFrame {
                 lblKMMouseReleased(evt);
             }
         });
-        jPanel2.add(lblKM, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 460, 140, 40));
+        jPanel2.add(lblKM, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 450, 140, 40));
+
+        pnlKM.setBackground(new java.awt.Color(0, 0, 0));
+
+        javax.swing.GroupLayout pnlKMLayout = new javax.swing.GroupLayout(pnlKM);
+        pnlKM.setLayout(pnlKMLayout);
+        pnlKMLayout.setHorizontalGroup(
+            pnlKMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 236, Short.MAX_VALUE)
+        );
+        pnlKMLayout.setVerticalGroup(
+            pnlKMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 40, Short.MAX_VALUE)
+        );
+
+        jPanel2.add(pnlKM, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 450, 236, 40));
 
         lblExit.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblExit.setForeground(new java.awt.Color(255, 255, 255));
@@ -293,13 +382,67 @@ public class CuaSoChinh extends javax.swing.JFrame {
                 lblTKMouseReleased(evt);
             }
         });
-        jPanel2.add(lblTK, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 420, 140, 30));
+        jPanel2.add(lblTK, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 410, 140, 40));
+
+        pnlTK.setBackground(new java.awt.Color(0, 0, 0));
+
+        javax.swing.GroupLayout pnlTKLayout = new javax.swing.GroupLayout(pnlTK);
+        pnlTK.setLayout(pnlTKLayout);
+        pnlTKLayout.setHorizontalGroup(
+            pnlTKLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 236, Short.MAX_VALUE)
+        );
+        pnlTKLayout.setVerticalGroup(
+            pnlTKLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 40, Short.MAX_VALUE)
+        );
+
+        jPanel2.add(pnlTK, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 410, 236, 40));
+
+        lblTaiKhoan.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblTaiKhoan.setForeground(new java.awt.Color(255, 255, 255));
+        lblTaiKhoan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/account1.png"))); // NOI18N
+        lblTaiKhoan.setText("   TÀI KHOẢN");
+        lblTaiKhoan.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblTaiKhoan.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblTaiKhoanMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lblTaiKhoanMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblTaiKhoanMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                lblTaiKhoanMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                lblTaiKhoanMouseReleased(evt);
+            }
+        });
+        jPanel2.add(lblTaiKhoan, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 490, 140, 40));
+
+        pnlTaiKhoan.setBackground(new java.awt.Color(0, 0, 0));
+
+        javax.swing.GroupLayout pnlTaiKhoanLayout = new javax.swing.GroupLayout(pnlTaiKhoan);
+        pnlTaiKhoan.setLayout(pnlTaiKhoanLayout);
+        pnlTaiKhoanLayout.setHorizontalGroup(
+            pnlTaiKhoanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 236, Short.MAX_VALUE)
+        );
+        pnlTaiKhoanLayout.setVerticalGroup(
+            pnlTaiKhoanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 40, Short.MAX_VALUE)
+        );
+
+        jPanel2.add(pnlTaiKhoan, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 490, 236, 40));
 
         lblNhanVien.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         lblNhanVien.setForeground(new java.awt.Color(255, 255, 255));
         lblNhanVien.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblNhanVien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/identity-card.png"))); // NOI18N
-        lblNhanVien.setText("Nhân Viên");
+        lblNhanVien.setText("   NHÂN VIÊN");
         lblNhanVien.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblNhanVien.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -319,6 +462,21 @@ public class CuaSoChinh extends javax.swing.JFrame {
             }
         });
         jPanel2.add(lblNhanVien, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, 140, 40));
+
+        pnlNV.setBackground(new java.awt.Color(0, 0, 0));
+
+        javax.swing.GroupLayout pnlNVLayout = new javax.swing.GroupLayout(pnlNV);
+        pnlNV.setLayout(pnlNVLayout);
+        pnlNVLayout.setHorizontalGroup(
+            pnlNVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 236, Short.MAX_VALUE)
+        );
+        pnlNVLayout.setVerticalGroup(
+            pnlNVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 40, Short.MAX_VALUE)
+        );
+
+        jPanel2.add(pnlNV, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 236, 40));
 
         lblSetting1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblSetting1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/cogwheel.png"))); // NOI18N
@@ -340,9 +498,9 @@ public class CuaSoChinh extends javax.swing.JFrame {
 
         pnlSetting.setBackground(new java.awt.Color(255, 255, 255));
 
-        lblDangNhap.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        lblDangNhap.setForeground(new java.awt.Color(107, 107, 107));
-        lblDangNhap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/logout3.png"))); // NOI18N
+        lblDangNhap.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblDangNhap.setForeground(new java.awt.Color(42, 9, 120));
+        lblDangNhap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/login.png"))); // NOI18N
         lblDangNhap.setText("DANG NHAP");
         lblDangNhap.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -350,14 +508,20 @@ public class CuaSoChinh extends javax.swing.JFrame {
             }
         });
 
-        lblDangXuat.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        lblDangXuat.setForeground(new java.awt.Color(107, 107, 107));
-        lblDangXuat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/logout3.png"))); // NOI18N
+        lblDangXuat.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblDangXuat.setForeground(new java.awt.Color(232, 141, 54));
+        lblDangXuat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/logout.png"))); // NOI18N
         lblDangXuat.setText("DANG XUAT ");
+        lblDangXuat.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblDangXuatMouseClicked(evt);
+            }
+        });
 
-        lblDoiMatKhau.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        lblDoiMatKhau.setForeground(new java.awt.Color(107, 107, 107));
-        lblDoiMatKhau.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/logout3.png"))); // NOI18N
+        lblDoiMatKhau.setBackground(new java.awt.Color(53, 158, 182));
+        lblDoiMatKhau.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblDoiMatKhau.setForeground(new java.awt.Color(53, 158, 182));
+        lblDoiMatKhau.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/reset-password.png"))); // NOI18N
         lblDoiMatKhau.setText("DOI MAT KHAU");
         lblDoiMatKhau.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -390,31 +554,27 @@ public class CuaSoChinh extends javax.swing.JFrame {
 
         jPanel2.add(pnlSetting, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 570, 200, 150));
 
-        lblTaiKhoan.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        lblTaiKhoan.setForeground(new java.awt.Color(255, 255, 255));
-        lblTaiKhoan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/account.png"))); // NOI18N
-        lblTaiKhoan.setText("Tai Khoan");
-        lblTaiKhoan.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        lblTaiKhoan.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblTaiKhoanMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                lblTaiKhoanMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                lblTaiKhoanMouseExited(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                lblTaiKhoanMousePressed(evt);
-            }
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                lblTaiKhoanMouseReleased(evt);
-            }
-        });
-        jPanel2.add(lblTaiKhoan, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 500, 120, 50));
-
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 240, 879));
+
+        pnlCardPane.setLayout(new java.awt.CardLayout());
+
+        pnlHome.setBackground(new java.awt.Color(255, 255, 255));
+        pnlHome.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        pnlHome.setPreferredSize(new java.awt.Dimension(1280, 669));
+        pnlHome.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblBanner1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/a1.png"))); // NOI18N
+        pnlHome.add(lblBanner1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 30, -1, -1));
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/bn2.png"))); // NOI18N
+        pnlHome.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 30, -1, 469));
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/bn3.png"))); // NOI18N
+        pnlHome.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 530, -1, -1));
+
+        pnlCardPane.add(pnlHome, "card2");
+
+        jPanel1.add(pnlCardPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(236, 79, 1270, 700));
 
         lblDongHo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblDongHo.setText("00 : 00 : 00");
@@ -449,26 +609,6 @@ public class CuaSoChinh extends javax.swing.JFrame {
 
         jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(224, 0, 1320, 80));
 
-        pnlCardPane.setLayout(new java.awt.CardLayout());
-
-        pnlHome.setBackground(new java.awt.Color(255, 255, 255));
-        pnlHome.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        pnlHome.setPreferredSize(new java.awt.Dimension(1280, 669));
-        pnlHome.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        lblBanner1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/a1.png"))); // NOI18N
-        pnlHome.add(lblBanner1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 30, -1, -1));
-
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/bn2.png"))); // NOI18N
-        pnlHome.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 30, -1, 469));
-
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/bn3.png"))); // NOI18N
-        pnlHome.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 530, -1, -1));
-
-        pnlCardPane.add(pnlHome, "card2");
-
-        jPanel1.add(pnlCardPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(236, 79, 1270, 700));
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -493,36 +633,114 @@ public class CuaSoChinh extends javax.swing.JFrame {
 
     private void lblSPMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSPMouseClicked
         openSanPham();
+        pnlSP.setVisible(true);
+
+        pnlHD.setVisible(false);
+        pnlKH.setVisible(false);
+        pnlKM.setVisible(false);
+        pnlNCC.setVisible(false);
+        pnlNV.setVisible(false);
+        pnlTK.setVisible(false);
+        pnlTaiKhoan.setVisible(false);
     }//GEN-LAST:event_lblSPMouseClicked
 
     private void lblKHMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblKHMouseClicked
         openKhachHang();
+
+        pnlKH.setVisible(true);
+
+        pnlHD.setVisible(false);
+        pnlSP.setVisible(false);
+        pnlKM.setVisible(false);
+        pnlNCC.setVisible(false);
+        pnlNV.setVisible(false);
+        pnlTK.setVisible(false);
+        pnlTaiKhoan.setVisible(false);
     }//GEN-LAST:event_lblKHMouseClicked
 
     private void lblHDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHDMouseClicked
         openHoaDon();
+
+        pnlHD.setVisible(true);
+
+        pnlKH.setVisible(false);
+        pnlSP.setVisible(false);
+        pnlKM.setVisible(false);
+        pnlNCC.setVisible(false);
+        pnlNV.setVisible(false);
+        pnlTK.setVisible(false);
+        pnlTaiKhoan.setVisible(false);
     }//GEN-LAST:event_lblHDMouseClicked
 
     private void lblNCCMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNCCMouseClicked
         openNCC();
+
+        pnlNCC.setVisible(true);
+
+        pnlHD.setVisible(false);
+        pnlSP.setVisible(false);
+        pnlKM.setVisible(false);
+        pnlKH.setVisible(false);
+        pnlNV.setVisible(false);
+        pnlTK.setVisible(false);
+        pnlTaiKhoan.setVisible(false);
     }//GEN-LAST:event_lblNCCMouseClicked
 
     private void lblKMMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblKMMouseClicked
         openKhuyenMai();
+
+        pnlKM.setVisible(true);
+
+        pnlHD.setVisible(false);
+        pnlSP.setVisible(false);
+        pnlNCC.setVisible(false);
+        pnlKH.setVisible(false);
+        pnlNV.setVisible(false);
+        pnlTK.setVisible(false);
+        pnlTaiKhoan.setVisible(false);
     }//GEN-LAST:event_lblKMMouseClicked
 
     private void lblTKMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblTKMouseClicked
         openThongKe();
+
+        pnlTK.setVisible(true);
+
+        pnlHD.setVisible(false);
+        pnlSP.setVisible(false);
+        pnlNCC.setVisible(false);
+        pnlKH.setVisible(false);
+        pnlNV.setVisible(false);
+        pnlKM.setVisible(false);
+        pnlTaiKhoan.setVisible(false);
     }//GEN-LAST:event_lblTKMouseClicked
 
     private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
         changePanel(pnlHome);
+
+        pnlTK.setVisible(false);
+
+        pnlHD.setVisible(false);
+        pnlSP.setVisible(false);
+        pnlNCC.setVisible(false);
+        pnlKH.setVisible(false);
+        pnlNV.setVisible(false);
+        pnlKM.setVisible(false);
+        pnlTaiKhoan.setVisible(false);
     }//GEN-LAST:event_jLabel7MouseClicked
 
     private void lblNhanVienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNhanVienMouseClicked
-        //opennhanvien();
+        opennhanvien();
+        pnlTK.setVisible(false);
+        pnlHD.setVisible(false);
+        pnlSP.setVisible(false);
+        pnlNCC.setVisible(false);
+        pnlKH.setVisible(false);
+        pnlNV.setVisible(false);
+        pnlKM.setVisible(false);
         NhanVien1 nv = new NhanVien1();
         changePanel(nv);
+
+        pnlNV.setVisible(true);
     }//GEN-LAST:event_lblNhanVienMouseClicked
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
@@ -582,7 +800,14 @@ public class CuaSoChinh extends javax.swing.JFrame {
 
     private void lblTaiKhoanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblTaiKhoanMouseClicked
         opendTaiKhoanQL();
-        
+        pnlTK.setVisible(false);
+        pnlHD.setVisible(false);
+        pnlSP.setVisible(false);
+        pnlNCC.setVisible(false);
+        pnlKH.setVisible(false);
+        pnlNV.setVisible(false);
+        pnlKM.setVisible(false);
+        pnlTaiKhoan.setVisible(true);
     }//GEN-LAST:event_lblTaiKhoanMouseClicked
 
     private void lblExitMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblExitMouseEntered
@@ -602,7 +827,7 @@ public class CuaSoChinh extends javax.swing.JFrame {
     private void lblDangNhapMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDangNhapMouseClicked
         DangNhap dialog = new DangNhap(new javax.swing.JFrame(), true);
         if (Auth.islogin()) {
-            MsgBox.alert(this, "Ban Da Dnag Nhap");
+            MsgBox.alert(this, "Ban Da Dang Nhap");
         } else {
             dialog.setVisible(true);
             this.dispose();
@@ -691,6 +916,7 @@ public class CuaSoChinh extends javax.swing.JFrame {
 
     private void lblTKMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblTKMousePressed
         lblTK.setForeground(new Color(73, 231, 195));
+
         lblTK.setIcon(new ImageIcon("src\\com\\nhom4\\icon\\bar-chart3.png"));    }//GEN-LAST:event_lblTKMousePressed
 
     private void lblTKMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblTKMouseReleased
@@ -704,6 +930,7 @@ public class CuaSoChinh extends javax.swing.JFrame {
 
     private void lblKMMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblKMMouseExited
         lblKM.setForeground(Color.WHITE);
+
         lblKM.setIcon(new ImageIcon("src\\com\\nhom4\\icon\\tag.png"));    }//GEN-LAST:event_lblKMMouseExited
 
     private void lblKMMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblKMMousePressed
@@ -729,6 +956,18 @@ public class CuaSoChinh extends javax.swing.JFrame {
     private void lblTaiKhoanMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblTaiKhoanMouseReleased
         lblTaiKhoan.setForeground(new Color(235, 176, 30));
         lblTaiKhoan.setIcon(new ImageIcon("src\\com\\nhom4\\icon\\account2.png"));    }//GEN-LAST:event_lblTaiKhoanMouseReleased
+
+    private void lblDangXuatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDangXuatMouseClicked
+        boolean thoat = MsgBox.confirm(this, "Bạn có thực sự muốn đăng xuất không?");
+        if (thoat == true) {
+            Auth.clear();
+            DangNhap dialog = new DangNhap(new javax.swing.JFrame(), true);
+            dialog.setVisible(true);
+            this.dispose();
+        } else if (thoat == false) {
+            return;
+        }
+    }//GEN-LAST:event_lblDangXuatMouseClicked
 //
 
     /**
@@ -963,7 +1202,15 @@ public class CuaSoChinh extends javax.swing.JFrame {
     private javax.swing.JLabel lblTaiKhoan;
     private javax.swing.JLabel lblTen;
     private javax.swing.JPanel pnlCardPane;
+    private javax.swing.JPanel pnlHD;
     private javax.swing.JPanel pnlHome;
+    private javax.swing.JPanel pnlKH;
+    private javax.swing.JPanel pnlKM;
+    private javax.swing.JPanel pnlNCC;
+    private javax.swing.JPanel pnlNV;
+    private javax.swing.JPanel pnlSP;
     private javax.swing.JPanel pnlSetting;
+    private javax.swing.JPanel pnlTK;
+    private javax.swing.JPanel pnlTaiKhoan;
     // End of variables declaration//GEN-END:variables
 }

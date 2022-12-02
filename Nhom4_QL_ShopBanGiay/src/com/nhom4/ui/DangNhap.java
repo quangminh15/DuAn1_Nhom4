@@ -64,7 +64,10 @@ public class DangNhap extends javax.swing.JDialog {
         lblUserName = new javax.swing.JLabel();
         txtMaNV = new javax.swing.JTextField();
         lblMatKhau = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         txtMatKhau = new javax.swing.JPasswordField();
+        jLabel5 = new javax.swing.JLabel();
+        txtMatKhau2 = new javax.swing.JTextField();
         lblLogin = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
@@ -131,7 +134,15 @@ public class DangNhap extends javax.swing.JDialog {
         lblMatKhau.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblMatKhau.setForeground(new java.awt.Color(102, 102, 102));
         lblMatKhau.setText("Mat Khau");
-        pnlForm.add(lblMatKhau, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 280, -1, 30));
+        pnlForm.add(lblMatKhau, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 280, -1, 30));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/view.png"))); // NOI18N
+        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel3MouseClicked(evt);
+            }
+        });
+        pnlForm.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 290, -1, -1));
 
         txtMatKhau.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         txtMatKhau.setForeground(new java.awt.Color(51, 51, 51));
@@ -152,6 +163,18 @@ public class DangNhap extends javax.swing.JDialog {
             }
         });
         pnlForm.add(txtMatKhau, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 270, 460, 50));
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/eye.png"))); // NOI18N
+        jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel5MouseClicked(evt);
+            }
+        });
+        pnlForm.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 290, -1, -1));
+
+        txtMatKhau2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        txtMatKhau2.setBorder(null);
+        pnlForm.add(txtMatKhau2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 270, 460, 50));
 
         lblLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/btnLog1.png"))); // NOI18N
         lblLogin.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -237,6 +260,8 @@ public class DangNhap extends javax.swing.JDialog {
        }
        else
            lblMatKhau.setVisible(false);
+           
+           txtMatKhau2.setText(txtMatKhau.getText());
     }//GEN-LAST:event_txtMatKhauKeyTyped
 
     private void lblLoginMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLoginMouseEntered
@@ -262,6 +287,22 @@ public class DangNhap extends javax.swing.JDialog {
     private void lblOutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblOutMouseClicked
          this.ketThuc();
     }//GEN-LAST:event_lblOutMouseClicked
+
+    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+        txtMatKhau.setVisible(false); 
+        txtMatKhau2.setVisible(true);
+        txtMatKhau2.requestFocus(true);
+        jLabel5.setVisible(true);
+        jLabel3.setVisible(false);
+    }//GEN-LAST:event_jLabel3MouseClicked
+
+    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
+        txtMatKhau.setVisible(true);
+        txtMatKhau2.setVisible(false);        
+        txtMatKhau.requestFocus(true);
+        jLabel5.setVisible(false);
+        jLabel3.setVisible(true);
+    }//GEN-LAST:event_jLabel5MouseClicked
     
     /**
      * @param args the command line arguments
@@ -341,7 +382,9 @@ void dangNhap() {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
@@ -353,5 +396,6 @@ void dangNhap() {
     private javax.swing.JPanel pnlForm;
     private javax.swing.JTextField txtMaNV;
     private javax.swing.JPasswordField txtMatKhau;
+    private javax.swing.JTextField txtMatKhau2;
     // End of variables declaration//GEN-END:variables
 }

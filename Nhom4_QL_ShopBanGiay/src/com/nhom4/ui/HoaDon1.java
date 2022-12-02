@@ -27,6 +27,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import org.apache.poi.ss.usermodel.Cell;
@@ -63,7 +64,7 @@ public class HoaDon1 extends javax.swing.JPanel {
     String a = ngay.format(now);
     String chuoi = "";
     String patternPass = "^[a-zA-Z0-9]{6,15}$";
-    
+
     String tenNV;
     String tenKH;
     float khuyenMai;
@@ -156,7 +157,7 @@ public class HoaDon1 extends javax.swing.JPanel {
                     hdct.getGia(),
                     hdct.getTongTien()
                 };
-                
+
                 listHDCT.add(hdct);
                 model.addRow(data);
             }
@@ -509,26 +510,27 @@ public class HoaDon1 extends javax.swing.JPanel {
             tblHDCTa.setRowSelectionInterval(index, index);
         }
     }
-    
+
     public void setTenSP(SanPham sp) {
         try {
-            
+
             lblTenSP.setText(sp.getTenSP());
         } catch (Exception e) {
 
         }
 
     }
-    
-    public void setTen(NhanVien nv,KhachHang kh, KhuyenMai km) {
+
+    public void setTen(NhanVien nv, KhachHang kh, KhuyenMai km) {
         try {
             tenNV = nv.getTenNV();
             tenKH = kh.getTenKH();
-            khuyenMai=km.getGiamGia();
+            khuyenMai = km.getGiamGia();
         } catch (Exception e) {
         }
     }
-    public void getTen(){
+
+    public void getTen() {
         String maNV = lblMaNV.getText();
         String maKH = lblMaKH.getText();
         String maKM = lblMaKM.getText();
@@ -536,11 +538,11 @@ public class HoaDon1 extends javax.swing.JPanel {
             NhanVien nv = nvDAO.selectById(maNV);
             KhachHang kh = khDAO.selectById(maKH);
             KhuyenMai km = kmDAO.selectById(maKM);
-            this.setTen(nv, kh,km);
+            this.setTen(nv, kh, km);
         } catch (Exception e) {
         }
     }
-    
+
     public void setFormHDCT(ChiTietSanPham ct) {
         try {
             lblSize.setText(String.valueOf(ct.getSize()));
@@ -637,9 +639,9 @@ public class HoaDon1 extends javax.swing.JPanel {
             MsgBox.alert(this, e.getMessage());
         }
 
-//        this.row = -1;
-//        updateStatus();
     }
+
+   
 
     public void find2() {
         DefaultTableModel model = (DefaultTableModel) tbledark1.getModel();
@@ -670,13 +672,8 @@ public class HoaDon1 extends javax.swing.JPanel {
         } catch (Exception e) {
             MsgBox.alert(this, e.getMessage());
         }
-
-//        this.row = -1;
-//        updateStatus();
     }
-     
-        
-        
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -753,7 +750,6 @@ public class HoaDon1 extends javax.swing.JPanel {
         jPanel1.add(txtMaHD, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 140, 230, 42));
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(102, 102, 102));
         jLabel1.setText("Mã Hóa Đơn");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 160, -1, -1));
 
@@ -761,12 +757,10 @@ public class HoaDon1 extends javax.swing.JPanel {
         jPanel1.add(cboMaNV, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 190, 230, 48));
 
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(102, 102, 102));
         jLabel2.setText("Mã Nhân Viên");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 210, -1, 20));
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(102, 102, 102));
         jLabel3.setText("Mã Khách Hàng");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 260, -1, -1));
 
@@ -777,38 +771,29 @@ public class HoaDon1 extends javax.swing.JPanel {
         jPanel1.add(cboMaKM, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 310, 230, 48));
 
         jLabel4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(102, 102, 102));
         jLabel4.setText("Mã Khuyến Mãi");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 320, -1, -1));
 
         jLabel13.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(102, 102, 102));
         jLabel13.setText("Thanh Tien");
         jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 360, -1, -1));
 
         lblMaNV.setBackground(new java.awt.Color(255, 255, 255));
-        lblMaNV.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        lblMaNV.setForeground(new java.awt.Color(102, 102, 102));
-        lblMaNV.setText("manv");
+        lblMaNV.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jPanel1.add(lblMaNV, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 200, -1, -1));
 
         lblMaKH.setBackground(new java.awt.Color(255, 255, 255));
-        lblMaKH.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        lblMaKH.setForeground(new java.awt.Color(102, 102, 102));
-        lblMaKH.setText("makh");
+        lblMaKH.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jPanel1.add(lblMaKH, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 260, -1, -1));
 
         lblMaKM.setBackground(new java.awt.Color(255, 255, 255));
-        lblMaKM.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        lblMaKM.setForeground(new java.awt.Color(102, 102, 102));
+        lblMaKM.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         lblMaKM.setText("makm");
         jPanel1.add(lblMaKM, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 320, -1, -1));
 
         lblThanhTien.setBackground(new java.awt.Color(255, 255, 255));
-        lblThanhTien.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        lblThanhTien.setForeground(new java.awt.Color(102, 102, 102));
-        lblThanhTien.setText("jLabel14");
-        jPanel1.add(lblThanhTien, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 390, -1, -1));
+        lblThanhTien.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jPanel1.add(lblThanhTien, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 370, -1, -1));
 
         btnNew.setText("Them");
         btnNew.addActionListener(new java.awt.event.ActionListener() {
@@ -816,7 +801,7 @@ public class HoaDon1 extends javax.swing.JPanel {
                 btnNewActionPerformed(evt);
             }
         });
-        jPanel1.add(btnNew, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 460, -1, -1));
+        jPanel1.add(btnNew, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 430, 110, 30));
 
         btnCancel.setText("Huy");
         btnCancel.addActionListener(new java.awt.event.ActionListener() {
@@ -824,7 +809,7 @@ public class HoaDon1 extends javax.swing.JPanel {
                 btnCancelActionPerformed(evt);
             }
         });
-        jPanel1.add(btnCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 460, -1, -1));
+        jPanel1.add(btnCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 470, 110, 30));
 
         btnSave.setText("Luu");
         btnSave.addActionListener(new java.awt.event.ActionListener() {
@@ -832,7 +817,7 @@ public class HoaDon1 extends javax.swing.JPanel {
                 btnSaveActionPerformed(evt);
             }
         });
-        jPanel1.add(btnSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 460, -1, -1));
+        jPanel1.add(btnSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 510, 230, 30));
 
         btnUpdate.setText("Sua");
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
@@ -840,7 +825,7 @@ public class HoaDon1 extends javax.swing.JPanel {
                 btnUpdateActionPerformed(evt);
             }
         });
-        jPanel1.add(btnUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 500, -1, -1));
+        jPanel1.add(btnUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 430, 110, 30));
 
         btnDelete.setText("Xoa");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
@@ -848,7 +833,7 @@ public class HoaDon1 extends javax.swing.JPanel {
                 btnDeleteActionPerformed(evt);
             }
         });
-        jPanel1.add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 500, -1, -1));
+        jPanel1.add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 470, 110, 30));
 
         tbledark1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -1345,11 +1330,11 @@ public class HoaDon1 extends javax.swing.JPanel {
             row = sheet.createRow(listHDCT.size() + 7);
             cell = row.createCell(7, CellType.STRING);
             cell.setCellValue("Khuyen Mai: " + khuyenMai + " (%)");
-            
+
             row = sheet.createRow(listHDCT.size() + 8);
             cell = row.createCell(7, CellType.STRING);
             cell.setCellValue("Thanh Tien" + lblThanhTien.getText());
-            
+
             for (int i = 0; i < listHDCT.size(); i++) {
                 //Modelbook book =arr.get(i);
                 row = sheet.createRow(7 + i);
@@ -1413,16 +1398,17 @@ public class HoaDon1 extends javax.swing.JPanel {
         if (txtTimKiem.getText().equals("")) {
             lblTimKiem.setVisible(true);
             fillTable();
-        } else
+        } else {
             lblTimKiem.setVisible(false);
+        }
+        
     }//GEN-LAST:event_txtTimKiemKeyTyped
 
     private void jLabel14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseClicked
         timKiem();
     }//GEN-LAST:event_jLabel14MouseClicked
 
-    
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnCancelHDCT;
