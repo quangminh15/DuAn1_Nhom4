@@ -181,6 +181,7 @@ public class SanPham1 extends javax.swing.JPanel {
             btnLuu.setEnabled(false);
         } catch (Exception e) {
             MsgBox.alert(this, "Thêm mới thất bại");
+            System.out.println(e);
             updateStatus();
             them = 0;
             btnLuu.setEnabled(false);
