@@ -94,6 +94,7 @@ public class CuaSoChinh extends javax.swing.JFrame {
         lblDangNhap = new javax.swing.JLabel();
         lblDangXuat = new javax.swing.JLabel();
         lblDoiMatKhau = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         pnlCardPane = new javax.swing.JPanel();
         pnlHome = new javax.swing.JPanel();
         lblBanner1 = new javax.swing.JLabel();
@@ -529,6 +530,11 @@ public class CuaSoChinh extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 208, 180));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/writing.png"))); // NOI18N
+        jLabel1.setText("LICH SU XOA");
+
         javax.swing.GroupLayout pnlSettingLayout = new javax.swing.GroupLayout(pnlSetting);
         pnlSetting.setLayout(pnlSettingLayout);
         pnlSettingLayout.setHorizontalGroup(
@@ -538,21 +544,26 @@ public class CuaSoChinh extends javax.swing.JFrame {
                 .addGroup(pnlSettingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblDangXuat, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)
                     .addComponent(lblDoiMatKhau, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblDangNhap, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(lblDangNhap, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(pnlSettingLayout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         pnlSettingLayout.setVerticalGroup(
             pnlSettingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlSettingLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblDoiMatKhau, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblDangNhap, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblDoiMatKhau, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblDangXuat, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
-        jPanel2.add(pnlSetting, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 570, 200, 150));
+        jPanel2.add(pnlSetting, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 540, 200, 180));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 240, 879));
 
@@ -576,6 +587,8 @@ public class CuaSoChinh extends javax.swing.JFrame {
 
         jPanel1.add(pnlCardPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(236, 79, 1270, 700));
 
+        lblDongHo.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblDongHo.setForeground(new java.awt.Color(255, 255, 255));
         lblDongHo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblDongHo.setText("00 : 00 : 00");
 
@@ -593,9 +606,9 @@ public class CuaSoChinh extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(45, 45, 45)
                 .addComponent(jLabel7)
-                .addGap(18, 18, 18)
-                .addComponent(lblDongHo, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(955, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 1054, Short.MAX_VALUE)
+                .addComponent(lblDongHo, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(59, 59, 59))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1175,6 +1188,7 @@ public class CuaSoChinh extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
