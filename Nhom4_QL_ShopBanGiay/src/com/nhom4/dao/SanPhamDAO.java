@@ -17,8 +17,8 @@ import java.util.List;
  * @author ACER
  */
 public class SanPhamDAO extends MainDAO<SanPham, String>  {
-    final String INSERT_SQL = "INSERT INTO SanPham(MaSP, TenSP, SoLuong, MaNCC, Anh, GhiChu) VALUES (?,?,?,?,?,?)";
-    final String UPDATE_SQL = "UPDATE SanPham SET TenSP = ?, SoLuong= ?, MaNCC =?, Anh =?, GhiChu =? WHERE MaSP=?";
+    final String INSERT_SQL = "INSERT INTO SanPham(MaSP, TenSP, SoLuong, MaNCC, Anh, GhiChu, Xoa) VALUES (?,?,?,?,?,?,?)";
+    final String UPDATE_SQL = "UPDATE SanPham SET TenSP = ?, SoLuong= ?, MaNCC =?, Anh =?, GhiChu =?, Xoa=? WHERE MaSP=?";
     final String DELETE_SQL = "DELETE FROM SanPham WHERE MaSP = ?";
     final String SELECT_By_Id_SQL = "SELECT * FROM SanPham WHERE MaSP = ?";
     final String SELECT_ALL_SQL_1 = "SELECT * FROM SanPham where Xoa = 1";
