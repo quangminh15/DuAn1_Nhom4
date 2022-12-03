@@ -414,7 +414,8 @@ public class NhaCungCap1 extends javax.swing.JPanel {
         String ncc = txtMaNCC.getText();
         if (MsgBox.confirm(this, "Bạn thực sự muốn xóa nhà cung cấp này")) {
             try {
-                dao.delete(ncc);
+                dao.hide(ncc);
+                //dao.delete(ncc);
                 this.fillTable();
                 this.clearForm();
                 MsgBox.alert(this, "Xóa thành công");

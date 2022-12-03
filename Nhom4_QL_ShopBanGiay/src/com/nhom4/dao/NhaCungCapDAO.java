@@ -15,14 +15,17 @@ import java.util.List;
  *
  * @author ACER
  */
-public class NhaCungCapDAO extends MainDAO<NhaCungCap, String>{
-        final String INSERT_SQL = "INSERT INTO NCC (MaNCC, TenNCC,Xoa) VALUES (?,?,?)";
-        final String UPDATE_SQL = "UPDATE NCC SET TenNCC = ?, Xoa = ? WHERE MaNCC = ?";
-        final String DELETE_SQL = "DELETE FROM NCC WHERE MaNCC = ?";
-        final String SELECT_ALL_SQL_1 = "SELECT * FROM NCC where Xoa = 1";
-        final String SELECT_By_Id_SQL = "SELECT * FROM NCC WHERE MaNCC = ?";
-        final String SELECT_ALL_SQL_2 = "SELECT * FROM NCC where Xoa = 0";
-        
+public class NhaCungCapDAO extends MainDAO<NhaCungCap, String> {
+
+    final String INSERT_SQL = "INSERT INTO NCC (MaNCC, TenNCC,Xoa) VALUES (?,?,?)";
+    final String UPDATE_SQL = "UPDATE NCC SET TenNCC = ?, Xoa = ? WHERE MaNCC = ?";
+    final String DELETE_SQL = "DELETE FROM NCC WHERE MaNCC = ?";
+    final String SELECT_ALL_SQL_1 = "SELECT * FROM NCC where Xoa = 1";
+    final String SELECT_By_Id_SQL = "SELECT * FROM NCC WHERE MaNCC = ?";
+    final String SELECT_ALL_SQL_2 = "SELECT * FROM NCC where Xoa = 0";
+    final String HIDE_SQL = "Update NCC set xoa=0 where MaNCC = ?";
+    final String RESTORE_SQL = "Update NCC set xoa=1 where MaNCC = ?";
+
     @Override
     public void insert(NhaCungCap entity) {
         JdbcHelper.executeUpdate(INSERT_SQL, entity.getMaNCC(), entity.getTenNCC(), entity.isXoa());
@@ -43,10 +46,21 @@ public class NhaCungCapDAO extends MainDAO<NhaCungCap, String>{
         return selectBySql(SELECT_ALL_SQL_1);
     }
 
+    public List<NhaCungCap> selectAn() {
+        return selectBySql(SELECT_ALL_SQL_2);
+    }
+    
+    public void hide(String id){
+        JdbcHelper.executeUpdate(HIDE_SQL, id);
+    }
+    public void restore(String id){
+        JdbcHelper.executeUpdate(RESTORE_SQL, id);
+    }
+    
     @Override
     public NhaCungCap selectById(String id) {
         List<NhaCungCap> list = selectBySql(SELECT_By_Id_SQL, id);
-        if(list.isEmpty()){
+        if (list.isEmpty()) {
             return null;
         }
         return list.get(0);
@@ -57,17 +71,17 @@ public class NhaCungCapDAO extends MainDAO<NhaCungCap, String>{
         List<NhaCungCap> list = new ArrayList<NhaCungCap>();
         try {
             ResultSet rs = JdbcHelper.executeQuery(sql, args);
-            while (rs.next()) {                
-               NhaCungCap entity = new NhaCungCap();
-               entity.setMaNCC(rs.getString("MaNCC"));
-               entity.setTenNCC(rs.getString("TenNCC"));
-               entity.setXoa(rs.getBoolean("Xoa"));
-               list.add(entity);  
+            while (rs.next()) {
+                NhaCungCap entity = new NhaCungCap();
+                entity.setMaNCC(rs.getString("MaNCC"));
+                entity.setTenNCC(rs.getString("TenNCC"));
+                entity.setXoa(rs.getBoolean("Xoa"));
+                list.add(entity);
             }
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
         return list;
     }
-    
+
 }

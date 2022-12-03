@@ -56,7 +56,7 @@ public class ChaoJDialog extends javax.swing.JDialog {
 
         prbChao.setBackground(new java.awt.Color(255, 255, 255));
         prbChao.setStringPainted(true);
-        getContentPane().add(prbChao, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 442, 952, -1));
+        getContentPane().add(prbChao, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 442, 820, -1));
 
         jPanel1.setBackground(new java.awt.Color(21, 23, 24));
 
@@ -67,19 +67,19 @@ public class ChaoJDialog extends javax.swing.JDialog {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(307, Short.MAX_VALUE)
+                .addGap(224, 224, 224)
                 .addComponent(lblAnh)
-                .addGap(278, 278, 278))
+                .addContainerGap(221, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(77, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(50, 50, 50)
                 .addComponent(lblAnh)
-                .addGap(82, 82, 82))
+                .addContainerGap(109, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 960, 440));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 820, 440));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

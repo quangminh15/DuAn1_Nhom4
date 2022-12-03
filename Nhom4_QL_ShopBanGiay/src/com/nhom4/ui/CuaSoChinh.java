@@ -534,6 +534,11 @@ public class CuaSoChinh extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(0, 208, 180));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/writing.png"))); // NOI18N
         jLabel1.setText("LICH SU XOA");
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlSettingLayout = new javax.swing.GroupLayout(pnlSetting);
         pnlSetting.setLayout(pnlSettingLayout);
@@ -981,6 +986,11 @@ public class CuaSoChinh extends javax.swing.JFrame {
             return;
         }
     }//GEN-LAST:event_lblDangXuatMouseClicked
+
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        LichSuXoa ls = new LichSuXoa();
+        ls.setVisible(true);
+    }//GEN-LAST:event_jLabel1MouseClicked
 //
 
     /**
