@@ -413,6 +413,7 @@ public class KhuyenMai1 extends javax.swing.JPanel {
         btnLuu.setEnabled(false);
         this.updateStatus();
         txtNgayBD.setLocale(Locale.forLanguageTag("vi"));
+        txtNgayKT.setLocale(Locale.forLanguageTag("vi"));
     }
 
     public void fillTable() {
@@ -430,6 +431,7 @@ public class KhuyenMai1 extends javax.swing.JPanel {
                     nv.getGhiChu()
 
                 };
+                listKM.removeAll(listKM);
                 listKM.add(nv);
                 model.addRow(data);
             }
