@@ -737,8 +737,6 @@ public class CuaSoChinh extends javax.swing.JFrame {
         pnlKH.setVisible(false);
         pnlNV.setVisible(false);
         pnlKM.setVisible(false);
-        NhanVien1 nv = new NhanVien1();
-        changePanel(nv);
 
         pnlNV.setVisible(true);
     }//GEN-LAST:event_lblNhanVienMouseClicked

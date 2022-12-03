@@ -444,20 +444,7 @@ public class TaiKhoanCaNhan extends javax.swing.JPanel {
         } catch (NumberFormatException e1) {
             checkSDT = false;
         }
-        for (int i = 0; i < list.size(); i++) {
-            if (list.get(i).getMaNV().equalsIgnoreCase(txtMaNV.getText())) {
-                checkLap = 1;
-            }
-        }
- if (txtMaNV.getText().equals("") || txtMaNV.getText().length() < 5 || txtMaNV.getText().length() > 6) {
-            MsgBox.alert(this, "Vui lòng nhập mã nhân viên từ 5---->6 kí tự");
-            txtMaNV.requestFocus();
-            return false;
-        } else if (them == 1 && checkLap == 1) {
-            MsgBox.alert(this, "Mã nhân viên đã tồn tại. Vui lòng nhập mã mới");
-            checkLap = 0;
-            return false;
-        } else if (txtTenNV.getText().length() == 0) {
+         if (txtTenNV.getText().length() == 0) {
             MsgBox.alert(this, "Tên nhân viên không được bỏ trống!!!");
             txtTenNV.requestFocus();
             return false;
