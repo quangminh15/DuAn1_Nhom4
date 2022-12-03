@@ -634,7 +634,7 @@ public class NhanVien1 extends javax.swing.JPanel {
         String nv = txtmaNhanVien.getText();
         if (MsgBox.confirm(this, "Bạn thực sự muốn xóa nhân viên này")) {
             try {
-                dao.delete(nv);
+                dao.hide(nv);
                 this.fillTable();
                 this.clearForm();
                 MsgBox.alert(this, "Xóa thành công");
@@ -687,6 +687,7 @@ public class NhanVien1 extends javax.swing.JPanel {
         nv.setEmail(txtEmail.getText());
         nv.setHinh(lblHinh.getToolTipText());
         nv.setDiaChi(txtdiaChi.getText());
+        nv.setXoa(true);
 
         return nv;
     }

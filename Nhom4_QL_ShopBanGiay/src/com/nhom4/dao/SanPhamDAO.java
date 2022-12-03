@@ -20,17 +20,20 @@ public class SanPhamDAO extends MainDAO<SanPham, String>  {
     final String INSERT_SQL = "INSERT INTO SanPham(MaSP, TenSP, SoLuong, MaNCC, Anh, GhiChu) VALUES (?,?,?,?,?,?)";
     final String UPDATE_SQL = "UPDATE SanPham SET TenSP = ?, SoLuong= ?, MaNCC =?, Anh =?, GhiChu =? WHERE MaSP=?";
     final String DELETE_SQL = "DELETE FROM SanPham WHERE MaSP = ?";
-    final String SELECT_ALL_SQL = "SELECT * FROM SanPham";
     final String SELECT_By_Id_SQL = "SELECT * FROM SanPham WHERE MaSP = ?";
+    final String SELECT_ALL_SQL_1 = "SELECT * FROM SanPham where Xoa = 1";
+    final String SELECT_ALL_SQL_2 = "SELECT * FROM SanPham where Xoa = 0";
+    final String HIDE_SQL = "Update SanPham set xoa=0 where MaSP = ?";
+    final String RESTORE_SQL = "Update SanPham set xoa=1 where MaSP = ?";
 
     @Override
     public void insert(SanPham entity) {
-        JdbcHelper.executeUpdate(INSERT_SQL, entity.getMaSP(), entity.getTenSP(),entity.getSoLuong(), entity.getMaNCC(), entity.getAnh(), entity.getGhiChu());
+        JdbcHelper.executeUpdate(INSERT_SQL, entity.getMaSP(), entity.getTenSP(),entity.getSoLuong(), entity.getMaNCC(), entity.getAnh(), entity.getGhiChu(),entity.isXoa());
     }
 
     @Override
     public void update(SanPham entity) {
-        JdbcHelper.executeUpdate(UPDATE_SQL, entity.getTenSP(),entity.getSoLuong(), entity.getMaNCC(), entity.getAnh(), entity.getGhiChu(), entity.getMaSP());
+        JdbcHelper.executeUpdate(UPDATE_SQL, entity.getTenSP(),entity.getSoLuong(), entity.getMaNCC(), entity.getAnh(), entity.getGhiChu(), entity.isXoa(), entity.getMaSP());
     }
 
     @Override
@@ -40,7 +43,7 @@ public class SanPhamDAO extends MainDAO<SanPham, String>  {
 
     @Override
     public List<SanPham> selectAll() {
-        return selectBySql(SELECT_ALL_SQL);
+        return selectBySql(SELECT_ALL_SQL_1);
     }
 
     @Override
@@ -50,6 +53,17 @@ public class SanPhamDAO extends MainDAO<SanPham, String>  {
             return null;
         }
         return list.get(0);
+    }
+    
+    public List<SanPham> selectAn() {
+        return selectBySql(SELECT_ALL_SQL_2);
+    }
+     
+     public void hide(String id){
+        JdbcHelper.executeUpdate(HIDE_SQL, id);
+    }
+    public void restore(String id){
+        JdbcHelper.executeUpdate(RESTORE_SQL, id);
     }
     
     public List<SanPham> selectByKeyword(String key) {

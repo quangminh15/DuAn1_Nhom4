@@ -333,6 +333,7 @@ public class HoaDon1 extends javax.swing.JPanel {
         hd.setMaKM(String.valueOf(cboMaKM.getSelectedItem().toString()));
         hd.setThanhTien(0);
         hd.setTrangThai(false);
+        hd.setXoa(true);
 
         return hd;
     }
@@ -415,8 +416,9 @@ public class HoaDon1 extends javax.swing.JPanel {
         String mahd = txtMaHD.getText();
         if (MsgBox.confirm(this, "Bạn thực sự muốn Hoa Don này")) {
             try {
-                hdctDAO.deletebByMaHD(mahd);
-                hdDAO.delete(mahd);
+//                hdctDAO.deletebByMaHD(mahd);
+//                hdDAO.delete(mahd);
+                hdDAO.hide(mahd);
                 MsgBox.alert(this, "Xóa thành công");
                 if (listHDCT.isEmpty()) {
                     hdDAO.updateTrangThai2(mahd);
@@ -641,8 +643,6 @@ public class HoaDon1 extends javax.swing.JPanel {
 
     }
 
-   
-
     public void find2() {
         DefaultTableModel model = (DefaultTableModel) tbledark1.getModel();
         model.setRowCount(0);
@@ -673,8 +673,8 @@ public class HoaDon1 extends javax.swing.JPanel {
             MsgBox.alert(this, e.getMessage());
         }
     }
-    
-    public void xuatHoaDon(){
+
+    public void xuatHoaDon() {
         try {
             getTen();
             XSSFWorkbook wordkbook = new XSSFWorkbook();
@@ -1304,7 +1304,7 @@ public class HoaDon1 extends javax.swing.JPanel {
         } else {
             lblTimKiem.setVisible(false);
         }
-        
+
     }//GEN-LAST:event_txtTimKiemKeyTyped
 
     private void jLabel14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseClicked

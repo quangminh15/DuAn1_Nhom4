@@ -133,6 +133,7 @@ public class SanPham1 extends javax.swing.JPanel {
         sp.setMaNCC(cboMaNCC.getSelectedItem().toString());
         sp.setGhiChu(txtGhiChu.getText());
         sp.setAnh(lblAnh.getToolTipText());
+        sp.setXoa(true);
         return sp;
     }
 
@@ -190,7 +191,7 @@ public class SanPham1 extends javax.swing.JPanel {
         if (MsgBox.confirm(this, "Bạn thực sự muốn xóa sản phẩm này")) {
             String msp = txtMaSP.getText();
             try {
-                spDao.delete(msp);
+                spDao.hide(msp);
                 this.fillTable();
                 this.clearForm();
                 MsgBox.alert(this, "Xóa thành công");

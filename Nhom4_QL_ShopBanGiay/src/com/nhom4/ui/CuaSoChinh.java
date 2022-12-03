@@ -502,7 +502,7 @@ public class CuaSoChinh extends javax.swing.JFrame {
         lblDangNhap.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblDangNhap.setForeground(new java.awt.Color(42, 9, 120));
         lblDangNhap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/login.png"))); // NOI18N
-        lblDangNhap.setText("DANG NHAP");
+        lblDangNhap.setText("ĐĂNG NHẬP");
         lblDangNhap.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblDangNhapMouseClicked(evt);
@@ -512,7 +512,7 @@ public class CuaSoChinh extends javax.swing.JFrame {
         lblDangXuat.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblDangXuat.setForeground(new java.awt.Color(232, 141, 54));
         lblDangXuat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/logout.png"))); // NOI18N
-        lblDangXuat.setText("DANG XUAT ");
+        lblDangXuat.setText("ĐĂNG XUẤT");
         lblDangXuat.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblDangXuatMouseClicked(evt);
@@ -523,7 +523,7 @@ public class CuaSoChinh extends javax.swing.JFrame {
         lblDoiMatKhau.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblDoiMatKhau.setForeground(new java.awt.Color(53, 158, 182));
         lblDoiMatKhau.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/reset-password.png"))); // NOI18N
-        lblDoiMatKhau.setText("DOI MAT KHAU");
+        lblDoiMatKhau.setText("ĐỔI MẬT KHẨU");
         lblDoiMatKhau.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblDoiMatKhauMouseClicked(evt);
@@ -533,7 +533,7 @@ public class CuaSoChinh extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 208, 180));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/writing.png"))); // NOI18N
-        jLabel1.setText("LICH SU XOA");
+        jLabel1.setText("LỊCH SỬ XÓA");
         jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel1MouseClicked(evt);

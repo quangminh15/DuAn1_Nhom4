@@ -16,6 +16,7 @@ public class NhanVien {
     private String email;
     private String hinh;
     private String diaChi;
+    private boolean xoa;
     
     
     @Override
@@ -26,7 +27,7 @@ public class NhanVien {
     public NhanVien() {
     }
 
-    public NhanVien(String maNV, String tenNV, boolean gioiTinh, String SDT, String email, String hinh, String diaChi) {
+    public NhanVien(String maNV, String tenNV, boolean gioiTinh, String SDT, String email, String hinh, String diaChi, boolean xoa) {
         this.maNV = maNV;
         this.tenNV = tenNV;
         this.gioiTinh = gioiTinh;
@@ -34,6 +35,7 @@ public class NhanVien {
         this.email = email;
         this.hinh = hinh;
         this.diaChi = diaChi;
+        this.xoa = xoa;
     }
 
     public String getMaNV() {
@@ -90,6 +92,14 @@ public class NhanVien {
 
     public void setDiaChi(String diaChi) {
         this.diaChi = diaChi;
+    }
+
+    public boolean isXoa() {
+        return xoa;
+    }
+
+    public void setXoa(boolean xoa) {
+        this.xoa = xoa;
     }
 
    

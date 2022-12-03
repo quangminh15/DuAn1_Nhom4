@@ -483,7 +483,7 @@ public class KhuyenMai1 extends javax.swing.JPanel {
         String km = txtMaKM.getText();
         if (MsgBox.confirm(this, "Bạn thực sự muốn xóa chương trình khuyến mãi này")) {
             try {
-                dao.delete(km);
+                dao.hide(km);
                 this.fillTable();
                 this.clearForm();
                 MsgBox.alert(this, "Xóa thành công");
@@ -548,6 +548,7 @@ public class KhuyenMai1 extends javax.swing.JPanel {
         km.setNgayBD(txtNgayBD.getDate());
         km.setNgayKT(txtNgayKT.getDate());
         km.setGhiChu(txtGhiChu.getText());
+        km.setXoa(true);
         return km;
     }
 

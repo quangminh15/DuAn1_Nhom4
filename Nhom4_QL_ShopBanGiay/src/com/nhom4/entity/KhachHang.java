@@ -13,6 +13,7 @@ public class KhachHang {
     private String tenKH;
     private String SDT;
     private String diaChi;
+    private boolean xoa;
     
     @Override
         public String toString() {
@@ -22,11 +23,12 @@ public class KhachHang {
     public KhachHang() {
     }
 
-    public KhachHang(String maKH, String tenKH, String SDT, String diaChi) {
+    public KhachHang(String maKH, String tenKH, String SDT, String diaChi, boolean xoa) {
         this.maKH = maKH;
         this.tenKH = tenKH;
         this.SDT = SDT;
         this.diaChi = diaChi;
+        this.xoa = xoa;
     }
 
     public String getMaKH() {
@@ -60,6 +62,16 @@ public class KhachHang {
     public void setDiaChi(String diaChi) {
         this.diaChi = diaChi;
     }
+
+    public boolean isXoa() {
+        return xoa;
+    }
+
+    public void setXoa(boolean xoa) {
+        this.xoa = xoa;
+    }
+
+    
         
     
 }

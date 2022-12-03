@@ -527,7 +527,7 @@ public class KhachHang1 extends javax.swing.JPanel {
             String kh = txtmaKhachHang.getText();
             if (MsgBox.confirm(this, "Bạn thực sự muốn xóa khách hàng này")) {
                 try {
-                    dao.delete(kh);
+                    dao.hide(kh);
                     this.fillTable();
                     this.clearForm();
                     MsgBox.alert(this, "Xóa thành công");
@@ -557,6 +557,7 @@ public class KhachHang1 extends javax.swing.JPanel {
         kh.setTenKH(txttenKhachHang.getText());
         kh.setSDT(txtsoDienThoai.getText());
         kh.setDiaChi(txtdiaChi.getText());
+        kh.setXoa(true);
         return kh;
     }
     

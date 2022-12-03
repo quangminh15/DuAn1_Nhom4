@@ -441,6 +441,7 @@ public class NhaCungCap1 extends javax.swing.JPanel {
         NhaCungCap ncc = new NhaCungCap();
         ncc.setMaNCC(txtMaNCC.getText());
         ncc.setTenNCC(txtTenNCC.getText());
+        ncc.setXoa(true);
         return ncc;
     }
 
