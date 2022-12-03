@@ -13,6 +13,7 @@ package com.nhom4.entity;
 public class NhaCungCap {
         private String maNCC;
         private String tenNCC;
+        private boolean xoa;
         
         @Override
         public String toString() {
@@ -22,9 +23,10 @@ public class NhaCungCap {
     public NhaCungCap() {
     }
 
-    public NhaCungCap(String maNCC, String tenNCC) {
+    public NhaCungCap(String maNCC, String tenNCC, boolean xoa) {
         this.maNCC = maNCC;
         this.tenNCC = tenNCC;
+        this.xoa = xoa;
     }
 
     public String getMaNCC() {
@@ -42,6 +44,16 @@ public class NhaCungCap {
     public void setTenNCC(String tenNCC) {
         this.tenNCC = tenNCC;
     }
+
+    public boolean isXoa() {
+        return xoa;
+    }
+
+    public void setXoa(boolean xoa) {
+        this.xoa = xoa;
+    }
+
+    
     
     
 }

@@ -750,8 +750,8 @@ public class CuaSoChinh extends javax.swing.JFrame {
         pnlKH.setVisible(false);
         pnlNV.setVisible(false);
         pnlKM.setVisible(false);
-        NhanVien1 nv = new NhanVien1();
-        changePanel(nv);
+//        NhanVien1 nv = new NhanVien1();
+//        changePanel(nv);
 
         pnlNV.setVisible(true);
     }//GEN-LAST:event_lblNhanVienMouseClicked
@@ -1025,7 +1025,7 @@ public class CuaSoChinh extends javax.swing.JFrame {
         pnlSetting.setEnabled(false);
         this.setLocationRelativeTo(null);
         this.setIconImage(XImage.getAppIcon());
-//        new ChaoJDialog(this, true).setVisible(true);
+        new ChaoJDialog(this, true).setVisible(true);
         new DangNhap(this, true).setVisible(true);
 
         new Timer(1000, new ActionListener() {
@@ -1074,7 +1074,8 @@ public class CuaSoChinh extends javax.swing.JFrame {
     public void opennhanvien() {
         if (Auth.islogin()) {
             if (!Auth.isManager()) {
-                MsgBox.alert(this, "Ban khong co quyen xem nhan vien");
+                MsgBox.alert(this, "Bạn không có quyền xem nhân viên");
+                return;
             } else {
                 NhanVien1 nv = new NhanVien1();
                 changePanel(nv);

@@ -9,6 +9,7 @@ import com.nhom4.entity.NhanVien;
 import com.nhom4.entity.TaiKhoan;
 import com.nhom4.utils.Auth;
 import com.nhom4.utils.MsgBox;
+import com.nhom4.utils.XImage;
 import java.awt.Color;
 import java.awt.GradientPaint;
 import java.awt.Graphics;
@@ -372,11 +373,12 @@ public class DangNhap extends javax.swing.JDialog {
 void dangNhap() {
         String manv = txtMaNV.getText();
         String matkhau = new String(txtMatKhau.getPassword());
+        String matkhau2 = txtMatKhau2.getText();
         TaiKhoan nv = tkDAO.selectById(manv);
         if (nv == null) {
             MsgBox.alert(this, "Tên đăng nhập không chính xác");
         } else {
-            if (!nv.getPass().equals(matkhau)) {
+            if (!nv.getPass().equals(matkhau) && !nv.getPass().equals(matkhau2)) {
                 MsgBox.alert(this, "Mật khẩu không chính xác");
             } else {
                 //new loading().setVisible(true);
@@ -385,6 +387,7 @@ void dangNhap() {
                 MsgBox.alert(this, "Đăng nhập thành công!");
                 
                 this.dispose();
+                
             }
         }
     }

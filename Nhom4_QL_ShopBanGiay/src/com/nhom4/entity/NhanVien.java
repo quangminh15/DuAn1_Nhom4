@@ -17,6 +17,7 @@ public class NhanVien {
     private String hinh;
     private String diaChi;
     
+    
     @Override
         public String toString() {
             return this.tenNV;
