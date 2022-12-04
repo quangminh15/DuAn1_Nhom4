@@ -48,7 +48,7 @@ public class HoaDon1 extends javax.swing.JPanel {
         cboMaNV.setVisible(false);
         int i = 0;
         //setForm(i);
-        tbledark1.fixTable(jScrollPane1);
+        tblhoadon.fixTable(jScrollPane1);
     }
 
     HoaDonDAO hdDAO = new HoaDonDAO();
@@ -130,7 +130,7 @@ public class HoaDon1 extends javax.swing.JPanel {
     }
 
     private void initTable() {
-        DefaultTableModel model = (DefaultTableModel) tbledark1.getModel();
+        DefaultTableModel model = (DefaultTableModel) tblhoadon.getModel();
         String[] cols = new String[]{"MaHD", "Ma NV", "Ma KH", "Ngay Lap", "Ma KM", "Thanh Tien", "Trang Thai"};
         model.setColumnIdentifiers(cols);
     }
@@ -166,7 +166,7 @@ public class HoaDon1 extends javax.swing.JPanel {
     }
 
     public void fillTable() {
-        DefaultTableModel model = (DefaultTableModel) tbledark1.getModel();
+        DefaultTableModel model = (DefaultTableModel) tblhoadon.getModel();
         model.setRowCount(0);
         try {
             List<HoaDon> list = hdDAO.selectAll(); // Đọc dữ liệu từ CSDL
@@ -256,14 +256,14 @@ public class HoaDon1 extends javax.swing.JPanel {
     }
 
     private void resetFormHD() {
-        int i = tbledark1.getSelectedRow();
+        int i = tblhoadon.getSelectedRow();
         txtMaHD.setText("");
         lblThanhTien.setText("");
         cboMaKH.setSelectedIndex(0);
         cboMaKM.setSelectedIndex(0);
         cboMaNV.setSelectedIndex(0);
         if (i >= 0) {
-            tbledark1.removeRowSelectionInterval(i, i);
+            tblhoadon.removeRowSelectionInterval(i, i);
         }
     }
 
@@ -288,7 +288,7 @@ public class HoaDon1 extends javax.swing.JPanel {
     }
 
     public void setStatusHDCT(boolean b) {
-        int i = tbledark1.getSelectedRow();
+        int i = tblhoadon.getSelectedRow();
 
         if (i < 0 || b == false) {
             lblThongBao.setText("CHUA CHON HOA DON");
@@ -353,12 +353,12 @@ public class HoaDon1 extends javax.swing.JPanel {
     }
 
     public void setForm(int index) {
-        txtMaHD.setText(tbledark1.getValueAt(index, 0).toString());
-        lblMaHD.setText(tbledark1.getValueAt(index, 0).toString());
-        lblMaNV.setText(tbledark1.getValueAt(index, 1).toString());
-        lblMaKH.setText(tbledark1.getValueAt(index, 2).toString());
-        lblMaKM.setText(tbledark1.getValueAt(index, 4).toString());
-        lblThanhTien.setText(tbledark1.getValueAt(index, 5).toString());
+        txtMaHD.setText(tblhoadon.getValueAt(index, 0).toString());
+        lblMaHD.setText(tblhoadon.getValueAt(index, 0).toString());
+        lblMaNV.setText(tblhoadon.getValueAt(index, 1).toString());
+        lblMaKH.setText(tblhoadon.getValueAt(index, 2).toString());
+        lblMaKM.setText(tblhoadon.getValueAt(index, 4).toString());
+        lblThanhTien.setText(tblhoadon.getValueAt(index, 5).toString());
     }
 
     public void setFormHDCT_Click(int index) {
@@ -490,10 +490,10 @@ public class HoaDon1 extends javax.swing.JPanel {
 
         }
         if (buttonUpdate == true) {
-            int index = tbledark1.getSelectedRow();
+            int index = tblhoadon.getSelectedRow();
             update();
             setForm(index);
-            tbledark1.setRowSelectionInterval(index, index);
+            tblhoadon.setRowSelectionInterval(index, index);
 
         }
     }
@@ -611,7 +611,7 @@ public class HoaDon1 extends javax.swing.JPanel {
     }
 
     public void find() {
-        DefaultTableModel model = (DefaultTableModel) tbledark1.getModel();
+        DefaultTableModel model = (DefaultTableModel) tblhoadon.getModel();
         model.setRowCount(0);
         try {
             String key = txtTimKiem.getText();
@@ -644,7 +644,7 @@ public class HoaDon1 extends javax.swing.JPanel {
     }
 
     public void find2() {
-        DefaultTableModel model = (DefaultTableModel) tbledark1.getModel();
+        DefaultTableModel model = (DefaultTableModel) tblhoadon.getModel();
         model.setRowCount(0);
         try {
             String key = txtTimKiem.getText();
@@ -819,7 +819,7 @@ public class HoaDon1 extends javax.swing.JPanel {
         btnUpdate = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tbledark1 = new com.nhom4.ui.tbledark();
+        tblhoadon = new com.nhom4.ui.Table();
         lblTimKiem = new javax.swing.JLabel();
         txtTimKiem = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
@@ -955,7 +955,7 @@ public class HoaDon1 extends javax.swing.JPanel {
         });
         jPanel1.add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 470, 110, 30));
 
-        tbledark1.setModel(new javax.swing.table.DefaultTableModel(
+        tblhoadon.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -966,15 +966,15 @@ public class HoaDon1 extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        tbledark1.addMouseListener(new java.awt.event.MouseAdapter() {
+        tblhoadon.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tbledark1MouseClicked(evt);
+                tblhoadonMouseClicked(evt);
             }
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                tbledark1MousePressed(evt);
+                tblhoadonMousePressed(evt);
             }
         });
-        jScrollPane1.setViewportView(tbledark1);
+        jScrollPane1.setViewportView(tblhoadon);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 740, 430));
 
@@ -1196,16 +1196,16 @@ public class HoaDon1 extends javax.swing.JPanel {
     }//GEN-LAST:event_btnNewActionPerformed
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
-        int index = tbledark1.getSelectedRow();
+        int index = tblhoadon.getSelectedRow();
         if (index < 0) {
             MsgBox.alert(this, "Chua Chon Hoa Don");
         } else {
             buttonSave = true;
             buttonUpdate = true;
             statusBtn(buttonSave);
-            cboMaNV.setSelectedItem(tbledark1.getValueAt(index, 1).toString());
-            cboMaKH.setSelectedItem(tbledark1.getValueAt(index, 2).toString());
-            cboMaKM.setSelectedItem(tbledark1.getValueAt(index, 4).toString());
+            cboMaNV.setSelectedItem(tblhoadon.getValueAt(index, 1).toString());
+            cboMaKH.setSelectedItem(tblhoadon.getValueAt(index, 2).toString());
+            cboMaKM.setSelectedItem(tblhoadon.getValueAt(index, 4).toString());
 
             setStatus(true);
         }
@@ -1274,20 +1274,20 @@ public class HoaDon1 extends javax.swing.JPanel {
             deleteHDCT();
     }//GEN-LAST:event_btnDeleteHDCTActionPerformed
 
-    private void tbledark1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbledark1MouseClicked
-        int i = tbledark1.getSelectedRow();
+    private void tblhoadonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblhoadonMouseClicked
+        int i = tblhoadon.getSelectedRow();
         setForm(i);
         fillCboMaCT();
         setStatusHDCT(true);
         fillTableHDCT();
-    }//GEN-LAST:event_tbledark1MouseClicked
+    }//GEN-LAST:event_tblhoadonMouseClicked
 
-    private void tbledark1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbledark1MousePressed
+    private void tblhoadonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblhoadonMousePressed
         if (evt.getClickCount() > 1) {
             jTabbedPane1.setSelectedComponent(jPanel2);
             fillTableHDCT();
         }
-    }//GEN-LAST:event_tbledark1MousePressed
+    }//GEN-LAST:event_tblhoadonMousePressed
 
     private void txtTimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTimKiemActionPerformed
         // TODO add your handling code here:
@@ -1361,7 +1361,7 @@ public class HoaDon1 extends javax.swing.JPanel {
     private javax.swing.JLabel lblThongBao;
     private javax.swing.JLabel lblTimKiem;
     private javax.swing.JTable tblHDCTa;
-    private com.nhom4.ui.tbledark tbledark1;
+    private com.nhom4.ui.Table tblhoadon;
     private javax.swing.JTextField txtDonGia;
     private javax.swing.JTextField txtMaHD;
     private javax.swing.JTextField txtThanhTien;

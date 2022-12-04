@@ -19,9 +19,9 @@ import javax.swing.table.DefaultTableCellRenderer;
  *
  * @author Hai
  */
-public class tbledark extends JTable {
+public class Table extends JTable {
     
-    public tbledark() {
+    public Table() {
         getTableHeader().setDefaultRenderer(new TableDarkHeader());
         getTableHeader().setPreferredSize(new Dimension(0, 40));
         setDefaultRenderer(Object.class, new TableDarkCelll());
@@ -58,19 +58,23 @@ public class tbledark extends JTable {
             if (isCellSelected(row, column)) {
                 if (row % 2 == 0) {
                     com.setBackground(new Color(33, 103, 153));
+                    com.setForeground(new Color(245, 245, 245));
                 } else {
                     com.setBackground(new Color(29, 86, 127));
+                    com.setForeground(new Color(245, 245, 245));
                 }
             } else {
                 if (row % 2 == 0) {
-                    com.setBackground(new Color(50, 50, 50));
+                    com.setBackground(new Color(255, 255, 255));
+                    com.setForeground(new Color(0, 0, 0));
                 } else {
-                    com.setBackground(new Color(34, 34, 34));
+                    com.setBackground(new Color(234, 234, 234));
+                    com.setForeground(new Color(0, 0, 0));
                 }
             }
             setBorder(new EmptyBorder(0, 5, 0, 5));
-            com.setForeground(new Color(219, 216, 227));
-            com.setFont(com.getFont().deriveFont(Font.BOLD, 12));
+            
+            com.setFont(com.getFont().deriveFont(Font.BOLD, 15));
             
             return com;
         }
