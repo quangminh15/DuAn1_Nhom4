@@ -27,7 +27,7 @@ public class DoiMatKhau extends javax.swing.JDialog {
         initComponents();
         init();
     }
-    
+
     class jPanelGradient extends JPanel {
 
         protected void paintComponent(Graphics g) {
@@ -301,20 +301,25 @@ public class DoiMatKhau extends javax.swing.JDialog {
     private void init() {
         this.setLocationRelativeTo(null);
     }
-    
+
     TaiKhoanDAO tkDAO = new TaiKhoanDAO();
-    
-    private void doiMatKhau(){
+
+    private void doiMatKhau() {
+        String patternPass = "^[a-zA-Z0-9]{6,15}$";
         String manv = txtMaNV.getText();
         String matKhau = new String(txtMatKhau.getPassword());
         String matKhau1 = new String(txtMatKhau1.getPassword());
         String matKhau2 = new String(txtMatKhau2.getPassword());
-        
-        if(!manv.equalsIgnoreCase(Auth.user.getUsername())){
+
+        if (txtMaNV.getText().equals("")) {
+            MsgBox.alert(this, "Không được để trống tên đăng nhập");
+        } else if (!manv.equalsIgnoreCase(Auth.user.getUsername())) {
             MsgBox.alert(this, "Tên đăng nhập chưa chính xác");
-        } else if(!matKhau.equalsIgnoreCase(Auth.user.getPass())){
+        } else if (!matKhau.equalsIgnoreCase(Auth.user.getPass())) {
             MsgBox.alert(this, "Mật khẩu chưa chính xác");
-        } else if(!matKhau2.equalsIgnoreCase(matKhau1)){
+        }else if(!matKhau1.matches(patternPass)|| matKhau1.length()<6 || matKhau1.length() > 15 ){
+            MsgBox.alert(this, "Mật khẩu không chứa kí tự đặc biệt (@, #, %,..) và phải từ 6 đến 15 kí tự");
+        } else if (!matKhau2.equalsIgnoreCase(matKhau1)) {
             MsgBox.alert(this, "Xác nhận mật khẩu sai");
         } else {
             Auth.user.setPass(matKhau1);
@@ -322,8 +327,8 @@ public class DoiMatKhau extends javax.swing.JDialog {
             MsgBox.alert(this, "Đổi mật khẩu thành công");
         }
     }
-    
-    private void huyBo(){
+
+    private void huyBo() {
         this.dispose();
     }
 

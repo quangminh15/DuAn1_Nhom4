@@ -94,7 +94,7 @@ public class CuaSoChinh extends javax.swing.JFrame {
         lblDangNhap = new javax.swing.JLabel();
         lblDangXuat = new javax.swing.JLabel();
         lblDoiMatKhau = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        lblLichSuXoa = new javax.swing.JLabel();
         pnlCardPane = new javax.swing.JPanel();
         pnlHome = new javax.swing.JPanel();
         lblBanner1 = new javax.swing.JLabel();
@@ -530,13 +530,13 @@ public class CuaSoChinh extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 208, 180));
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/writing.png"))); // NOI18N
-        jLabel1.setText("LỊCH SỬ XÓA");
-        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+        lblLichSuXoa.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblLichSuXoa.setForeground(new java.awt.Color(0, 208, 180));
+        lblLichSuXoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/writing.png"))); // NOI18N
+        lblLichSuXoa.setText("LỊCH SỬ XÓA");
+        lblLichSuXoa.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel1MouseClicked(evt);
+                lblLichSuXoaMouseClicked(evt);
             }
         });
 
@@ -551,14 +551,14 @@ public class CuaSoChinh extends javax.swing.JFrame {
                     .addComponent(lblDoiMatKhau, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblDangNhap, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(pnlSettingLayout.createSequentialGroup()
-                        .addComponent(jLabel1)
+                        .addComponent(lblLichSuXoa)
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         pnlSettingLayout.setVerticalGroup(
             pnlSettingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlSettingLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addComponent(lblLichSuXoa)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblDangNhap, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -837,8 +837,7 @@ public class CuaSoChinh extends javax.swing.JFrame {
     }//GEN-LAST:event_lblExitMouseExited
 
     private void lblDoiMatKhauMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDoiMatKhauMouseClicked
-        DoiMatKhau dmk = new DoiMatKhau(new javax.swing.JFrame(), true);
-        dmk.setVisible(true);
+        openDMK();
         //this.dispose();
     }//GEN-LAST:event_lblDoiMatKhauMouseClicked
 
@@ -976,21 +975,12 @@ public class CuaSoChinh extends javax.swing.JFrame {
         lblTaiKhoan.setIcon(new ImageIcon("src\\com\\nhom4\\icon\\account2.png"));    }//GEN-LAST:event_lblTaiKhoanMouseReleased
 
     private void lblDangXuatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDangXuatMouseClicked
-        boolean thoat = MsgBox.confirm(this, "Bạn có thực sự muốn đăng xuất không?");
-        if (thoat == true) {
-            Auth.clear();
-            DangNhap dialog = new DangNhap(new javax.swing.JFrame(), true);
-            dialog.setVisible(true);
-            this.dispose();
-        } else if (thoat == false) {
-            return;
-        }
+        openDangXuat();
     }//GEN-LAST:event_lblDangXuatMouseClicked
 
-    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
-        LichSuXoa ls = new LichSuXoa();
-        ls.setVisible(true);
-    }//GEN-LAST:event_jLabel1MouseClicked
+    private void lblLichSuXoaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLichSuXoaMouseClicked
+        openLichSuXoa();
+    }//GEN-LAST:event_lblLichSuXoaMouseClicked
 //
 
     /**
@@ -1149,6 +1139,40 @@ public class CuaSoChinh extends javax.swing.JFrame {
         }
     }
 
+    public void openDMK() {
+        if (Auth.islogin()) {
+            DoiMatKhau dmk = new DoiMatKhau(new javax.swing.JFrame(), true);
+            dmk.setVisible(true);
+        } else {
+            MsgBox.alert(this, "Vui lòng đăng nhập");
+        }
+    }
+
+    public void openLichSuXoa() {
+        if (Auth.islogin()) {
+            LichSuXoa ls = new LichSuXoa();
+            ls.setVisible(true);
+        } else {
+            MsgBox.alert(this, "Vui lòng đăng nhập");
+        }
+    }
+    
+    public void openDangXuat() {
+        if (Auth.islogin()) {
+            boolean thoat = MsgBox.confirm(this, "Bạn có thực sự muốn đăng xuất không?");
+        if (thoat == true) {
+            Auth.clear();
+            DangNhap dialog = new DangNhap(new javax.swing.JFrame(), true);
+            dialog.setVisible(true);
+            this.dispose();
+        } else if (thoat == false) {
+            return;
+        }
+        } else {
+            MsgBox.alert(this, "Vui lòng đăng nhập");
+        }
+    }
+
     public void getFormNV(NhanVien nv) {
         try {
             lblTen.setText(nv.getTenNV());
@@ -1199,7 +1223,6 @@ public class CuaSoChinh extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -1218,6 +1241,7 @@ public class CuaSoChinh extends javax.swing.JFrame {
     private javax.swing.JLabel lblHD;
     private javax.swing.JLabel lblKH;
     private javax.swing.JLabel lblKM;
+    private javax.swing.JLabel lblLichSuXoa;
     private javax.swing.JLabel lblNCC;
     private javax.swing.JLabel lblNhanVien;
     private javax.swing.JLabel lblSP;
