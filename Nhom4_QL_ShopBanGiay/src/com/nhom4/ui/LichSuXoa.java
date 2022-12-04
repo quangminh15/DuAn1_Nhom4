@@ -3,6 +3,7 @@
  */
 package com.nhom4.ui;
 
+import com.nhom4.dao.ChiTietSanPhamDAO;
 import com.nhom4.dao.HoaDonChiTietDAO;
 import com.nhom4.dao.HoaDonDAO;
 import com.nhom4.dao.KhachHangDAO;
@@ -35,6 +36,7 @@ public class LichSuXoa extends javax.swing.JFrame {
     HoaDonDAO hdDAO = new HoaDonDAO();
     HoaDonChiTietDAO hdctDAO = new HoaDonChiTietDAO();
     KhuyenMaiDAO kmDAO = new KhuyenMaiDAO();
+    ChiTietSanPhamDAO ctspDAO = new ChiTietSanPhamDAO();
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -807,6 +809,7 @@ public class LichSuXoa extends javax.swing.JFrame {
         String key = tblSanPham.getValueAt(i, 0).toString();
         if (MsgBox.confirm(this, "Bạn thực sự muốn xóa sản phẩm này")) {
             try {
+                ctspDAO.deletebByMaSP(key);
                 spDAO.delete(key);
                 fillTblSP();
                 MsgBox.alert(this, "Xóa thành công");
