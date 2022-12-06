@@ -63,6 +63,10 @@ public class ChiTietSanPhamDAO extends MainDAO<ChiTietSanPham, String> {
         String sql = "SELECT * FROM ChiTietSP WHERE MaSP like ?";
         return this.selectBySql(sql, "%"+key+"%");
     }
+    public void deletebByMaSP(String id){
+        String DELETE= "DELETE FROM ChiTietSP WHERE MaSP = ?";
+        JdbcHelper.executeUpdate(DELETE, id);
+    }
     
     @Override
     public List<ChiTietSanPham> selectBySql(String sql, Object... args) {
