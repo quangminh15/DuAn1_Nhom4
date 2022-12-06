@@ -31,7 +31,7 @@ public class ButtonCustom extends JButton {
             animationPress.stop();
             currentStyle.changeStyle(style);
             setForeground(style.foreground);
-            setFont(getFont().deriveFont(Font.BOLD, 15));
+            
         }
     }
 
@@ -106,7 +106,7 @@ public class ButtonCustom extends JButton {
         Area area = new Area(new RoundRectangle2D.Double(x, y, width, height, round, round));
         g2.setColor(currentStyle.background);
         g2.fill(area);
-        area.subtract(new Area(new RoundRectangle2D.Double(x, y, width, height - 2, round, round)));
+        area.subtract(new Area(new RoundRectangle2D.Double(x, y, width, height - 6, round, round)));
         g2.setColor(currentStyle.backgroundHover);
         g2.fill(area);
         g2.dispose();
@@ -114,8 +114,8 @@ public class ButtonCustom extends JButton {
     }
 
     public enum ButtonStyle {
-        PRIMARY(new Color(0, 172, 126), new Color(238, 238, 238), new Color(2, 111, 82), new Color(4, 205, 151)),
-        SECONDARY(new Color(34, 163, 159), new Color(255, 255, 255), new Color(81, 92, 108), new Color(230, 239, 255)),
+        PRIMARY(new Color(231, 71, 70), new Color(238, 238, 238), new Color(190, 57, 47), new Color(4, 205, 151)),
+        SECONDARY(new Color(58, 136, 145), new Color(255, 255, 255), new Color(235, 100, 64), new Color(230, 239, 255)),
         DESTRUCTIVE(new Color(255, 138, 48), new Color(238, 238, 238), new Color(198, 86, 0), new Color(255, 161, 90));
 
         private ButtonStyle(Color background, Color foreground, Color backgroundHover, Color backgroundPress) {

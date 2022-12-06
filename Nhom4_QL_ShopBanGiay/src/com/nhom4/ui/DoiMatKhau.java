@@ -64,6 +64,7 @@ public class DoiMatKhau extends javax.swing.JDialog {
         btnDongY = new javax.swing.JButton();
         btnHuyBo = new javax.swing.JButton();
         lblTitle = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -170,6 +171,9 @@ public class DoiMatKhau extends javax.swing.JDialog {
         lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTitle.setText("ĐỔI MẬT KHẨU");
         jPanel1.add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 20, 268, 31));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/Reset password-rafiki.png"))); // NOI18N
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 400, 340));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -336,6 +340,7 @@ public class DoiMatKhau extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDongY;
     private javax.swing.JButton btnHuyBo;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel lblMatKhau;

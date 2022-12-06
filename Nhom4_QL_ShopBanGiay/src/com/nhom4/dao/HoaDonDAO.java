@@ -18,7 +18,7 @@ import java.util.List;
 public class HoaDonDAO extends MainDAO<HoaDon, String> {
 
     final String INSERT_SQL = "INSERT INTO HoaDon (MaHD, MaNV, MaKM, NgayBan, MaKH,ThanhTien,TrangThai,Xoa)VALUES (?,?,?,?,?,?,?,?)";
-    final String UPDATE_SQL = "UPDATE HoaDon SET MaNV =?, MaKM=?, NgayBan =?, MaKH =?, ThanhTien =?, TrangThai =?,Xoa=? WHERE MaHD=?";
+    final String UPDATE_SQL = "UPDATE HoaDon SET MaNV =?, MaKM=?, MaKH =?, ThanhTien =?, TrangThai =?,Xoa=? WHERE MaHD=?";
     final String DELETE_SQL = "DELETE FROM HoaDon WHERE MaHD = ?";
     final String SELECT_By_Id_SQL = "SELECT * FROM HoaDon WHERE MaHD = ?";
     final String SELECT_ALL_SQL_1 = "SELECT * FROM HoaDon where Xoa = 1";
@@ -34,7 +34,7 @@ public class HoaDonDAO extends MainDAO<HoaDon, String> {
 
     @Override
     public void update(HoaDon entity) {
-        JdbcHelper.executeUpdate(UPDATE_SQL, entity.getMaNV(), entity.getMaKM(), entity.getNgayBan(), entity.getMaKH(), entity.getThanhTien(), entity.isTrangThai(), entity.isXoa(), entity.getMaHD());
+        JdbcHelper.executeUpdate(UPDATE_SQL, entity.getMaNV(), entity.getMaKM(), entity.getMaKH(), entity.getThanhTien(), entity.isTrangThai(), entity.isXoa(), entity.getMaHD());
     }
 
     @Override
