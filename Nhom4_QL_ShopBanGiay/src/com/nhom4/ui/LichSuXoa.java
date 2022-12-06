@@ -810,6 +810,7 @@ public class LichSuXoa extends javax.swing.JFrame {
         String key = tblSanPham.getValueAt(i, 0).toString();
         if (MsgBox.confirm(this, "Bạn thực sự muốn xóa sản phẩm này")) {
             try {
+                hdctDAO.deletebByMaHD(key);
                 spDAO.delete(key);
                 fillTblSP();
                 MsgBox.alert(this, "Xóa thành công");
