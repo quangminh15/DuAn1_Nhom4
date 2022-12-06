@@ -35,7 +35,10 @@ public class LichSuXoa extends javax.swing.JFrame {
     HoaDonDAO hdDAO = new HoaDonDAO();
     HoaDonChiTietDAO hdctDAO = new HoaDonChiTietDAO();
     KhuyenMaiDAO kmDAO = new KhuyenMaiDAO();
-
+    
+    public void changePan(int i){
+        jTabbedPane1.setSelectedIndex(i);
+    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
