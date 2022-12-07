@@ -286,7 +286,7 @@ public class NhaCungCap1 extends javax.swing.JPanel {
                 txtTimKiemActionPerformed(evt);
             }
         });
-        add(txtTimKiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 40, 910, 50));
+        add(txtTimKiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 40, 870, 50));
 
         btntimKiem.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
         btntimKiem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/search (4).png"))); // NOI18N
@@ -375,7 +375,6 @@ public class NhaCungCap1 extends javax.swing.JPanel {
         if (evt.getClickCount() == 1) {
             this.row = tblNCC.getSelectedRow();
             this.edit();
-            tblNCC.setSelectionBackground(new Color(0, 156, 222));
         }
     }//GEN-LAST:event_tblNCCMouseClicked
 
@@ -415,7 +414,7 @@ public class NhaCungCap1 extends javax.swing.JPanel {
     }//GEN-LAST:event_txtTimKiemActionPerformed
 
     private void btntimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btntimKiemActionPerformed
-        //this.TimKiem();
+        this.TimKiem();
     }//GEN-LAST:event_btntimKiemActionPerformed
 
 
@@ -664,7 +663,7 @@ public class NhaCungCap1 extends javax.swing.JPanel {
             MsgBox.alert(this, "Không được để trống mã nhà cung cấp");
             txtMaNCC.requestFocus();
             return false;
-        } else if (txtMaNCC.getText().length() > 0 && txtMaNCC.getText().length() < 3) {
+        } else if (txtMaNCC.getText().length() > 7 && txtMaNCC.getText().length() < 5) {
             MsgBox.alert(this, "Mã nhà cung cấp phải nhập ít nhất 3 ký tự");
             txtMaNCC.requestFocus();
             return false;

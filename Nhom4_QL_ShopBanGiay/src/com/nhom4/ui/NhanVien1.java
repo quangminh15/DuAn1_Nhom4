@@ -62,7 +62,6 @@ public class NhanVien1 extends javax.swing.JPanel {
         jPanel2 = new javax.swing.JPanel();
         rdoGioiTinhNu = new javax.swing.JRadioButton();
         rdoGioiTinhNam = new javax.swing.JRadioButton();
-        lblHinh = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -79,6 +78,7 @@ public class NhanVien1 extends javax.swing.JPanel {
         pnlEmail = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         txtdiaChi = new javax.swing.JTextArea();
+        lblHinh = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         btntimKiem = new javax.swing.JButton();
         lblTimKiem = new javax.swing.JLabel();
@@ -154,15 +154,6 @@ public class NhanVien1 extends javax.swing.JPanel {
             }
         });
         jPanel2.add(rdoGioiTinhNam, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 150, -1, -1));
-
-        lblHinh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/default.png"))); // NOI18N
-        lblHinh.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
-        lblHinh.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblHinhMouseClicked(evt);
-            }
-        });
-        jPanel2.add(lblHinh, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 50, 130, -1));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(14, 65, 91));
@@ -321,6 +312,16 @@ public class NhanVien1 extends javax.swing.JPanel {
         jScrollPane2.setViewportView(txtdiaChi);
 
         jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 140, 300, 70));
+
+        lblHinh.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblHinh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/default.png"))); // NOI18N
+        lblHinh.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        lblHinh.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblHinhMouseClicked(evt);
+            }
+        });
+        jPanel2.add(lblHinh, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 30, 180, 170));
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setPreferredSize(new java.awt.Dimension(947, 100));
@@ -538,10 +539,6 @@ public class NhanVien1 extends javax.swing.JPanel {
         this.TimKiem();
     }//GEN-LAST:event_btntimKiemActionPerformed
 
-    private void lblHinhMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHinhMouseClicked
-        this.selectImage();
-    }//GEN-LAST:event_lblHinhMouseClicked
-
     private void txttimKiemKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txttimKiemKeyTyped
         if(txttimKiem.getText().equals("")){
            lblTimKiem.setVisible(true);
@@ -561,7 +558,7 @@ public class NhanVien1 extends javax.swing.JPanel {
         txtsoDienSo.setText("");
         txtdiaChi.setText("");
         txtEmail.setText("");
-        ImageIcon icon = new ImageIcon("..\\icon\\defaut.png");
+        ImageIcon icon = new ImageIcon("..//icon//defaut.png");
         lblHinh.setIcon(icon);
 
         txtON();
@@ -653,13 +650,17 @@ public class NhanVien1 extends javax.swing.JPanel {
     private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
        if (Auth.islogin()) {
             LichSuXoa ls = new LichSuXoa();
-            ls.changePan(3);
+            ls.changePan(2);
             ls.setVisible(true);
             
         } else {
             MsgBox.alert(this, "Vui lòng đăng nhập");
         }
     }//GEN-LAST:event_jLabel8MouseClicked
+
+    private void lblHinhMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHinhMouseClicked
+        this.selectImage();
+    }//GEN-LAST:event_lblHinhMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -721,6 +722,7 @@ public class NhanVien1 extends javax.swing.JPanel {
     public void fillTable() {
         DefaultTableModel model = (DefaultTableModel) tblnhanVien.getModel();
         model.setRowCount(0);
+        listNV.clear();
         try {
             List<NhanVien> list = dao.selectAll(); // Đọc dữ liệu từ CSDL
             for (NhanVien nv : list) {
@@ -802,7 +804,6 @@ public class NhanVien1 extends javax.swing.JPanel {
                 lblHinh.setToolTipText(file.getName());
             }
         }
-
     }
 
     public void clearForm() {
@@ -854,6 +855,7 @@ public class NhanVien1 extends javax.swing.JPanel {
         btnPrev.setEnabled(edit && !first);
         btnNext.setEnabled(edit && !last);
         btnLast.setEnabled(edit && !last);
+        txtOFF();
     }
 
     public void edit() {
@@ -900,7 +902,7 @@ public class NhanVien1 extends javax.swing.JPanel {
         txtEmail.setEditable(false);
         rdoGioiTinhNam.setEnabled(false);
         rdoGioiTinhNu.setEnabled(false);
-//         lblHinh.setEditable(false);
+//        lblHinh.setEnabled(false);
 
         txtmaNhanVien.setFocusable(false);
         txttenNhanVien.setFocusable(false);
@@ -919,7 +921,7 @@ public class NhanVien1 extends javax.swing.JPanel {
         txtdiaChi.setEditable(true);
         txtEmail.setEditable(true);
         rdoGioiTinhNu.setEnabled(true);
-//         lblHinh.setEditable(true);
+//        lblHinh.setEnabled(true);
 
         txtmaNhanVien.setFocusable(true);
         txttenNhanVien.setFocusable(true);
