@@ -45,12 +45,14 @@ public class SanPham1 extends javax.swing.JPanel {
         this.row = -1;
         this.updateStatus();
         btnLuu.setEnabled(false);
+        btnThem.setEnabled(true);
         this.updateStatus2();
         btnSave.setEnabled(false);
+        btnReset.setEnabled(true);
         initTable2();
         fillTable2();
-        
-
+        fillCboMaNCC();
+        fillCboMaSP();
     }
 
     private void initTable() {
@@ -536,21 +538,36 @@ public class SanPham1 extends javax.swing.JPanel {
     public void txtOFF() {
         txtMaSP.setEditable(false);
         txtTenSP.setEditable(false);
+        txtSoLuong.setEditable(false);
+        cboMaNCC.setEnabled(false);
+        txtGhiChu.setEditable(false);
     }
 
     public void txtON() {
         txtMaSP.setEditable(true);
         txtTenSP.setEditable(true);
+        txtSoLuong.setEditable(true);
+        cboMaNCC.setEnabled(true);
+        txtGhiChu.setEditable(true);
     }
 
     public void txtOFF2() {
         txtMaCT.setEditable(false);
-        cboMaSP.setEditable(false);
+        cboMaSP.setEnabled(false);
+        txtChatLieu.setEditable(false);
+        txtGia.setEditable(false);
+        txtGia.setEditable(false);
+        txtSize.setEditable(false);
+        
     }
 
     public void txtON2() {
         txtMaCT.setEditable(true);
-        cboMaSP.setEditable(true);
+        cboMaSP.setEnabled(true);
+        txtChatLieu.setEditable(true);
+        txtGia.setEditable(true);
+        txtGia.setEditable(true);
+        txtSize.setEditable(true);
     }
 
     /**
