@@ -367,7 +367,8 @@ void dangNhap() {
         TaiKhoan nv = tkDAO.selectById(manv);
         if (nv == null) {
             MsgBox.alert(this, "Tên đăng nhập không chính xác");
-        } else {
+        }
+        else{
             if (!nv.getPass().equals(matkhau) && !nv.getPass().equals(mkhau2)) {
                 MsgBox.alert(this, "Mật khẩu không chính xác");
             } else {
