@@ -563,7 +563,7 @@ public class SanPham1 extends javax.swing.JPanel {
 
     public void txtON2() {
         txtMaCT.setEditable(true);
-        cboMaSP.setEditable(true);
+        cboMaSP.setEnabled(true);
         txtChatLieu.setEditable(true);
         txtGia.setEditable(true);
         txtGia.setEditable(true);
