@@ -65,6 +65,10 @@ public class NhaCungCap1 extends javax.swing.JPanel {
         pnlTen = new javax.swing.JPanel();
         pnlma = new javax.swing.JPanel();
         jLabel22 = new javax.swing.JLabel();
+        lblTimKiem = new javax.swing.JLabel();
+        txtTimKiem = new javax.swing.JTextField();
+        btntimKiem = new javax.swing.JButton();
+        pnlSearch = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(1408, 817));
@@ -153,6 +157,7 @@ public class NhaCungCap1 extends javax.swing.JPanel {
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblMaNCC.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblMaNCC.setForeground(new java.awt.Color(14, 65, 91));
         lblMaNCC.setText("Mã nhà cung cấp:");
         jPanel3.add(lblMaNCC, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
 
@@ -218,6 +223,7 @@ public class NhaCungCap1 extends javax.swing.JPanel {
         jPanel3.add(btnLuu, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 410, 530, 60));
 
         lblTenNCC.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblTenNCC.setForeground(new java.awt.Color(14, 65, 91));
         lblTenNCC.setText("Tên nhà cung cấp:");
         jPanel3.add(lblTenNCC, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
 
@@ -268,6 +274,43 @@ public class NhaCungCap1 extends javax.swing.JPanel {
             }
         });
         add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, -1, -1));
+
+        lblTimKiem.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        lblTimKiem.setForeground(new java.awt.Color(102, 102, 102));
+        lblTimKiem.setText("Tìm kiếm theo tên");
+        add(lblTimKiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 50, 210, 30));
+
+        txtTimKiem.setBorder(null);
+        txtTimKiem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTimKiemActionPerformed(evt);
+            }
+        });
+        add(txtTimKiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 40, 910, 50));
+
+        btntimKiem.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
+        btntimKiem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/search (4).png"))); // NOI18N
+        btntimKiem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btntimKiemActionPerformed(evt);
+            }
+        });
+        add(btntimKiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 40, 60, 50));
+
+        pnlSearch.setBackground(new java.awt.Color(153, 153, 153));
+
+        javax.swing.GroupLayout pnlSearchLayout = new javax.swing.GroupLayout(pnlSearch);
+        pnlSearch.setLayout(pnlSearchLayout);
+        pnlSearchLayout.setHorizontalGroup(
+            pnlSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 800, Short.MAX_VALUE)
+        );
+        pnlSearchLayout.setVerticalGroup(
+            pnlSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        add(pnlSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 90, 800, 3));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnFirstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFirstActionPerformed
@@ -287,7 +330,7 @@ public class NhaCungCap1 extends javax.swing.JPanel {
     }//GEN-LAST:event_btnLastActionPerformed
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
-         them = 1;
+        them = 1;
         btnSua.setEnabled(false);
         btnXoa.setEnabled(false);
         btnLuu.setEnabled(true);
@@ -329,7 +372,7 @@ public class NhaCungCap1 extends javax.swing.JPanel {
     }//GEN-LAST:event_btnLuuActionPerformed
 
     private void tblNCCMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblNCCMouseClicked
-         if (evt.getClickCount() == 1) {
+        if (evt.getClickCount() == 1) {
             this.row = tblNCC.getSelectedRow();
             this.edit();
             tblNCC.setSelectionBackground(new Color(0, 156, 222));
@@ -353,7 +396,7 @@ public class NhaCungCap1 extends javax.swing.JPanel {
     }//GEN-LAST:event_txtTenNCCFocusGained
 
     private void txtTenNCCFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTenNCCFocusLost
-         txtTenNCC.setBackground(new Color(242, 242, 242));
+        txtTenNCC.setBackground(new Color(242, 242, 242));
         pnlTen.setBackground(new Color(242, 242, 242));
     }//GEN-LAST:event_txtTenNCCFocusLost
 
@@ -367,6 +410,14 @@ public class NhaCungCap1 extends javax.swing.JPanel {
         pnlma.setBackground(new Color(242, 242, 242));
     }//GEN-LAST:event_txtMaNCCFocusLost
 
+    private void txtTimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTimKiemActionPerformed
+
+    }//GEN-LAST:event_txtTimKiemActionPerformed
+
+    private void btntimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btntimKiemActionPerformed
+        //this.TimKiem();
+    }//GEN-LAST:event_btntimKiemActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnFirst;
@@ -378,20 +429,25 @@ public class NhaCungCap1 extends javax.swing.JPanel {
     private com.nhom4.ui.ButtonCustom btnSua;
     private com.nhom4.ui.ButtonCustom btnThem;
     private com.nhom4.ui.ButtonCustom btnXoa;
+    private javax.swing.JButton btntimKiem;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblMaNCC;
     private javax.swing.JLabel lblTenNCC;
+    private javax.swing.JLabel lblTimKiem;
+    private javax.swing.JPanel pnlSearch;
     private javax.swing.JPanel pnlTen;
     private javax.swing.JPanel pnlma;
     private com.nhom4.ui.Table tblNCC;
     private javax.swing.JTextField txtMaNCC;
     private javax.swing.JTextField txtTenNCC;
+    private javax.swing.JTextField txtTimKiem;
     // End of variables declaration//GEN-END:variables
 
     private void init() {
+        
         this.row = -1;
         fillTable();
         this.updateStatus();
@@ -402,9 +458,10 @@ public class NhaCungCap1 extends javax.swing.JPanel {
         setFont(btnXoa);
         setFont(btnLuu);
     }
-    public void setFont(JButton bt){
-            bt.setFont(getFont().deriveFont(Font.BOLD, 18));
-        }
+
+    public void setFont(JButton bt) {
+        bt.setFont(getFont().deriveFont(Font.BOLD, 18));
+    }
 
     public void fillTable() {
         DefaultTableModel model = (DefaultTableModel) tblNCC.getModel();
@@ -621,5 +678,26 @@ public class NhaCungCap1 extends javax.swing.JPanel {
             return false;
         }
         return true;
+    }
+
+    public void TimKiem() {
+        DefaultTableModel model = (DefaultTableModel) tblNCC.getModel();
+        model.setRowCount(0);
+        try {
+            String key = txtTimKiem.getText();
+            List<NhaCungCap> list = dao.selectByKeyword(key);
+
+            for (NhaCungCap nh : list) {
+                Object[] data = {
+                    nh.getMaNCC(),
+                    nh.getTenNCC(),};
+                model.addRow(data);
+            }
+        } catch (Exception e) {
+            MsgBox.alert(this, e.getMessage());
+        }
+        this.clearForm();
+        this.row = -1;
+        updateStatus();
     }
 }

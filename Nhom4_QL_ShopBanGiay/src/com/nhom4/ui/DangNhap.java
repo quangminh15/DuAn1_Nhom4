@@ -278,19 +278,19 @@ public class DangNhap extends javax.swing.JDialog {
     }//GEN-LAST:event_txtMatKhauKeyTyped
 
     private void lblLoginMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLoginMouseEntered
-        lblLogin.setIcon(new ImageIcon("src\\com\\nhom4\\icon\\btnLog2.png"));
+        lblLogin.setIcon(new ImageIcon("icon/btnLog2.png"));
     }//GEN-LAST:event_lblLoginMouseEntered
 
     private void lblLoginMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLoginMouseExited
-        lblLogin.setIcon(new ImageIcon("src\\com\\nhom4\\icon\\btnLog1.png"));
+        lblLogin.setIcon(new ImageIcon("icon/btnLog1.png"));
     }//GEN-LAST:event_lblLoginMouseExited
 
     private void lblOutMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblOutMouseEntered
-        lblOut.setIcon(new ImageIcon("src\\com\\nhom4\\icon\\out2.png"));
+        lblOut.setIcon(new ImageIcon("icon/out2.png"));
     }//GEN-LAST:event_lblOutMouseEntered
 
     private void lblOutMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblOutMouseExited
-       lblOut.setIcon(new ImageIcon("src\\com\\nhom4\\icon\\out.png"));
+       lblOut.setIcon(new ImageIcon("icon/out.png"));
     }//GEN-LAST:event_lblOutMouseExited
 
     private void lblLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLoginMouseClicked
@@ -365,6 +365,7 @@ public class DangNhap extends javax.swing.JDialog {
 
     private void init() {
          this.setLocationRelativeTo(null);
+         this.setIconImage(XImage.getAppIcon());
          //lblUserName.setVisible(false);
          //lblLogin.setIcon(new ImageIcon("src\\com\\nhom4\\icon\\btnLog1.png"));
          

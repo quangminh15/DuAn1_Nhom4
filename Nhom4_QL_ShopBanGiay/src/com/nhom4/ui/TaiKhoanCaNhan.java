@@ -30,7 +30,7 @@ public class TaiKhoanCaNhan extends javax.swing.JPanel {
     int checkLap = 0;
     int them = 0;
     int row = -1;
-    JFileChooser fileChooser = new JFileChooser(".//src//com//nhom4//hinh");
+    JFileChooser fileChooser = new JFileChooser("hinh");
 
     /**
      * Creates new form TaiKhoanCaNhan

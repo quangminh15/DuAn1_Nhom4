@@ -11,14 +11,12 @@ import java.awt.Color;
 import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Panel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JPanel;
 import javax.swing.Timer;
-import com.nhom4.ui.DangNhap;
 import javax.swing.ImageIcon;
 
 /**
@@ -582,13 +580,13 @@ public class CuaSoChinh extends javax.swing.JFrame {
         pnlHome.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblBanner1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/a1.png"))); // NOI18N
-        pnlHome.add(lblBanner1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 30, -1, -1));
+        pnlHome.add(lblBanner1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 30, -1, -1));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/bn2.png"))); // NOI18N
-        pnlHome.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 30, -1, 469));
+        pnlHome.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 30, -1, 469));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/bn3.png"))); // NOI18N
-        pnlHome.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 530, -1, -1));
+        pnlHome.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 530, -1, -1));
 
         pnlCardPane.add(pnlHome, "card2");
 
@@ -608,7 +606,6 @@ public class CuaSoChinh extends javax.swing.JFrame {
 
         lblTitle.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         lblTitle.setForeground(new java.awt.Color(255, 255, 255));
-        lblTitle.setText("jLabel1");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -619,7 +616,7 @@ public class CuaSoChinh extends javax.swing.JFrame {
                 .addComponent(jLabel7)
                 .addGap(65, 65, 65)
                 .addComponent(lblTitle)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 908, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 989, Short.MAX_VALUE)
                 .addComponent(lblDongHo, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(59, 59, 59))
         );
@@ -659,89 +656,6 @@ public class CuaSoChinh extends javax.swing.JFrame {
         pnlCardPane.revalidate();
     }
 
-    private void lblSPMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSPMouseClicked
-        openSanPham();
-        pnlSP.setVisible(true);
-        lblTitle.setText(lblSP.getText());
-        pnlHD.setVisible(false);
-        pnlKH.setVisible(false);
-        pnlKM.setVisible(false);
-        pnlNCC.setVisible(false);
-        pnlNV.setVisible(false);
-        pnlTK.setVisible(false);
-        pnlTaiKhoan.setVisible(false);
-    }//GEN-LAST:event_lblSPMouseClicked
-
-    private void lblKHMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblKHMouseClicked
-        openKhachHang();
-        lblTitle.setText(lblKH.getText());
-        pnlKH.setVisible(true);
-
-        pnlHD.setVisible(false);
-        pnlSP.setVisible(false);
-        pnlKM.setVisible(false);
-        pnlNCC.setVisible(false);
-        pnlNV.setVisible(false);
-        pnlTK.setVisible(false);
-        pnlTaiKhoan.setVisible(false);
-    }//GEN-LAST:event_lblKHMouseClicked
-
-    private void lblHDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHDMouseClicked
-        openHoaDon();
-        lblTitle.setText(lblHD.getText());
-        pnlHD.setVisible(true);
-
-        pnlKH.setVisible(false);
-        pnlSP.setVisible(false);
-        pnlKM.setVisible(false);
-        pnlNCC.setVisible(false);
-        pnlNV.setVisible(false);
-        pnlTK.setVisible(false);
-        pnlTaiKhoan.setVisible(false);
-    }//GEN-LAST:event_lblHDMouseClicked
-
-    private void lblNCCMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNCCMouseClicked
-        openNCC();
-        lblTitle.setText(lblNCC.getText());
-        pnlNCC.setVisible(true);
-
-        pnlHD.setVisible(false);
-        pnlSP.setVisible(false);
-        pnlKM.setVisible(false);
-        pnlKH.setVisible(false);
-        pnlNV.setVisible(false);
-        pnlTK.setVisible(false);
-        pnlTaiKhoan.setVisible(false);
-    }//GEN-LAST:event_lblNCCMouseClicked
-
-    private void lblKMMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblKMMouseClicked
-        openKhuyenMai();
-        lblTitle.setText(lblKM.getText());
-        pnlKM.setVisible(true);
-
-        pnlHD.setVisible(false);
-        pnlSP.setVisible(false);
-        pnlNCC.setVisible(false);
-        pnlKH.setVisible(false);
-        pnlNV.setVisible(false);
-        pnlTK.setVisible(false);
-        pnlTaiKhoan.setVisible(false);
-    }//GEN-LAST:event_lblKMMouseClicked
-
-    private void lblTKMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblTKMouseClicked
-        openThongKe();
-        lblTitle.setText(lblTK.getText());
-        pnlTK.setVisible(true);
-
-        pnlHD.setVisible(false);
-        pnlSP.setVisible(false);
-        pnlNCC.setVisible(false);
-        pnlKH.setVisible(false);
-        pnlNV.setVisible(false);
-        pnlKM.setVisible(false);
-        pnlTaiKhoan.setVisible(false);
-    }//GEN-LAST:event_lblTKMouseClicked
-
     private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
         changePanel(pnlHome);
         lblTitle.setText("");
@@ -755,23 +669,6 @@ public class CuaSoChinh extends javax.swing.JFrame {
         pnlKM.setVisible(false);
         pnlTaiKhoan.setVisible(false);
     }//GEN-LAST:event_jLabel7MouseClicked
-
-    private void lblNhanVienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNhanVienMouseClicked
-        opennhanvien();
-        
-        lblTitle.setText(lblNhanVien.getText());
-        pnlTK.setVisible(false);
-        pnlHD.setVisible(false);
-        pnlSP.setVisible(false);
-        pnlNCC.setVisible(false);
-        pnlKH.setVisible(false);
-        pnlNV.setVisible(false);
-        pnlKM.setVisible(false);
-//        NhanVien1 nv = new NhanVien1();
-//        changePanel(nv);
-
-        pnlNV.setVisible(true);
-    }//GEN-LAST:event_lblNhanVienMouseClicked
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         for (double i = 0.0; i <= 1.0; i = i + 0.1) {
@@ -808,44 +705,12 @@ public class CuaSoChinh extends javax.swing.JFrame {
         lblSetting1.setEnabled(true);
     }//GEN-LAST:event_lblSetting2MouseClicked
 
-    private void lblNhanVienMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNhanVienMouseEntered
-        lblNhanVien.setForeground(new Color(235, 176, 30));
-        lblNhanVien.setIcon(new ImageIcon("src\\com\\nhom4\\icon\\identity-card2.png"));
-    }//GEN-LAST:event_lblNhanVienMouseEntered
-
-    private void lblNhanVienMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNhanVienMouseExited
-        lblNhanVien.setForeground(Color.WHITE);
-        lblNhanVien.setIcon(new ImageIcon("src\\com\\nhom4\\icon\\identity-card.png"));
-    }//GEN-LAST:event_lblNhanVienMouseExited
-
-    private void lblNhanVienMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNhanVienMousePressed
-        lblNhanVien.setForeground(new Color(73, 231, 195));
-        lblNhanVien.setIcon(new ImageIcon("src\\com\\nhom4\\icon\\identity-card3.png"));
-    }//GEN-LAST:event_lblNhanVienMousePressed
-
-    private void lblNhanVienMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNhanVienMouseReleased
-        lblNhanVien.setForeground(new Color(235, 176, 30));
-        lblNhanVien.setIcon(new ImageIcon("src\\com\\nhom4\\icon\\identity-card2.png"));
-    }//GEN-LAST:event_lblNhanVienMouseReleased
-
-    private void lblTaiKhoanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblTaiKhoanMouseClicked
-        opendTaiKhoanQL();
-        pnlTK.setVisible(false);
-        pnlHD.setVisible(false);
-        pnlSP.setVisible(false);
-        pnlNCC.setVisible(false);
-        pnlKH.setVisible(false);
-        pnlNV.setVisible(false);
-        pnlKM.setVisible(false);
-        pnlTaiKhoan.setVisible(true);
-    }//GEN-LAST:event_lblTaiKhoanMouseClicked
-
     private void lblExitMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblExitMouseEntered
-        lblExit.setIcon(new ImageIcon("src\\com\\nhom4\\icon\\power.png"));
+        lblExit.setIcon(new ImageIcon("icon/power.png"));
     }//GEN-LAST:event_lblExitMouseEntered
 
     private void lblExitMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblExitMouseExited
-        lblExit.setIcon(new ImageIcon("src\\com\\nhom4\\icon\\power (1).png"));
+        lblExit.setIcon(new ImageIcon("icon/power (1).png"));
     }//GEN-LAST:event_lblExitMouseExited
 
     private void lblDoiMatKhauMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDoiMatKhauMouseClicked
@@ -864,127 +729,6 @@ public class CuaSoChinh extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_lblDangNhapMouseClicked
-//
-    private void lblNCCMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNCCMouseEntered
-        lblNCC.setForeground(new Color(235, 176, 30));
-        lblNCC.setIcon(new ImageIcon("src\\com\\nhom4\\icon\\factory (1).png"));
-    }//GEN-LAST:event_lblNCCMouseEntered
-
-    private void lblNCCMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNCCMouseExited
-        lblNCC.setForeground(Color.WHITE);
-        lblNCC.setIcon(new ImageIcon("src\\com\\nhom4\\icon\\factory.png"));
-    }//GEN-LAST:event_lblNCCMouseExited
-
-    private void lblNCCMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNCCMousePressed
-        lblNCC.setForeground(new Color(73, 231, 195));
-        lblNCC.setIcon(new ImageIcon("src\\com\\nhom4\\icon\\factory3.png"));    }//GEN-LAST:event_lblNCCMousePressed
-
-    private void lblNCCMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNCCMouseReleased
-        lblNCC.setForeground(new Color(235, 176, 30));
-        lblNCC.setIcon(new ImageIcon("src\\com\\nhom4\\icon\\factory (1).png"));
-    }//GEN-LAST:event_lblNCCMouseReleased
-//
-    private void lblSPMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSPMouseEntered
-        lblSP.setForeground(new Color(235, 176, 30));
-        lblSP.setIcon(new ImageIcon("src\\com\\nhom4\\icon\\sport-shoe (1).png"));
-    }//GEN-LAST:event_lblSPMouseEntered
-
-    private void lblSPMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSPMouseExited
-        lblSP.setForeground(Color.WHITE);
-        lblSP.setIcon(new ImageIcon("src\\com\\nhom4\\icon\\sport-shoe.png"));    }//GEN-LAST:event_lblSPMouseExited
-
-    private void lblSPMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSPMousePressed
-        lblSP.setForeground(new Color(73, 231, 195));
-        lblSP.setIcon(new ImageIcon("src\\com\\nhom4\\icon\\sport-shoe3.png"));    }//GEN-LAST:event_lblSPMousePressed
-
-    private void lblSPMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSPMouseReleased
-        lblSP.setForeground(new Color(235, 176, 30));
-        lblSP.setIcon(new ImageIcon("src\\com\\nhom4\\icon\\sport-shoe (1).png"));    }//GEN-LAST:event_lblSPMouseReleased
-//
-    private void lblKHMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblKHMouseEntered
-        lblKH.setForeground(new Color(235, 176, 30));
-        lblKH.setIcon(new ImageIcon("src\\com\\nhom4\\icon\\customer (1).png"));
-    }//GEN-LAST:event_lblKHMouseEntered
-
-    private void lblKHMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblKHMouseExited
-        lblKH.setForeground(Color.WHITE);
-        lblKH.setIcon(new ImageIcon("src\\com\\nhom4\\icon\\customer.png"));    }//GEN-LAST:event_lblKHMouseExited
-
-    private void lblKHMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblKHMousePressed
-        lblKH.setForeground(new Color(73, 231, 195));
-        lblKH.setIcon(new ImageIcon("src\\com\\nhom4\\icon\\customer3.png"));    }//GEN-LAST:event_lblKHMousePressed
-
-    private void lblKHMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblKHMouseReleased
-        lblKH.setForeground(new Color(235, 176, 30));
-        lblKH.setIcon(new ImageIcon("src\\com\\nhom4\\icon\\customer (1).png"));    }//GEN-LAST:event_lblKHMouseReleased
-//
-    private void lblHDMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHDMouseEntered
-        lblHD.setForeground(new Color(235, 176, 30));
-        lblHD.setIcon(new ImageIcon("src\\com\\nhom4\\icon\\invoice (1).png"));    }//GEN-LAST:event_lblHDMouseEntered
-
-    private void lblHDMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHDMouseExited
-        lblHD.setForeground(Color.WHITE);
-        lblHD.setIcon(new ImageIcon("src\\com\\nhom4\\icon\\invoice.png"));    }//GEN-LAST:event_lblHDMouseExited
-
-    private void lblHDMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHDMousePressed
-        lblHD.setForeground(new Color(73, 231, 195));
-        lblHD.setIcon(new ImageIcon("src\\com\\nhom4\\icon\\invoice3.png"));    }//GEN-LAST:event_lblHDMousePressed
-
-    private void lblHDMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHDMouseReleased
-        lblHD.setForeground(new Color(235, 176, 30));
-        lblHD.setIcon(new ImageIcon("src\\com\\nhom4\\icon\\invoice (1).png"));    }//GEN-LAST:event_lblHDMouseReleased
-//
-    private void lblTKMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblTKMouseEntered
-        lblTK.setForeground(new Color(235, 176, 30));
-        lblTK.setIcon(new ImageIcon("src\\com\\nhom4\\icon\\bar-chart (1).png"));    }//GEN-LAST:event_lblTKMouseEntered
-
-    private void lblTKMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblTKMouseExited
-        lblTK.setForeground(Color.WHITE);
-        lblTK.setIcon(new ImageIcon("src\\com\\nhom4\\icon\\bar-chart.png"));
-    }//GEN-LAST:event_lblTKMouseExited
-
-    private void lblTKMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblTKMousePressed
-        lblTK.setForeground(new Color(73, 231, 195));
-
-        lblTK.setIcon(new ImageIcon("src\\com\\nhom4\\icon\\bar-chart3.png"));    }//GEN-LAST:event_lblTKMousePressed
-
-    private void lblTKMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblTKMouseReleased
-        lblTK.setForeground(new Color(235, 176, 30));
-        lblTK.setIcon(new ImageIcon("src\\com\\nhom4\\icon\\bar-chart (1).png"));    }//GEN-LAST:event_lblTKMouseReleased
-//
-    private void lblKMMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblKMMouseEntered
-        lblKM.setForeground(new Color(235, 176, 30));
-        lblKM.setIcon(new ImageIcon("src\\com\\nhom4\\icon\\tag (1).png"));
-    }//GEN-LAST:event_lblKMMouseEntered
-
-    private void lblKMMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblKMMouseExited
-        lblKM.setForeground(Color.WHITE);
-
-        lblKM.setIcon(new ImageIcon("src\\com\\nhom4\\icon\\tag.png"));    }//GEN-LAST:event_lblKMMouseExited
-
-    private void lblKMMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblKMMousePressed
-        lblKM.setForeground(new Color(73, 231, 195));
-        lblKM.setIcon(new ImageIcon("src\\com\\nhom4\\icon\\tag3.png"));    }//GEN-LAST:event_lblKMMousePressed
-
-    private void lblKMMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblKMMouseReleased
-        lblKM.setForeground(new Color(235, 176, 30));
-        lblKM.setIcon(new ImageIcon("src\\com\\nhom4\\icon\\tag (1).png"));    }//GEN-LAST:event_lblKMMouseReleased
-//
-    private void lblTaiKhoanMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblTaiKhoanMouseEntered
-        lblTaiKhoan.setForeground(new Color(235, 176, 30));
-        lblTaiKhoan.setIcon(new ImageIcon("src\\com\\nhom4\\icon\\account2.png"));    }//GEN-LAST:event_lblTaiKhoanMouseEntered
-
-    private void lblTaiKhoanMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblTaiKhoanMouseExited
-        lblTaiKhoan.setForeground(Color.WHITE);
-        lblTaiKhoan.setIcon(new ImageIcon("src\\com\\nhom4\\icon\\account.png"));    }//GEN-LAST:event_lblTaiKhoanMouseExited
-
-    private void lblTaiKhoanMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblTaiKhoanMousePressed
-        lblTaiKhoan.setForeground(new Color(73, 231, 195));
-        lblTaiKhoan.setIcon(new ImageIcon("src\\com\\nhom4\\icon\\account3.png"));    }//GEN-LAST:event_lblTaiKhoanMousePressed
-
-    private void lblTaiKhoanMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblTaiKhoanMouseReleased
-        lblTaiKhoan.setForeground(new Color(235, 176, 30));
-        lblTaiKhoan.setIcon(new ImageIcon("src\\com\\nhom4\\icon\\account2.png"));    }//GEN-LAST:event_lblTaiKhoanMouseReleased
 
     private void lblDangXuatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDangXuatMouseClicked
         openDangXuat();
@@ -993,6 +737,280 @@ public class CuaSoChinh extends javax.swing.JFrame {
     private void lblLichSuXoaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLichSuXoaMouseClicked
         openLichSuXoa();
     }//GEN-LAST:event_lblLichSuXoaMouseClicked
+
+    private void lblNhanVienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNhanVienMouseClicked
+        opennhanvien();
+        
+        lblTitle.setText(lblNhanVien.getText());
+        pnlTK.setVisible(false);
+        pnlTaiKhoan.setVisible(false);
+        pnlHD.setVisible(false);
+        pnlSP.setVisible(false);
+        pnlNCC.setVisible(false);
+        pnlKH.setVisible(false);
+        pnlNV.setVisible(false);
+        pnlKM.setVisible(false);
+//        NhanVien1 nv = new NhanVien1();
+//        changePanel(nv);
+
+        pnlNV.setVisible(true);
+    }//GEN-LAST:event_lblNhanVienMouseClicked
+
+    private void lblNhanVienMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNhanVienMouseEntered
+         lblNhanVien.setForeground(new Color(235, 176, 30));
+        lblNhanVien.setIcon(new ImageIcon("icon/identity-card2.png"));
+    }//GEN-LAST:event_lblNhanVienMouseEntered
+
+    private void lblNhanVienMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNhanVienMouseExited
+        lblNhanVien.setForeground(Color.WHITE);
+        lblNhanVien.setIcon(new ImageIcon("icon/identity-card.png"));
+    }//GEN-LAST:event_lblNhanVienMouseExited
+
+    private void lblNhanVienMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNhanVienMousePressed
+        lblNhanVien.setForeground(new Color(73, 231, 195));
+        lblNhanVien.setIcon(new ImageIcon("icon/identity-card3.png"));
+    }//GEN-LAST:event_lblNhanVienMousePressed
+
+    private void lblNhanVienMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNhanVienMouseReleased
+        lblNhanVien.setForeground(new Color(235, 176, 30));
+        lblNhanVien.setIcon(new ImageIcon("icon/identity-card2.png"));
+    }//GEN-LAST:event_lblNhanVienMouseReleased
+
+    private void lblNCCMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNCCMouseClicked
+        openNCC();
+        lblTitle.setText(lblNCC.getText());
+        pnlNCC.setVisible(true);
+
+        pnlHD.setVisible(false);
+        pnlSP.setVisible(false);
+        pnlKM.setVisible(false);
+        pnlKH.setVisible(false);
+        pnlNV.setVisible(false);
+        pnlTK.setVisible(false);
+        pnlTaiKhoan.setVisible(false);
+    }//GEN-LAST:event_lblNCCMouseClicked
+
+    private void lblNCCMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNCCMouseEntered
+        lblNCC.setForeground(new Color(235, 176, 30));
+        lblNCC.setIcon(new ImageIcon("icon//factory (1).png"));
+    }//GEN-LAST:event_lblNCCMouseEntered
+
+    private void lblNCCMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNCCMouseExited
+        lblNCC.setForeground(Color.WHITE);
+        lblNCC.setIcon(new ImageIcon("icon/factory.png"));
+    }//GEN-LAST:event_lblNCCMouseExited
+
+    private void lblNCCMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNCCMousePressed
+        lblNCC.setForeground(new Color(73, 231, 195));
+        lblNCC.setIcon(new ImageIcon("icon/factory3.png"));
+    }//GEN-LAST:event_lblNCCMousePressed
+
+    private void lblNCCMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNCCMouseReleased
+        lblNCC.setForeground(new Color(235, 176, 30));
+        lblNCC.setIcon(new ImageIcon("icon/factory (1).png"));
+    }//GEN-LAST:event_lblNCCMouseReleased
+
+    private void lblSPMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSPMouseClicked
+        openSanPham();
+        pnlSP.setVisible(true);
+        lblTitle.setText(lblSP.getText());
+        pnlHD.setVisible(false);
+        pnlKH.setVisible(false);
+        pnlKM.setVisible(false);
+        pnlNCC.setVisible(false);
+        pnlNV.setVisible(false);
+        pnlTK.setVisible(false);
+        pnlTaiKhoan.setVisible(false);
+    }//GEN-LAST:event_lblSPMouseClicked
+
+    private void lblSPMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSPMouseEntered
+        lblSP.setForeground(new Color(235, 176, 30));
+        lblSP.setIcon(new ImageIcon("icon/sport-shoe (1).png"));
+    }//GEN-LAST:event_lblSPMouseEntered
+
+    private void lblSPMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSPMouseExited
+        lblSP.setForeground(Color.WHITE);
+        lblSP.setIcon(new ImageIcon("icon/sport-shoe.png"));
+    }//GEN-LAST:event_lblSPMouseExited
+
+    private void lblSPMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSPMousePressed
+        lblSP.setForeground(new Color(73, 231, 195));
+        lblSP.setIcon(new ImageIcon("icon/sport-shoe3.png"));
+    }//GEN-LAST:event_lblSPMousePressed
+
+    private void lblSPMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSPMouseReleased
+        lblSP.setForeground(new Color(235, 176, 30));
+        lblSP.setIcon(new ImageIcon("icon/sport-shoe (1).png"));
+    }//GEN-LAST:event_lblSPMouseReleased
+
+    private void lblKHMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblKHMouseClicked
+        openKhachHang();
+        lblTitle.setText(lblKH.getText());
+        pnlKH.setVisible(true);
+
+        pnlHD.setVisible(false);
+        pnlSP.setVisible(false);
+        pnlKM.setVisible(false);
+        pnlNCC.setVisible(false);
+        pnlNV.setVisible(false);
+        pnlTK.setVisible(false);
+        pnlTaiKhoan.setVisible(false);
+    }//GEN-LAST:event_lblKHMouseClicked
+
+    private void lblKHMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblKHMouseEntered
+        lblKH.setForeground(new Color(235, 176, 30));
+        lblKH.setIcon(new ImageIcon("icon/customer (1).png"));
+    }//GEN-LAST:event_lblKHMouseEntered
+
+    private void lblKHMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblKHMouseExited
+        lblKH.setForeground(Color.WHITE);
+        lblKH.setIcon(new ImageIcon("icon/customer.png"));
+    }//GEN-LAST:event_lblKHMouseExited
+
+    private void lblKHMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblKHMousePressed
+        lblKH.setForeground(new Color(73, 231, 195));
+        lblKH.setIcon(new ImageIcon("icon/customer3.png"));
+    }//GEN-LAST:event_lblKHMousePressed
+
+    private void lblKHMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblKHMouseReleased
+        lblKH.setForeground(new Color(235, 176, 30));
+        lblKH.setIcon(new ImageIcon("icon/customer (1).png"));
+    }//GEN-LAST:event_lblKHMouseReleased
+
+    private void lblHDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHDMouseClicked
+        openHoaDon();
+        lblTitle.setText(lblHD.getText());
+        pnlHD.setVisible(true);
+
+        pnlKH.setVisible(false);
+        pnlSP.setVisible(false);
+        pnlKM.setVisible(false);
+        pnlNCC.setVisible(false);
+        pnlNV.setVisible(false);
+        pnlTK.setVisible(false);
+        pnlTaiKhoan.setVisible(false);
+    }//GEN-LAST:event_lblHDMouseClicked
+
+    private void lblHDMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHDMouseEntered
+        lblHD.setForeground(new Color(235, 176, 30));
+        lblHD.setIcon(new ImageIcon("icon/invoice (1).png"));
+    }//GEN-LAST:event_lblHDMouseEntered
+
+    private void lblHDMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHDMouseExited
+        lblHD.setForeground(Color.WHITE);
+        lblHD.setIcon(new ImageIcon("icon/invoice.png"));
+    }//GEN-LAST:event_lblHDMouseExited
+
+    private void lblHDMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHDMousePressed
+        lblHD.setForeground(new Color(73, 231, 195));
+        lblHD.setIcon(new ImageIcon("icon/invoice3.png"));
+    }//GEN-LAST:event_lblHDMousePressed
+
+    private void lblHDMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHDMouseReleased
+        lblHD.setForeground(new Color(235, 176, 30));
+        lblHD.setIcon(new ImageIcon("icon/invoice (1).png"));
+    }//GEN-LAST:event_lblHDMouseReleased
+
+    private void lblTKMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblTKMouseClicked
+        openThongKe();
+        lblTitle.setText(lblTK.getText());
+        pnlTK.setVisible(true);
+
+        pnlHD.setVisible(false);
+        pnlSP.setVisible(false);
+        pnlNCC.setVisible(false);
+        pnlKH.setVisible(false);
+        pnlNV.setVisible(false);
+        pnlKM.setVisible(false);
+        pnlTaiKhoan.setVisible(false);
+    }//GEN-LAST:event_lblTKMouseClicked
+
+    private void lblTKMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblTKMouseEntered
+         lblTK.setForeground(new Color(235, 176, 30));
+        lblTK.setIcon(new ImageIcon("icon/bar-chart (1).png"));
+    }//GEN-LAST:event_lblTKMouseEntered
+
+    private void lblTKMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblTKMouseExited
+        lblTK.setForeground(Color.WHITE);
+        lblTK.setIcon(new ImageIcon("icon/bar-chart.png"));
+    }//GEN-LAST:event_lblTKMouseExited
+
+    private void lblTKMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblTKMousePressed
+        lblTK.setForeground(new Color(73, 231, 195));
+        lblTK.setIcon(new ImageIcon("icon/bar-chart3.png"));
+    }//GEN-LAST:event_lblTKMousePressed
+
+    private void lblTKMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblTKMouseReleased
+        lblTK.setForeground(new Color(235, 176, 30));
+        lblTK.setIcon(new ImageIcon("icon/bar-chart (1).png"));
+    }//GEN-LAST:event_lblTKMouseReleased
+
+    private void lblKMMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblKMMouseClicked
+        openKhuyenMai();
+        lblTitle.setText(lblKM.getText());
+        pnlKM.setVisible(true);
+
+        pnlHD.setVisible(false);
+        pnlSP.setVisible(false);
+        pnlNCC.setVisible(false);
+        pnlKH.setVisible(false);
+        pnlNV.setVisible(false);
+        pnlTK.setVisible(false);
+        pnlTaiKhoan.setVisible(false);
+    }//GEN-LAST:event_lblKMMouseClicked
+
+    private void lblKMMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblKMMouseEntered
+        lblKM.setForeground(new Color(235, 176, 30));
+        lblKM.setIcon(new ImageIcon("icon/tag (1).png"));
+    }//GEN-LAST:event_lblKMMouseEntered
+
+    private void lblKMMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblKMMouseExited
+        lblKM.setForeground(Color.WHITE);
+        lblKM.setIcon(new ImageIcon("icon/tag.png")); 
+    }//GEN-LAST:event_lblKMMouseExited
+
+    private void lblKMMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblKMMousePressed
+        lblKM.setForeground(new Color(73, 231, 195));
+        lblKM.setIcon(new ImageIcon("icon/tag3.png"));
+    }//GEN-LAST:event_lblKMMousePressed
+
+    private void lblKMMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblKMMouseReleased
+        lblKM.setForeground(new Color(235, 176, 30));
+        lblKM.setIcon(new ImageIcon("icon/tag (1).png"));
+    }//GEN-LAST:event_lblKMMouseReleased
+
+    private void lblTaiKhoanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblTaiKhoanMouseClicked
+        opendTaiKhoanQL();
+        lblTitle.setText(lblTaiKhoan.getText());
+        pnlTK.setVisible(false);
+        pnlHD.setVisible(false);
+        pnlSP.setVisible(false);
+        pnlNCC.setVisible(false);
+        pnlKH.setVisible(false);
+        pnlNV.setVisible(false);
+        pnlKM.setVisible(false);
+        pnlTaiKhoan.setVisible(true);
+    }//GEN-LAST:event_lblTaiKhoanMouseClicked
+
+    private void lblTaiKhoanMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblTaiKhoanMouseEntered
+        lblTaiKhoan.setForeground(new Color(235, 176, 30));
+        lblTaiKhoan.setIcon(new ImageIcon("icon/account2.png"));
+    }//GEN-LAST:event_lblTaiKhoanMouseEntered
+
+    private void lblTaiKhoanMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblTaiKhoanMouseExited
+        lblTaiKhoan.setForeground(Color.WHITE);
+        lblTaiKhoan.setIcon(new ImageIcon("icon/account1.png"));
+    }//GEN-LAST:event_lblTaiKhoanMouseExited
+
+    private void lblTaiKhoanMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblTaiKhoanMousePressed
+        lblTaiKhoan.setForeground(new Color(73, 231, 195));
+        lblTaiKhoan.setIcon(new ImageIcon("icon/account3.png"));
+    }//GEN-LAST:event_lblTaiKhoanMousePressed
+
+    private void lblTaiKhoanMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblTaiKhoanMouseReleased
+        lblTaiKhoan.setForeground(new Color(235, 176, 30));
+        lblTaiKhoan.setIcon(new ImageIcon("icon/account2.png"));
+    }//GEN-LAST:event_lblTaiKhoanMouseReleased
 //
 
     /**
@@ -1059,7 +1077,7 @@ public class CuaSoChinh extends javax.swing.JFrame {
             public void actionPerformed(ActionEvent e) {
 
                 img++;
-                lblBanner1.setIcon(new ImageIcon("src\\com\\nhom4\\icon\\a" + img + ".png"));
+                lblBanner1.setIcon(new ImageIcon("icon/a" + img + ".png"));
                 if (img == 3) {
                     img = 0;
                 }
