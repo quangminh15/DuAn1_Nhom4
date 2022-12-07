@@ -19,13 +19,19 @@ import javax.swing.ImageIcon;
  */
 public class XImage {
 
+//    public static Image getAppIcon() {
+//        URL url = XImage.class.getResource("hinh/logoo.png");
+//        return new ImageIcon(url).getImage();
+//    }
+    
     public static Image getAppIcon() {
-        URL url = XImage.class.getResource("/com/nhom4/icon/logoo.png");
+        URL url;
+        url = XImage.class.getResource("/com/nhom4/icon/logoo.png");
         return new ImageIcon(url).getImage();
     }
 
     public static boolean save(File src) {
-        File dst = new File(".//src//com//nhom4//hinh", src.getName());
+        File dst = new File("hinh", src.getName());
         if (!dst.getParentFile().exists()) {
             dst.getParentFile().mkdirs();
         }
@@ -42,7 +48,7 @@ public class XImage {
     }
     
     public static ImageIcon read(String fileName){
-        File path = new File(".//src//com//nhom4//hinh",fileName);
+        File path = new File("hinh",fileName);
         return new ImageIcon(path.getAbsolutePath());
     }
 }

@@ -62,6 +62,7 @@ public class DangNhap extends javax.swing.JDialog {
     private void initComponents() {
 
         jPanel1 = new jPanelGradient();
+        jLabel3 = new javax.swing.JLabel();
         pnlForm = new javax.swing.JPanel();
         lblTitle = new javax.swing.JLabel();
         lblUserName = new javax.swing.JLabel();
@@ -83,15 +84,23 @@ public class DangNhap extends javax.swing.JDialog {
         setTitle("ĐĂNG NHẬP");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/zyro-image.png"))); // NOI18N
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 540, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(130, 130, 130)
+                .addComponent(jLabel3)
+                .addContainerGap(154, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(197, 197, 197)
+                .addComponent(jLabel3)
+                .addContainerGap(198, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 540, 600));
@@ -268,19 +277,19 @@ public class DangNhap extends javax.swing.JDialog {
     }//GEN-LAST:event_txtMatKhauKeyTyped
 
     private void lblLoginMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLoginMouseEntered
-        lblLogin.setIcon(new ImageIcon("src\\com\\nhom4\\icon\\btnLog2.png"));
+        lblLogin.setIcon(new ImageIcon("icon/btnLog2.png"));
     }//GEN-LAST:event_lblLoginMouseEntered
 
     private void lblLoginMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLoginMouseExited
-        lblLogin.setIcon(new ImageIcon("src\\com\\nhom4\\icon\\btnLog1.png"));
+        lblLogin.setIcon(new ImageIcon("icon/btnLog1.png"));
     }//GEN-LAST:event_lblLoginMouseExited
 
     private void lblOutMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblOutMouseEntered
-        lblOut.setIcon(new ImageIcon("src\\com\\nhom4\\icon\\out2.png"));
+        lblOut.setIcon(new ImageIcon("icon/out2.png"));
     }//GEN-LAST:event_lblOutMouseEntered
 
     private void lblOutMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblOutMouseExited
-       lblOut.setIcon(new ImageIcon("src\\com\\nhom4\\icon\\out.png"));
+       lblOut.setIcon(new ImageIcon("icon/out.png"));
     }//GEN-LAST:event_lblOutMouseExited
 
     private void lblLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLoginMouseClicked
@@ -355,6 +364,7 @@ public class DangNhap extends javax.swing.JDialog {
 
     private void init() {
          this.setLocationRelativeTo(null);
+         this.setIconImage(XImage.getAppIcon());
          //lblUserName.setVisible(false);
          //lblLogin.setIcon(new ImageIcon("src\\com\\nhom4\\icon\\btnLog1.png"));
          
@@ -391,6 +401,7 @@ void dangNhap() {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;

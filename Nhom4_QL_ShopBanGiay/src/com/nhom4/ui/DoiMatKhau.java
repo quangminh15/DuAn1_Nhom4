@@ -8,6 +8,7 @@ import com.nhom4.dao.TaiKhoanDAO;
 import com.nhom4.utils.Auth;
 import com.nhom4.utils.MsgBox;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -26,8 +27,10 @@ public class DoiMatKhau extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         init();
+        btnDongY.setFont(getFont().deriveFont(Font.BOLD, 18));
+        btnHuyBo.setFont(getFont().deriveFont(Font.BOLD, 18));
     }
-    
+
     class jPanelGradient extends JPanel {
 
         protected void paintComponent(Graphics g) {
@@ -61,9 +64,10 @@ public class DoiMatKhau extends javax.swing.JDialog {
         lblMatKhau2 = new javax.swing.JLabel();
         txtMatKhau2 = new javax.swing.JPasswordField();
         txtMatKhau = new javax.swing.JPasswordField();
-        btnDongY = new javax.swing.JButton();
-        btnHuyBo = new javax.swing.JButton();
         lblTitle = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        btnDongY = new com.nhom4.ui.ButtonCustom();
+        btnHuyBo = new com.nhom4.ui.ButtonCustom();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -149,13 +153,23 @@ public class DoiMatKhau extends javax.swing.JDialog {
         });
         jPanel1.add(txtMatKhau, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 170, 288, 45));
 
+        lblTitle.setFont(new java.awt.Font("Segoe UI", 1, 30)); // NOI18N
+        lblTitle.setForeground(new java.awt.Color(91, 205, 252));
+        lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTitle.setText("ĐỔI MẬT KHẨU");
+        jPanel1.add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 20, 268, 31));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/Reset password-rafiki.png"))); // NOI18N
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 400, 340));
+
         btnDongY.setText("Đồng ý");
+        btnDongY.setStyle(com.nhom4.ui.ButtonCustom.ButtonStyle.SECONDARY);
         btnDongY.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDongYActionPerformed(evt);
             }
         });
-        jPanel1.add(btnDongY, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 360, 135, 46));
+        jPanel1.add(btnDongY, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 350, 130, 50));
 
         btnHuyBo.setText("Hủy bỏ");
         btnHuyBo.addActionListener(new java.awt.event.ActionListener() {
@@ -163,13 +177,7 @@ public class DoiMatKhau extends javax.swing.JDialog {
                 btnHuyBoActionPerformed(evt);
             }
         });
-        jPanel1.add(btnHuyBo, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 360, 135, 47));
-
-        lblTitle.setFont(new java.awt.Font("Segoe UI", 1, 30)); // NOI18N
-        lblTitle.setForeground(new java.awt.Color(91, 205, 252));
-        lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblTitle.setText("ĐỔI MẬT KHẨU");
-        jPanel1.add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 20, 268, 31));
+        jPanel1.add(btnHuyBo, new org.netbeans.lib.awtextra.AbsoluteConstraints(585, 350, 130, 50));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -248,13 +256,13 @@ public class DoiMatKhau extends javax.swing.JDialog {
         lblMatKhau.setVisible(false);
     }//GEN-LAST:event_txtMatKhauMouseClicked
 
-    private void btnDongYActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDongYActionPerformed
-        this.doiMatKhau();
-    }//GEN-LAST:event_btnDongYActionPerformed
-
     private void btnHuyBoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHuyBoActionPerformed
         this.huyBo();
     }//GEN-LAST:event_btnHuyBoActionPerformed
+
+    private void btnDongYActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDongYActionPerformed
+         this.doiMatKhau();
+    }//GEN-LAST:event_btnDongYActionPerformed
 
     /**
      * @param args the command line arguments
@@ -301,20 +309,25 @@ public class DoiMatKhau extends javax.swing.JDialog {
     private void init() {
         this.setLocationRelativeTo(null);
     }
-    
+
     TaiKhoanDAO tkDAO = new TaiKhoanDAO();
-    
-    private void doiMatKhau(){
+
+    private void doiMatKhau() {
+        String patternPass = "^[a-zA-Z0-9]{6,15}$";
         String manv = txtMaNV.getText();
         String matKhau = new String(txtMatKhau.getPassword());
         String matKhau1 = new String(txtMatKhau1.getPassword());
         String matKhau2 = new String(txtMatKhau2.getPassword());
-        
-        if(!manv.equalsIgnoreCase(Auth.user.getUsername())){
+
+        if (txtMaNV.getText().equals("")) {
+            MsgBox.alert(this, "Không được để trống tên đăng nhập");
+        } else if (!manv.equalsIgnoreCase(Auth.user.getUsername())) {
             MsgBox.alert(this, "Tên đăng nhập chưa chính xác");
-        } else if(!matKhau.equalsIgnoreCase(Auth.user.getPass())){
+        } else if (!matKhau.equalsIgnoreCase(Auth.user.getPass())) {
             MsgBox.alert(this, "Mật khẩu chưa chính xác");
-        } else if(!matKhau2.equalsIgnoreCase(matKhau1)){
+        }else if(!matKhau1.matches(patternPass)|| matKhau1.length()<6 || matKhau1.length() > 15 ){
+            MsgBox.alert(this, "Mật khẩu không chứa kí tự đặc biệt (@, #, %,..) và phải từ 6 đến 15 kí tự");
+        } else if (!matKhau2.equalsIgnoreCase(matKhau1)) {
             MsgBox.alert(this, "Xác nhận mật khẩu sai");
         } else {
             Auth.user.setPass(matKhau1);
@@ -322,15 +335,16 @@ public class DoiMatKhau extends javax.swing.JDialog {
             MsgBox.alert(this, "Đổi mật khẩu thành công");
         }
     }
-    
-    private void huyBo(){
+
+    private void huyBo() {
         this.dispose();
     }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnDongY;
-    private javax.swing.JButton btnHuyBo;
+    private com.nhom4.ui.ButtonCustom btnDongY;
+    private com.nhom4.ui.ButtonCustom btnHuyBo;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel lblMatKhau;

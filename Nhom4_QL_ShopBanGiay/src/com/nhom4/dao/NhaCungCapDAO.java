@@ -15,21 +15,25 @@ import java.util.List;
  *
  * @author ACER
  */
-public class NhaCungCapDAO extends MainDAO<NhaCungCap, String>{
-        final String INSERT_SQL = "INSERT INTO NCC (MaNCC, TenNCC) VALUES (?,?)";
-        final String UPDATE_SQL = "UPDATE NCC SET TenNCC = ? WHERE MaNCC = ?";
-        final String DELETE_SQL = "DELETE FROM NCC WHERE MaNCC = ?";
-        final String SELECT_ALL_SQL = "SELECT * FROM NCC";
-        final String SELECT_By_Id_SQL = "SELECT * FROM NCC WHERE MaNCC = ?";
-        
+public class NhaCungCapDAO extends MainDAO<NhaCungCap, String> {
+
+    final String INSERT_SQL = "INSERT INTO NCC (MaNCC, TenNCC,Xoa) VALUES (?,?,?)";
+    final String UPDATE_SQL = "UPDATE NCC SET TenNCC = ?, Xoa = ? WHERE MaNCC = ?";
+    final String DELETE_SQL = "DELETE FROM NCC WHERE MaNCC = ?";
+    final String SELECT_ALL_SQL_1 = "SELECT * FROM NCC where Xoa = 1";
+    final String SELECT_By_Id_SQL = "SELECT * FROM NCC WHERE MaNCC = ?";
+    final String SELECT_ALL_SQL_2 = "SELECT * FROM NCC where Xoa = 0";
+    final String HIDE_SQL = "Update NCC set xoa=0 where MaNCC = ?";
+    final String RESTORE_SQL = "Update NCC set xoa=1 where MaNCC = ?";
+
     @Override
     public void insert(NhaCungCap entity) {
-        JdbcHelper.executeUpdate(INSERT_SQL, entity.getMaNCC(), entity.getTenNCC());
+        JdbcHelper.executeUpdate(INSERT_SQL, entity.getMaNCC(), entity.getTenNCC(), entity.isXoa());
     }
 
     @Override
     public void update(NhaCungCap entity) {
-        JdbcHelper.executeUpdate(UPDATE_SQL, entity.getTenNCC(), entity.getMaNCC());
+        JdbcHelper.executeUpdate(UPDATE_SQL, entity.getTenNCC(), entity.isXoa(), entity.getMaNCC());
     }
 
     @Override
@@ -39,33 +43,50 @@ public class NhaCungCapDAO extends MainDAO<NhaCungCap, String>{
 
     @Override
     public List<NhaCungCap> selectAll() {
-        return selectBySql(SELECT_ALL_SQL);
+        return selectBySql(SELECT_ALL_SQL_1);
     }
 
+    public List<NhaCungCap> selectAn() {
+        return selectBySql(SELECT_ALL_SQL_2);
+    }
+    
+    public void hide(String id){
+        JdbcHelper.executeUpdate(HIDE_SQL, id);
+    }
+    public void restore(String id){
+        JdbcHelper.executeUpdate(RESTORE_SQL, id);
+    }
+    
     @Override
     public NhaCungCap selectById(String id) {
         List<NhaCungCap> list = selectBySql(SELECT_By_Id_SQL, id);
-        if(list.isEmpty()){
+        if (list.isEmpty()) {
             return null;
         }
         return list.get(0);
     }
-
+    
+    public List<NhaCungCap> selectByKeyword(String key) {
+        String sql = "SELECT * FROM NCC WHERE TenNCC like ?";
+        return this.selectBySql(sql, "%" + key + "%");
+    }
+    
     @Override
     public List<NhaCungCap> selectBySql(String sql, Object... args) {
         List<NhaCungCap> list = new ArrayList<NhaCungCap>();
         try {
             ResultSet rs = JdbcHelper.executeQuery(sql, args);
-            while (rs.next()) {                
-               NhaCungCap entity = new NhaCungCap();
-               entity.setMaNCC(rs.getString("MaNCC"));
-               entity.setTenNCC(rs.getString("TenNCC"));
-               list.add(entity);  
+            while (rs.next()) {
+                NhaCungCap entity = new NhaCungCap();
+                entity.setMaNCC(rs.getString("MaNCC"));
+                entity.setTenNCC(rs.getString("TenNCC"));
+                entity.setXoa(rs.getBoolean("Xoa"));
+                list.add(entity);
             }
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
         return list;
     }
-    
+
 }

@@ -16,20 +16,23 @@ import java.sql.ResultSet;
  * @author ACER
  */
 public class KhachHangDAO extends MainDAO<KhachHang, String> {
-    final String INSERT_SQL = "insert into KhachHang (MaKH,TenKH,SDT,DiaChi) Values(?,?,?,?)";
-    final String UPDATE_SQL = "update KhachHang set TenKH=?,SDT=?,DiaChi=? where MaKH = ?";
+    final String INSERT_SQL = "insert into KhachHang (MaKH,TenKH,SDT,DiaChi,Xoa) Values(?,?,?,?,?)";
+    final String UPDATE_SQL = "update KhachHang set TenKH=?,SDT=?,DiaChi=?,Xoa=? where MaKH = ?";
     final String DELETE_SQL = "delete from KhachHang where MaKH = ?";
-    final String SELECT_ALL_SQL = "select * from KhachHang";
     final String SELECT_By_Id_SQL = "select * from KhachHang where MaKH=?";
+    final String SELECT_ALL_SQL_1 = "select * from KhachHang where Xoa = 1";
+    final String SELECT_ALL_SQL_2 = "select * from KhachHang where Xoa = 0";
+    final String HIDE_SQL = "Update KhachHang set xoa=0 where MaKH = ?";
+    final String RESTORE_SQL = "Update KhachHang set xoa=1 where MaKH = ?";
     
     @Override
     public void insert(KhachHang entity) {
-        JdbcHelper.executeUpdate(INSERT_SQL, entity.getMaKH(), entity.getTenKH(),entity.getSDT(), entity.getDiaChi());
+        JdbcHelper.executeUpdate(INSERT_SQL, entity.getMaKH(), entity.getTenKH(),entity.getSDT(), entity.getDiaChi(), entity.isXoa());
     }
 
     @Override
     public void update(KhachHang entity) {
-        JdbcHelper.executeUpdate(UPDATE_SQL, entity.getMaKH(), entity.getTenKH(),entity.getSDT(), entity.getDiaChi());
+        JdbcHelper.executeUpdate(UPDATE_SQL, entity.getMaKH(), entity.getTenKH(),entity.getSDT(), entity.getDiaChi(), entity.isXoa());
     }
 
     @Override
@@ -39,11 +42,22 @@ public class KhachHangDAO extends MainDAO<KhachHang, String> {
 
     @Override
     public List<KhachHang> selectAll() {
-        return selectBySql(SELECT_ALL_SQL);
+        return selectBySql(SELECT_ALL_SQL_1);
     }
      public List<KhachHang> selectByKeyword(String user) {
         String sql = "SELECT * FROM KhachHang WHERE TenKH like ?";
         return this.selectBySql(sql, "%"+user+"%");
+    }
+     
+    public List<KhachHang> selectAn() {
+        return selectBySql(SELECT_ALL_SQL_2);
+    }
+     
+     public void hide(String id){
+        JdbcHelper.executeUpdate(HIDE_SQL, id);
+    }
+    public void restore(String id){
+        JdbcHelper.executeUpdate(RESTORE_SQL, id);
     }
 
     @Override
