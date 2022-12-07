@@ -49,42 +49,38 @@ public class LichSuXoa extends javax.swing.JFrame {
         tblNcc = new javax.swing.JTable();
         btnKhoiPhucNCC = new javax.swing.JButton();
         btnXoaNCC = new javax.swing.JButton();
-        btnXoaTatCa = new javax.swing.JButton();
         pnlKhachHang = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblKhachHang = new javax.swing.JTable();
         btnKhoiPhucKH = new javax.swing.JButton();
         btnXoaKH = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
         pnlNhanVien = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblNhanVien = new javax.swing.JTable();
         btnKhoiPhucNV = new javax.swing.JButton();
         btnXoaNV = new javax.swing.JButton();
-        jButton15 = new javax.swing.JButton();
         pnlSanPham = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         tblSanPham = new javax.swing.JTable();
         btnKhoiPhucSP = new javax.swing.JButton();
         btnXoaSP = new javax.swing.JButton();
-        jButton18 = new javax.swing.JButton();
         pnlKhuyenmai = new javax.swing.JPanel();
         jScrollPane5 = new javax.swing.JScrollPane();
         tblKhuyenMai = new javax.swing.JTable();
         btnKhoiPhucKM = new javax.swing.JButton();
         btnXoaKM = new javax.swing.JButton();
-        jButton21 = new javax.swing.JButton();
         pnlHoaDon = new javax.swing.JPanel();
         jScrollPane6 = new javax.swing.JScrollPane();
         tblHoaDon = new javax.swing.JTable();
         btnKhoiPhucHD = new javax.swing.JButton();
         btnXoaHD = new javax.swing.JButton();
-        jButton12 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
+
+        jTabbedPane1.setBackground(new java.awt.Color(255, 255, 255));
 
         tblNcc.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -111,8 +107,6 @@ public class LichSuXoa extends javax.swing.JFrame {
             }
         });
 
-        btnXoaTatCa.setText("Xóa tất cả");
-
         javax.swing.GroupLayout pnlNCCLayout = new javax.swing.GroupLayout(pnlNCC);
         pnlNCC.setLayout(pnlNCCLayout);
         pnlNCCLayout.setHorizontalGroup(
@@ -122,9 +116,8 @@ public class LichSuXoa extends javax.swing.JFrame {
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 818, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(pnlNCCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnKhoiPhucNCC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnXoaNCC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnXoaTatCa, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnKhoiPhucNCC, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
+                    .addComponent(btnXoaNCC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(137, Short.MAX_VALUE))
         );
         pnlNCCLayout.setVerticalGroup(
@@ -135,9 +128,7 @@ public class LichSuXoa extends javax.swing.JFrame {
                     .addGroup(pnlNCCLayout.createSequentialGroup()
                         .addComponent(btnKhoiPhucNCC)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnXoaNCC)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnXoaTatCa))
+                        .addComponent(btnXoaNCC))
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
@@ -168,8 +159,6 @@ public class LichSuXoa extends javax.swing.JFrame {
             }
         });
 
-        jButton9.setText("jButton6");
-
         javax.swing.GroupLayout pnlKhachHangLayout = new javax.swing.GroupLayout(pnlKhachHang);
         pnlKhachHang.setLayout(pnlKhachHangLayout);
         pnlKhachHangLayout.setHorizontalGroup(
@@ -179,9 +168,8 @@ public class LichSuXoa extends javax.swing.JFrame {
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 818, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(pnlKhachHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnKhoiPhucKH, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnXoaKH, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnKhoiPhucKH, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
+                    .addComponent(btnXoaKH, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(137, Short.MAX_VALUE))
         );
         pnlKhachHangLayout.setVerticalGroup(
@@ -192,9 +180,7 @@ public class LichSuXoa extends javax.swing.JFrame {
                     .addGroup(pnlKhachHangLayout.createSequentialGroup()
                         .addComponent(btnKhoiPhucKH)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnXoaKH)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton9))
+                        .addComponent(btnXoaKH))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
@@ -225,8 +211,6 @@ public class LichSuXoa extends javax.swing.JFrame {
             }
         });
 
-        jButton15.setText("jButton6");
-
         javax.swing.GroupLayout pnlNhanVienLayout = new javax.swing.GroupLayout(pnlNhanVien);
         pnlNhanVien.setLayout(pnlNhanVienLayout);
         pnlNhanVienLayout.setHorizontalGroup(
@@ -236,9 +220,8 @@ public class LichSuXoa extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 818, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(pnlNhanVienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnKhoiPhucNV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnXoaNV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton15, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnKhoiPhucNV, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
+                    .addComponent(btnXoaNV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(137, Short.MAX_VALUE))
         );
         pnlNhanVienLayout.setVerticalGroup(
@@ -249,9 +232,7 @@ public class LichSuXoa extends javax.swing.JFrame {
                     .addGroup(pnlNhanVienLayout.createSequentialGroup()
                         .addComponent(btnKhoiPhucNV)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnXoaNV)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton15))
+                        .addComponent(btnXoaNV))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
@@ -282,8 +263,6 @@ public class LichSuXoa extends javax.swing.JFrame {
             }
         });
 
-        jButton18.setText("jButton6");
-
         javax.swing.GroupLayout pnlSanPhamLayout = new javax.swing.GroupLayout(pnlSanPham);
         pnlSanPham.setLayout(pnlSanPhamLayout);
         pnlSanPhamLayout.setHorizontalGroup(
@@ -293,9 +272,8 @@ public class LichSuXoa extends javax.swing.JFrame {
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 818, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(pnlSanPhamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnKhoiPhucSP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnXoaSP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton18, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnKhoiPhucSP, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
+                    .addComponent(btnXoaSP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(137, Short.MAX_VALUE))
         );
         pnlSanPhamLayout.setVerticalGroup(
@@ -306,9 +284,7 @@ public class LichSuXoa extends javax.swing.JFrame {
                     .addGroup(pnlSanPhamLayout.createSequentialGroup()
                         .addComponent(btnKhoiPhucSP)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnXoaSP)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton18))
+                        .addComponent(btnXoaSP))
                     .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
@@ -339,8 +315,6 @@ public class LichSuXoa extends javax.swing.JFrame {
             }
         });
 
-        jButton21.setText("jButton6");
-
         javax.swing.GroupLayout pnlKhuyenmaiLayout = new javax.swing.GroupLayout(pnlKhuyenmai);
         pnlKhuyenmai.setLayout(pnlKhuyenmaiLayout);
         pnlKhuyenmaiLayout.setHorizontalGroup(
@@ -350,9 +324,8 @@ public class LichSuXoa extends javax.swing.JFrame {
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 818, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(pnlKhuyenmaiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnKhoiPhucKM, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnXoaKM, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton21, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnKhoiPhucKM, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
+                    .addComponent(btnXoaKM, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(137, Short.MAX_VALUE))
         );
         pnlKhuyenmaiLayout.setVerticalGroup(
@@ -363,14 +336,14 @@ public class LichSuXoa extends javax.swing.JFrame {
                     .addGroup(pnlKhuyenmaiLayout.createSequentialGroup()
                         .addComponent(btnKhoiPhucKM)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnXoaKM)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton21))
+                        .addComponent(btnXoaKM))
                     .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
         jTabbedPane1.addTab("Khuyến mãi", pnlKhuyenmai);
+
+        pnlHoaDon.setBackground(new java.awt.Color(255, 255, 255));
 
         tblHoaDon.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -396,8 +369,6 @@ public class LichSuXoa extends javax.swing.JFrame {
             }
         });
 
-        jButton12.setText("jButton6");
-
         javax.swing.GroupLayout pnlHoaDonLayout = new javax.swing.GroupLayout(pnlHoaDon);
         pnlHoaDon.setLayout(pnlHoaDonLayout);
         pnlHoaDonLayout.setHorizontalGroup(
@@ -407,24 +378,22 @@ public class LichSuXoa extends javax.swing.JFrame {
                 .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 818, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(pnlHoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnKhoiPhucHD, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnXoaHD, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnKhoiPhucHD, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
+                    .addComponent(btnXoaHD, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(137, Short.MAX_VALUE))
         );
         pnlHoaDonLayout.setVerticalGroup(
             pnlHoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlHoaDonLayout.createSequentialGroup()
                 .addContainerGap(66, Short.MAX_VALUE)
-                .addGroup(pnlHoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlHoaDonLayout.createSequentialGroup()
-                        .addComponent(btnKhoiPhucHD)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnXoaHD)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton12))
-                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addComponent(btnKhoiPhucHD)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnXoaHD)
+                .addGap(383, 383, 383))
+            .addGroup(pnlHoaDonLayout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Hóa đơn", pnlHoaDon);
@@ -432,7 +401,7 @@ public class LichSuXoa extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel1.setText("LỊCH SỬ XÓA");
 
-        jLabel2.setText("exit");
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/power.png"))); // NOI18N
         jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel2MouseClicked(evt);
@@ -568,12 +537,6 @@ public class LichSuXoa extends javax.swing.JFrame {
     private javax.swing.JButton btnXoaNCC;
     private javax.swing.JButton btnXoaNV;
     private javax.swing.JButton btnXoaSP;
-    private javax.swing.JButton btnXoaTatCa;
-    private javax.swing.JButton jButton12;
-    private javax.swing.JButton jButton15;
-    private javax.swing.JButton jButton18;
-    private javax.swing.JButton jButton21;
-    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;

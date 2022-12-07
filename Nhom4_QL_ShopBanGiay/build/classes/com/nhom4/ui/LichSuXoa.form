@@ -52,6 +52,11 @@
   </Layout>
   <SubComponents>
     <Container class="javax.swing.JTabbedPane" name="jTabbedPane1">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
+      </Properties>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
       <SubComponents>
@@ -72,9 +77,8 @@
                       <Component id="jScrollPane3" min="-2" pref="818" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="btnKhoiPhucNCC" max="32767" attributes="0"/>
+                          <Component id="btnKhoiPhucNCC" pref="111" max="32767" attributes="0"/>
                           <Component id="btnXoaNCC" max="32767" attributes="0"/>
-                          <Component id="btnXoaTatCa" min="-2" pref="111" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="137" max="32767" attributes="0"/>
                   </Group>
@@ -89,8 +93,6 @@
                               <Component id="btnKhoiPhucNCC" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="btnXoaNCC" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="btnXoaTatCa" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Component id="jScrollPane3" min="-2" max="-2" attributes="0"/>
                       </Group>
@@ -135,11 +137,6 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnXoaNCCActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="btnXoaTatCa">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="X&#xf3;a t&#x1ea5;t c&#x1ea3;"/>
-              </Properties>
-            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="pnlKhachHang">
@@ -159,9 +156,8 @@
                       <Component id="jScrollPane2" min="-2" pref="818" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="btnKhoiPhucKH" alignment="0" max="32767" attributes="0"/>
+                          <Component id="btnKhoiPhucKH" alignment="0" pref="111" max="32767" attributes="0"/>
                           <Component id="btnXoaKH" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jButton9" alignment="0" min="-2" pref="111" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="137" max="32767" attributes="0"/>
                   </Group>
@@ -176,8 +172,6 @@
                               <Component id="btnKhoiPhucKH" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="btnXoaKH" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jButton9" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Component id="jScrollPane2" min="-2" max="-2" attributes="0"/>
                       </Group>
@@ -224,11 +218,6 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnXoaKHActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton9">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="jButton6"/>
-              </Properties>
-            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="pnlNhanVien">
@@ -248,9 +237,8 @@
                       <Component id="jScrollPane1" min="-2" pref="818" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="btnKhoiPhucNV" alignment="0" max="32767" attributes="0"/>
+                          <Component id="btnKhoiPhucNV" alignment="0" pref="111" max="32767" attributes="0"/>
                           <Component id="btnXoaNV" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jButton15" alignment="0" min="-2" pref="111" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="137" max="32767" attributes="0"/>
                   </Group>
@@ -265,8 +253,6 @@
                               <Component id="btnKhoiPhucNV" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="btnXoaNV" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jButton15" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
                       </Group>
@@ -316,11 +302,6 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnXoaNVActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton15">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="jButton6"/>
-              </Properties>
-            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="pnlSanPham">
@@ -340,9 +321,8 @@
                       <Component id="jScrollPane4" min="-2" pref="818" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="btnKhoiPhucSP" alignment="0" max="32767" attributes="0"/>
+                          <Component id="btnKhoiPhucSP" alignment="0" pref="111" max="32767" attributes="0"/>
                           <Component id="btnXoaSP" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jButton18" alignment="0" min="-2" pref="111" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="137" max="32767" attributes="0"/>
                   </Group>
@@ -357,8 +337,6 @@
                               <Component id="btnKhoiPhucSP" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="btnXoaSP" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jButton18" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Component id="jScrollPane4" min="-2" max="-2" attributes="0"/>
                       </Group>
@@ -407,11 +385,6 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnXoaSPActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton18">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="jButton6"/>
-              </Properties>
-            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="pnlKhuyenmai">
@@ -431,9 +404,8 @@
                       <Component id="jScrollPane5" min="-2" pref="818" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="btnKhoiPhucKM" alignment="0" max="32767" attributes="0"/>
+                          <Component id="btnKhoiPhucKM" alignment="0" pref="111" max="32767" attributes="0"/>
                           <Component id="btnXoaKM" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jButton21" alignment="0" min="-2" pref="111" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="137" max="32767" attributes="0"/>
                   </Group>
@@ -448,8 +420,6 @@
                               <Component id="btnKhoiPhucKM" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="btnXoaKM" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jButton21" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Component id="jScrollPane5" min="-2" max="-2" attributes="0"/>
                       </Group>
@@ -498,14 +468,14 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnXoaKMActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton21">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="jButton6"/>
-              </Properties>
-            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="pnlHoaDon">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+          </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
               <JTabbedPaneConstraints tabName="H&#xf3;a &#x111;&#x1a1;n">
@@ -522,9 +492,8 @@
                       <Component id="jScrollPane6" min="-2" pref="818" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="btnKhoiPhucHD" alignment="0" max="32767" attributes="0"/>
+                          <Component id="btnKhoiPhucHD" alignment="0" pref="111" max="32767" attributes="0"/>
                           <Component id="btnXoaHD" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jButton12" alignment="0" min="-2" pref="111" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="137" max="32767" attributes="0"/>
                   </Group>
@@ -534,17 +503,15 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace pref="66" max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="btnKhoiPhucHD" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="btnXoaHD" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jButton12" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="jScrollPane6" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="btnKhoiPhucHD" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
+                      <Component id="btnXoaHD" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="383" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                      <Component id="jScrollPane6" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -590,11 +557,6 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnXoaHDActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton12">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="jButton6"/>
-              </Properties>
-            </Component>
           </SubComponents>
         </Container>
       </SubComponents>
@@ -609,7 +571,9 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
-        <Property name="text" type="java.lang.String" value="exit"/>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/com/nhom4/icon/power.png"/>
+        </Property>
       </Properties>
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabel2MouseClicked"/>
