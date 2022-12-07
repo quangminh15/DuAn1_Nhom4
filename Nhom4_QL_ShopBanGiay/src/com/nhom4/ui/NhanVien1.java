@@ -659,7 +659,12 @@ public class NhanVien1 extends javax.swing.JPanel {
     }//GEN-LAST:event_jLabel8MouseClicked
 
     private void lblHinhMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHinhMouseClicked
-        this.selectImage();
+        
+        if(evt.getClickCount()== 1 && them == 1 || evt.getClickCount() == 1 && them == 2 ){
+            this.selectImage();
+        }else {
+            MsgBox.alert(this, "Chỉ được chỉnh sửa ảnh khi thêm hoặc sửa dữ liệu");
+        }
     }//GEN-LAST:event_lblHinhMouseClicked
 
 
