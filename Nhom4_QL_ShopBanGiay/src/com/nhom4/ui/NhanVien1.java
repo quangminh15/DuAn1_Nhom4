@@ -558,7 +558,7 @@ public class NhanVien1 extends javax.swing.JPanel {
         txtsoDienSo.setText("");
         txtdiaChi.setText("");
         txtEmail.setText("");
-        ImageIcon icon = new ImageIcon("..//icon//defaut.png");
+        ImageIcon icon = new ImageIcon("hinh/default.png");
         lblHinh.setIcon(icon);
 
         txtON();
@@ -796,7 +796,8 @@ public class NhanVien1 extends javax.swing.JPanel {
     }
 
     void selectImage() {
-        if (fileChooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
+        int x = fileChooser.showDialog(this, "Open");
+        if (x == JFileChooser.APPROVE_OPTION) {
             File file = fileChooser.getSelectedFile();
             if (XImage.save(file)) {
                 // Hiển thị hình lên form
@@ -903,6 +904,8 @@ public class NhanVien1 extends javax.swing.JPanel {
         rdoGioiTinhNam.setEnabled(false);
         rdoGioiTinhNu.setEnabled(false);
 //        lblHinh.setEnabled(false);
+        
+
 
         txtmaNhanVien.setFocusable(false);
         txttenNhanVien.setFocusable(false);
@@ -922,6 +925,7 @@ public class NhanVien1 extends javax.swing.JPanel {
         txtEmail.setEditable(true);
         rdoGioiTinhNu.setEnabled(true);
 //        lblHinh.setEnabled(true);
+        
 
         txtmaNhanVien.setFocusable(true);
         txttenNhanVien.setFocusable(true);
