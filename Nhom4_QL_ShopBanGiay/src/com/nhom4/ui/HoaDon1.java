@@ -286,9 +286,9 @@ public class HoaDon1 extends javax.swing.JPanel {
         cboMaKH.setSelectedIndex(0);
         cboMaKM.setSelectedIndex(0);
         cboMaNV.setSelectedIndex(0);
-        lblKM.setVisible(false);
-        lblTenNV.setVisible(false);
-        lblTenKH.setVisible(false);
+//        lblKM.setVisible(false);
+//        lblTenNV.setVisible(false);
+//        lblTenKH.setVisible(false);
         if (i >= 0) {
             tblhoadon.removeRowSelectionInterval(i, i);
         }

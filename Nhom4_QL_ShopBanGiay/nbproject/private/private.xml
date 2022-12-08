@@ -4,13 +4,17 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/D:/FPT%20Polyteachic/FALL%2022/DuAn1/DuAn1_Nhom4/Nhom4_QL_ShopBanGiay/src/com/nhom4/ui/CuaSoChinh.java</file>
+            <file>file:/D:/FPT%20Polyteachic/FALL%2022/DuAn1/DuAn1_Nhom4/Nhom4_QL_ShopBanGiay/src/com/nhom4/utils/MsgBox.java</file>
             <file>file:/D:/FPT%20Polyteachic/FALL%2022/DuAn1/DuAn1_Nhom4/Nhom4_QL_ShopBanGiay/src/com/nhom4/utils/XImage.java</file>
+            <file>file:/D:/FPT%20Polyteachic/FALL%2022/DuAn1/DuAn1_Nhom4/Nhom4_QL_ShopBanGiay/src/com/nhom4/ui/KhachHang1.java</file>
             <file>file:/D:/FPT%20Polyteachic/FALL%2022/DuAn1/DuAn1_Nhom4/Nhom4_QL_ShopBanGiay/src/com/nhom4/ui/TaiKhoanCaNhan.java</file>
             <file>file:/D:/FPT%20Polyteachic/FALL%2022/DuAn1/DuAn1_Nhom4/Nhom4_QL_ShopBanGiay/src/com/nhom4/dao/HoaDonDAO.java</file>
             <file>file:/D:/FPT%20Polyteachic/FALL%2022/DuAn1/DuAn1_Nhom4/Nhom4_QL_ShopBanGiay/src/com/nhom4/ui/Table.java</file>
+            <file>file:/D:/FPT%20Polyteachic/FALL%2022/DuAn1/DuAn1_Nhom4/Nhom4_QL_ShopBanGiay/src/com/nhom4/dao/NhanVienDAO.java</file>
             <file>file:/D:/FPT%20Polyteachic/FALL%2022/DuAn1/DuAn1_Nhom4/Nhom4_QL_ShopBanGiay/src/com/nhom4/ui/LichSuXoa.java</file>
             <file>file:/D:/FPT%20Polyteachic/FALL%2022/DuAn1/DuAn1_Nhom4/Nhom4_QL_ShopBanGiay/src/com/nhom4/ui/KhuyenMai1.java</file>
             <file>file:/D:/FPT%20Polyteachic/FALL%2022/DuAn1/DuAn1_Nhom4/Nhom4_QL_ShopBanGiay/src/com/nhom4/ui/SanPham1.java</file>
+            <file>file:/D:/FPT%20Polyteachic/FALL%2022/DuAn1/DuAn1_Nhom4/Nhom4_QL_ShopBanGiay/src/com/nhom4/entity/NhanVien.java</file>
             <file>file:/D:/FPT%20Polyteachic/FALL%2022/DuAn1/DuAn1_Nhom4/Nhom4_QL_ShopBanGiay/src/com/nhom4/ui/ChaoJDialog.java</file>
             <file>file:/D:/FPT%20Polyteachic/FALL%2022/DuAn1/DuAn1_Nhom4/Nhom4_QL_ShopBanGiay/src/com/nhom4/ui/NhanVien1.java</file>
             <file>file:/D:/FPT%20Polyteachic/FALL%2022/DuAn1/DuAn1_Nhom4/Nhom4_QL_ShopBanGiay/src/com/nhom4/ui/DangNhap.java</file>
@@ -18,6 +22,7 @@
             <file>file:/D:/FPT%20Polyteachic/FALL%2022/DuAn1/DuAn1_Nhom4/Nhom4_QL_ShopBanGiay/src/com/nhom4/ui/NhaCungCap1.java</file>
             <file>file:/D:/FPT%20Polyteachic/FALL%2022/DuAn1/DuAn1_Nhom4/Nhom4_QL_ShopBanGiay/src/com/nhom4/ui/HoaDon1.java</file>
             <file>file:/D:/FPT%20Polyteachic/FALL%2022/DuAn1/DuAn1_Nhom4/Nhom4_QL_ShopBanGiay/src/com/nhom4/ui/ButtonCustom.java</file>
+            <file>file:/D:/FPT%20Polyteachic/FALL%2022/DuAn1/DuAn1_Nhom4/Nhom4_QL_ShopBanGiay/src/com/nhom4/dao/KhachHangDAO.java</file>
             <file>file:/D:/FPT%20Polyteachic/FALL%2022/DuAn1/DuAn1_Nhom4/Nhom4_QL_ShopBanGiay/src/com/nhom4/ui/ThongKe.java</file>
         </group>
     </open-files>

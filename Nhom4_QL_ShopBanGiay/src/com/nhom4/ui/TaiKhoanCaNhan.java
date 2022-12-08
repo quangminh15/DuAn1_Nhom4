@@ -512,7 +512,7 @@ public class TaiKhoanCaNhan extends javax.swing.JPanel {
         txtDiaChi.setEditable(false);
         txtEmail.setEditable(false);
         rdoNu.setEnabled(false);
-        lblHinh.setEnabled(false);
+        //lblHinh.setEnabled(false);
     }
 
     public void txtON() {
@@ -522,7 +522,7 @@ public class TaiKhoanCaNhan extends javax.swing.JPanel {
         txtDiaChi.setEditable(true);
         txtEmail.setEditable(true);
         rdoNu.setEnabled(true);
-        lblHinh.setEnabled(true);
+        //lblHinh.setEnabled(true);
     }
 
     private static final String EMAIL_PATTERN

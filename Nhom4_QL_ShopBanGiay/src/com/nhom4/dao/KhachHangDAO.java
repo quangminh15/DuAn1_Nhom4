@@ -32,7 +32,7 @@ public class KhachHangDAO extends MainDAO<KhachHang, String> {
 
     @Override
     public void update(KhachHang entity) {
-        JdbcHelper.executeUpdate(UPDATE_SQL, entity.getMaKH(), entity.getTenKH(),entity.getSDT(), entity.getDiaChi(), entity.isXoa());
+        JdbcHelper.executeUpdate(UPDATE_SQL, entity.getTenKH(),entity.getSDT(), entity.getDiaChi(), entity.isXoa(), entity.getMaKH());
     }
 
     @Override
