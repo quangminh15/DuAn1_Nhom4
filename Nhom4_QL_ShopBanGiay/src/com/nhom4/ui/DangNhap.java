@@ -374,12 +374,13 @@ public class DangNhap extends javax.swing.JDialog {
 void dangNhap() {
         String manv = txtMaNV.getText();
         String matkhau = new String(txtMatKhau.getPassword());
-        String matkhau2 = txtMatKhau2.getText();
+        String mkhau2 = txtMatKhau2.getText();
         TaiKhoan nv = tkDAO.selectById(manv);
         if (nv == null) {
             MsgBox.alert(this, "Tên đăng nhập không chính xác");
-        } else {
-            if (!nv.getPass().equals(matkhau) && !nv.getPass().equals(matkhau2)) {
+        }
+        else{
+            if (!nv.getPass().equals(matkhau) && !nv.getPass().equals(mkhau2)) {
                 MsgBox.alert(this, "Mật khẩu không chính xác");
             } else {
                 //new loading().setVisible(true);
@@ -388,7 +389,6 @@ void dangNhap() {
                 MsgBox.alert(this, "Đăng nhập thành công!");
                 
                 this.dispose();
-                
             }
         }
     }
