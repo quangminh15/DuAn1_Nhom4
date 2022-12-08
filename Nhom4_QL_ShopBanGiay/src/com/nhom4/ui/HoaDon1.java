@@ -956,6 +956,7 @@ public class HoaDon1 extends javax.swing.JPanel {
         tblHDCT = new com.nhom4.ui.Table();
         jLabel10 = new javax.swing.JLabel();
         lblXemHoaDon = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -1406,7 +1407,7 @@ public class HoaDon1 extends javax.swing.JPanel {
 
         lblTenSP.setFont(new java.awt.Font("Dialog", 1, 15)); // NOI18N
         lblTenSP.setText("TenSP");
-        jPanel6.add(lblTenSP, new org.netbeans.lib.awtextra.AbsoluteConstraints(218, 150, 60, -1));
+        jPanel6.add(lblTenSP, new org.netbeans.lib.awtextra.AbsoluteConstraints(218, 150, 330, -1));
 
         cboSL.setFont(new java.awt.Font("Dialog", 1, 15)); // NOI18N
         cboSL.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" }));
@@ -1612,7 +1613,11 @@ public class HoaDon1 extends javax.swing.JPanel {
                 lblXemHoaDonMouseClicked(evt);
             }
         });
-        jPanel2.add(lblXemHoaDon, new org.netbeans.lib.awtextra.AbsoluteConstraints(1160, 30, -1, -1));
+        jPanel2.add(lblXemHoaDon, new org.netbeans.lib.awtextra.AbsoluteConstraints(1140, 10, -1, -1));
+
+        jLabel21.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel21.setText("Xem Hoa Don");
+        jPanel2.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 70, -1, -1));
 
         jTabbedPane1.addTab("HoaDonChiTiet", jPanel2);
 
@@ -1853,6 +1858,7 @@ public class HoaDon1 extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
