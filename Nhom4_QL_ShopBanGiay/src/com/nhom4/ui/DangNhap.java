@@ -117,7 +117,7 @@ public class DangNhap extends javax.swing.JDialog {
         lblUserName.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblUserName.setForeground(new java.awt.Color(102, 102, 102));
         lblUserName.setText("Ten Dang Nhap");
-        pnlForm.add(lblUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 190, -1, 30));
+        pnlForm.add(lblUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 190, -1, 30));
 
         txtMaNV.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         txtMaNV.setForeground(new java.awt.Color(51, 51, 51));
@@ -147,7 +147,7 @@ public class DangNhap extends javax.swing.JDialog {
         lblMatKhau.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblMatKhau.setForeground(new java.awt.Color(102, 102, 102));
         lblMatKhau.setText("Mat Khau");
-        pnlForm.add(lblMatKhau, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 280, -1, 30));
+        pnlForm.add(lblMatKhau, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 280, -1, 30));
 
         lblHien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/view.png"))); // NOI18N
         lblHien.addMouseListener(new java.awt.event.MouseAdapter() {

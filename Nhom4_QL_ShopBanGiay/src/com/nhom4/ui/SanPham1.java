@@ -13,6 +13,7 @@ import com.nhom4.utils.MsgBox;
 import com.nhom4.utils.XImage;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Image;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
@@ -39,7 +40,7 @@ public class SanPham1 extends javax.swing.JPanel {
     int row = -1;
     int them = 0;
     int checklap = 0;
-
+    String anh ="hinh/default.png";
     public SanPham1() {
         initComponents();
         initTable();
@@ -92,6 +93,28 @@ public class SanPham1 extends javax.swing.JPanel {
                     sp.getGhiChu()
                 };
                 splist.add(sp);
+                model.addRow(data);
+            }
+        } catch (Exception e) {
+        }
+    }
+    
+    public void fillTable3() {
+        DefaultTableModel model = (DefaultTableModel) tblChiTietSp.getModel();
+        model.setRowCount(0);
+        ctlist.clear();
+        try {
+            List<ChiTietSanPham> list = ctspDAO.selectAll(); // Đọc dữ liệu từ CSDL
+            for (ChiTietSanPham ct : list) {
+                Object[] data = {
+                    ct.getMaCT(),
+                    ct.getMaSP(),
+                    ct.getSize(),
+                    ct.getMauSac(),
+                    ct.getChatLieu(),
+                    ct.getGia()
+                };
+                ctlist.add(ct);
                 model.addRow(data);
             }
         } catch (Exception e) {
@@ -215,7 +238,10 @@ public class SanPham1 extends javax.swing.JPanel {
             try {
                 spDao.hide(msp);
                 this.fillTable();
+                ImageIcon icon = new ImageIcon("hinh/default.png");
+                lblAnh.setIcon(icon);
                 this.clearForm();
+                btnThem.setEnabled(true);
                 MsgBox.alert(this, "Xóa thành công");
             } catch (Exception e) {
                 MsgBox.alert(this, "Xóa thất bại");
@@ -246,7 +272,8 @@ public class SanPham1 extends javax.swing.JPanel {
                 checklap = 1;
             }
         }
-
+        ImageIcon icon = new ImageIcon("hinh/default.png");
+        
         if (txtMaSP.getText().equals("") || txtMaSP.getText().length() < 5 || txtMaSP.getText().length() > 6) {
             MsgBox.alert(this, "Vui lòng nhập mã sản phẩm từ 5---->6 kí tự");
             txtMaSP.requestFocus();
@@ -265,7 +292,7 @@ public class SanPham1 extends javax.swing.JPanel {
             txtSoLuong.requestFocus();
             return false;
         } else if (lblAnh.getIcon() == null) {
-            MsgBox.alert(this, "Bạn chưa chọn hình! Click vào khu vực hình để chọn");
+            MsgBox.alert(this, "Bạn chưa chọn hình! click vào khu vực hình để chọn");
             return false;
         } else if (!txtSoLuong.getText().equals("")) {
             String sl = "";
@@ -397,7 +424,7 @@ public class SanPham1 extends javax.swing.JPanel {
         ChiTietSanPham ctsp = getForm2();
         try {
             ctspDAO.insert(ctsp);
-            this.fillTable2();
+            this.fillTable3();
             MsgBox.alert(this, "Thêm mới thành công");
             updateStatus2();
             them = 0;
@@ -415,7 +442,7 @@ public class SanPham1 extends javax.swing.JPanel {
             String mct = txtMaCT.getText();
             try {
                 ctspDAO.delete(mct);
-                this.fillTable2();
+                this.fillTable3();
                 this.clearForm2();
                 MsgBox.alert(this, "Xóa thành công");
             } catch (Exception e) {
@@ -457,13 +484,13 @@ public class SanPham1 extends javax.swing.JPanel {
             txtMaCT.requestFocus();
             checklap = 0;
             return false;
-        } else if (txtMauSac.getText().equals("")) {
-            MsgBox.alert(this, "Vui lòng nhập màu sắc");
-            txtMauSac.requestFocus();
-            return false;
-        } else if (txtChatLieu.getText().equals("")) {
+        }  else if (txtChatLieu.getText().equals("")) {
             MsgBox.alert(this, "Vui lòng nhập chất liệu");
             txtChatLieu.requestFocus();
+            return false;
+        }else if (txtMauSac.getText().equals("")) {
+            MsgBox.alert(this, "Vui lòng nhập màu sắc");
+            txtMauSac.requestFocus();
             return false;
         } else if (txtSize.getText().equals("")) {
             MsgBox.alert(this, "Vui lòng nhập size giày");
@@ -572,7 +599,7 @@ public class SanPham1 extends javax.swing.JPanel {
         cboMaSP.setEnabled(false);
         txtChatLieu.setEditable(false);
         txtGia.setEditable(false);
-        txtGia.setEditable(false);
+        txtMauSac.setEditable(false);
         txtSize.setEditable(false);
         
     }
@@ -582,7 +609,7 @@ public class SanPham1 extends javax.swing.JPanel {
         cboMaSP.setEnabled(true);
         txtChatLieu.setEditable(true);
         txtGia.setEditable(true);
-        txtGia.setEditable(true);
+        txtMauSac.setEditable(true);
         txtSize.setEditable(true);
     }
 
@@ -1537,8 +1564,9 @@ public class SanPham1 extends javax.swing.JPanel {
         cboMaNCC.setSelectedIndex(0);
         txtSoLuong.setText("");
         txtGhiChu.setText("");
-        ImageIcon icon = new ImageIcon("..\\icon\\user.png");
-        lblAnh.setIcon(icon = null);
+        lblAnh.setIcon(null);
+//        ImageIcon icon = new ImageIcon("hinh/default.png");
+//        lblAnh.setIcon(icon);
         txtON();
     }//GEN-LAST:event_btnThemActionPerformed
 
@@ -1552,10 +1580,10 @@ public class SanPham1 extends javax.swing.JPanel {
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void btnHuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHuyActionPerformed
-      updateStatus();
+        updateStatus();
         clearForm();
-        ImageIcon icon = new ImageIcon("..\\hinh\\user.png");
-        lblAnh.setIcon(icon = null);
+        ImageIcon icon = new ImageIcon("hinh/default.png");
+        lblAnh.setIcon(icon);
         btnLuu.setEnabled(false);
         btnThem.setEnabled(true);
     }//GEN-LAST:event_btnHuyActionPerformed
@@ -1633,8 +1661,9 @@ public class SanPham1 extends javax.swing.JPanel {
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void btnHuyyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHuyyActionPerformed
-         updateStatus2();
+        updateStatus2();
         clearForm2();
+        fillTable3();
         btnSave.setEnabled(false);
         btnReset.setEnabled(true);
     }//GEN-LAST:event_btnHuyyActionPerformed
@@ -1645,6 +1674,7 @@ public class SanPham1 extends javax.swing.JPanel {
 
     private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
         them = 1;
+        fillTable3();
         btnCapNhat.setEnabled(false);
         btnDelete.setEnabled(false);
         btnSave.setEnabled(true);
@@ -1664,7 +1694,7 @@ public class SanPham1 extends javax.swing.JPanel {
         btnSave.setEnabled(true);
         txtON2();
         txtMaCT.setEditable(false);
-        cboMaSP.setEditable(false);
+        cboMaSP.setEnabled(false);
     }//GEN-LAST:event_btnCapNhatActionPerformed
 
     private void txtMaCTFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtMaCTFocusGained

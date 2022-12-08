@@ -548,7 +548,7 @@ public class KhachHang1 extends javax.swing.JPanel {
     private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
         if (Auth.islogin()) {
             LichSuXoa ls = new LichSuXoa();
-            ls.changePan(2);
+            ls.changePan(1);
             ls.setVisible(true);
 
         } else {
