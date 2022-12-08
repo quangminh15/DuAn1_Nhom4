@@ -9,6 +9,7 @@ import com.nhom4.entity.NhanVien;
 import com.nhom4.entity.TaiKhoan;
 import com.nhom4.utils.Auth;
 import com.nhom4.utils.MsgBox;
+import com.nhom4.utils.XImage;
 import java.awt.Color;
 import java.awt.GradientPaint;
 import java.awt.Graphics;

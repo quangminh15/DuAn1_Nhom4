@@ -78,8 +78,8 @@ public class ThongKe extends javax.swing.JPanel {
 private void fillTableKhachHang() {
         DefaultTableModel model = (DefaultTableModel) tblBang.getModel();
         model.setRowCount(0);
-        int thang=0 ;
-        int nam=0;
+        int thang=2019;
+        int nam= 2015;
         try {
         thang = Integer.parseInt( cboThang.getSelectedItem().toString());
         nam = Integer.parseInt( cboNam.getSelectedItem().toString());  
@@ -355,7 +355,7 @@ private void fillTableKhachHang() {
     }//GEN-LAST:event_cboNamDTActionPerformed
 
     private void cboThangItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboThangItemStateChanged
-        //this.fillTableKhachHang();
+        this.fillTableKhachHang();
     }//GEN-LAST:event_cboThangItemStateChanged
 
 

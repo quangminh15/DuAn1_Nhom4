@@ -727,6 +727,7 @@ public class TaiKhoanQL extends javax.swing.JPanel {
     public void fillTable() {
         DefaultTableModel model = (DefaultTableModel) tblBang.getModel();
         model.setRowCount(0);
+        listTK.clear();
         try {
             List<TaiKhoan> list = tkDAO.selectAll(); // Đọc dữ liệu từ CSDL
             for (TaiKhoan tk : list) {
