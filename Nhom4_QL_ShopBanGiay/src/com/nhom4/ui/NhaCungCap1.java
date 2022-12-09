@@ -14,6 +14,7 @@ import java.awt.Font;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -25,7 +26,7 @@ public class NhaCungCap1 extends javax.swing.JPanel {
     /**
      * Creates new form NhaCungCap
      */
-    NhaCungCapDAO dao = new NhaCungCapDAO();
+    NhaCungCapDAO nccDAO = new NhaCungCapDAO();
     int row = 0;
     int them = 0;
     int checklap = 0;
@@ -336,6 +337,10 @@ public class NhaCungCap1 extends javax.swing.JPanel {
     }//GEN-LAST:event_btnLastActionPerformed
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
+        int index = tblNCC.getSelectedRow();
+        if (index < 0) {
+            MsgBox.alert(this, "Chưa chọn nhà cung cấp");
+        } else {
         them = 1;
         btnSua.setEnabled(false);
         btnXoa.setEnabled(false);
@@ -343,6 +348,7 @@ public class NhaCungCap1 extends javax.swing.JPanel {
         txtMaNCC.setText("");
         txtTenNCC.setText("");
         txtON();
+        }
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
@@ -355,7 +361,18 @@ public class NhaCungCap1 extends javax.swing.JPanel {
     }//GEN-LAST:event_btnSuaActionPerformed
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
-        delete();
+        Object[] options = {"Ẩn", "Xóa"};
+        int n = JOptionPane.showOptionDialog(this, "Bạn muốn ẩn hay xóa?", "Thông báo xác nhận", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+        try {
+            if (options[n] == "Ẩn") {
+                deleteAn();
+            } else {
+                delete();
+            }
+        } catch (Exception e) {
+            MsgBox.alert(this, "Bạn chưa chọn");
+        }
+        
     }//GEN-LAST:event_btnXoaActionPerformed
 
     private void btnHuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHuyActionPerformed
@@ -481,7 +498,7 @@ public class NhaCungCap1 extends javax.swing.JPanel {
         model.setRowCount(0);
         listNCC.clear();
         try {
-            List<NhaCungCap> list = dao.selectAll();
+            List<NhaCungCap> list = nccDAO.selectAll();
             for (NhaCungCap nv : list) {
                 Object[] data = {
                     nv.getMaNCC(),
@@ -498,7 +515,7 @@ public class NhaCungCap1 extends javax.swing.JPanel {
     public void insert() {
         NhaCungCap ncc = getForm();
         try {
-            dao.insert(ncc);
+            nccDAO.insert(ncc);
             this.fillTable();
             this.clearForm();
             MsgBox.alert(this, "Thêm mới thành công");
@@ -518,7 +535,7 @@ public class NhaCungCap1 extends javax.swing.JPanel {
         NhaCungCap nv = getForm();
 
         try {
-            dao.update(nv);
+            nccDAO.update(nv);
             this.fillTable();
             MsgBox.alert(this, "Cập nhật thành công");
             updateStatus();
@@ -537,7 +554,21 @@ public class NhaCungCap1 extends javax.swing.JPanel {
         String ncc = txtMaNCC.getText();
         if (MsgBox.confirm(this, "Bạn thực sự muốn xóa nhà cung cấp này")) {
             try {
-                dao.hide(ncc);
+                nccDAO.delete(ncc);
+                this.fillTable();
+                this.clearForm();
+                MsgBox.alert(this, "Ẩn thành công");
+            } catch (Exception e) {
+                MsgBox.alert(this, "Ẩn thất bại");
+            }
+        }
+    }
+    
+    public void deleteAn() {
+        String ncc = txtMaNCC.getText();
+        if (MsgBox.confirm(this, "Bạn thực sự muốn xóa nhà cung cấp này")) {
+            try {
+                nccDAO.hide(ncc);
                 //dao.delete(ncc);
                 this.fillTable();
                 this.clearForm();
@@ -588,7 +619,7 @@ public class NhaCungCap1 extends javax.swing.JPanel {
 
     public void edit() {
         String mancc = (String) tblNCC.getValueAt(this.row, 0);
-        NhaCungCap ncc = dao.selectById(mancc);
+        NhaCungCap ncc = nccDAO.selectById(mancc);
         this.setForm(ncc);
         this.updateStatus();
     }
@@ -668,8 +699,9 @@ public class NhaCungCap1 extends javax.swing.JPanel {
     }
 
     public boolean check() {
-        for (int i = 0; i < listNCC.size(); i++) {
-            if (listNCC.get(i).getMaNCC().equalsIgnoreCase(txtMaNCC.getText())) {
+        List<String> listMaNCC = nccDAO.selectMaNCC();
+        for (int i = 0; i < listMaNCC.size(); i++) {
+            if (listMaNCC.get(i).equalsIgnoreCase(txtMaNCC.getText())) {
                 checklap = 1;
             }
         }
@@ -682,7 +714,7 @@ public class NhaCungCap1 extends javax.swing.JPanel {
             txtMaNCC.requestFocus();
             return false;
         } else if (them == 1 && checklap == 1) {
-            MsgBox.alert(this, "Mã nhà cung cấp đã tồn tại. Vui lòng nhập mã mới");
+            MsgBox.alert(this, "Mã nhà cung cấp đã tồn tại hoặc đã bị ẩn. Vui lòng nhập mã mới");
             checklap = 0;
             return false;
         } else if (txtTenNCC.getText().equals("")) {
@@ -698,7 +730,7 @@ public class NhaCungCap1 extends javax.swing.JPanel {
         model.setRowCount(0);
         try {
             String key = txtTimKiem.getText();
-            List<NhaCungCap> list = dao.selectByKeyword(key);
+            List<NhaCungCap> list = nccDAO.selectByKeyword(key);
 
             for (NhaCungCap nh : list) {
                 Object[] data = {

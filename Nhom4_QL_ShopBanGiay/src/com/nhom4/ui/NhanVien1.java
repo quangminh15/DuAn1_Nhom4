@@ -20,6 +20,7 @@ import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -589,7 +590,19 @@ public class NhanVien1 extends javax.swing.JPanel {
     }//GEN-LAST:event_btnLuuActionPerformed
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
-        delete();
+        Object[] options = {"Ẩn", "Xóa"};
+        int n = JOptionPane.showOptionDialog(this, "Bạn muốn ẩn hay xóa?", "Thông báo xác nhận", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+        try {
+            if (options[n] == "Ẩn") {
+                deleteAn();
+
+            } else {
+                delete();
+            }
+
+        } catch (Exception e) {
+            MsgBox.alert(this, "Bạn chưa chọn");
+        }
     }//GEN-LAST:event_btnXoaActionPerformed
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
@@ -798,7 +811,7 @@ public class NhanVien1 extends javax.swing.JPanel {
             MsgBox.alert(this, "Không thể xóa quản lý");
         } else if (MsgBox.confirm(this, "Bạn thực sự muốn xóa nhân viên này")) {
             try {
-                dao.hide(nv);
+                dao.delete(nv);
                 this.fillTable();
                 this.clearForm();
                 MsgBox.alert(this, "Xóa thành công");
@@ -806,6 +819,22 @@ public class NhanVien1 extends javax.swing.JPanel {
                 MsgBox.alert(this, "Xóa thất bại");
             }
         }
+    }
+
+    public void deleteAn() {
+        String nv = txtmaNhanVien.getText();
+        if (nv.equals(Auth.user.getMaNV())) {
+            MsgBox.alert(this, "Không thể Ẩn quản lý");
+        }
+        try {
+            dao.hide(nv);
+            this.fillTable();
+            this.clearForm();
+            MsgBox.alert(this, "Ẩn thành công");
+        } catch (Exception e) {
+            MsgBox.alert(this, "Ẩn thất bại");
+        }
+
     }
 
     void selectImage() {
@@ -956,14 +985,15 @@ public class NhanVien1 extends javax.swing.JPanel {
 
     public boolean check() {
         boolean checkSDT = true;
+        List<String> listMaNV = dao.selectMaNV();
 
         try {
             Float.parseFloat(txtsoDienSo.getText());
         } catch (NumberFormatException e1) {
             checkSDT = false;
         }
-        for (int i = 0; i < listNV.size(); i++) {
-            if (listNV.get(i).getMaNV().equalsIgnoreCase(txtmaNhanVien.getText())) {
+        for (int i = 0; i < listMaNV.size(); i++) {
+            if (listMaNV.get(i).equalsIgnoreCase(txtmaNhanVien.getText())) {
                 checklap = 1;
             }
         }
@@ -972,7 +1002,7 @@ public class NhanVien1 extends javax.swing.JPanel {
             txtmaNhanVien.requestFocus();
             return false;
         } else if (them == 1 && checklap == 1) {
-            MsgBox.alert(this, "Mã nhân viên đã tồn tại. Vui lòng nhập mã mới");
+            MsgBox.alert(this, "Mã nhân viên đã tồn tại hoặc bị ẩn đi. Vui lòng nhập mã mới");
             checklap = 0;
             return false;
         } else if (txttenNhanVien.getText().length() == 0) {

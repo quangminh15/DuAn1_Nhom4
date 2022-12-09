@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -515,7 +516,19 @@ public class KhachHang1 extends javax.swing.JPanel {
     }//GEN-LAST:event_btnSuaActionPerformed
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
-        delete();
+        Object[] options = {"Ẩn", "Xóa"};
+        int n = JOptionPane.showOptionDialog(this, "Bạn muốn ẩn hay xóa?", "Thông báo xác nhận", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+        try {
+            if (options[n] == "Ẩn") {
+                deleteAn();
+
+            } else {
+                delete();
+            }
+
+        } catch (Exception e) {
+            MsgBox.alert(this, "Bạn chưa chọn");
+        }
     }//GEN-LAST:event_btnXoaActionPerformed
 
     private void btnHuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHuyActionPerformed
@@ -658,11 +671,24 @@ public class KhachHang1 extends javax.swing.JPanel {
 
     }
 
+    public void deleteAn() {
+        String kh = txtmaKhachHang.getText();
+            try {
+                dao.hide(kh);
+                this.fillTable();
+                this.clearForm();
+                MsgBox.alert(this, "Ẩn thành công");
+            } catch (Exception e) {
+                MsgBox.alert(this, "Ẩn thất bại");
+            }
+        
+    }
+    
     public void delete() {
         String kh = txtmaKhachHang.getText();
         if (MsgBox.confirm(this, "Bạn thực sự muốn xóa khách hàng này")) {
             try {
-                dao.hide(kh);
+                dao.delete(kh);
                 this.fillTable();
                 this.clearForm();
                 MsgBox.alert(this, "Xóa thành công");
@@ -770,6 +796,7 @@ public class KhachHang1 extends javax.swing.JPanel {
     }
 
     public boolean check() {
+        List<String> listMaKH = dao.selectMaKH();
         boolean checkSDT = true;
 
         try {
@@ -787,7 +814,7 @@ public class KhachHang1 extends javax.swing.JPanel {
             txtmaKhachHang.requestFocus();
             return false;
         } else if (them == 1 && checklap == 1) {
-            MsgBox.alert(this, "Mã khách hàng đã tồn tại. Vui lòng nhập mã mới");
+            MsgBox.alert(this, "Mã khách hàng đã tồn tại hoặc đã bị ẩn đi. Vui lòng nhập mã mới");
             checklap = 0;
             return false;
         } else if (txttenKhachHang.getText().length() == 0) {

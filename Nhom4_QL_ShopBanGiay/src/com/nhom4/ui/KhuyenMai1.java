@@ -18,6 +18,7 @@ import javax.swing.table.DefaultTableModel;
 import java.util.ArrayList;
 import java.util.Locale;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -475,11 +476,10 @@ public class KhuyenMai1 extends javax.swing.JPanel {
     }//GEN-LAST:event_btnTimKiemActionPerformed
 
     private void txtTimKiemKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimKiemKeyTyped
-        if(txtTimKiem.getText().equals("")){
-           lblTimKiem.setVisible(true);
-       }
-       else
-           lblTimKiem.setVisible(false);
+        if (txtTimKiem.getText().equals("")) {
+            lblTimKiem.setVisible(true);
+        } else
+            lblTimKiem.setVisible(false);
     }//GEN-LAST:event_txtTimKiemKeyTyped
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
@@ -504,9 +504,23 @@ public class KhuyenMai1 extends javax.swing.JPanel {
     }//GEN-LAST:event_btnSuaActionPerformed
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
-        if (checkXoa() == true) {
-            delete();
+        Object[] options = {"Ẩn", "Xóa"};
+        int n = JOptionPane.showOptionDialog(this, "Bạn muốn ẩn hay xóa?", "Thông báo xác nhận", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+        try {
+            if (options[n] == "Ẩn") {
+                if (checkXoa() == true) {
+                    deleteAn();
+                }
+            } else {
+                if (checkXoa() == true) {
+                    delete();
+                }
+            }
+        } catch (Exception e) {
+            MsgBox.alert(this, "Bạn chưa chọn");
         }
+
+
     }//GEN-LAST:event_btnXoaActionPerformed
 
     private void btnLuuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLuuActionPerformed
@@ -515,7 +529,7 @@ public class KhuyenMai1 extends javax.swing.JPanel {
                 insert();
                 return;
             }
-         }
+        }
 
         if (them == 2) {
             if (checkXoa()) {
@@ -557,23 +571,23 @@ public class KhuyenMai1 extends javax.swing.JPanel {
     }//GEN-LAST:event_txtTenKMFocusLost
 
     private void txtNgayBDFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNgayBDFocusGained
-       
+
     }//GEN-LAST:event_txtNgayBDFocusGained
 
     private void txtNgayBDFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNgayBDFocusLost
-      
+
     }//GEN-LAST:event_txtNgayBDFocusLost
 
     private void txtNgayKTFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNgayKTFocusGained
-        
+
     }//GEN-LAST:event_txtNgayKTFocusGained
 
     private void txtNgayKTFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNgayKTFocusLost
-        
+
     }//GEN-LAST:event_txtNgayKTFocusLost
 
     private void txtGiamGiaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtGiamGiaFocusGained
-         pnlGiamGia.setBackground(new Color(58, 136, 145));
+        pnlGiamGia.setBackground(new Color(58, 136, 145));
     }//GEN-LAST:event_txtGiamGiaFocusGained
 
     private void txtGiamGiaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtGiamGiaFocusLost
@@ -601,7 +615,7 @@ public class KhuyenMai1 extends javax.swing.JPanel {
             LichSuXoa ls = new LichSuXoa();
             ls.changePan(4);
             ls.setVisible(true);
-            
+
         } else {
             MsgBox.alert(this, "Vui lòng đăng nhập");
         }
@@ -660,9 +674,10 @@ public class KhuyenMai1 extends javax.swing.JPanel {
         setFont(btnXoa);
         setFont(btnLuu);
     }
-    public void setFont(JButton bt){
-            bt.setFont(getFont().deriveFont(Font.BOLD, 18));
-        }
+
+    public void setFont(JButton bt) {
+        bt.setFont(getFont().deriveFont(Font.BOLD, 18));
+    }
 
     public void fillTable() {
         DefaultTableModel model = (DefaultTableModel) tblKhuyenMai.getModel();
@@ -727,11 +742,25 @@ public class KhuyenMai1 extends javax.swing.JPanel {
         }
     }
 
+    public void deleteAn() {
+        String km = txtMaKM.getText();
+        try {
+            dao.hide(km);
+            this.fillTable();
+            this.clearForm();
+            MsgBox.alert(this, "Ẩn thành công");
+            clearForm();
+        } catch (Exception e) {
+            MsgBox.alert(this, "Ẩn thất bại");
+        }
+
+    }
+
     public void delete() {
         String km = txtMaKM.getText();
         if (MsgBox.confirm(this, "Bạn thực sự muốn xóa chương trình khuyến mãi này")) {
             try {
-                dao.hide(km);
+                dao.delete(km);
                 this.fillTable();
                 this.clearForm();
                 MsgBox.alert(this, "Xóa thành công");
@@ -900,7 +929,7 @@ public class KhuyenMai1 extends javax.swing.JPanel {
         txtNgayBD.setEnabled(false);
         txtNgayKT.setEnabled(false);
         txtGhiChu.setEditable(false);
-        
+
         txtMaKM.setFocusable(false);
         txtTenKM.setFocusable(false);
         txtGiamGia.setFocusable(false);
@@ -914,7 +943,7 @@ public class KhuyenMai1 extends javax.swing.JPanel {
         txtNgayBD.setEnabled(true);
         txtNgayKT.setEnabled(true);
         txtGhiChu.setEditable(true);
-        
+
         txtMaKM.setFocusable(true);
         txtTenKM.setFocusable(true);
         txtGiamGia.setFocusable(true);
@@ -923,6 +952,7 @@ public class KhuyenMai1 extends javax.swing.JPanel {
 
     public boolean check() {
         boolean checkGiamGia = true;
+        List<String> listMaKM = dao.selectMaKM();
 
         try {
             Float.parseFloat(txtGiamGia.getText());
@@ -937,8 +967,8 @@ public class KhuyenMai1 extends javax.swing.JPanel {
         SimpleDateFormat dfmonth = new SimpleDateFormat("MM");
         SimpleDateFormat dfyear = new SimpleDateFormat("yyyy");
 
-        for (int i = 0; i < listKM.size(); i++) {
-            if (listKM.get(i).getMaKM().equalsIgnoreCase(txtMaKM.getText())) {
+        for (int i = 0; i < listMaKM.size(); i++) {
+            if (listMaKM.get(i).equalsIgnoreCase(txtMaKM.getText())) {
                 checklap = 1;
             }
         }
@@ -952,7 +982,7 @@ public class KhuyenMai1 extends javax.swing.JPanel {
             txtMaKM.requestFocus();
             return false;
         } else if (them == 1 && checklap == 1) {
-            MsgBox.alert(this, "Mã chương trình khuyến mãi đã tồn tại. Vui lòng nhập mã mới");
+            MsgBox.alert(this, "Mã chương trình khuyến mãi đã tồn tại hoặc đã bị ẩn đi. Vui lòng nhập mã mới");
             checklap = 0;
             return false;
         } else if (txtTenKM.getText().equals("")) {

@@ -8,6 +8,7 @@ import com.nhom4.entity.HoaDon;
 import com.nhom4.entity.KhuyenMai;
 import com.nhom4.utils.JdbcHelper;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -22,6 +23,7 @@ public class KhuyenMaiDAO extends MainDAO<KhuyenMai, String> {
     final String UPDATE_SQL = "UPDATE KhuyenMai SET TenKM =?, GiamGia=?, NgayBD =?, NgayKT =?, GhiChu =?,Xoa=? WHERE MaKM=?";
     final String DELETE_SQL = "DELETE FROM KhuyenMai WHERE MaKM = ?";
     final String SELECT_By_Id_SQL = "SELECT * FROM KhuyenMai WHERE MaKM = ?";
+    final String SELECT_ALL_SQL = "SELECT * FROM KhuyenMai";
     final String SELECT_ALL_SQL_1 = "SELECT * FROM KhuyenMai where Xoa = 1";
     final String SELECT_ALL_SQL_2 = "SELECT * FROM KhuyenMai where Xoa = 0";
     final String HIDE_SQL = "Update KhuyenMai set xoa=0 where MaKM = ?";
@@ -70,6 +72,21 @@ public class KhuyenMaiDAO extends MainDAO<KhuyenMai, String> {
     public List<KhuyenMai> selectByKeyword(String key) {
         String sql = "SELECT * FROM KhuyenMai WHERE TenKM like ?";
         return this.selectBySql(sql, "%" + key + "%");
+    }
+    
+    public List<String> selectMaKM() {
+        String sql = SELECT_ALL_SQL;
+        List<String> list = new ArrayList<>();
+        try {
+            ResultSet rs = JdbcHelper.executeQuery(sql);
+            while (rs.next()) {
+                list.add(rs.getString(1));
+            }
+            rs.getStatement().getConnection().close();
+            return list;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override

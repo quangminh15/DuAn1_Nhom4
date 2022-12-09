@@ -21,6 +21,7 @@ public class NhanVienDAO extends MainDAO<NhanVien, String> {
     final String UPDATE_SQL = "Update NhanVien set TenNV=?,GioiTinh=?,SDT=?,Email=?,Hinh=?,DiaChi=?,Xoa=? where MaNV = ?";
     final String DELETE_SQL = "delete from NhanVien where MaNV = ?";
     final String SELECT_By_Id_SQL = "select * from NhanVien where MaNV=?";
+    final String SELECT_ALL_SQL = "select * from NhanVien";
     final String SELECT_ALL_SQL_1 = "select * from NhanVien where Xoa = 0";
     final String SELECT_ALL_SQL_2 = "select * from NhanVien where Xoa = 1";
     final String HIDE_SQL = "Update NhanVien set xoa=1 where MaNV = ?";
@@ -69,6 +70,21 @@ public class NhanVienDAO extends MainDAO<NhanVien, String> {
     public List<NhanVien> selectByKeyword(String user) {
         String sql = "SELECT * FROM NhanVien WHERE TenNV like ?";
         return this.selectBySql(sql, "%" + user + "%");
+    }
+    
+    public List<String> selectMaNV() {
+        String sql = SELECT_ALL_SQL;
+        List<String> list = new ArrayList<>();
+        try {
+            ResultSet rs = JdbcHelper.executeQuery(sql);
+            while (rs.next()) {
+                list.add(rs.getString(1));
+            }
+            rs.getStatement().getConnection().close();
+            return list;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override

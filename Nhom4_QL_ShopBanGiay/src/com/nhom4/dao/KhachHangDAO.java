@@ -10,6 +10,7 @@ import com.nhom4.utils.JdbcHelper;
 import java.util.ArrayList;
 import java.util.List;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
  *
@@ -20,6 +21,7 @@ public class KhachHangDAO extends MainDAO<KhachHang, String> {
     final String UPDATE_SQL = "update KhachHang set TenKH=?,SDT=?,DiaChi=?,Xoa=? where MaKH = ?";
     final String DELETE_SQL = "delete from KhachHang where MaKH = ?";
     final String SELECT_By_Id_SQL = "select * from KhachHang where MaKH=?";
+    final String SELECT_ALL_SQL = "select * from KhachHang";
     final String SELECT_ALL_SQL_1 = "select * from KhachHang where Xoa = 1";
     final String SELECT_ALL_SQL_2 = "select * from KhachHang where Xoa = 0";
     final String HIDE_SQL = "Update KhachHang set xoa=0 where MaKH = ?";
@@ -58,6 +60,21 @@ public class KhachHangDAO extends MainDAO<KhachHang, String> {
     }
     public void restore(String id){
         JdbcHelper.executeUpdate(RESTORE_SQL, id);
+    }
+    
+    public List<String> selectMaKH() {
+        String sql = SELECT_ALL_SQL;
+        List<String> list = new ArrayList<>();
+        try {
+            ResultSet rs = JdbcHelper.executeQuery(sql);
+            while (rs.next()) {
+                list.add(rs.getString(1));
+            }
+            rs.getStatement().getConnection().close();
+            return list;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override

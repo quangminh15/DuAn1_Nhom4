@@ -8,6 +8,7 @@ import com.nhom4.dao.MainDAO;
 import com.nhom4.entity.NhaCungCap;
 import com.nhom4.utils.JdbcHelper;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,6 +21,7 @@ public class NhaCungCapDAO extends MainDAO<NhaCungCap, String> {
     final String INSERT_SQL = "INSERT INTO NCC (MaNCC, TenNCC,Xoa) VALUES (?,?,?)";
     final String UPDATE_SQL = "UPDATE NCC SET TenNCC = ?, Xoa = ? WHERE MaNCC = ?";
     final String DELETE_SQL = "DELETE FROM NCC WHERE MaNCC = ?";
+    final String SELECT_ALL_SQL = "SELECT * FROM NCC";
     final String SELECT_ALL_SQL_1 = "SELECT * FROM NCC where Xoa = 1";
     final String SELECT_By_Id_SQL = "SELECT * FROM NCC WHERE MaNCC = ?";
     final String SELECT_ALL_SQL_2 = "SELECT * FROM NCC where Xoa = 0";
@@ -69,6 +71,21 @@ public class NhaCungCapDAO extends MainDAO<NhaCungCap, String> {
     public List<NhaCungCap> selectByKeyword(String key) {
         String sql = "SELECT * FROM NCC WHERE TenNCC like ?";
         return this.selectBySql(sql, "%" + key + "%");
+    }
+    
+    public List<String> selectMaNCC() {
+        String sql = SELECT_ALL_SQL;
+        List<String> list = new ArrayList<>();
+        try {
+            ResultSet rs = JdbcHelper.executeQuery(sql);
+            while (rs.next()) {
+                list.add(rs.getString(1));
+            }
+            rs.getStatement().getConnection().close();
+            return list;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
     
     @Override
