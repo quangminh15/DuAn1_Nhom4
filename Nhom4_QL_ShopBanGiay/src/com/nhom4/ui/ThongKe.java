@@ -42,6 +42,7 @@ public class ThongKe extends javax.swing.JPanel {
         if (!Auth.isManager()) {
             tabs.remove(1);
         }
+        
     }
 
     public void selectTab(int index) {

@@ -19,6 +19,7 @@ import java.util.Date;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 import com.nhom4.ui.DangNhap;
+import java.awt.event.MouseEvent;
 import javax.swing.ImageIcon;
 
 /**
@@ -94,6 +95,7 @@ public class CuaSoChinh extends javax.swing.JFrame {
         lblDangNhap = new javax.swing.JLabel();
         lblDangXuat = new javax.swing.JLabel();
         lblDoiMatKhau = new javax.swing.JLabel();
+        lblLichSuXoa = new javax.swing.JLabel();
         pnlCardPane = new javax.swing.JPanel();
         pnlHome = new javax.swing.JPanel();
         lblBanner1 = new javax.swing.JLabel();
@@ -102,6 +104,8 @@ public class CuaSoChinh extends javax.swing.JFrame {
         jPanel4 = new jPanelGradient();
         lblDongHo = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        lblTitle = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("NHÓM 4");
@@ -169,14 +173,14 @@ public class CuaSoChinh extends javax.swing.JFrame {
         pnlNCC.setLayout(pnlNCCLayout);
         pnlNCCLayout.setHorizontalGroup(
             pnlNCCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 236, Short.MAX_VALUE)
+            .addGap(0, 240, Short.MAX_VALUE)
         );
         pnlNCCLayout.setVerticalGroup(
             pnlNCCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 40, Short.MAX_VALUE)
         );
 
-        jPanel2.add(pnlNCC, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 236, 40));
+        jPanel2.add(pnlNCC, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 240, 40));
 
         lblSP.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblSP.setForeground(new java.awt.Color(255, 255, 255));
@@ -210,14 +214,14 @@ public class CuaSoChinh extends javax.swing.JFrame {
         pnlSP.setLayout(pnlSPLayout);
         pnlSPLayout.setHorizontalGroup(
             pnlSPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 236, Short.MAX_VALUE)
+            .addGap(0, 240, Short.MAX_VALUE)
         );
         pnlSPLayout.setVerticalGroup(
             pnlSPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 40, Short.MAX_VALUE)
         );
 
-        jPanel2.add(pnlSP, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 236, 40));
+        jPanel2.add(pnlSP, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 240, 40));
 
         lblKH.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblKH.setForeground(new java.awt.Color(255, 255, 255));
@@ -251,14 +255,14 @@ public class CuaSoChinh extends javax.swing.JFrame {
         pnlKH.setLayout(pnlKHLayout);
         pnlKHLayout.setHorizontalGroup(
             pnlKHLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 236, Short.MAX_VALUE)
+            .addGap(0, 240, Short.MAX_VALUE)
         );
         pnlKHLayout.setVerticalGroup(
             pnlKHLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 40, Short.MAX_VALUE)
         );
 
-        jPanel2.add(pnlKH, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 330, 236, 40));
+        jPanel2.add(pnlKH, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 330, 240, 40));
 
         lblHD.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblHD.setForeground(new java.awt.Color(255, 255, 255));
@@ -292,14 +296,14 @@ public class CuaSoChinh extends javax.swing.JFrame {
         pnlHD.setLayout(pnlHDLayout);
         pnlHDLayout.setHorizontalGroup(
             pnlHDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 236, Short.MAX_VALUE)
+            .addGap(0, 240, Short.MAX_VALUE)
         );
         pnlHDLayout.setVerticalGroup(
             pnlHDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 40, Short.MAX_VALUE)
         );
 
-        jPanel2.add(pnlHD, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 370, 236, 40));
+        jPanel2.add(pnlHD, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 370, 240, 40));
 
         lblKM.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblKM.setForeground(new java.awt.Color(255, 255, 255));
@@ -333,14 +337,14 @@ public class CuaSoChinh extends javax.swing.JFrame {
         pnlKM.setLayout(pnlKMLayout);
         pnlKMLayout.setHorizontalGroup(
             pnlKMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 236, Short.MAX_VALUE)
+            .addGap(0, 240, Short.MAX_VALUE)
         );
         pnlKMLayout.setVerticalGroup(
             pnlKMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 40, Short.MAX_VALUE)
         );
 
-        jPanel2.add(pnlKM, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 450, 236, 40));
+        jPanel2.add(pnlKM, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 450, 240, 40));
 
         lblExit.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblExit.setForeground(new java.awt.Color(255, 255, 255));
@@ -356,7 +360,7 @@ public class CuaSoChinh extends javax.swing.JFrame {
                 lblExitMouseExited(evt);
             }
         });
-        jPanel2.add(lblExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 730, 40, 40));
+        jPanel2.add(lblExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 760, 40, 40));
 
         lblTK.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblTK.setForeground(new java.awt.Color(255, 255, 255));
@@ -390,14 +394,14 @@ public class CuaSoChinh extends javax.swing.JFrame {
         pnlTK.setLayout(pnlTKLayout);
         pnlTKLayout.setHorizontalGroup(
             pnlTKLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 236, Short.MAX_VALUE)
+            .addGap(0, 240, Short.MAX_VALUE)
         );
         pnlTKLayout.setVerticalGroup(
             pnlTKLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 40, Short.MAX_VALUE)
         );
 
-        jPanel2.add(pnlTK, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 410, 236, 40));
+        jPanel2.add(pnlTK, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 410, 240, 40));
 
         lblTaiKhoan.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblTaiKhoan.setForeground(new java.awt.Color(255, 255, 255));
@@ -429,14 +433,14 @@ public class CuaSoChinh extends javax.swing.JFrame {
         pnlTaiKhoan.setLayout(pnlTaiKhoanLayout);
         pnlTaiKhoanLayout.setHorizontalGroup(
             pnlTaiKhoanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 236, Short.MAX_VALUE)
+            .addGap(0, 240, Short.MAX_VALUE)
         );
         pnlTaiKhoanLayout.setVerticalGroup(
             pnlTaiKhoanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 40, Short.MAX_VALUE)
         );
 
-        jPanel2.add(pnlTaiKhoan, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 490, 236, 40));
+        jPanel2.add(pnlTaiKhoan, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 490, 240, 40));
 
         lblNhanVien.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         lblNhanVien.setForeground(new java.awt.Color(255, 255, 255));
@@ -469,14 +473,14 @@ public class CuaSoChinh extends javax.swing.JFrame {
         pnlNV.setLayout(pnlNVLayout);
         pnlNVLayout.setHorizontalGroup(
             pnlNVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 236, Short.MAX_VALUE)
+            .addGap(0, 240, Short.MAX_VALUE)
         );
         pnlNVLayout.setVerticalGroup(
             pnlNVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 40, Short.MAX_VALUE)
         );
 
-        jPanel2.add(pnlNV, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 236, 40));
+        jPanel2.add(pnlNV, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 240, 40));
 
         lblSetting1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblSetting1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/cogwheel.png"))); // NOI18N
@@ -485,7 +489,7 @@ public class CuaSoChinh extends javax.swing.JFrame {
                 lblSetting1MouseClicked(evt);
             }
         });
-        jPanel2.add(lblSetting1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 730, 40, 40));
+        jPanel2.add(lblSetting1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 760, 40, 40));
 
         lblSetting2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblSetting2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/cogwheel (1).png"))); // NOI18N
@@ -494,14 +498,14 @@ public class CuaSoChinh extends javax.swing.JFrame {
                 lblSetting2MouseClicked(evt);
             }
         });
-        jPanel2.add(lblSetting2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 730, 40, 40));
+        jPanel2.add(lblSetting2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 760, 40, 40));
 
         pnlSetting.setBackground(new java.awt.Color(255, 255, 255));
 
         lblDangNhap.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblDangNhap.setForeground(new java.awt.Color(42, 9, 120));
         lblDangNhap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/login.png"))); // NOI18N
-        lblDangNhap.setText("DANG NHAP");
+        lblDangNhap.setText("ĐĂNG NHẬP");
         lblDangNhap.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblDangNhapMouseClicked(evt);
@@ -511,7 +515,7 @@ public class CuaSoChinh extends javax.swing.JFrame {
         lblDangXuat.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblDangXuat.setForeground(new java.awt.Color(232, 141, 54));
         lblDangXuat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/logout.png"))); // NOI18N
-        lblDangXuat.setText("DANG XUAT ");
+        lblDangXuat.setText("ĐĂNG XUẤT");
         lblDangXuat.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblDangXuatMouseClicked(evt);
@@ -522,10 +526,20 @@ public class CuaSoChinh extends javax.swing.JFrame {
         lblDoiMatKhau.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblDoiMatKhau.setForeground(new java.awt.Color(53, 158, 182));
         lblDoiMatKhau.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/reset-password.png"))); // NOI18N
-        lblDoiMatKhau.setText("DOI MAT KHAU");
+        lblDoiMatKhau.setText("ĐỔI MẬT KHẨU");
         lblDoiMatKhau.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblDoiMatKhauMouseClicked(evt);
+            }
+        });
+
+        lblLichSuXoa.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblLichSuXoa.setForeground(new java.awt.Color(0, 208, 180));
+        lblLichSuXoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/writing.png"))); // NOI18N
+        lblLichSuXoa.setText("LỊCH SỬ XÓA");
+        lblLichSuXoa.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblLichSuXoaMouseClicked(evt);
             }
         });
 
@@ -538,21 +552,26 @@ public class CuaSoChinh extends javax.swing.JFrame {
                 .addGroup(pnlSettingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblDangXuat, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)
                     .addComponent(lblDoiMatKhau, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblDangNhap, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(lblDangNhap, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(pnlSettingLayout.createSequentialGroup()
+                        .addComponent(lblLichSuXoa)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         pnlSettingLayout.setVerticalGroup(
             pnlSettingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlSettingLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblDoiMatKhau, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addContainerGap()
+                .addComponent(lblLichSuXoa)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblDangNhap, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblDoiMatKhau, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblDangXuat, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
-        jPanel2.add(pnlSetting, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 570, 200, 150));
+        jPanel2.add(pnlSetting, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 570, 200, 180));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 240, 879));
 
@@ -560,22 +579,24 @@ public class CuaSoChinh extends javax.swing.JFrame {
 
         pnlHome.setBackground(new java.awt.Color(255, 255, 255));
         pnlHome.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        pnlHome.setPreferredSize(new java.awt.Dimension(1280, 669));
+        pnlHome.setPreferredSize(new java.awt.Dimension(1280, 720));
         pnlHome.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblBanner1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/a1.png"))); // NOI18N
-        pnlHome.add(lblBanner1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 30, -1, -1));
+        pnlHome.add(lblBanner1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 30, -1, -1));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/bn2.png"))); // NOI18N
-        pnlHome.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 30, -1, 469));
+        pnlHome.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 30, -1, 469));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/bn3.png"))); // NOI18N
-        pnlHome.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 530, -1, -1));
+        pnlHome.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 530, -1, -1));
 
         pnlCardPane.add(pnlHome, "card2");
 
-        jPanel1.add(pnlCardPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(236, 79, 1270, 700));
+        jPanel1.add(pnlCardPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 79, 1270, 720));
 
+        lblDongHo.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblDongHo.setForeground(new java.awt.Color(255, 255, 255));
         lblDongHo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblDongHo.setText("00 : 00 : 00");
 
@@ -586,6 +607,11 @@ public class CuaSoChinh extends javax.swing.JFrame {
             }
         });
 
+        lblTitle.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblTitle.setForeground(new java.awt.Color(255, 255, 255));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/logoo.png"))); // NOI18N
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -593,9 +619,13 @@ public class CuaSoChinh extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(45, 45, 45)
                 .addComponent(jLabel7)
-                .addGap(18, 18, 18)
-                .addComponent(lblDongHo, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(955, Short.MAX_VALUE))
+                .addGap(65, 65, 65)
+                .addComponent(lblTitle)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 944, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblDongHo, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(59, 59, 59))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -603,6 +633,8 @@ public class CuaSoChinh extends javax.swing.JFrame {
                 .addGap(19, 19, 19)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblDongHo, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblTitle)
                     .addComponent(jLabel7))
                 .addContainerGap(15, Short.MAX_VALUE))
         );
@@ -619,7 +651,7 @@ public class CuaSoChinh extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 775, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 800, Short.MAX_VALUE)
         );
 
         pack();
@@ -1173,6 +1205,7 @@ public class CuaSoChinh extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -1191,6 +1224,7 @@ public class CuaSoChinh extends javax.swing.JFrame {
     private javax.swing.JLabel lblHD;
     private javax.swing.JLabel lblKH;
     private javax.swing.JLabel lblKM;
+    private javax.swing.JLabel lblLichSuXoa;
     private javax.swing.JLabel lblNCC;
     private javax.swing.JLabel lblNhanVien;
     private javax.swing.JLabel lblSP;
@@ -1199,6 +1233,7 @@ public class CuaSoChinh extends javax.swing.JFrame {
     private javax.swing.JLabel lblTK;
     private javax.swing.JLabel lblTaiKhoan;
     private javax.swing.JLabel lblTen;
+    private javax.swing.JLabel lblTitle;
     private javax.swing.JPanel pnlCardPane;
     private javax.swing.JPanel pnlHD;
     private javax.swing.JPanel pnlHome;

@@ -537,7 +537,7 @@ public class TaiKhoanCaNhan extends javax.swing.JPanel {
     }
 
     public boolean check() {
-        boolean checkSDT = true;
+     boolean checkSDT = true;
 
         try {
             Float.parseFloat(txtSDT.getText());

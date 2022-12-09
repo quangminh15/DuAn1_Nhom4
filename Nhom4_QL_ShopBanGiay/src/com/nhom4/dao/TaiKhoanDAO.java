@@ -8,6 +8,7 @@ import com.nhom4.entity.NhanVien;
 import com.nhom4.entity.TaiKhoan;
 import com.nhom4.utils.JdbcHelper;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.AbstractList;
 import java.util.ArrayList;
 import java.util.List;
@@ -57,6 +58,21 @@ public class TaiKhoanDAO extends MainDAO<TaiKhoan, String> {
     public List<TaiKhoan> selectByKeyword(String user) {
         String sql = "SELECT * FROM TaiKhoan WHERE Username like ?";
         return this.selectBySql(sql, "%"+user+"%");
+    }
+    
+    public List<String> selectMaNV() {
+        String sql = "select MaNV from NhanVien where MaNV not in (select MaNV from TaiKhoan)";
+        List<String> list = new ArrayList<>();
+        try {
+            ResultSet rs = JdbcHelper.executeQuery(sql);
+            while (rs.next()) {
+                list.add(rs.getString(1));
+            }
+            rs.getStatement().getConnection().close();
+            return list;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
