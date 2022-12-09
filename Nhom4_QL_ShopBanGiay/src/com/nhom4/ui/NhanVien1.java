@@ -793,7 +793,10 @@ public class NhanVien1 extends javax.swing.JPanel {
 
     public void delete() {
         String nv = txtmaNhanVien.getText();
-        if (MsgBox.confirm(this, "Bạn thực sự muốn xóa nhân viên này")) {
+        if (nv.equals(Auth.user.getMaNV())) {
+                MsgBox.alert(this, "Không thể xóa quản lý");
+            }
+        else if (MsgBox.confirm(this, "Bạn thực sự muốn xóa nhân viên này")) {
             try {
                 dao.hide(nv);
                 this.fillTable();
