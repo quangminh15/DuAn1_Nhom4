@@ -983,7 +983,8 @@ public class KhuyenMai1 extends javax.swing.JPanel {
                     return false;
                 }
             }
-        } else if (Integer.parseInt(dfyear.format(txtNgayKT.getDate())) < Integer.parseInt(dfyear.format(txtNgayBD.getDate()))) {
+        }
+        if (Integer.parseInt(dfyear.format(txtNgayKT.getDate())) < Integer.parseInt(dfyear.format(txtNgayBD.getDate()))) {
             MsgBox.alert(this, "Thời gian kết thúc phải lớn hơn thời gian bắt đầu!-Năm");
             return false;
         } else if (Integer.parseInt(dfyear.format(txtNgayKT.getDate())) == Integer.parseInt(dfyear.format(txtNgayBD.getDate()))) {

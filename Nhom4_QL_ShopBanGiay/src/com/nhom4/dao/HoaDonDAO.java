@@ -21,6 +21,7 @@ public class HoaDonDAO extends MainDAO<HoaDon, String> {
     final String UPDATE_SQL = "UPDATE HoaDon SET MaNV =?, MaKM=?, MaKH =?, ThanhTien =?, TrangThai =?,Xoa=? WHERE MaHD=?";
     final String DELETE_SQL = "DELETE FROM HoaDon WHERE MaHD = ?";
     final String SELECT_By_Id_SQL = "SELECT * FROM HoaDon WHERE MaHD = ?";
+    final String SELECT_ALL_SQL = "SELECT * FROM HoaDon";
     final String SELECT_ALL_SQL_1 = "SELECT * FROM HoaDon where Xoa = 1";
     final String SELECT_ALL_SQL_2 = "SELECT * FROM HoaDon where Xoa = 0";
     final String HIDE_SQL = "Update HoaDon set xoa=0 where MaHD = ?";
@@ -103,6 +104,23 @@ public class HoaDonDAO extends MainDAO<HoaDon, String> {
             throw new RuntimeException(e);
         }
     }
+    //Kiem tra MaHD 
+    public List<String> selectMaHD() {
+        String sql = SELECT_ALL_SQL;
+        List<String> list = new ArrayList<>();
+        try {
+            ResultSet rs = JdbcHelper.executeQuery(sql);
+            while (rs.next()) {
+                list.add(rs.getString(1));
+            }
+            rs.getStatement().getConnection().close();
+            return list;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+   
+    
 
     public List<String> selectMaKH() {
         String sql = "Select maKH from KhachHang";

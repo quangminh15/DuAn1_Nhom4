@@ -716,7 +716,7 @@ public class SanPham1 extends javax.swing.JPanel {
         lblTimKiem.setText("Tìm kiếm theo tên");
         jPanel3.add(lblTimKiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, -1, -1));
 
-        txtTimKiem.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        txtTimKiem.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         txtTimKiem.setBorder(null);
         txtTimKiem.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {

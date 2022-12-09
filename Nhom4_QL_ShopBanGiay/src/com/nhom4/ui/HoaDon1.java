@@ -103,7 +103,7 @@ public class HoaDon1 extends javax.swing.JPanel {
         setFont(btnSua1);
         setFont(btnXoa1);
         setFont(btnLuu1);
-        
+
         lblXemHoaDon.setEnabled(false);
     }
 
@@ -286,9 +286,9 @@ public class HoaDon1 extends javax.swing.JPanel {
         cboMaKH.setSelectedIndex(0);
         cboMaKM.setSelectedIndex(0);
         cboMaNV.setSelectedIndex(0);
-        lblKM.setVisible(false);
-        lblTenNV.setVisible(false);
-        lblTenKH.setVisible(false);
+//        lblKM.setVisible(false);
+//        lblTenNV.setVisible(false);
+//        lblTenKH.setVisible(false);
         if (i >= 0) {
             tblhoadon.removeRowSelectionInterval(i, i);
         }
@@ -444,9 +444,10 @@ public class HoaDon1 extends javax.swing.JPanel {
     ArrayList<HoaDonChiTiet> listHDCT = new ArrayList<>();
 
     public boolean check() {
+        List<String> listMaHD = hdDAO.selectMaHD();
         boolean check = true;
-        for (int i = 0; i < listHD.size(); i++) {
-            if (listHD.get(i).getMaHD().equalsIgnoreCase(txtMaHD.getText())) {
+        for (int i = 0; i < listMaHD.size(); i++) {
+            if (listMaHD.get(i).equalsIgnoreCase(txtMaHD.getText())) {
                 check = false;
             }
         }
@@ -456,7 +457,7 @@ public class HoaDon1 extends javax.swing.JPanel {
             return false;
         }
         if (check == false) {
-            MsgBox.alert(this, "MA HOA DON");
+            MsgBox.alert(this, "MA HOA DON DA TON TAI HOAC DA BI AN DI");
             return false;
         }
         return true;
@@ -482,14 +483,34 @@ public class HoaDon1 extends javax.swing.JPanel {
         this.fillTableHDCT(lblMaHD.getText());
     }
 
-    public void delete() {
+    public void deleteAn() {
 
         String mahd = txtMaHD.getText();
-        if (MsgBox.confirm(this, "Bạn thực sự muốn Hoa Don này")) {
+       
             try {
 //                hdctDAO.deletebByMaHD(mahd);
 //                hdDAO.delete(mahd);
                 hdDAO.hide(mahd);
+                MsgBox.alert(this, "An thành công");
+                if (listHDCT.isEmpty()) {
+                    hdDAO.updateTrangThai2(mahd);
+                }
+                this.fillTable();
+            } catch (Exception e) {
+                MsgBox.alert(this, "An thất bại");
+            }
+        
+
+    }
+
+    public void delete() {
+
+        String mahd = txtMaHD.getText();
+        if (MsgBox.confirm(this, "Bạn thực sự muốn xoa Hoa Don này")) {
+            try {
+                hdctDAO.deletebByMaHD(mahd);
+                hdDAO.delete(mahd);
+                //hdDAO.hide(mahd);
                 MsgBox.alert(this, "Xóa thành công");
                 if (listHDCT.isEmpty()) {
                     hdDAO.updateTrangThai2(mahd);
@@ -506,7 +527,7 @@ public class HoaDon1 extends javax.swing.JPanel {
         int i = tblHDCT.getSelectedRow();
 
         String mahdct = tblHDCT.getValueAt(i, 0).toString();
-        if (MsgBox.confirm(this, "Bạn thực sự muốn sp này")) {
+        if (MsgBox.confirm(this, "Bạn thực sự muốn xoa san pham này")) {
             try {
                 hdctDAO.delete(mahdct);
                 hdDAO.updateThanhTien(lblMaHD.getText());
@@ -1746,7 +1767,17 @@ public class HoaDon1 extends javax.swing.JPanel {
     }//GEN-LAST:event_btnSuaActionPerformed
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
-        delete();
+        Object[] options = {"An", "Xoa"};
+        int n = JOptionPane.showOptionDialog(this, "Bạn muốn xoa kiểu nào?", "Thông báo xác nhận", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+        try {
+            if (options[n] == "An") {
+                deleteAn();
+            } else {
+                delete();
+            }
+        } catch (Exception e) {
+            MsgBox.alert(this, "Ban Chua chon");
+        }
     }//GEN-LAST:event_btnXoaActionPerformed
 
     private void tblHDCTMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblHDCTMouseClicked

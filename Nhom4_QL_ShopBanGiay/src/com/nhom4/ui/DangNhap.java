@@ -14,6 +14,7 @@ import java.awt.Color;
 import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.util.List;
 import java.util.Locale;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
@@ -372,14 +373,21 @@ public class DangNhap extends javax.swing.JDialog {
     }
     
 void dangNhap() {
-        String manv = txtMaNV.getText();
+        int checkUser = 0;
+        String manv = txtMaNV.getText();     
         String matkhau = new String(txtMatKhau.getPassword());
-        String matkhau2 = txtMatKhau2.getText();
+        String mkhau2 = txtMatKhau2.getText();
         TaiKhoan nv = tkDAO.selectById(manv);
-        if (nv == null) {
+        List<String> userList = tkDAO.selectListUser();
+        for(int i =0 ; i< userList.size();i++){
+            if(userList.get(i).equals(txtMaNV.getText())){
+                checkUser =1;
+            }
+        }
+        if (nv == null||checkUser==1) {
             MsgBox.alert(this, "Tên đăng nhập không chính xác");
         } else {
-            if (!nv.getPass().equals(matkhau) && !nv.getPass().equals(matkhau2)) {
+            if (!nv.getPass().equals(matkhau) && !nv.getPass().equals(mkhau2)) {
                 MsgBox.alert(this, "Mật khẩu không chính xác");
             } else {
                 //new loading().setVisible(true);

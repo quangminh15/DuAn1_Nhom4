@@ -439,6 +439,14 @@ public class LichSuXoa extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnKhoiPhucNCCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKhoiPhucNCCActionPerformed
+        int i = tblNcc.getSelectedRow();
+        int iCount = tblNcc.getSelectedRowCount();
+        if (i<0) {
+            MsgBox.alert(this, "Chua Chon Doi Tuong");
+            
+        }else if (iCount>1) {
+            MsgBox.alert(this, "Vui Long CHi Chon 1 Doi Tuong");
+        }else
         restoreNCC();
     }//GEN-LAST:event_btnKhoiPhucNCCActionPerformed
 
@@ -448,46 +456,134 @@ public class LichSuXoa extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel2MouseClicked
 
     private void btnXoaNCCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaNCCActionPerformed
+        int i = tblNcc.getSelectedRow();
+        int iCount = tblNcc.getSelectedRowCount();
+        if (i<0) {
+            MsgBox.alert(this, "Chua Chon Doi Tuong");
+            
+        }else if (iCount>1) {
+            MsgBox.alert(this, "Vui Long CHi Chon 1 Doi Tuong");
+        }else
         deleteNCC();
     }//GEN-LAST:event_btnXoaNCCActionPerformed
 
     private void btnKhoiPhucKHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKhoiPhucKHActionPerformed
+        int i = tblKhachHang.getSelectedRow();
+        int iCount = tblKhachHang.getSelectedRowCount();
+        if (i<0) {
+            MsgBox.alert(this, "Chua Chon Doi Tuong");
+            
+        }else if (iCount>1) {
+            MsgBox.alert(this, "Vui Long CHi Chon 1 Doi Tuong");
+        }else
         restoreKH();
     }//GEN-LAST:event_btnKhoiPhucKHActionPerformed
 
     private void btnXoaKHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaKHActionPerformed
+        int i = tblKhachHang.getSelectedRow();
+        int iCount = tblKhachHang.getSelectedRowCount();
+        if (i<0) {
+            MsgBox.alert(this, "Chua Chon Doi Tuong");
+            
+        }else if (iCount>1) {
+            MsgBox.alert(this, "Vui Long CHi Chon 1 Doi Tuong");
+        }else
         deleteKH();
     }//GEN-LAST:event_btnXoaKHActionPerformed
 
     private void btnKhoiPhucNVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKhoiPhucNVActionPerformed
+        int i = tblNhanVien.getSelectedRow();
+        int iCount = tblNhanVien.getSelectedRowCount();
+        if (i<0) {
+            MsgBox.alert(this, "Chua Chon Doi Tuong");
+            
+        }else if (iCount>1) {
+            MsgBox.alert(this, "Vui Long CHi Chon 1 Doi Tuong");
+        }else
         restoreNV();
     }//GEN-LAST:event_btnKhoiPhucNVActionPerformed
 
     private void btnXoaNVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaNVActionPerformed
+        int i = tblNhanVien.getSelectedRow();
+        int iCount = tblNhanVien.getSelectedRowCount();
+        if (i<0) {
+            MsgBox.alert(this, "Chua Chon Doi Tuong");
+            
+        }else if (iCount>1) {
+            MsgBox.alert(this, "Vui Long CHi Chon 1 Doi Tuong");
+        }else
         deleteNV();
     }//GEN-LAST:event_btnXoaNVActionPerformed
 
     private void btnKhoiPhucSPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKhoiPhucSPActionPerformed
+        int i = tblSanPham.getSelectedRow();
+        int iCount = tblSanPham.getSelectedRowCount();
+        if (i<0) {
+            MsgBox.alert(this, "Chua Chon Doi Tuong");
+            
+        }else if (iCount>1) {
+            MsgBox.alert(this, "Vui Long CHi Chon 1 Doi Tuong");
+        }else
         restoreSP();
     }//GEN-LAST:event_btnKhoiPhucSPActionPerformed
 
     private void btnXoaSPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaSPActionPerformed
+        int i = tblSanPham.getSelectedRow();
+        int iCount = tblSanPham.getSelectedRowCount();
+        if (i<0) {
+            MsgBox.alert(this, "Chua Chon Doi Tuong");
+            
+        }else if (iCount>1) {
+            MsgBox.alert(this, "Vui Long CHi Chon 1 Doi Tuong");
+        }else
         deleteSP();
     }//GEN-LAST:event_btnXoaSPActionPerformed
 
     private void btnKhoiPhucHDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKhoiPhucHDActionPerformed
+        int i = tblHoaDon.getSelectedRow();
+        int iCount = tblHoaDon.getSelectedRowCount();
+        if (i<0) {
+            MsgBox.alert(this, "Chua Chon Doi Tuong");
+            
+        }else if (iCount>1) {
+            MsgBox.alert(this, "Vui Long CHi Chon 1 Doi Tuong");
+        }else
         restoreHD();
     }//GEN-LAST:event_btnKhoiPhucHDActionPerformed
 
     private void btnXoaHDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaHDActionPerformed
+        int i = tblHoaDon.getSelectedRow();
+        int iCount = tblHoaDon.getSelectedRowCount();
+        if (i<0) {
+            MsgBox.alert(this, "Chua Chon Doi Tuong");
+            
+        }else if (iCount>1) {
+            MsgBox.alert(this, "Vui Long CHi Chon 1 Doi Tuong");
+        }else
         deleteHD();
     }//GEN-LAST:event_btnXoaHDActionPerformed
 
     private void btnKhoiPhucKMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKhoiPhucKMActionPerformed
+       int i = tblKhuyenMai.getSelectedRow();
+        int iCount = tblKhuyenMai.getSelectedRowCount();
+        if (i<0) {
+            MsgBox.alert(this, "Chua Chon Doi Tuong");
+            
+        }else if (iCount>1) {
+            MsgBox.alert(this, "Vui Long CHi Chon 1 Doi Tuong");
+        }else
         restoreKM();
     }//GEN-LAST:event_btnKhoiPhucKMActionPerformed
 
     private void btnXoaKMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaKMActionPerformed
+        int i = tblKhuyenMai.getSelectedRow();
+        int iCount = tblKhuyenMai.getSelectedRowCount();
+        if (i<0) {
+            MsgBox.alert(this, "Chua Chon Doi Tuong");
+            
+        }else if (iCount>1) {
+            MsgBox.alert(this, "Vui Long CHi Chon 1 Doi Tuong");
+        }else
         deleteKM();
     }//GEN-LAST:event_btnXoaKMActionPerformed
 

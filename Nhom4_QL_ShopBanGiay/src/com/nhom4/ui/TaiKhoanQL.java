@@ -14,6 +14,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.table.DefaultTableModel;
 
@@ -57,17 +58,16 @@ public class TaiKhoanQL extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        txtMaNV = new javax.swing.JTextField();
         txtMatKhau = new javax.swing.JTextField();
         btnLuu = new com.nhom4.ui.ButtonCustom();
         btnXoa = new com.nhom4.ui.ButtonCustom();
         btnHuy = new com.nhom4.ui.ButtonCustom();
         btnSua = new com.nhom4.ui.ButtonCustom();
         btnThem = new com.nhom4.ui.ButtonCustom();
-        pnlmanv = new javax.swing.JPanel();
         pnlusername = new javax.swing.JPanel();
         pnlpass = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
+        cboMaNV = new javax.swing.JComboBox<>();
         jPanel3 = new javax.swing.JPanel();
         lblTimKiem = new javax.swing.JLabel();
         txtTimKiem = new javax.swing.JTextField();
@@ -143,19 +143,6 @@ public class TaiKhoanQL extends javax.swing.JPanel {
         jLabel5.setText("Mật khẩu:");
         jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 250, -1, -1));
 
-        txtMaNV.setBackground(new java.awt.Color(245, 245, 245));
-        txtMaNV.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        txtMaNV.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(245, 245, 245), 2));
-        txtMaNV.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtMaNVFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtMaNVFocusLost(evt);
-            }
-        });
-        jPanel2.add(txtMaNV, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 80, 380, 51));
-
         txtMatKhau.setBackground(new java.awt.Color(245, 245, 245));
         txtMatKhau.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         txtMatKhau.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(245, 245, 245), 2));
@@ -218,19 +205,6 @@ public class TaiKhoanQL extends javax.swing.JPanel {
         });
         jPanel2.add(btnThem, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 420, 180, 50));
 
-        javax.swing.GroupLayout pnlmanvLayout = new javax.swing.GroupLayout(pnlmanv);
-        pnlmanv.setLayout(pnlmanvLayout);
-        pnlmanvLayout.setHorizontalGroup(
-            pnlmanvLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 380, Short.MAX_VALUE)
-        );
-        pnlmanvLayout.setVerticalGroup(
-            pnlmanvLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 2, Short.MAX_VALUE)
-        );
-
-        jPanel2.add(pnlmanv, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 130, 380, 2));
-
         javax.swing.GroupLayout pnlusernameLayout = new javax.swing.GroupLayout(pnlusername);
         pnlusername.setLayout(pnlusernameLayout);
         pnlusernameLayout.setHorizontalGroup(
@@ -261,6 +235,9 @@ public class TaiKhoanQL extends javax.swing.JPanel {
         jLabel6.setForeground(new java.awt.Color(14, 65, 91));
         jLabel6.setText("Mã nhân viên:");
         jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, -1, -1));
+
+        cboMaNV.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel2.add(cboMaNV, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 90, 380, 51));
 
         add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 620, 590));
 
@@ -482,7 +459,7 @@ public class TaiKhoanQL extends javax.swing.JPanel {
             btnLuu.setEnabled(true);
 //            hide();
             txtON();
-            txtMaNV.setEditable(false);
+            cboMaNV.setEnabled(false);
     }//GEN-LAST:event_btnSuaActionPerformed
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
@@ -490,22 +467,12 @@ public class TaiKhoanQL extends javax.swing.JPanel {
             btnSua.setEnabled(false);
             btnXoa.setEnabled(false);
             btnLuu.setEnabled(true);
-            txtMaNV.setText("");
+            cboMaNV.setSelectedIndex(0);
             txtTenDN.setText("");
             txtMatKhau.setText("");
             show();
             txtON();
     }//GEN-LAST:event_btnThemActionPerformed
-
-    private void txtMaNVFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtMaNVFocusGained
-        txtMaNV.setBackground(Color.WHITE);
-        pnlmanv.setBackground(new Color(58, 136, 145));
-    }//GEN-LAST:event_txtMaNVFocusGained
-
-    private void txtMaNVFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtMaNVFocusLost
-        txtMaNV.setBackground(new Color(242, 242, 242));
-        pnlmanv.setBackground(new Color(242, 242, 242));
-    }//GEN-LAST:event_txtMaNVFocusLost
 
     private void txtTenDNFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTenDNFocusGained
         txtTenDN.setBackground(Color.WHITE);
@@ -558,7 +525,14 @@ public class TaiKhoanQL extends javax.swing.JPanel {
         updateStatus();
     
     }
-    
+    private void fillCboNV() {
+        DefaultComboBoxModel model = (DefaultComboBoxModel) cboMaNV.getModel();
+        model.removeAllElements();
+        List<String> list = tkDAO.selectMaNV();
+        for (String nv : list) {
+            model.addElement(nv);
+        }
+    }
     public void init() { 
         this.row = -1;
         this.fillTable();      
@@ -581,30 +555,33 @@ public class TaiKhoanQL extends javax.swing.JPanel {
         
     }
     
+    int checklapUser=0;
     public boolean check() {
         String patternUser = "^[a-zA-Z0-9_-]{6,15}$";
         String patternPass = "^[a-zA-Z0-9]{6,15}$";
         
         for (int i = 0; i < listTK.size(); i++) {
-            if (listTK.get(i).getMaNV().equalsIgnoreCase(txtMaNV.getText())) {
+            if (listTK.get(i).getMaNV().equalsIgnoreCase(cboMaNV.getSelectedItem().toString())) {
                 checklap = 1;
             }
+            if (listTK.get(i).getUsername().equalsIgnoreCase(txtTenDN.getText())) {
+                checklapUser = 1;
+            }
         }
-        if(txtMaNV.getText().equals("")){
-            MsgBox.alert(this, "Không được để trống mã nhân viên");
-            txtMaNV.requestFocus();
-            return false;
-        }
-        else if (them == 1 && checklap == 1) {
-            MsgBox.alert(this, "Mã nhân viên đã tồn tại. Vui lòng nhập mã mới");
+            if (them == 1 && checklap == 1) {
+            MsgBox.alert(this, "Mã nhân viên đã có tài khoản");
             checklap = 0;
             return false;
         }      
-        else if (txtTenDN.getText().equals("")) {
+            else if (txtTenDN.getText().equals("")) {
             MsgBox.alert(this, "Không được để trống tên đăng nhập");
             txtTenDN.requestFocus();
             return false;
-        }
+        }else if (them == 1 && checklapUser == 1) {
+            MsgBox.alert(this, "Tên đăng nhập đã tồn tại");
+            checklap = 0;
+            return false;
+        }    
          else if(!txtTenDN.getText().matches(patternUser)|| txtTenDN.getText().length()<6 || txtTenDN.getText().length() > 15 ){
             MsgBox.alert(this, "Tên đăng nhập không chứa kí tự đặc biệt (@, #, %,..) và phải từ 6 đến 15 kí tự");
             txtTenDN.requestFocus();
@@ -674,7 +651,7 @@ public class TaiKhoanQL extends javax.swing.JPanel {
         if (!Auth.isManager()) {
             MsgBox.alert(this, "Bạn không có quyền xóa nhân viên");
         } else {
-            String manv = txtMaNV.getText();
+            String manv = cboMaNV.getSelectedItem().toString();
             if (manv.equals(Auth.user.getMaNV())) {
                 MsgBox.alert(this, "Bạn không được xóa chính bạn");
             } else if (MsgBox.confirm(this, "Bạn thực sự muốn xóa nhân viên này")) {
@@ -745,7 +722,7 @@ public class TaiKhoanQL extends javax.swing.JPanel {
     }
     
     public void setForm(int index){
-                 txtMaNV.setText(tblBang.getValueAt(index, 0).toString());
+                 cboMaNV.setSelectedItem(tblBang.getValueAt(index, 0).toString());
                  txtTenDN.setText(tblBang.getValueAt(index, 1).toString());
                  txtMatKhau.setText(tblBang.getValueAt(index, 2).toString());
                  if(tblBang.getValueAt(index, 3).toString().equals("Nhân viên")){
@@ -756,7 +733,7 @@ public class TaiKhoanQL extends javax.swing.JPanel {
     }
     
     public void setForm1(TaiKhoan tk) {
-        txtMaNV.setText(tk.getMaNV());
+        cboMaNV.setSelectedItem(tk.getMaNV());
         txtTenDN.setText(tk.getUsername());
         txtMatKhau.setText(tk.getPass());
         rdoQuanLy.setSelected(tk.getRole());
@@ -766,7 +743,7 @@ public class TaiKhoanQL extends javax.swing.JPanel {
   
     TaiKhoan getForm() {
         TaiKhoan tk = new TaiKhoan();
-        tk.setMaNV(txtMaNV.getText());
+        tk.setMaNV(cboMaNV.getSelectedItem().toString());
         tk.setUsername(txtTenDN.getText());
         tk.setPass(String.valueOf(txtMatKhau.getText()));
         tk.setRole(rdoQuanLy.isSelected());
@@ -806,7 +783,7 @@ public class TaiKhoanQL extends javax.swing.JPanel {
     }
     
      public void txtOFF(){
-        txtMaNV.setEditable(false);
+        cboMaNV.setEnabled(false);
         txtTenDN.setEditable(false);
         txtMatKhau.setEditable(false);
 //        rdoQuanLy.setSelected(true);
@@ -815,7 +792,7 @@ public class TaiKhoanQL extends javax.swing.JPanel {
     }
     
     public void txtON(){
-        txtMaNV.setEditable(true);
+         cboMaNV.setEnabled(true);
         txtTenDN.setEditable(true);
         txtMatKhau.setEditable(true);
     }
@@ -841,6 +818,7 @@ public class TaiKhoanQL extends javax.swing.JPanel {
     private javax.swing.JButton btnTimKiem;
     private com.nhom4.ui.ButtonCustom btnXoa;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JComboBox<String> cboMaNV;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -853,13 +831,11 @@ public class TaiKhoanQL extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblTimKiem;
-    private javax.swing.JPanel pnlmanv;
     private javax.swing.JPanel pnlpass;
     private javax.swing.JPanel pnlusername;
     private javax.swing.JRadioButton rdoNhanVien;
     private javax.swing.JRadioButton rdoQuanLy;
     private com.nhom4.ui.Table tblBang;
-    private javax.swing.JTextField txtMaNV;
     private javax.swing.JTextField txtMatKhau;
     private javax.swing.JTextField txtTenDN;
     private javax.swing.JTextField txtTimKiem;

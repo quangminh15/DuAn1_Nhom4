@@ -31,7 +31,8 @@ public class NhanVien1 extends javax.swing.JPanel {
     /**
      * Creates new form NewJPanel
      */
-     JFileChooser fileChooser = new JFileChooser("hinh");
+    JFileChooser fileChooser = new JFileChooser("hinh");
+
     public NhanVien1() {
         initComponents();
         init();
@@ -43,7 +44,6 @@ public class NhanVien1 extends javax.swing.JPanel {
     NhanVienDAO dao = new NhanVienDAO();
     int row = -1;
     int them = 0;
-   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -341,10 +341,16 @@ public class NhanVien1 extends javax.swing.JPanel {
         lblTimKiem.setText("Tìm kiếm theo tên");
         jPanel3.add(lblTimKiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, 210, 30));
 
+        txttimKiem.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         txttimKiem.setBorder(null);
         txttimKiem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txttimKiemActionPerformed(evt);
+            }
+        });
+        txttimKiem.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txttimKiemKeyTyped(evt);
             }
         });
         jPanel3.add(txttimKiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 0, 910, 50));
@@ -540,11 +546,10 @@ public class NhanVien1 extends javax.swing.JPanel {
     }//GEN-LAST:event_btntimKiemActionPerformed
 
     private void txttimKiemKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txttimKiemKeyTyped
-        if(txttimKiem.getText().equals("")){
-           lblTimKiem.setVisible(true);
-       }
-       else
-           lblTimKiem.setVisible(false);
+        if (txttimKiem.getText().equals("")) {
+            lblTimKiem.setVisible(true);
+        } else
+            lblTimKiem.setVisible(false);
     }//GEN-LAST:event_txttimKiemKeyTyped
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
@@ -608,7 +613,7 @@ public class NhanVien1 extends javax.swing.JPanel {
     }//GEN-LAST:event_txtmaNhanVienKeyTyped
 
     private void txtmaNhanVienFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtmaNhanVienFocusGained
-         txtmaNhanVien.setBackground(Color.WHITE);
+        txtmaNhanVien.setBackground(Color.WHITE);
         pnlNV.setBackground(new Color(58, 136, 145));
     }//GEN-LAST:event_txtmaNhanVienFocusGained
 
@@ -628,12 +633,12 @@ public class NhanVien1 extends javax.swing.JPanel {
     }//GEN-LAST:event_txttenNhanVienFocusLost
 
     private void txtsoDienSoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtsoDienSoFocusGained
-         txtsoDienSo.setBackground(Color.WHITE);
+        txtsoDienSo.setBackground(Color.WHITE);
         pnlSDT.setBackground(new Color(58, 136, 145));
     }//GEN-LAST:event_txtsoDienSoFocusGained
 
     private void txtsoDienSoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtsoDienSoFocusLost
-         txtsoDienSo.setBackground(new Color(242, 242, 242));
+        txtsoDienSo.setBackground(new Color(242, 242, 242));
         pnlSDT.setBackground(new Color(242, 242, 242));
     }//GEN-LAST:event_txtsoDienSoFocusLost
 
@@ -648,21 +653,21 @@ public class NhanVien1 extends javax.swing.JPanel {
     }//GEN-LAST:event_txtEmailFocusLost
 
     private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
-       if (Auth.islogin()) {
+        if (Auth.islogin()) {
             LichSuXoa ls = new LichSuXoa();
             ls.changePan(2);
             ls.setVisible(true);
-            
+
         } else {
             MsgBox.alert(this, "Vui lòng đăng nhập");
         }
     }//GEN-LAST:event_jLabel8MouseClicked
 
     private void lblHinhMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHinhMouseClicked
-        
-        if(evt.getClickCount()== 1 && them == 1 || evt.getClickCount() == 1 && them == 2 ){
+
+        if (evt.getClickCount() == 1 && them == 1 || evt.getClickCount() == 1 && them == 2) {
             this.selectImage();
-        }else {
+        } else {
             MsgBox.alert(this, "Chỉ được chỉnh sửa ảnh khi thêm hoặc sửa dữ liệu");
         }
     }//GEN-LAST:event_lblHinhMouseClicked
@@ -720,9 +725,10 @@ public class NhanVien1 extends javax.swing.JPanel {
         setFont(btnXoa);
         setFont(btnLuu);
     }
-    public void setFont(JButton bt){
-            bt.setFont(getFont().deriveFont(Font.BOLD, 18));
-        }
+
+    public void setFont(JButton bt) {
+        bt.setFont(getFont().deriveFont(Font.BOLD, 18));
+    }
 
     public void fillTable() {
         DefaultTableModel model = (DefaultTableModel) tblnhanVien.getModel();
@@ -788,7 +794,9 @@ public class NhanVien1 extends javax.swing.JPanel {
 
     public void delete() {
         String nv = txtmaNhanVien.getText();
-        if (MsgBox.confirm(this, "Bạn thực sự muốn xóa nhân viên này")) {
+        if (nv.equals(Auth.user.getMaNV())) {
+            MsgBox.alert(this, "Không thể xóa quản lý");
+        } else if (MsgBox.confirm(this, "Bạn thực sự muốn xóa nhân viên này")) {
             try {
                 dao.hide(nv);
                 this.fillTable();
@@ -843,7 +851,7 @@ public class NhanVien1 extends javax.swing.JPanel {
         nv.setEmail(txtEmail.getText());
         nv.setHinh(lblHinh.getToolTipText());
         nv.setDiaChi(txtdiaChi.getText());
-        nv.setXoa(true);
+        nv.setXoa(false);
 
         return nv;
     }
@@ -875,7 +883,7 @@ public class NhanVien1 extends javax.swing.JPanel {
         this.row = 0;
         tblnhanVien.setRowSelectionInterval(row, row);
         this.edit();
-      
+
     }
 
     public void prev() {
@@ -909,8 +917,6 @@ public class NhanVien1 extends javax.swing.JPanel {
         rdoGioiTinhNam.setEnabled(false);
         rdoGioiTinhNu.setEnabled(false);
 //        lblHinh.setEnabled(false);
-        
-
 
         txtmaNhanVien.setFocusable(false);
         txttenNhanVien.setFocusable(false);
@@ -924,13 +930,12 @@ public class NhanVien1 extends javax.swing.JPanel {
         txtmaNhanVien.setEditable(true);
         txttenNhanVien.setEditable(true);
         rdoGioiTinhNam.setEnabled(true);
-       
+
         txtsoDienSo.setEditable(true);
         txtdiaChi.setEditable(true);
         txtEmail.setEditable(true);
         rdoGioiTinhNu.setEnabled(true);
 //        lblHinh.setEnabled(true);
-        
 
         txtmaNhanVien.setFocusable(true);
         txttenNhanVien.setFocusable(true);

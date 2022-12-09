@@ -159,7 +159,7 @@ public class NhaCungCap1 extends javax.swing.JPanel {
         lblMaNCC.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblMaNCC.setForeground(new java.awt.Color(14, 65, 91));
         lblMaNCC.setText("Mã nhà cung cấp:");
-        jPanel3.add(lblMaNCC, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
+        jPanel3.add(lblMaNCC, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
 
         txtMaNCC.setBackground(new java.awt.Color(245, 245, 245));
         txtMaNCC.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(245, 245, 245), 2));
@@ -171,7 +171,7 @@ public class NhaCungCap1 extends javax.swing.JPanel {
                 txtMaNCCFocusLost(evt);
             }
         });
-        jPanel3.add(txtMaNCC, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 130, 430, 39));
+        jPanel3.add(txtMaNCC, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 70, 430, 39));
 
         btnThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/add2.png"))); // NOI18N
         btnThem.setText("Thêm");
@@ -225,7 +225,7 @@ public class NhaCungCap1 extends javax.swing.JPanel {
         lblTenNCC.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblTenNCC.setForeground(new java.awt.Color(14, 65, 91));
         lblTenNCC.setText("Tên nhà cung cấp:");
-        jPanel3.add(lblTenNCC, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
+        jPanel3.add(lblTenNCC, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, -1, -1));
 
         txtTenNCC.setBackground(new java.awt.Color(245, 245, 245));
         txtTenNCC.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(245, 245, 245), 2));
@@ -237,7 +237,7 @@ public class NhaCungCap1 extends javax.swing.JPanel {
                 txtTenNCCFocusLost(evt);
             }
         });
-        jPanel3.add(txtTenNCC, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 60, 430, 44));
+        jPanel3.add(txtTenNCC, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 130, 430, 44));
 
         javax.swing.GroupLayout pnlTenLayout = new javax.swing.GroupLayout(pnlTen);
         pnlTen.setLayout(pnlTenLayout);
@@ -250,7 +250,7 @@ public class NhaCungCap1 extends javax.swing.JPanel {
             .addGap(0, 3, Short.MAX_VALUE)
         );
 
-        jPanel3.add(pnlTen, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 104, 430, 3));
+        jPanel3.add(pnlTen, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 170, 430, 3));
 
         javax.swing.GroupLayout pnlmaLayout = new javax.swing.GroupLayout(pnlma);
         pnlma.setLayout(pnlmaLayout);
@@ -263,7 +263,7 @@ public class NhaCungCap1 extends javax.swing.JPanel {
             .addGap(0, 3, Short.MAX_VALUE)
         );
 
-        jPanel3.add(pnlma, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 168, -1, -1));
+        jPanel3.add(pnlma, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 100, -1, -1));
 
         add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 660, 490));
 
@@ -280,10 +280,16 @@ public class NhaCungCap1 extends javax.swing.JPanel {
         lblTimKiem.setText("Tìm kiếm theo tên");
         add(lblTimKiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 50, 210, 30));
 
+        txtTimKiem.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         txtTimKiem.setBorder(null);
         txtTimKiem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtTimKiemActionPerformed(evt);
+            }
+        });
+        txtTimKiem.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtTimKiemKeyTyped(evt);
             }
         });
         add(txtTimKiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 40, 870, 50));
@@ -303,14 +309,14 @@ public class NhaCungCap1 extends javax.swing.JPanel {
         pnlSearch.setLayout(pnlSearchLayout);
         pnlSearchLayout.setHorizontalGroup(
             pnlSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 800, Short.MAX_VALUE)
+            .addGap(0, 850, Short.MAX_VALUE)
         );
         pnlSearchLayout.setVerticalGroup(
             pnlSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        add(pnlSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 90, 800, 3));
+        add(pnlSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 90, 850, 3));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnFirstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFirstActionPerformed
@@ -416,6 +422,14 @@ public class NhaCungCap1 extends javax.swing.JPanel {
     private void btntimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btntimKiemActionPerformed
         this.TimKiem();
     }//GEN-LAST:event_btntimKiemActionPerformed
+
+    private void txtTimKiemKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimKiemKeyTyped
+        if (txtTimKiem.getText().equals("")) {
+            lblTimKiem.setVisible(true);
+        } else {
+            lblTimKiem.setVisible(false);
+        }
+    }//GEN-LAST:event_txtTimKiemKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
