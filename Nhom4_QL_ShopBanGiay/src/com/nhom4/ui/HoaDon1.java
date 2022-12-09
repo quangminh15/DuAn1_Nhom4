@@ -286,9 +286,9 @@ public class HoaDon1 extends javax.swing.JPanel {
         cboMaKH.setSelectedIndex(0);
         cboMaKM.setSelectedIndex(0);
         cboMaNV.setSelectedIndex(0);
-//        lblKM.setVisible(false);
-//        lblTenNV.setVisible(false);
-//        lblTenKH.setVisible(false);
+        lblKM.setVisible(false);
+        lblTenNV.setVisible(false);
+        lblTenKH.setVisible(false);
         if (i >= 0) {
             tblhoadon.removeRowSelectionInterval(i, i);
         }
@@ -445,12 +445,6 @@ public class HoaDon1 extends javax.swing.JPanel {
 
     public boolean check() {
         boolean check = true;
-        List<String>listMaHD=hdDAO.selectMaHD();
-        for (int i = 0; i < listMaHD.size(); i++) {
-            if (listMaHD.get(i).equalsIgnoreCase(txtMaHD.getText())) {
-                check = false;
-            }
-        }
         for (int i = 0; i < listHD.size(); i++) {
             if (listHD.get(i).getMaHD().equalsIgnoreCase(txtMaHD.getText())) {
                 check = false;
@@ -462,7 +456,7 @@ public class HoaDon1 extends javax.swing.JPanel {
             return false;
         }
         if (check == false) {
-            MsgBox.alert(this, "MA HOA DON DA TON TAI HOAC DA BI AN DI");
+            MsgBox.alert(this, "MA HOA DON");
             return false;
         }
         return true;
@@ -491,17 +485,15 @@ public class HoaDon1 extends javax.swing.JPanel {
     public void delete() {
 
         String mahd = txtMaHD.getText();
-        if (MsgBox.confirm(this, "Bạn thực sự muốn Xoa Hoa Don này")) {
+        if (MsgBox.confirm(this, "Bạn thực sự muốn Hoa Don này")) {
             try {
 //                hdctDAO.deletebByMaHD(mahd);
 //                hdDAO.delete(mahd);
                 hdDAO.hide(mahd);
                 MsgBox.alert(this, "Xóa thành công");
-                //int i = tblHDCT.getSelectedRow();
-                //listHDCT.remove(i);
-//                if (tblhoadon.getValueAt(i,5).toString().equals(0.0)) {
-//                    hdDAO.updateTrangThai2(lblMaHD.getText());
-//                }
+                if (listHDCT.isEmpty()) {
+                    hdDAO.updateTrangThai2(mahd);
+                }
                 this.fillTable();
             } catch (Exception e) {
                 MsgBox.alert(this, "Xóa thất bại");
@@ -514,13 +506,10 @@ public class HoaDon1 extends javax.swing.JPanel {
         int i = tblHDCT.getSelectedRow();
 
         String mahdct = tblHDCT.getValueAt(i, 0).toString();
-        if (MsgBox.confirm(this, "Bạn thực sự muốn xoa san pham này")) {
+        if (MsgBox.confirm(this, "Bạn thực sự muốn sp này")) {
             try {
                 hdctDAO.delete(mahdct);
                 hdDAO.updateThanhTien(lblMaHD.getText());
-                if (listHDCT.isEmpty()) {
-                    hdDAO.updateTrangThai2(mahd);
-                }
                 this.fillTable();
                 MsgBox.alert(this, "Xóa thành công");
                 fillTableHDCT(lblMaHD.getText());
@@ -1738,7 +1727,6 @@ public class HoaDon1 extends javax.swing.JPanel {
         resetFormHD();
         setStatus(true);
         cboMaNV.setVisible(true);
-        
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed

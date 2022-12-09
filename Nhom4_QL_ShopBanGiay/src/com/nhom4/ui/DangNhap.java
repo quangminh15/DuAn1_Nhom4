@@ -231,9 +231,8 @@ public class DangNhap extends javax.swing.JDialog {
         });
         pnlForm.add(lblOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 540, -1, -1));
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel4.setText("ForG Shoes");
-        pnlForm.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 90, -1, -1));
+        jLabel4.setText("Shop ABC xin kính chào quý khách");
+        pnlForm.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 90, -1, -1));
 
         getContentPane().add(pnlForm, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 0, 620, 600));
 
@@ -375,13 +374,12 @@ public class DangNhap extends javax.swing.JDialog {
 void dangNhap() {
         String manv = txtMaNV.getText();
         String matkhau = new String(txtMatKhau.getPassword());
-        String mkhau2 = txtMatKhau2.getText();
+        String matkhau2 = txtMatKhau2.getText();
         TaiKhoan nv = tkDAO.selectById(manv);
         if (nv == null) {
             MsgBox.alert(this, "Tên đăng nhập không chính xác");
-        }
-        else{
-            if (!nv.getPass().equals(matkhau) && !nv.getPass().equals(mkhau2)) {
+        } else {
+            if (!nv.getPass().equals(matkhau) && !nv.getPass().equals(matkhau2)) {
                 MsgBox.alert(this, "Mật khẩu không chính xác");
             } else {
                 //new loading().setVisible(true);
@@ -390,6 +388,7 @@ void dangNhap() {
                 MsgBox.alert(this, "Đăng nhập thành công!");
                 
                 this.dispose();
+                
             }
         }
     }

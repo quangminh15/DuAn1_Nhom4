@@ -21,10 +21,10 @@ public class NhanVienDAO extends MainDAO<NhanVien, String> {
     final String UPDATE_SQL = "Update NhanVien set TenNV=?,GioiTinh=?,SDT=?,Email=?,Hinh=?,DiaChi=?,Xoa=? where MaNV = ?";
     final String DELETE_SQL = "delete from NhanVien where MaNV = ?";
     final String SELECT_By_Id_SQL = "select * from NhanVien where MaNV=?";
-    final String SELECT_ALL_SQL_2 = "select * from NhanVien where Xoa = 1";
-    final String SELECT_ALL_SQL_1 = "select * from NhanVien where Xoa = 0";
-    final String HIDE_SQL = "Update NhanVien set xoa=1 where MaNV = ?";
-    final String RESTORE_SQL = "Update NhanVien set xoa=0 where MaNV = ?";
+    final String SELECT_ALL_SQL_1 = "select * from NhanVien where Xoa = 1";
+    final String SELECT_ALL_SQL_2 = "select * from NhanVien where Xoa = 0";
+    final String HIDE_SQL = "Update NhanVien set xoa=0 where MaNV = ?";
+    final String RESTORE_SQL = "Update NhanVien set xoa=1 where MaNV = ?";
 
     @Override
     public void insert(NhanVien entity) {

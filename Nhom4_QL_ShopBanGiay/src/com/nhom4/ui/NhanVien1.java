@@ -347,11 +347,6 @@ public class NhanVien1 extends javax.swing.JPanel {
                 txttimKiemActionPerformed(evt);
             }
         });
-        txttimKiem.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txttimKiemKeyTyped(evt);
-            }
-        });
         jPanel3.add(txttimKiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 0, 910, 50));
 
         javax.swing.GroupLayout pnlSearchLayout = new javax.swing.GroupLayout(pnlSearch);
@@ -793,10 +788,7 @@ public class NhanVien1 extends javax.swing.JPanel {
 
     public void delete() {
         String nv = txtmaNhanVien.getText();
-        if (nv.equals(Auth.user.getMaNV())) {
-                MsgBox.alert(this, "Không thể xóa quản lý");
-            }
-        else if (MsgBox.confirm(this, "Bạn thực sự muốn xóa nhân viên này")) {
+        if (MsgBox.confirm(this, "Bạn thực sự muốn xóa nhân viên này")) {
             try {
                 dao.hide(nv);
                 this.fillTable();
@@ -851,7 +843,7 @@ public class NhanVien1 extends javax.swing.JPanel {
         nv.setEmail(txtEmail.getText());
         nv.setHinh(lblHinh.getToolTipText());
         nv.setDiaChi(txtdiaChi.getText());
-        nv.setXoa(false);
+        nv.setXoa(true);
 
         return nv;
     }
@@ -1002,7 +994,7 @@ public class NhanVien1 extends javax.swing.JPanel {
             MsgBox.alert(this, "Định dạng email bạn nhập không chính xác");
             txtEmail.requestFocus();
             return false;
-        } else if (lblHinh.getName()==("default.png") ) {
+        } else if (lblHinh.getIcon() == null) {
             MsgBox.alert(this, "Bạn chưa chọn hình! click vào khu vực hình để chọn");
             return false;
         }
