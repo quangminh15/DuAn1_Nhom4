@@ -17,6 +17,7 @@ import java.util.List;
  * @author ACER
  */
 public class SanPhamDAO extends MainDAO<SanPham, String>  {
+    final String SELECT_ALL_SQL = "SELECT * FROM SanPham";
     final String INSERT_SQL = "INSERT INTO SanPham(MaSP, TenSP, SoLuong, MaNCC, Anh, GhiChu, Xoa) VALUES (?,?,?,?,?,?,?)";
     final String UPDATE_SQL = "UPDATE SanPham SET TenSP = ?, SoLuong= ?, MaNCC =?, Anh =?, GhiChu =?, Xoa=? WHERE MaSP=?";
     final String DELETE_SQL = "DELETE FROM SanPham WHERE MaSP = ?";
@@ -103,6 +104,21 @@ public class SanPhamDAO extends MainDAO<SanPham, String>  {
         try {
             ResultSet rs = JdbcHelper.executeQuery(sql);
             while (rs.next()) {                
+                list.add(rs.getString(1));
+            }
+            rs.getStatement().getConnection().close();
+            return list;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    
+    public List<String> selectMaSP() {
+        String sql = SELECT_ALL_SQL;
+        List<String> list = new ArrayList<>();
+        try {
+            ResultSet rs = JdbcHelper.executeQuery(sql);
+            while (rs.next()) {
                 list.add(rs.getString(1));
             }
             rs.getStatement().getConnection().close();

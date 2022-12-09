@@ -21,6 +21,7 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -40,7 +41,8 @@ public class SanPham1 extends javax.swing.JPanel {
     int row = -1;
     int them = 0;
     int checklap = 0;
-    String anh ="hinh/default.png";
+    String anh = "hinh/default.png";
+
     public SanPham1() {
         initComponents();
         initTable();
@@ -55,7 +57,8 @@ public class SanPham1 extends javax.swing.JPanel {
         initTable2();
         fillTable2();
         fillCboMaNCC();
-        fillCboMaSP();setFont(btnHuy);
+        fillCboMaSP();
+        setFont(btnHuy);
         setFont(btnThem);
         setFont(btnHuy);
         setFont(btnXoa);
@@ -67,9 +70,10 @@ public class SanPham1 extends javax.swing.JPanel {
         setFont(btnUpdate);
         setFont(btnCapNhat);
     }
-    public void setFont(JButton bt){
-            bt.setFont(getFont().deriveFont(Font.BOLD, 18));
-        }
+
+    public void setFont(JButton bt) {
+        bt.setFont(getFont().deriveFont(Font.BOLD, 18));
+    }
 
     private void initTable() {
         DefaultTableModel model = (DefaultTableModel) tblSanPham.getModel();
@@ -98,7 +102,7 @@ public class SanPham1 extends javax.swing.JPanel {
         } catch (Exception e) {
         }
     }
-    
+
     public void fillTable3() {
         DefaultTableModel model = (DefaultTableModel) tblChiTietSp.getModel();
         model.setRowCount(0);
@@ -145,7 +149,7 @@ public class SanPham1 extends javax.swing.JPanel {
             model.addElement(nv);
         }
     }
-    
+
     private void fillCboMaSP() {
         DefaultComboBoxModel model = (DefaultComboBoxModel) cboMaSP.getModel();
         model.removeAllElements();
@@ -235,8 +239,11 @@ public class SanPham1 extends javax.swing.JPanel {
     public void delete() {
         if (MsgBox.confirm(this, "Bạn thực sự muốn xóa sản phẩm này")) {
             String msp = txtMaSP.getText();
+            int i = tblSanPham.getSelectedRow();
+            String key = tblSanPham.getValueAt(i, 0).toString();
             try {
-                spDao.hide(msp);
+                ctspDAO.deletebByMaSP(key);
+                spDao.delete(key);
                 this.fillTable();
                 ImageIcon icon = new ImageIcon("hinh/default.png");
                 lblAnh.setIcon(icon);
@@ -267,21 +274,23 @@ public class SanPham1 extends javax.swing.JPanel {
     }
 
     boolean kiemTra() {
-        for (int i = 0; i < splist.size(); i++) {
-            if (splist.get(i).getMaSP().equalsIgnoreCase(txtMaSP.getText())) {
-                checklap = 1;
+        boolean checklap = true;
+        List<String> listMaSP = spDao.selectMaSP();
+        for (int i = 0; i < listMaSP.size(); i++) {
+            if (listMaSP.get(i).equalsIgnoreCase(txtMaSP.getText())) {
+                checklap = false;
             }
         }
         ImageIcon icon = new ImageIcon("hinh/default.png");
-        
+
         if (txtMaSP.getText().equals("") || txtMaSP.getText().length() < 5 || txtMaSP.getText().length() > 6) {
             MsgBox.alert(this, "Vui lòng nhập mã sản phẩm từ 5---->6 kí tự");
             txtMaSP.requestFocus();
             return false;
-        } else if (them == 1 && checklap == 1) {
-            MsgBox.alert(this, "Mã sản phẩm đã tồn tại. Vui lòng nhập mã mới");
+        } else if (them == 1 && checklap == false) {
+            MsgBox.alert(this, "Mã sản phẩm đã tồn tại hoặc bị ẩn đi. Vui lòng nhập mã mới");
             txtMaSP.requestFocus();
-            checklap = 0;
+            checklap = false;
             return false;
         } else if (txtTenSP.getText().length() == 0) {
             MsgBox.alert(this, "Tên Sản Phẩm không được bỏ trống!!!");
@@ -484,11 +493,11 @@ public class SanPham1 extends javax.swing.JPanel {
             txtMaCT.requestFocus();
             checklap = 0;
             return false;
-        }  else if (txtChatLieu.getText().equals("")) {
+        } else if (txtChatLieu.getText().equals("")) {
             MsgBox.alert(this, "Vui lòng nhập chất liệu");
             txtChatLieu.requestFocus();
             return false;
-        }else if (txtMauSac.getText().equals("")) {
+        } else if (txtMauSac.getText().equals("")) {
             MsgBox.alert(this, "Vui lòng nhập màu sắc");
             txtMauSac.requestFocus();
             return false;
@@ -601,7 +610,7 @@ public class SanPham1 extends javax.swing.JPanel {
         txtGia.setEditable(false);
         txtMauSac.setEditable(false);
         txtSize.setEditable(false);
-        
+
     }
 
     public void txtON2() {
@@ -611,6 +620,17 @@ public class SanPham1 extends javax.swing.JPanel {
         txtGia.setEditable(true);
         txtMauSac.setEditable(true);
         txtSize.setEditable(true);
+    }
+
+    public void deleteAn() {
+        String maSP = txtMaSP.getText();
+        try {
+            spDao.hide(maSP);
+            MsgBox.alert(this, "An thành công");
+            this.fillTable();
+        } catch (Exception e) {
+            MsgBox.alert(this, "An thất bại");
+        }
     }
 
     /**
@@ -1589,7 +1609,17 @@ public class SanPham1 extends javax.swing.JPanel {
     }//GEN-LAST:event_btnHuyActionPerformed
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
-        delete();
+        Object[] options = {"An", "Xoa"};
+        int n = JOptionPane.showOptionDialog(this, "Bạn muốn xoa kiểu nào?", "Thông báo xác nhận", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+        try {
+            if (options[n] == "An") {
+                deleteAn();
+            } else {
+                delete();
+            }
+        } catch (Exception e) {
+            MsgBox.alert(this, "Ban Chua chon");
+        }
     }//GEN-LAST:event_btnXoaActionPerformed
 
     private void btnLuuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLuuActionPerformed
@@ -1623,12 +1653,12 @@ public class SanPham1 extends javax.swing.JPanel {
     }//GEN-LAST:event_txtMaSPFocusGained
 
     private void txtMaSPFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtMaSPFocusLost
-         txtMaSP.setBackground(new Color(242, 242, 242));
+        txtMaSP.setBackground(new Color(242, 242, 242));
         pnlma.setBackground(new Color(242, 242, 242));
     }//GEN-LAST:event_txtMaSPFocusLost
 
     private void txtTenSPFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTenSPFocusGained
-         txtTenSP.setBackground(Color.WHITE);
+        txtTenSP.setBackground(Color.WHITE);
         pnlTen.setBackground(new Color(58, 136, 145));
     }//GEN-LAST:event_txtTenSPFocusGained
 
@@ -1669,7 +1699,7 @@ public class SanPham1 extends javax.swing.JPanel {
     }//GEN-LAST:event_btnHuyyActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
-         delete2();
+        delete2();
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
@@ -1718,7 +1748,7 @@ public class SanPham1 extends javax.swing.JPanel {
     }//GEN-LAST:event_txtChatLieuFocusLost
 
     private void txtMauSacFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtMauSacFocusGained
-         txtMauSac.setBackground(Color.WHITE);
+        txtMauSac.setBackground(Color.WHITE);
         pnlMau.setBackground(new Color(58, 136, 145));
     }//GEN-LAST:event_txtMauSacFocusGained
 
@@ -1728,7 +1758,7 @@ public class SanPham1 extends javax.swing.JPanel {
     }//GEN-LAST:event_txtMauSacFocusLost
 
     private void txtSizeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtSizeFocusGained
-       txtSize.setBackground(Color.WHITE);
+        txtSize.setBackground(Color.WHITE);
         pnlSize.setBackground(new Color(58, 136, 145));
     }//GEN-LAST:event_txtSizeFocusGained
 
