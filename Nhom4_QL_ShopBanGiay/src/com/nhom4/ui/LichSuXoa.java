@@ -17,6 +17,7 @@ import com.nhom4.entity.KhuyenMai;
 import com.nhom4.entity.NhaCungCap;
 import com.nhom4.entity.NhanVien;
 import com.nhom4.entity.SanPham;
+import com.nhom4.utils.Auth;
 import com.nhom4.utils.MsgBox;
 import java.text.SimpleDateFormat;
 import java.util.List;
@@ -26,6 +27,9 @@ public class LichSuXoa extends javax.swing.JFrame {
 
     public LichSuXoa() {
         initComponents();
+        if(!Auth.isManager()){
+            jTabbedPane1.remove(2);
+        }
         init();
     }
     SimpleDateFormat formats = new SimpleDateFormat("dd-MM-yyyy");

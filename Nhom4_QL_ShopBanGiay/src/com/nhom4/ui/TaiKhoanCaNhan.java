@@ -512,7 +512,7 @@ public class TaiKhoanCaNhan extends javax.swing.JPanel {
         txtDiaChi.setEditable(false);
         txtEmail.setEditable(false);
         rdoNu.setEnabled(false);
-
+        //lblHinh.setEnabled(false);
     }
 
     public void txtON() {
@@ -522,6 +522,7 @@ public class TaiKhoanCaNhan extends javax.swing.JPanel {
         txtDiaChi.setEditable(true);
         txtEmail.setEditable(true);
         rdoNu.setEnabled(true);
+        //lblHinh.setEnabled(true);
     }
 
     private static final String EMAIL_PATTERN
@@ -536,27 +537,14 @@ public class TaiKhoanCaNhan extends javax.swing.JPanel {
     }
 
     public boolean check() {
-        boolean checkSDT = true;
+     boolean checkSDT = true;
 
         try {
             Float.parseFloat(txtSDT.getText());
         } catch (NumberFormatException e1) {
             checkSDT = false;
         }
-        for (int i = 0; i < list.size(); i++) {
-            if (list.get(i).getMaNV().equalsIgnoreCase(txtMaNV.getText())) {
-                checkLap = 1;
-            }
-        }
-        if (txtMaNV.getText().equals("") || txtMaNV.getText().length() < 5 || txtMaNV.getText().length() > 6) {
-            MsgBox.alert(this, "Vui lòng nhập mã nhân viên từ 5---->6 kí tự");
-            txtMaNV.requestFocus();
-            return false;
-        } else if (them == 1 && checkLap == 1) {
-            MsgBox.alert(this, "Mã nhân viên đã tồn tại. Vui lòng nhập mã mới");
-            checkLap = 0;
-            return false;
-        } else if (txtTenNV.getText().length() == 0) {
+        if (txtTenNV.getText().length() == 0) {
             MsgBox.alert(this, "Tên nhân viên không được bỏ trống!!!");
             txtTenNV.requestFocus();
             return false;
@@ -583,7 +571,6 @@ public class TaiKhoanCaNhan extends javax.swing.JPanel {
         }
         return true;
     }
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.nhom4.ui.ButtonCustom btn;
