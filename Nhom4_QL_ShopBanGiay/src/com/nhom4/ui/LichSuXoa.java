@@ -27,6 +27,9 @@ public class LichSuXoa extends javax.swing.JFrame {
 
     public LichSuXoa() {
         initComponents();
+        if(!Auth.isManager()){
+            jTabbedPane1.remove(2);
+        }
         init();
     }
     SimpleDateFormat formats = new SimpleDateFormat("dd-MM-yyyy");

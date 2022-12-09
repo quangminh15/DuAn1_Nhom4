@@ -231,8 +231,9 @@ public class DangNhap extends javax.swing.JDialog {
         });
         pnlForm.add(lblOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 540, -1, -1));
 
-        jLabel4.setText("Shop ABC xin kính chào quý khách");
-        pnlForm.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 90, -1, -1));
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel4.setText("ForG Shoes");
+        pnlForm.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 90, -1, -1));
 
         getContentPane().add(pnlForm, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 0, 620, 600));
 
