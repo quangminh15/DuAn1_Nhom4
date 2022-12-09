@@ -564,8 +564,9 @@ public class NhanVien1 extends javax.swing.JPanel {
         txtsoDienSo.setText("");
         txtdiaChi.setText("");
         txtEmail.setText("");
-        ImageIcon icon = new ImageIcon("hinh/default.png");
-        lblHinh.setIcon(icon);
+         lblHinh.setIcon(null);
+//        ImageIcon icon = new ImageIcon("hinh/default.png");
+//        lblHinh.setIcon(icon);
 
         txtON();
     }//GEN-LAST:event_btnThemActionPerformed
