@@ -249,6 +249,7 @@ public class SanPham1 extends javax.swing.JPanel {
                 lblAnh.setIcon(icon);
                 this.clearForm();
                 btnThem.setEnabled(true);
+                this.fillTable3();
                 MsgBox.alert(this, "Xóa thành công");
             } catch (Exception e) {
                 MsgBox.alert(this, "Xóa thất bại");
