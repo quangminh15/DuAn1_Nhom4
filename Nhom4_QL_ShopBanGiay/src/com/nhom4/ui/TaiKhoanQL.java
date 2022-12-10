@@ -523,7 +523,6 @@ public class TaiKhoanQL extends javax.swing.JPanel {
         this.clearForm();
         this.row = -1;
         updateStatus();
-    
     }
     private void fillCboNV() {
         DefaultComboBoxModel model = (DefaultComboBoxModel) cboMaNV.getModel();
