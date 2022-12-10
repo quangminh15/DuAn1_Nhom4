@@ -22,7 +22,7 @@ import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-
+import com.nhom4.dao.TaiKhoanDAO;
 /**
  *
  * @author Hai
@@ -42,6 +42,7 @@ public class NhanVien1 extends javax.swing.JPanel {
     }
     int checklap = 0;
     ArrayList<NhanVien> listNV = new ArrayList<>();
+    TaiKhoanDAO taiKhoanDAO = new TaiKhoanDAO();
     NhanVienDAO dao = new NhanVienDAO();
     int row = -1;
     int them = 0;
@@ -812,6 +813,7 @@ public class NhanVien1 extends javax.swing.JPanel {
             MsgBox.alert(this, "Không thể xóa quản lý");
         } else if (MsgBox.confirm(this, "Bạn thực sự muốn xóa nhân viên này")) {
             try {
+                taiKhoanDAO.delete(nv);
                 dao.delete(nv);
                 this.fillTable();
                 this.clearForm();

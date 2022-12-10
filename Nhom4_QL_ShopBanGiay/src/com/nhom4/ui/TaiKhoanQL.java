@@ -535,7 +535,8 @@ public class TaiKhoanQL extends javax.swing.JPanel {
     }
     public void init() { 
         this.row = -1;
-        this.fillTable();      
+        this.fillTable(); 
+        fillCboNV();
         this.updateStatus();
         btnLuu.setEnabled(false);
         setFont(btnHuy);
