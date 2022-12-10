@@ -629,6 +629,9 @@ public class SanPham1 extends javax.swing.JPanel {
             spDao.hide(maSP);
             MsgBox.alert(this, "An thành công");
             this.fillTable();
+            ImageIcon icon = new ImageIcon("hinh/default.png");
+            lblAnh.setIcon(icon);
+            this.clearForm();
         } catch (Exception e) {
             MsgBox.alert(this, "An thất bại");
         }
@@ -1607,6 +1610,7 @@ public class SanPham1 extends javax.swing.JPanel {
         lblAnh.setIcon(icon);
         btnLuu.setEnabled(false);
         btnThem.setEnabled(true);
+        fillTable();
     }//GEN-LAST:event_btnHuyActionPerformed
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
@@ -1614,6 +1618,7 @@ public class SanPham1 extends javax.swing.JPanel {
         int n = JOptionPane.showOptionDialog(this, "Bạn muốn xoa kiểu nào?", "Thông báo xác nhận", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
         try {
             if (options[n] == "An") {
+
                 deleteAn();
             } else {
                 delete();
