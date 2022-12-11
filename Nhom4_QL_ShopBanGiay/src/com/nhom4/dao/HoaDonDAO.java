@@ -173,12 +173,12 @@ public class HoaDonDAO extends MainDAO<HoaDon, String> {
     }
 
     public List<HoaDon> selectByKeyword(String key) {
-        String sql = "SELECT * FROM HoaDon WHERE MaHD like ?";
+        String sql = "SELECT * FROM HoaDon WHERE MaHD like ? and xoa=1";
         return this.selectBySql(sql, "%" + key + "%");
     }
 
     public List<HoaDon> selectByKeyword2(String key) {
-        String sql = "SELECT * FROM HoaDon WHERE MaNV like ?";
+        String sql = "SELECT * FROM HoaDon WHERE MaNV like ? and xoa=1";
         return this.selectBySql(sql, "%" + key + "%");
     }
 
