@@ -505,6 +505,9 @@ public class TaiKhoanQL extends javax.swing.JPanel {
     public void TimKiem() {
  DefaultTableModel model = (DefaultTableModel) tblBang.getModel();
         model.setRowCount(0);
+        if(txtTimKiem.getText().equals("")){
+          fillTable();
+        }else{
         try {
             String user = txtTimKiem.getText();
             List<TaiKhoan> list = tkDAO.selectByKeyword(user);
@@ -513,7 +516,7 @@ public class TaiKhoanQL extends javax.swing.JPanel {
                     tk.getMaNV(),
                     tk.getUsername(),
                     tk.getPass(),
-                    tk.getRole(),
+                    tk.getRole()? "Quản lý" : "Nhân viên"
                 };
                 model.addRow(data);
             }  
@@ -523,8 +526,9 @@ public class TaiKhoanQL extends javax.swing.JPanel {
         this.clearForm();
         this.row = -1;
         updateStatus();
-    
     }
+    }
+    
     private void fillCboNV() {
         DefaultComboBoxModel model = (DefaultComboBoxModel) cboMaNV.getModel();
         model.removeAllElements();

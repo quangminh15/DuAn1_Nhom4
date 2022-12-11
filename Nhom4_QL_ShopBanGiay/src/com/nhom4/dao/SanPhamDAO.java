@@ -73,7 +73,7 @@ public class SanPhamDAO extends MainDAO<SanPham, String>  {
     }
     
     public List<SanPham> selectByKeyword2(String key) {
-        String sql = "SELECT * FROM SanPham WHERE TenSP like ?";
+        String sql = "SELECT * FROM SanPham WHERE Xoa = 1 and TenSP like ?";
         return this.selectBySql(sql, "%"+key+"%");
     }
     

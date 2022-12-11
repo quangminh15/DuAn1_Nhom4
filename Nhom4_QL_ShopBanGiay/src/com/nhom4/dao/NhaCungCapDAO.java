@@ -69,7 +69,7 @@ public class NhaCungCapDAO extends MainDAO<NhaCungCap, String> {
     }
     
     public List<NhaCungCap> selectByKeyword(String key) {
-        String sql = "SELECT * FROM NCC WHERE TenNCC like ?";
+        String sql = "SELECT * FROM NCC WHERE Xoa = 1 and TenNCC like ?";
         return this.selectBySql(sql, "%" + key + "%");
     }
     
