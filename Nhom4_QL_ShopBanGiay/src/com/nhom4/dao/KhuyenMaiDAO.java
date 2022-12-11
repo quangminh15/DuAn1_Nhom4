@@ -70,7 +70,7 @@ public class KhuyenMaiDAO extends MainDAO<KhuyenMai, String> {
     }
 
     public List<KhuyenMai> selectByKeyword(String key) {
-        String sql = "SELECT * FROM KhuyenMai WHERE TenKM like ?";
+        String sql = "SELECT * FROM KhuyenMai WHERE Xoa = 1 and TenKM like ?";
         return this.selectBySql(sql, "%" + key + "%");
     }
     
