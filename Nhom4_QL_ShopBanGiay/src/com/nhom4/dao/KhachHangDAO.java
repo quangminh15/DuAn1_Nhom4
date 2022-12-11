@@ -47,7 +47,7 @@ public class KhachHangDAO extends MainDAO<KhachHang, String> {
         return selectBySql(SELECT_ALL_SQL_1);
     }
      public List<KhachHang> selectByKeyword(String user) {
-        String sql = "SELECT * FROM KhachHang WHERE TenKH like ?";
+        String sql = "SELECT * FROM KhachHang WHERE Xoa = 1 and TenKH like ?";
         return this.selectBySql(sql, "%"+user+"%");
     }
      

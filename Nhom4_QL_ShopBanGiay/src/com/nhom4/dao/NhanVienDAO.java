@@ -68,7 +68,7 @@ public class NhanVienDAO extends MainDAO<NhanVien, String> {
     }
 
     public List<NhanVien> selectByKeyword(String user) {
-        String sql = "SELECT * FROM NhanVien WHERE TenNV like ?";
+        String sql = "SELECT * FROM NhanVien WHERE Xoa = 0 and TenNV like ?";
         return this.selectBySql(sql, "%" + user + "%");
     }
     
