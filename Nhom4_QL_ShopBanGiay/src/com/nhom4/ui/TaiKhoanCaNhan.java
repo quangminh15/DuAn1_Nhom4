@@ -564,8 +564,8 @@ public class TaiKhoanCaNhan extends javax.swing.JPanel {
             MsgBox.alert(this, "Vui lòng nhập số");
             txtSDT.requestFocus();
             return false;
-        } else if (txtSDT.getText().equals("") || txtSDT.getText().length() < 9 || txtSDT.getText().length() > 10) {
-            MsgBox.alert(this, "Vui lòng nhập số điện thoại từ 9---->10 kí tự");
+        } else if (txtSDT.getText().equals("") || txtSDT.getText().length() < 10 || txtSDT.getText().length() > 10) {
+            MsgBox.alert(this, "Vui lòng nhập số điện thoại từ 10 kí tự");
             txtSDT.requestFocus();
             return false;
         } else if (txtDiaChi.getText().length() == 0) {
