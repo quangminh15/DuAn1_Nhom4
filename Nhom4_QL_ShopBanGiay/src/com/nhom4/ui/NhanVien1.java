@@ -1013,11 +1013,11 @@ public class NhanVien1 extends javax.swing.JPanel {
             txttenNhanVien.requestFocus();
             return false;
         } else if (checkSDT == false) {
-            MsgBox.alert(this, "Vui lòng nhập số");
+            MsgBox.alert(this, "Vui lòng chỉ nhập số");
             txtsoDienSo.requestFocus();
             return false;
-        } else if (txtsoDienSo.getText().equals("") || txtsoDienSo.getText().length() < 9 || txtsoDienSo.getText().length() > 10) {
-            MsgBox.alert(this, "Vui lòng nhập số điện thoại từ 9---->10 kí tự");
+        } else if (txtsoDienSo.getText().equals("") || txtsoDienSo.getText().length() != 10) {
+            MsgBox.alert(this, "Vui lòng nhập đủ 10 số");
             txtsoDienSo.requestFocus();
             return false;
         } else if (txtdiaChi.getText().length() == 0) {
@@ -1049,7 +1049,7 @@ public class NhanVien1 extends javax.swing.JPanel {
                 Object[] data = {
                     nv.getMaNV(),
                     nv.getTenNV(),
-                    nv.getGioiTinh(),
+                    nv.getGioiTinh()? "Nam" : "Nữ",
                     nv.getSDT(),
                     nv.getDiaChi(),
                     nv.getEmail(),

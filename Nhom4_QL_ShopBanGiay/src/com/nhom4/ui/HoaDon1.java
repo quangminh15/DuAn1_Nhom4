@@ -390,11 +390,11 @@ public class HoaDon1 extends javax.swing.JPanel {
                 if (Double.parseDouble(tblhoadon.getValueAt(i, 5).toString()) == 0) {
                     btnLuuHD.setEnabled(false);
                     btnLuuHD2.setEnabled(false);
-                    btnSua1.setEnabled(!b);
-                    btnXoa1.setEnabled(!b);
-                    btnLuu1.setEnabled(!b);
-                    btnThem1.setEnabled(!b);
-                    btnHuy1.setEnabled(!b);
+                    btnSua1.setEnabled(b);
+                    btnXoa1.setEnabled(b);
+                    btnLuu1.setEnabled(b);
+                    btnThem1.setEnabled(b);
+                    btnHuy1.setEnabled(b);
                 } else {
                     btnLuuHD.setEnabled(true);
                     btnLuuHD2.setEnabled(true);

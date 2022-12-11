@@ -566,17 +566,16 @@ public class NhaCungCap1 extends javax.swing.JPanel {
     
     public void deleteAn() {
         String ncc = txtMaNCC.getText();
-        if (MsgBox.confirm(this, "Bạn thực sự muốn xóa nhà cung cấp này")) {
             try {
                 nccDAO.hide(ncc);
                 //dao.delete(ncc);
                 this.fillTable();
                 this.clearForm();
-                MsgBox.alert(this, "Xóa thành công");
+                MsgBox.alert(this, "Ẩn thành công");
             } catch (Exception e) {
-                MsgBox.alert(this, "Xóa thất bại");
+                MsgBox.alert(this, "Ẩn thất bại");
             }
-        }
+        
     }
 
     public void clearForm() {
