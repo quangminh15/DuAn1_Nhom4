@@ -166,7 +166,7 @@ public class HoaDon1 extends javax.swing.JPanel {
 
     private void initTableHDCT() {
         DefaultTableModel model = (DefaultTableModel) tblHDCT.getModel();
-        String[] cols = new String[]{"#", "Ma CT", "Ten SP", "So Luong", "Don Gia", "Thanh Tien"};
+        String[] cols = new String[]{"#", "Ma CTSP", "Ten SP", "So Luong", "Don Gia", "Thanh Tien"};
         model.setColumnIdentifiers(cols);
     }
 
@@ -247,7 +247,6 @@ public class HoaDon1 extends javax.swing.JPanel {
 
     public void setVisibleBtn(boolean b) {
 
-        
         btnSua.setEnabled(b);
         btnXoa.setEnabled(b);
         btnHuy.setEnabled(b);
@@ -375,7 +374,7 @@ public class HoaDon1 extends javax.swing.JPanel {
             cboMaCT.setEnabled(!b);
             cboSL.setEnabled(!b);
             //setFormHDCT_Click(i);
-           
+
             if (tblhoadon.getValueAt(i, 6).equals("Da Hoan Thanh")) {
                 btnLuuHD.setEnabled(false);
                 btnLuuHD2.setEnabled(false);
@@ -496,6 +495,7 @@ public class HoaDon1 extends javax.swing.JPanel {
     ArrayList<HoaDonChiTiet> listHDCT = new ArrayList<>();
 
     public boolean check() {
+        String patterMaHD = "^[a-zA-Z0-9]{6,15}$";
         List<String> listMaHD = hdDAO.selectMaHD();
         boolean check = true;
         for (int i = 0; i < listMaHD.size(); i++) {
@@ -505,11 +505,18 @@ public class HoaDon1 extends javax.swing.JPanel {
         }
 
         if (txtMaHD.getText().equals("")) {
-            MsgBox.alert(this, "Khong Bo Trong MA HOA DON");
+            MsgBox.alert(this, "Không Bỏ Trống Mã Hóa Đơn");
+            txtMaHD.requestFocus();
             return false;
         }
         if (check == false) {
-            MsgBox.alert(this, "MA HOA DON DA TON TAI HOAC DA BI AN DI");
+            MsgBox.alert(this, "Mã Hóa Đơn Đã Tồn Tại Hoặc Đã Bị Ẩn Đi");
+            txtMaHD.requestFocus();
+            return false;
+        }
+        if(!txtMaHD.getText().matches(patterMaHD)|| txtMaHD.getText().length()<6){
+            MsgBox.alert(this, "Tên đăng nhập không chứa kí tự đặc biệt và Chứa Tối thiểu 5 Kí Tự");
+            txtMaHD.requestFocus();
             return false;
         }
         return true;
@@ -533,11 +540,11 @@ public class HoaDon1 extends javax.swing.JPanel {
 
         fillTable();
         this.fillTableHDCT(lblMaHD.getText());
-        if(!listHDCT.isEmpty()){
+        if (!listHDCT.isEmpty()) {
             btnLuuHD2.setEnabled(true);
             btnLuuHD.setEnabled(true);
-            }
-        
+        }
+
     }
 
     public void deleteAn() {
@@ -548,13 +555,13 @@ public class HoaDon1 extends javax.swing.JPanel {
 //                hdctDAO.deletebByMaHD(mahd);
 //                hdDAO.delete(mahd);
             hdDAO.hide(mahd);
-            MsgBox.alert(this, "An thành công");
+            MsgBox.alert(this, "Ẩn thành công");
             if (listHDCT.isEmpty()) {
                 hdDAO.updateTrangThai2(mahd);
             }
             this.fillTable();
         } catch (Exception e) {
-            MsgBox.alert(this, "An thất bại");
+            MsgBox.alert(this, "Ẩn thất bại");
         }
 
     }
@@ -562,7 +569,7 @@ public class HoaDon1 extends javax.swing.JPanel {
     public void delete() {
 
         String mahd = txtMaHD.getText();
-        if (MsgBox.confirm(this, "Bạn thực sự muốn xoa Hoa Don này")) {
+        if (MsgBox.confirm(this, "Bạn Thực Sự Muốn Xóa Hóa Đơn này")) {
             try {
                 hdctDAO.deletebByMaHD(mahd);
                 hdDAO.delete(mahd);
@@ -581,7 +588,7 @@ public class HoaDon1 extends javax.swing.JPanel {
         int i = tblHDCT.getSelectedRow();
 
         String mahdct = tblHDCT.getValueAt(i, 0).toString();
-        if (MsgBox.confirm(this, "Bạn thực sự muốn xoa san pham này")) {
+        if (MsgBox.confirm(this, "Bạn Thực Sự Muốn Xóa Sản Phẩm Này")) {
             try {
                 hdctDAO.delete(mahdct);
                 hdDAO.updateThanhTien(lblMaHD.getText());
@@ -589,7 +596,7 @@ public class HoaDon1 extends javax.swing.JPanel {
                 MsgBox.alert(this, "Xóa thành công");
                 fillTableHDCT(lblMaHD.getText());
                 if (listHDCT.isEmpty()) {
-                    hdDAO.updateTrangThai2(mahd=lblMaHD.getText());
+                    hdDAO.updateTrangThai2(mahd = lblMaHD.getText());
                     btnIn.setEnabled(false);
                     btnLuuHD.setEnabled(false);
                     btnLuuHD2.setEnabled(false);
@@ -639,7 +646,7 @@ public class HoaDon1 extends javax.swing.JPanel {
         if (buttonNew == true && check()) {
 
             insert();
-            MsgBox.alert(this, "Them thanh cong");
+            MsgBox.alert(this, "Thêm Thành Công");
 
             cancel();
 
@@ -663,9 +670,8 @@ public class HoaDon1 extends javax.swing.JPanel {
         if (buttonNewHDCT == true) {
             insertHDCT();
             cancelHDCT();
-            MsgBox.alert(this, "Them thanh cong");
+            MsgBox.alert(this, "Thêm Thành Công");
             btnIn.setEnabled(true);
-            
 
         } else if (buttonUpdateHDCT == true) {
             int index = tblHDCT.getSelectedRow();
@@ -1845,7 +1851,7 @@ public class HoaDon1 extends javax.swing.JPanel {
     }//GEN-LAST:event_btnHuyActionPerformed
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
-
+        txtMaHD.requestFocus(true);
         buttonSave = true;
         buttonNew = true;
         statusBtn(buttonSave);
@@ -1858,7 +1864,7 @@ public class HoaDon1 extends javax.swing.JPanel {
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
         int index = tblhoadon.getSelectedRow();
         if (index < 0) {
-            MsgBox.alert(this, "Chua Chon Hoa Don");
+            MsgBox.alert(this, "Chưa Chọn Hóa Đơn Cần Chỉnh Sửa");
         } else {
             buttonSave = true;
             buttonUpdate = true;
@@ -1872,16 +1878,16 @@ public class HoaDon1 extends javax.swing.JPanel {
     }//GEN-LAST:event_btnSuaActionPerformed
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
-        Object[] options = {"An", "Xoa"};
-        int n = JOptionPane.showOptionDialog(this, "Bạn muốn xoa kiểu nào?", "Thông báo xác nhận", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+        Object[] options = {"Ẩn", "Xóa"};
+        int n = JOptionPane.showOptionDialog(this, "Vui Lòng Chọn Phương Thức Xóa", "Thông báo xác nhận", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
         try {
-            if (options[n] == "An") {
+            if (options[n] == "Ẩn") {
                 deleteAn();
             } else {
                 delete();
             }
         } catch (Exception e) {
-            MsgBox.alert(this, "Ban Chua chon");
+            MsgBox.alert(this, "Bạn Chưa Chọn Phương Thức");
         }
     }//GEN-LAST:event_btnXoaActionPerformed
 
@@ -1901,7 +1907,7 @@ public class HoaDon1 extends javax.swing.JPanel {
     private void btnSua1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSua1ActionPerformed
         int index = tblHDCT.getSelectedRow();
         if (index < 0) {
-            MsgBox.alert(this, "Chon san pham can chinh sua");
+            MsgBox.alert(this, "Chưa Chọn Sản Phẩm Cần Chỉnh Sửa");
         } else {
             buttonSaveHDCT = true;
             buttonUpdateHDCT = true;
@@ -1912,7 +1918,7 @@ public class HoaDon1 extends javax.swing.JPanel {
     private void btnXoa1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoa1ActionPerformed
         int i = tblHDCT.getSelectedRow();
         if (i < 0) {
-            MsgBox.alert(this, "Chua chon san pham de xoa");
+            MsgBox.alert(this, "Chưa Chọn Sản Phẩm Cần Xóa");
         } else
             deleteHDCT();
     }//GEN-LAST:event_btnXoa1ActionPerformed
@@ -1931,7 +1937,7 @@ public class HoaDon1 extends javax.swing.JPanel {
 
     private void lblXemHoaDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblXemHoaDonMouseClicked
         if (chuoi.length() == 0) {
-            MsgBox.alert(this, "Chua in hoa don");
+            MsgBox.alert(this, "Chưa In Hóa Đơn");
 
         } else {
             try {
@@ -1968,24 +1974,34 @@ public class HoaDon1 extends javax.swing.JPanel {
     }//GEN-LAST:event_jLabel22MouseClicked
 
     private void btnLuuHD2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLuuHD2ActionPerformed
+        int i = tblHDCT.getSelectedRow();
+        if (i < 0) {
+            MsgBox.alert(this, "Chưa Chọn Hóa Đơn Cần Lưu");
+        } else {
 
-        if (MsgBox.confirm(this, "Sau Khi Luu Se Khong The Thuc Hien Cac Thao Tac Sua Doi Tren Hoa Don") == true) {
-            hdDAO.updateTrangThai1(lblMaHD.getText());
-            fillTable();
-            //setVisibleBtn(false);
-            btnLuuHD.setEnabled(false);
-            btnLuuHD2.setEnabled(false);
+            if (MsgBox.confirm(this, "Lưu Ý: Sau Khi Lưu Sẽ Không Thể Thao Tác Trên Hóa Đơn") == true) {
+                hdDAO.updateTrangThai1(lblMaHD.getText());
+                fillTable();
+                //setVisibleBtn(false);
+                btnLuuHD.setEnabled(false);
+                btnLuuHD2.setEnabled(false);
+            }
         }
     }//GEN-LAST:event_btnLuuHD2ActionPerformed
 
     private void btnLuuHDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLuuHDActionPerformed
+        int i = tblHDCT.getSelectedRow();
+        if (i < 0) {
+            MsgBox.alert(this, "Chưa Chọn Hóa Đơn Cần Lưu");
+        } else {
 
-        if (MsgBox.confirm(this, "Sau Khi Luu Se Khong The Thuc Hien Cac Thao Tac Sua Doi Tren Hoa Don") == true) {
-            hdDAO.updateTrangThai1(lblMaHD.getText());
-            fillTable();
-            //setVisibleBtn(false);
-            btnLuuHD.setEnabled(false);
-            btnLuuHD2.setEnabled(false);
+            if (MsgBox.confirm(this, "Lưu Ý: Sau Khi Lưu Sẽ Không Thể Thao Tác Trên Hóa Đơn") == true) {
+                hdDAO.updateTrangThai1(lblMaHD.getText());
+                fillTable();
+                //setVisibleBtn(false);
+                btnLuuHD.setEnabled(false);
+                btnLuuHD2.setEnabled(false);
+            }
         }
 
     }//GEN-LAST:event_btnLuuHDActionPerformed

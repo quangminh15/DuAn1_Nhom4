@@ -1197,9 +1197,12 @@ public class CuaSoChinh extends javax.swing.JFrame {
             boolean thoat = MsgBox.confirm(this, "Bạn có thực sự muốn đăng xuất không?");
         if (thoat == true) {
             Auth.clear();
-            DangNhap dialog = new DangNhap(new javax.swing.JFrame(), true);
-            dialog.setVisible(true);
             this.dispose();
+//            DangNhap dialog = new DangNhap(new javax.swing.JFrame(), true);
+            CuaSoChinh cuaso = new CuaSoChinh();
+            cuaso.setVisible(true);
+//            dialog.setVisible(true);
+            
         } else if (thoat == false) {
             return;
         }

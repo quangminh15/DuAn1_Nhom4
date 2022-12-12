@@ -1345,13 +1345,13 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <EmptySpace pref="15" max="32767" attributes="0"/>
+                          <EmptySpace pref="21" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="1" attributes="0">
-                                  <Group type="103" groupAlignment="1" attributes="0">
+                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
                                       <Component id="jScrollPane2" min="-2" pref="528" max="-2" attributes="0"/>
                                       <Group type="102" attributes="0">
-                                          <Component id="btnDau" min="-2" pref="123" max="-2" attributes="0"/>
+                                          <Component id="btnDau" max="32767" attributes="0"/>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
                                           <Component id="btnLui" min="-2" pref="123" max="-2" attributes="0"/>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -1392,7 +1392,9 @@
               <SubComponents>
                 <Component class="javax.swing.JButton" name="btnToi">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="&gt;&gt;"/>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/com/nhom4/icon/right-arrow.png"/>
+                    </Property>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnToiActionPerformed"/>
@@ -1400,7 +1402,9 @@
                 </Component>
                 <Component class="javax.swing.JButton" name="btnCuoi">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="&gt;|"/>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/com/nhom4/icon/right-arrow (1).png"/>
+                    </Property>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCuoiActionPerformed"/>
@@ -1432,7 +1436,9 @@
                 </Container>
                 <Component class="javax.swing.JButton" name="btnDau">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="|&lt;"/>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/com/nhom4/icon/left-arrow (1).png"/>
+                    </Property>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDauActionPerformed"/>
@@ -1440,7 +1446,9 @@
                 </Component>
                 <Component class="javax.swing.JButton" name="btnLui">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="&lt;&lt;"/>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/com/nhom4/icon/left-arrow.png"/>
+                    </Property>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLuiActionPerformed"/>

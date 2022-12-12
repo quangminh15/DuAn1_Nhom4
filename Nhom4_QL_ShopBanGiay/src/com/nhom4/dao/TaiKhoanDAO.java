@@ -73,7 +73,7 @@ public class TaiKhoanDAO extends MainDAO<TaiKhoan, String> {
         }
     }
     public List<String> selectMaNV() {
-    String sql = "select MaNV from NhanVien";
+    String sql = "select MaNV from NhanVien where Xoa = 0";
         List<String> list = new ArrayList<>();
         try {
             ResultSet rs = JdbcHelper.executeQuery(sql);
