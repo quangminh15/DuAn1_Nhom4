@@ -58,7 +58,7 @@ public class ChaoJDialog extends javax.swing.JDialog {
 
         prbChao.setBackground(new java.awt.Color(255, 255, 255));
         prbChao.setStringPainted(true);
-        getContentPane().add(prbChao, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 442, 820, -1));
+        getContentPane().add(prbChao, new org.netbeans.lib.awtextra.AbsoluteConstraints(-4, 442, 830, 20));
 
         jPanel1.setBackground(new java.awt.Color(21, 23, 24));
 
@@ -81,7 +81,7 @@ public class ChaoJDialog extends javax.swing.JDialog {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(289, 289, 289)
                         .addComponent(jLabel1)))
-                .addContainerGap(261, Short.MAX_VALUE))
+                .addContainerGap(221, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -93,7 +93,7 @@ public class ChaoJDialog extends javax.swing.JDialog {
                 .addContainerGap(50, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 860, 440));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 820, 440));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
