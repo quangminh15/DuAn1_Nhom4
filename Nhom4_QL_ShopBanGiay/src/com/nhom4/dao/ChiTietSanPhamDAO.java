@@ -60,7 +60,7 @@ public class ChiTietSanPhamDAO extends MainDAO<ChiTietSanPham, String> {
     }
     
     public List<ChiTietSanPham> selectByKeyword(String key) {
-        String sql = "SELECT * FROM ChiTietSP WHERE Xoa = 1 and MaSP like ?";
+        String sql = "SELECT * FROM ChiTietSP WHERE MaSP like ?";
         return this.selectBySql(sql, "%"+key+"%");
     }
     public void deletebByMaSP(String id){
