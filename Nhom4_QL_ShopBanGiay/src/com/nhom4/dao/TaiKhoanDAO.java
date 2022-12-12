@@ -54,7 +54,7 @@ public class TaiKhoanDAO extends MainDAO<TaiKhoan, String> {
     }
 
     public List<TaiKhoan> selectByKeyword(String user) {
-        String sql = "SELECT * FROM TaiKhoan WHERE Username like ?";
+        String sql = "select NhanVien.MaNV, Username, Pass, role from TaiKhoan  inner join NhanVien on NhanVien.MaNV = TaiKhoan.MaNV where Xoa = 0 and Username like ?";
         return this.selectBySql(sql, "%" + user + "%");
     }
 
