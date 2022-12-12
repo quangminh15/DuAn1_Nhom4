@@ -91,7 +91,7 @@ public class HoaDonDAO extends MainDAO<HoaDon, String> {
     }
 
     public List<String> selectMaNV() {
-        String sql = "Select maNV from NhanVien";
+        String sql = "Select maNV from NhanVien where xoa = 0";
         List<String> list = new ArrayList<>();
         try {
             ResultSet rs = JdbcHelper.executeQuery(sql);
@@ -123,7 +123,7 @@ public class HoaDonDAO extends MainDAO<HoaDon, String> {
     
 
     public List<String> selectMaKH() {
-        String sql = "Select maKH from KhachHang";
+        String sql = "Select maKH from KhachHang where xoa = 1";
         List<String> list = new ArrayList<>();
         try {
             ResultSet rs = JdbcHelper.executeQuery(sql);
@@ -138,7 +138,7 @@ public class HoaDonDAO extends MainDAO<HoaDon, String> {
     }
 
     public List<String> selectMaKM() {
-        String sql = "Select maKM from KhuyenMai where GETDATE() <= NgayKT;";
+        String sql = "Select maKM from KhuyenMai where GETDATE() <= NgayKT and GETDATE() >= NgayBD and xoa=1 ;";
         List<String> list = new ArrayList<>();
         try {
             ResultSet rs = JdbcHelper.executeQuery(sql);

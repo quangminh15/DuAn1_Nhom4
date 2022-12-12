@@ -249,7 +249,7 @@ public class HoaDon1 extends javax.swing.JPanel {
 
         btnSua.setEnabled(b);
         btnXoa.setEnabled(b);
-        btnHuy.setEnabled(b);
+        //btnHuy.setEnabled(b);
         //btnLuuHD.setEnabled(b);
 
         btnThem1.setEnabled(b);
@@ -1785,6 +1785,7 @@ public class HoaDon1 extends javax.swing.JPanel {
             setVisibleBtn(true);
         } else {
             btnIn.setEnabled(true);
+            btnLuu.setEnabled(false);
             setVisibleBtn(false);
         }
 
