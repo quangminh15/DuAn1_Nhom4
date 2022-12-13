@@ -420,7 +420,15 @@ public class KhuyenMai1 extends javax.swing.JPanel {
             new String [] {
                 "Ma Khuyen Mai", "Ten khuyen mai", "Giam gia", "Ngay bat dau", "Ngay ket thuc", "Ghi chu"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         tblKhuyenMai.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblKhuyenMaiMouseClicked(evt);

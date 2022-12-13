@@ -236,6 +236,7 @@ public class TaiKhoanQL extends javax.swing.JPanel {
         jLabel6.setText("Mã nhân viên:");
         jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, -1, -1));
 
+        cboMaNV.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         cboMaNV.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jPanel2.add(cboMaNV, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 90, 380, 51));
 
@@ -250,6 +251,7 @@ public class TaiKhoanQL extends javax.swing.JPanel {
         lblTimKiem.setText("Tìm kiếm theo tên");
         jPanel3.add(lblTimKiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 30, 160, 30));
 
+        txtTimKiem.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         txtTimKiem.setBorder(null);
         txtTimKiem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -336,7 +338,15 @@ public class TaiKhoanQL extends javax.swing.JPanel {
             new String [] {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         tblBang.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblBangMouseClicked(evt);
