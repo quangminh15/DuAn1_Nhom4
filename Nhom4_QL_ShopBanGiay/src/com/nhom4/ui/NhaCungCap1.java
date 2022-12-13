@@ -557,9 +557,9 @@ public class NhaCungCap1 extends javax.swing.JPanel {
                 nccDAO.delete(ncc);
                 this.fillTable();
                 this.clearForm();
-                MsgBox.alert(this, "Ẩn thành công");
+                MsgBox.alert(this, "Xóa thành công");
             } catch (Exception e) {
-                MsgBox.alert(this, "Ẩn thất bại");
+                MsgBox.alert(this, "Xóa thất bại");
             }
         }
     }
