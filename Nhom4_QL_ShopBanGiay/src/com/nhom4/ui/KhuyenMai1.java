@@ -997,8 +997,9 @@ public class KhuyenMai1 extends javax.swing.JPanel {
             MsgBox.alert(this, "Vui lòng nhập số");
             txtGiamGia.requestFocus();
         } else if (Float.parseFloat(txtGiamGia.getText()) > 100 || Float.parseFloat(txtGiamGia.getText()) < 0) {
-            MsgBox.alert(this, "Điểm phải từ 0 -- 10");
+            MsgBox.alert(this, "Giảm giá có giá trị từ 0 --> 100 (%)");
             txtGiamGia.requestFocus();
+            return false;
         } else if (Integer.parseInt(dfyear.format(txtNgayBD.getDate())) < Integer.parseInt(dfyear.format(now))) {
             MsgBox.alert(this, "Thời gian bắt đầu phải lớn hơn thời gian hiện tại!(Năm)");
             return false;
