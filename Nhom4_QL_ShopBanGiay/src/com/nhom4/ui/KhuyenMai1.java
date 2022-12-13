@@ -1068,15 +1068,15 @@ public class KhuyenMai1 extends javax.swing.JPanel {
             MsgBox.alert(this, "Chương trình đang diễn ra không thể sửa hoặc xóa!");
             return false;
         } else if (Integer.parseInt(dfyear.format(txtNgayBD.getDate())) == Integer.parseInt(dfyear.format(now)) && Integer.parseInt(dfyear.format(now)) == Integer.parseInt(dfyear.format(txtNgayKT.getDate()))) {
-            if (Integer.parseInt(dfmonth.format(txtNgayBD.getDate())) < Integer.parseInt(dfmonth.format(now)) && Integer.parseInt(dfmonth.format(now)) < Integer.parseInt(dfmonth.format(txtNgayKT.getDate()))) {
+            MsgBox.alert(this, "Chương trình đang diễn ra không thể sửa hoặc xóa!");
+            return false;
+        } else if (Integer.parseInt(dfmonth.format(txtNgayBD.getDate())) < Integer.parseInt(dfmonth.format(now)) && Integer.parseInt(dfmonth.format(now)) < Integer.parseInt(dfmonth.format(txtNgayKT.getDate()))) {
+            MsgBox.alert(this, "Chương trình đang diễn ra không thể sửa hoặc xóa!");
+            return false;
+        } else if (Integer.parseInt(dfmonth.format(txtNgayBD.getDate())) == Integer.parseInt(dfmonth.format(now)) && Integer.parseInt(dfmonth.format(now)) == Integer.parseInt(dfmonth.format(txtNgayKT.getDate()))) {
+            if (Integer.parseInt(dfday.format(txtNgayBD.getDate())) < Integer.parseInt(dfday.format(now)) && Integer.parseInt(dfday.format(now)) < Integer.parseInt(dfday.format(txtNgayKT.getDate()))) {
                 MsgBox.alert(this, "Chương trình đang diễn ra không thể sửa hoặc xóa!");
                 return false;
-            }
-            if (Integer.parseInt(dfmonth.format(txtNgayBD.getDate())) == Integer.parseInt(dfmonth.format(now)) && Integer.parseInt(dfmonth.format(now)) == Integer.parseInt(dfmonth.format(txtNgayKT.getDate()))) {
-                if (Integer.parseInt(dfday.format(txtNgayBD.getDate())) < Integer.parseInt(dfday.format(now)) && Integer.parseInt(dfday.format(now)) < Integer.parseInt(dfday.format(txtNgayKT.getDate()))) {
-                    MsgBox.alert(this, "Chương trình đang diễn ra không thể sửa hoặc xóa!");
-                    return false;
-                }
             }
         }
 
