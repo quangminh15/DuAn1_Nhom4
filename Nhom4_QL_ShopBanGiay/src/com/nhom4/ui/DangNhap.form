@@ -310,11 +310,17 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel4">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Shop ABC xin k&#xed;nh ch&#xe0;o qu&#xfd; kh&#xe1;ch"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="18" style="1"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="93" green="6e" red="0" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="ForG Shoes"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="210" y="90" width="-1" height="-1"/>
+              <AbsoluteConstraints x="260" y="90" width="-1" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>

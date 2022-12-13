@@ -143,7 +143,15 @@ public class NhaCungCap1 extends javax.swing.JPanel {
             new String [] {
                 "Ma Nha Cung Cap", "Ten Nha Cung Cap"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         tblNCC.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblNCCMouseClicked(evt);
@@ -163,6 +171,7 @@ public class NhaCungCap1 extends javax.swing.JPanel {
         jPanel3.add(lblMaNCC, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
 
         txtMaNCC.setBackground(new java.awt.Color(245, 245, 245));
+        txtMaNCC.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         txtMaNCC.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(245, 245, 245), 2));
         txtMaNCC.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -229,6 +238,7 @@ public class NhaCungCap1 extends javax.swing.JPanel {
         jPanel3.add(lblTenNCC, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, -1, -1));
 
         txtTenNCC.setBackground(new java.awt.Color(245, 245, 245));
+        txtTenNCC.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         txtTenNCC.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(245, 245, 245), 2));
         txtTenNCC.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -557,9 +567,9 @@ public class NhaCungCap1 extends javax.swing.JPanel {
                 nccDAO.delete(ncc);
                 this.fillTable();
                 this.clearForm();
-                MsgBox.alert(this, "Ẩn thành công");
+                MsgBox.alert(this, "Xóa thành công");
             } catch (Exception e) {
-                MsgBox.alert(this, "Ẩn thất bại");
+                MsgBox.alert(this, "Xóa thất bại");
             }
         }
     }

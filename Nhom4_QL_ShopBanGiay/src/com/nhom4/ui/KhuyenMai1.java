@@ -420,7 +420,15 @@ public class KhuyenMai1 extends javax.swing.JPanel {
             new String [] {
                 "Ma Khuyen Mai", "Ten khuyen mai", "Giam gia", "Ngay bat dau", "Ngay ket thuc", "Ghi chu"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         tblKhuyenMai.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblKhuyenMaiMouseClicked(evt);
@@ -997,8 +1005,9 @@ public class KhuyenMai1 extends javax.swing.JPanel {
             MsgBox.alert(this, "Vui lòng nhập số");
             txtGiamGia.requestFocus();
         } else if (Float.parseFloat(txtGiamGia.getText()) > 100 || Float.parseFloat(txtGiamGia.getText()) < 0) {
-            MsgBox.alert(this, "Điểm phải từ 0 -- 10");
+            MsgBox.alert(this, "Giảm giá có giá trị từ 0 --> 100 (%)");
             txtGiamGia.requestFocus();
+            return false;
         } else if (Integer.parseInt(dfyear.format(txtNgayBD.getDate())) < Integer.parseInt(dfyear.format(now))) {
             MsgBox.alert(this, "Thời gian bắt đầu phải lớn hơn thời gian hiện tại!(Năm)");
             return false;
@@ -1073,10 +1082,11 @@ public class KhuyenMai1 extends javax.swing.JPanel {
                 return false;
             }
             if (Integer.parseInt(dfmonth.format(txtNgayBD.getDate())) == Integer.parseInt(dfmonth.format(now)) && Integer.parseInt(dfmonth.format(now)) == Integer.parseInt(dfmonth.format(txtNgayKT.getDate()))) {
-                if (Integer.parseInt(dfday.format(txtNgayBD.getDate())) < Integer.parseInt(dfday.format(now)) && Integer.parseInt(dfday.format(now)) < Integer.parseInt(dfday.format(txtNgayKT.getDate()))) {
+                if (Integer.parseInt(dfday.format(txtNgayBD.getDate())) <= Integer.parseInt(dfday.format(now)) && Integer.parseInt(dfday.format(now)) <= Integer.parseInt(dfday.format(txtNgayKT.getDate()))) {
                     MsgBox.alert(this, "Chương trình đang diễn ra không thể sửa hoặc xóa!");
                     return false;
                 }
+                
             }
         }
 

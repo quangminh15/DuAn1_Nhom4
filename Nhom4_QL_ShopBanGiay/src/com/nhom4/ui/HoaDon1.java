@@ -249,7 +249,7 @@ public class HoaDon1 extends javax.swing.JPanel {
 
         btnSua.setEnabled(b);
         btnXoa.setEnabled(b);
-        btnHuy.setEnabled(b);
+        //btnHuy.setEnabled(b);
         //btnLuuHD.setEnabled(b);
 
         btnThem1.setEnabled(b);
@@ -495,7 +495,7 @@ public class HoaDon1 extends javax.swing.JPanel {
     ArrayList<HoaDonChiTiet> listHDCT = new ArrayList<>();
 
     public boolean check() {
-        String patterMaHD = "^[a-zA-Z0-9]{6,15}$";
+        String patterMaHD = "^[a-zA-Z0-9]{5,15}$";
         List<String> listMaHD = hdDAO.selectMaHD();
         boolean check = true;
         for (int i = 0; i < listMaHD.size(); i++) {
@@ -515,7 +515,7 @@ public class HoaDon1 extends javax.swing.JPanel {
             return false;
         }
         if(!txtMaHD.getText().matches(patterMaHD)|| txtMaHD.getText().length()<6){
-            MsgBox.alert(this, "Tên đăng nhập không chứa kí tự đặc biệt và Chứa Tối thiểu 5 Kí Tự");
+            MsgBox.alert(this, "Mã Hóa Đơn không chứa kí tự đặc biệt và Chứa Tối thiểu 5 Kí Tự");
             txtMaHD.requestFocus();
             return false;
         }
@@ -1345,15 +1345,23 @@ public class HoaDon1 extends javax.swing.JPanel {
 
         tblhoadon.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Title 1", "Title 2", "Title 3", "Title 4", "null", "null", "null"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         tblhoadon.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblhoadonMouseClicked(evt);
@@ -1669,13 +1677,13 @@ public class HoaDon1 extends javax.swing.JPanel {
 
         tblHDCT.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Title 1", "Title 2", "Title 3", "Title 4", "null", "null"
             }
         ));
         tblHDCT.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1785,6 +1793,7 @@ public class HoaDon1 extends javax.swing.JPanel {
             setVisibleBtn(true);
         } else {
             btnIn.setEnabled(true);
+            btnLuu.setEnabled(false);
             setVisibleBtn(false);
         }
 

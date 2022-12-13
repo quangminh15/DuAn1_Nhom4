@@ -327,6 +327,8 @@ public class DoiMatKhau extends javax.swing.JDialog {
             MsgBox.alert(this, "Mật khẩu chưa chính xác");
         }else if(!matKhau1.matches(patternPass)|| matKhau1.length()<6 || matKhau1.length() > 15 ){
             MsgBox.alert(this, "Mật khẩu không chứa kí tự đặc biệt (@, #, %,..) và phải từ 6 đến 15 kí tự");
+        }else if(matKhau1.equalsIgnoreCase(matKhau) ){
+            MsgBox.alert(this, "Mật Khẩu Mới Phải Khác Mật Khẩu Cũ");
         } else if (!matKhau2.equalsIgnoreCase(matKhau1)) {
             MsgBox.alert(this, "Xác nhận mật khẩu sai");
         } else {

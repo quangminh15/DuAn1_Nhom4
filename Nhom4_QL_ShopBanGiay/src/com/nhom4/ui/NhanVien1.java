@@ -421,7 +421,15 @@ public class NhanVien1 extends javax.swing.JPanel {
             new String [] {
                 "Ma Nhan Vien", "Ten Nhan Vien", "Gioi Tinh", "SDT", "Email", "Anh", "Dia Chi"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         tblnhanVien.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblnhanVienMouseClicked(evt);

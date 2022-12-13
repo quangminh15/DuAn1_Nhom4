@@ -152,7 +152,15 @@ private void fillTableKhachHang() {
             new String [] {
                 "Ma Khach Hang Hang", "Ten Khach Hang", "So Luong ", "Thanh Tien"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane3.setViewportView(tblBang);
 
         cboNam.addActionListener(new java.awt.event.ActionListener() {
@@ -267,7 +275,15 @@ private void fillTableKhachHang() {
             new String [] {
                 "Ten San Pham", "So Luong", "DT Cao Nhat", "DT Thap Nhat", "DT Trung BInh"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(tblDoanhThu);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
