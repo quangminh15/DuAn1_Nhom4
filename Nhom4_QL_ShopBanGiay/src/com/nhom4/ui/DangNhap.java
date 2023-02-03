@@ -4,7 +4,9 @@
  */
 package com.nhom4.ui;
 
+import com.nhom4.dao.KhachHangDAO;
 import com.nhom4.dao.TaiKhoanDAO;
+import com.nhom4.entity.KhachHang;
 import com.nhom4.entity.NhanVien;
 import com.nhom4.entity.TaiKhoan;
 import com.nhom4.utils.Auth;
@@ -26,6 +28,7 @@ import javax.swing.border.Border;
  */
 public class DangNhap extends javax.swing.JDialog {
     TaiKhoanDAO tkDAO = new TaiKhoanDAO();
+    KhachHangDAO khDAO = new KhachHangDAO();
     /**
      * Creates new form DangNhap
      */
@@ -81,6 +84,8 @@ public class DangNhap extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
         lblOut = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        chkKhachHang = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("ĐĂNG NHẬP");
@@ -202,7 +207,7 @@ public class DangNhap extends javax.swing.JDialog {
                 lblLoginMouseExited(evt);
             }
         });
-        pnlForm.add(lblLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 340, -1, 70));
+        pnlForm.add(lblLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 390, -1, 70));
 
         jSeparator1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jSeparator1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -236,6 +241,17 @@ public class DangNhap extends javax.swing.JDialog {
         jLabel4.setForeground(new java.awt.Color(0, 110, 147));
         jLabel4.setText("ForG Shoes");
         pnlForm.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 90, -1, -1));
+
+        jLabel5.setText("Bạn chưa có tài khoản? Đăng kí tại đậy");
+        jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel5MouseClicked(evt);
+            }
+        });
+        pnlForm.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 480, 220, 30));
+
+        chkKhachHang.setText("Bạn có phải là khách hàng?");
+        pnlForm.add(chkKhachHang, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 350, -1, -1));
 
         getContentPane().add(pnlForm, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 0, 620, 600));
 
@@ -297,7 +313,14 @@ public class DangNhap extends javax.swing.JDialog {
     }//GEN-LAST:event_lblOutMouseExited
 
     private void lblLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLoginMouseClicked
-        this.dangNhap();
+
+        
+        if(chkKhachHang.isSelected()==true){
+           this.dangNhapKH();
+       } else {
+            this.dangNhap();
+        }
+
     }//GEN-LAST:event_lblLoginMouseClicked
 
     private void lblOutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblOutMouseClicked
@@ -323,6 +346,10 @@ public class DangNhap extends javax.swing.JDialog {
         lblAn.setVisible(false);
         lblHien.setVisible(true);
     }//GEN-LAST:event_lblAnMouseClicked
+
+    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel5MouseClicked
     
     /**
      * @param args the command line arguments
@@ -403,6 +430,35 @@ void dangNhap() {
         }
     }
 
+void dangNhapKH(){
+        int checkUsers = 0;
+        String manv = txtMaNV.getText();     
+        String matkhau = new String(txtMatKhau.getPassword());
+        String mkhau2 = txtMatKhau2.getText();
+        KhachHang kh = khDAO.selectById(manv);
+        List<String> userList = khDAO.selectListEmail();
+        for(int i =0 ; i< userList.size();i++){
+            if(userList.get(i).equals(txtMaNV.getText())){
+                checkUsers =1;
+            }
+        }
+        if (kh == null||checkUsers==1) {
+            MsgBox.alert(this, "Tên đăng nhập không chính xác");
+        } else {
+            if (!kh.getMatKhau().equals(matkhau) && !kh.getMatKhau().equals(mkhau2)) {
+                MsgBox.alert(this, "Mật khẩu không chính xác");
+            } else {
+                //new loading().setVisible(true);
+//                Auth.user = kh;
+                
+                MsgBox.alert(this, "Đăng nhập thành công!");
+                
+                this.dispose();
+                
+            }
+        }
+}
+
     void ketThuc() {
         if (MsgBox.confirm(this, "Bạn có chắc muốn kết thúc ứng dụng?")) {
             System.exit(0);
@@ -410,10 +466,12 @@ void dangNhap() {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JCheckBox chkKhachHang;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;

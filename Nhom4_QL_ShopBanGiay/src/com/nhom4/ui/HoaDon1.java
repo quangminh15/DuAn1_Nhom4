@@ -416,7 +416,7 @@ public class HoaDon1 extends javax.swing.JPanel {
 
         hd.setMaHD(txtMaHD.getText());
         hd.setMaNV(String.valueOf(cboMaNV.getSelectedItem().toString()));
-        hd.setMaKH(String.valueOf(cboMaKH.getSelectedItem().toString()));
+        hd.setMaKH(Integer.valueOf(cboMaKH.getSelectedItem().toString()));
         hd.setMaKM(String.valueOf(cboMaKM.getSelectedItem().toString()));
         hd.setThanhTien(0);
         hd.setTrangThai(false);

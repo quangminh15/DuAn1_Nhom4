@@ -27,62 +27,6 @@ public class KhuyenMai {
     public KhuyenMai() {
     }
 
-//    public KhuyenMai(String maKM, String tenKM, float giamGia, Date ngayBD, Date ngayKT, String ghiChu) {
-//        this.maKM = maKM;
-//        this.tenKM = tenKM;
-//        this.giamGia = giamGia;
-//        this.ngayBD = ngayBD;
-//        this.ngayKT = ngayKT;
-//        this.ghiChu = ghiChu;
-//    }
-//
-//    public String getMaKM() {
-//        return maKM;
-//    }
-//
-//    public void setMaKM(String maKM) {
-//        this.maKM = maKM;
-//    }
-//
-//    public String getTenKM() {
-//        return tenKM;
-//    }
-//
-//    public void setTenKM(String tenKM) {
-//        this.tenKM = tenKM;
-//    }
-//
-//    public float getGiamGia() {
-//        return giamGia;
-//    }
-//
-//    public void setGiamGia(float giamGia) {
-//        this.giamGia = giamGia;
-//    }
-//
-//    public Date getNgayBD() {
-//        return ngayBD;
-//    }
-//
-//    public void setNgayBD(Date ngayBD) {
-//        this.ngayBD = ngayBD;
-//    }
-//
-//    public Date getNgayKT() {
-//        return ngayKT;
-//    }
-//
-//    public void setNgayKT(Date ngayKT) {
-//        this.ngayKT = ngayKT;
-//    }
-//
-//    public String getGhiChu() {
-//        return ghiChu;
-//    }
-//
-//    public void setGhiChu(String ghiChu) {
-//        this.ghiChu = ghiChu;
-//    }
 
     public KhuyenMai(String maKM, String tenKM, float giamGia, Date ngayBD, Date ngayKT, String ghiChu, boolean xoa) {
         this.maKM = maKM;

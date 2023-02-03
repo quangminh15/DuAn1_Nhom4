@@ -80,6 +80,10 @@ public class KhachHang1 extends javax.swing.JPanel {
         btnSua = new com.nhom4.ui.ButtonCustom();
         btnThem = new com.nhom4.ui.ButtonCustom();
         btnXoa = new com.nhom4.ui.ButtonCustom();
+        txtEmail = new javax.swing.JTextField();
+        txtMatKhau = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblkhachHang = new com.nhom4.ui.Table();
@@ -115,7 +119,7 @@ public class KhachHang1 extends javax.swing.JPanel {
             .addGap(0, 3, Short.MAX_VALUE)
         );
 
-        jPanel1.add(pnlMaKH, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 70, -1, -1));
+        jPanel1.add(pnlMaKH, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 50, -1, -1));
 
         txtsoDienThoai.setBackground(new java.awt.Color(242, 242, 242));
         txtsoDienThoai.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -129,7 +133,7 @@ public class KhachHang1 extends javax.swing.JPanel {
                 txtsoDienThoaiFocusLost(evt);
             }
         });
-        jPanel1.add(txtsoDienThoai, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 130, 330, 40));
+        jPanel1.add(txtsoDienThoai, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 230, 330, 40));
 
         javax.swing.GroupLayout pnlTenKHLayout = new javax.swing.GroupLayout(pnlTenKH);
         pnlTenKH.setLayout(pnlTenKHLayout);
@@ -142,19 +146,19 @@ public class KhachHang1 extends javax.swing.JPanel {
             .addGap(0, 3, Short.MAX_VALUE)
         );
 
-        jPanel1.add(pnlTenKH, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 120, -1, -1));
+        jPanel1.add(pnlTenKH, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 100, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(51, 51, 51));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel2.setText("Mã khách hàng:");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 170, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 170, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(51, 51, 51));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel3.setText("Tên khách hàng:");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 160, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 160, -1));
 
         javax.swing.GroupLayout pnlSDTLayout = new javax.swing.GroupLayout(pnlSDT);
         pnlSDT.setLayout(pnlSDTLayout);
@@ -167,7 +171,7 @@ public class KhachHang1 extends javax.swing.JPanel {
             .addGap(0, 3, Short.MAX_VALUE)
         );
 
-        jPanel1.add(pnlSDT, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 170, -1, -1));
+        jPanel1.add(pnlSDT, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 270, -1, -1));
 
         txttenKhachHang.setBackground(new java.awt.Color(242, 242, 242));
         txttenKhachHang.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -181,7 +185,7 @@ public class KhachHang1 extends javax.swing.JPanel {
                 txttenKhachHangFocusLost(evt);
             }
         });
-        jPanel1.add(txttenKhachHang, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 80, 330, 40));
+        jPanel1.add(txttenKhachHang, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 60, 330, 40));
 
         txtmaKhachHang.setBackground(new java.awt.Color(242, 242, 242));
         txtmaKhachHang.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -195,19 +199,19 @@ public class KhachHang1 extends javax.swing.JPanel {
                 txtmaKhachHangFocusLost(evt);
             }
         });
-        jPanel1.add(txtmaKhachHang, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 30, 330, 40));
+        jPanel1.add(txtmaKhachHang, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 10, 330, 40));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(51, 51, 51));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel5.setText("Địa Chỉ:");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, 120, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 290, 120, -1));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(51, 51, 51));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel4.setText("Số Điện Thoại:");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 170, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 170, -1));
 
         txtdiaChi.setBackground(new java.awt.Color(242, 242, 242));
         txtdiaChi.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -215,7 +219,7 @@ public class KhachHang1 extends javax.swing.JPanel {
         txtdiaChi.setBorder(null);
         jScrollPane2.setViewportView(txtdiaChi);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 180, 330, 90));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 280, 330, 40));
 
         btnLuu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom4/icon/diskette.png"))); // NOI18N
         btnLuu.setText("Lưu");
@@ -265,6 +269,14 @@ public class KhachHang1 extends javax.swing.JPanel {
             }
         });
         jPanel1.add(btnXoa, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 330, 160, 50));
+        jPanel1.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 120, 330, 40));
+        jPanel1.add(txtMatKhau, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 180, 330, 40));
+
+        jLabel6.setText("Email:");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, 90, 30));
+
+        jLabel8.setText("Mật Khẩu:");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, 110, 40));
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 570, 480));
 
@@ -273,17 +285,17 @@ public class KhachHang1 extends javax.swing.JPanel {
 
         tblkhachHang.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Ma KH", "Ten KH", "SDT", "Dia Chi"
+                "Ma KH", "Ten KH", "Email", "MatKhau", "SDT", "DiaChi"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, true, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -594,7 +606,9 @@ public class KhachHang1 extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
@@ -606,6 +620,8 @@ public class KhachHang1 extends javax.swing.JPanel {
     private javax.swing.JPanel pnlSearch;
     private javax.swing.JPanel pnlTenKH;
     private com.nhom4.ui.Table tblkhachHang;
+    private javax.swing.JTextField txtEmail;
+    private javax.swing.JTextField txtMatKhau;
     private javax.swing.JTextField txtdiaChi;
     private javax.swing.JTextField txtmaKhachHang;
     private javax.swing.JTextField txtsoDienThoai;
@@ -631,6 +647,8 @@ public class KhachHang1 extends javax.swing.JPanel {
                 Object[] data = {
                     kh.getMaKH(),
                     kh.getTenKH(),
+                    kh.getEmail(),
+                    kh.getMatKhau(),
                     kh.getSDT(),
                     kh.getDiaChi(),};
                 listKH.add(kh);
@@ -654,6 +672,7 @@ public class KhachHang1 extends javax.swing.JPanel {
             btnLuu.setEnabled(true);
         } catch (Exception e) {
             MsgBox.alert(this, "Thêm mới thất bại");
+            System.out.println(e);
             updateStatus();
             them = 0;
             btnLuu.setEnabled(true);
@@ -714,16 +733,20 @@ public class KhachHang1 extends javax.swing.JPanel {
     }
 
     public void setForm(KhachHang kh) {
-        txtmaKhachHang.setText(kh.getMaKH());
+        txtmaKhachHang.setText(String.valueOf(kh.getMaKH()));
         txttenKhachHang.setText(kh.getTenKH());
+        txtEmail.setText(kh.getEmail());
+        txtMatKhau.setText(kh.getMatKhau());
         txtsoDienThoai.setText(kh.getSDT());
         txtdiaChi.setText(kh.getDiaChi());
     }
 
     KhachHang getForm() {
         KhachHang kh = new KhachHang();
-        kh.setMaKH(txtmaKhachHang.getText());
+//        kh.setMaKH(Integer.valueOf(txtmaKhachHang.getText()));
         kh.setTenKH(txttenKhachHang.getText());
+        kh.setEmail(txtEmail.getText());
+        kh.setMatKhau(txtMatKhau.getText());
         kh.setSDT(txtsoDienThoai.getText());
         kh.setDiaChi(txtdiaChi.getText());
         kh.setXoa(true);
@@ -747,7 +770,7 @@ public class KhachHang1 extends javax.swing.JPanel {
     }
 
     public void edit() {
-        String makh = (String) tblkhachHang.getValueAt(this.row, 0);
+        int makh = (int) tblkhachHang.getValueAt(this.row, 0);
         KhachHang kh = dao.selectById(makh);
         this.setForm(kh);
         this.updateStatus();
@@ -793,7 +816,7 @@ public class KhachHang1 extends javax.swing.JPanel {
     }
 
     public void txtON() {
-        txtmaKhachHang.setEditable(true);
+        txtmaKhachHang.setEditable(false);
         txttenKhachHang.setEditable(true);
         txtsoDienThoai.setEditable(true);
         txtdiaChi.setEditable(true);
@@ -812,20 +835,24 @@ public class KhachHang1 extends javax.swing.JPanel {
         } catch (NumberFormatException e1) {
             checkSDT = false;
         }
-        for (int i = 0; i < listKH.size(); i++) {
-            if (listKH.get(i).getMaKH().equalsIgnoreCase(txtmaKhachHang.getText())) {
-                checklap = 1;
-            }
-        }
-        if (txtmaKhachHang.getText().equals("") || txtmaKhachHang.getText().length() < 5 || txtmaKhachHang.getText().length() > 6) {
-            MsgBox.alert(this, "Vui lòng nhập mã khách hàng từ 5---->6 kí tự");
-            txtmaKhachHang.requestFocus();
-            return false;
-        } else if (them == 1 && checklap == 1) {
-            MsgBox.alert(this, "Mã khách hàng đã tồn tại hoặc đã bị ẩn đi. Vui lòng nhập mã mới");
-            checklap = 0;
-            return false;
-        } else if (txttenKhachHang.getText().length() == 0) {
+//        for (int i = 0; i < listKH.size(); i++) {
+//            if (listKH.get(i).getMaKH().equalsIgnoreCase(txtmaKhachHang.getText() )) {
+//                checklap = 1;
+//            }
+//        }
+        
+        
+//        if (txtmaKhachHang.getText().equals("") || txtmaKhachHang.getText().length() < 5 || txtmaKhachHang.getText().length() > 6) {
+//            MsgBox.alert(this, "Vui lòng nhập mã khách hàng từ 5---->6 kí tự");
+//            txtmaKhachHang.requestFocus();
+//            return false;
+//        } 
+//        else if (them == 1 && checklap == 1) {
+//            MsgBox.alert(this, "Mã khách hàng đã tồn tại hoặc đã bị ẩn đi. Vui lòng nhập mã mới");
+//            checklap = 0;
+//            return false;
+//        } 
+        if (txttenKhachHang.getText().length() == 0) {
             MsgBox.alert(this, "Tên khách hàng không được bỏ trống!!!");
             txttenKhachHang.requestFocus();
             return false;
